@@ -1,0 +1,4 @@
+Image 1 is the RENDER STYLE reference: copy its exact character style: chunky stylized low-poly 3D, slightly oversized head, big faceted hair chunks, simple blocky body and limbs, flat faceted shading, soft purple rim light, glowing white sneakers.
+Image 2 is ANA's IDENTITY: keep her face shape, big brown eyes, thick brows, long dark brown hair in a messy high bun with loose strands, small gold hoop earrings, lavender hoodie, dark grey joggers, white sneakers.
+
+3-panel character sheet on a plain flat dark purple backdrop: panel 1 head-and-shoulders close-up facing camera, slightly sad; panel 2 full body front view standing; panel 3 full body back view standing. Same character, identical outfit, consistent scale. Rendered in Image 1's style, NOT in Image 2's style. No text.

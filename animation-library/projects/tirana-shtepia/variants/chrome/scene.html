@@ -1,0 +1,147 @@
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2e2e2e"/><stop offset=".22" stop-color="#dcdcdc"/><stop offset=".45" stop-color="#7a7a7a"/><stop offset=".7" stop-color="#ececec"/><stop offset="1" stop-color="#262626"/></linearGradient>
+    <linearGradient id="chromeV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f2f2"/><stop offset=".5" stop-color="#8a8a8a"/><stop offset="1" stop-color="#3a3a3a"/></linearGradient>
+    <linearGradient id="coinside" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3e3e3e"/><stop offset=".3" stop-color="#d2d2d2"/><stop offset=".6" stop-color="#8d8d8d"/><stop offset="1" stop-color="#333"/></linearGradient>
+    <radialGradient id="cointop" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#f6f6f6"/><stop offset="1" stop-color="#9a9a9a"/></radialGradient>
+    <linearGradient id="keyy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF3A8"/><stop offset=".5" stop-color="#F2C400"/><stop offset="1" stop-color="#9C7A00"/></linearGradient>
+    <linearGradient id="crowd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3c3c3c"/><stop offset=".7" stop-color="#6a6a6a"/><stop offset="1" stop-color="#d8d8d8" stop-opacity="0"/></linearGradient>
+    <symbol id="person" viewBox="0 0 200 520"><circle cx="100" cy="70" r="52"/><path d="M8 520 L14 230 C14 160 50 130 100 130 C150 130 186 160 186 230 L192 520 Z"/></symbol>
+    <symbol id="key" viewBox="0 0 300 120"><path d="M60 14 A46 46 0 1 0 60 106 A46 46 0 1 0 60 14 Z M60 44 A16 16 0 1 1 60 76 A16 16 0 1 1 60 44 Z" fill-rule="evenodd"/><rect x="100" y="51" width="180" height="18" rx="6"/><rect x="236" y="69" width="16" height="30" rx="3"/><rect x="262" y="69" width="16" height="22" rx="3"/></symbol>
+  </defs>
+</svg>
+
+<!-- backgrounds: black → grey → white fog (a slow ramp) -->
+<div class="L clip" id="bgB" data-start="0" data-duration="61" data-track-index="1"></div>
+<div class="L clip" id="bgG" data-start="0" data-duration="61" data-track-index="2"></div>
+<div class="L clip" id="bgW" data-start="0" data-duration="61" data-track-index="3"></div>
+<div class="L clip" id="fx" data-start="0" data-duration="61" data-track-index="4">
+  <div id="rings"></div>
+  <div class="bok" id="bk1" style="left:860px;top:560px;width:70px;height:70px;"></div>
+  <div class="bok" id="bk2" style="left:120px;top:1250px;width:40px;height:40px;"></div>
+  <div class="bok" id="bk3" style="left:930px;top:1420px;width:28px;height:28px;"></div>
+</div>
+
+<!-- objects (one 3D stage) -->
+<div class="L clip" id="obj" data-start="0" data-duration="61" data-track-index="5">
+  <!-- S1–S2 glass phones -->
+  <div id="phones">
+    <div class="ph" id="ph3"><div class="pin"></div></div>
+    <div class="ph" id="ph2"><div class="pin"></div></div>
+    <div class="ph" id="ph1">
+      <div class="srch">⌕ Tiranë · 2+1</div>
+      <div class="pic"><div class="bld"></div></div>
+      <div class="row"><b>Apartament 2+1</b><i>80 m²</i></div>
+      <div class="pr">2.141 €/m²</div>
+      <div class="ln"><s></s><s></s><s style="width:50%"></s></div>
+    </div>
+  </div>
+  <!-- S2 columns 2019 vs 2026 (heights to scale: 964 vs 2141) -->
+  <div id="cols">
+    <div class="col" id="c19"><svg width="200" height="300"><rect width="200" height="300" fill="url(#chrome)"/></svg><span>2019</span></div>
+    <div class="col" id="c26"><svg width="200" height="666"><rect width="200" height="666" fill="url(#chrome)"/></svg><span>2026</span></div>
+    <div class="gtag" id="rek">REKORD</div>
+  </div>
+  <!-- S3 coins on a glass tile, the 1 m² square + doormat -->
+  <div id="s3">
+    <div class="floor"><div class="plane"><div class="sq" id="sq"><div class="corner" id="corner"></div><span>1 m²</span></div><div class="mat" id="mat"><b>MIRË SE VINI</b></div></div></div>
+    <svg id="coins3" class="cstack" style="left:420px;top:560px;" width="240" height="460"></svg>
+  </div>
+  <!-- S4 twelve coin stacks → bathroom -->
+  <div id="s4">
+    <div id="months"></div>
+    <svg id="bath" width="560" height="460" viewBox="0 0 560 460">
+      <ellipse cx="280" cy="440" rx="240" ry="20" fill="#000" opacity=".35"/>
+      <rect x="40" y="300" width="480" height="140" fill="url(#chrome)"/><ellipse cx="280" cy="300" rx="240" ry="40" fill="#d8d8d8"/>
+      <rect x="70" y="150" width="300" height="150" rx="40" fill="url(#chromeV)"/><ellipse cx="220" cy="155" rx="150" ry="22" fill="#ececec"/><ellipse cx="220" cy="158" rx="128" ry="14" fill="#9a9a9a"/>
+      <rect x="410" y="120" width="70" height="180" fill="url(#chrome)"/><ellipse cx="445" cy="120" rx="60" ry="16" fill="#e2e2e2"/>
+    </svg>
+  </div>
+  <!-- S5 glass floor plan -->
+  <div id="plan">
+    <svg width="760" height="560" viewBox="0 0 860 690">
+      <rect x="10" y="10" width="840" height="670" rx="10" fill="rgba(255,255,255,.12)" stroke="#e8e8e8" stroke-width="10"/>
+      <path d="M520 10 V680 M520 350 H850 M10 430 H520 M220 430 V680" stroke="#cfcfcf" stroke-width="8" fill="none"/>
+      <rect x="18" y="438" width="196" height="236" fill="rgba(255,255,255,.28)"/>
+      <g class="rm"><text x="265" y="230">SALLON</text><text x="685" y="190">DHOMË</text><text x="685" y="530">DHOMË</text><text x="115" y="560">BANJO</text><text x="370" y="560">KUZHINË</text></g>
+    </svg>
+    <div class="base"></div>
+  </div>
+  <!-- S5–S6 calendar on a chrome pedestal + coin stacks + key -->
+  <div id="s56">
+    <svg class="ped" width="420" height="760" viewBox="0 0 420 760"><rect x="20" y="60" width="380" height="700" fill="url(#chrome)"/><ellipse cx="210" cy="60" rx="190" ry="50" fill="#d6d6d6"/><ellipse cx="210" cy="60" rx="190" ry="50" fill="none" stroke="#f4f4f4" stroke-width="3"/></svg>
+    <div class="cal" id="cal"><div class="cy" id="calY">2026</div><div class="cg" id="cg"></div></div>
+    <svg class="pencil" id="pencil" width="30" height="300"><rect x="6" y="0" width="18" height="250" fill="url(#chrome)"/><path d="M6 250 L15 295 L24 250 Z" fill="#555"/></svg>
+    <svg id="cR" class="cstack" style="left:760px;top:760px;" width="320" height="960"></svg>
+    <svg id="cL" class="cstack" style="left:-20px;top:1060px;" width="320" height="700"></svg>
+    <svg id="key6" style="position:absolute;left:840px;top:620px;" width="200" height="80" viewBox="0 0 300 120"><use href="#key" fill="url(#chrome)"/></svg>
+  </div>
+  <!-- S7 wheel -->
+  <div id="s7">
+    <svg id="wheel" width="620" height="620" viewBox="-310 -310 620 620">
+      <circle r="300" fill="url(#chromeV)"/><circle r="286" fill="#bdbdbd"/>
+      <path d="M0 0 L0 -280 A280 280 0 0 1 280 0 Z" fill="#d9d9d9"/><path d="M0 0 L280 0 A280 280 0 0 1 0 280 Z" fill="#cfcfcf"/>
+      <path d="M0 0 L0 280 A280 280 0 0 1 -280 0 Z" fill="#d9d9d9"/><path id="seg4" d="M0 0 L-280 0 A280 280 0 0 1 0 -280 Z" fill="#cfcfcf"/>
+      <path id="seg4d" d="M0 0 L-280 0 A280 280 0 0 1 0 -280 Z" fill="#2a2a2a" opacity="0"/>
+      <path d="M0 -286 V286 M-286 0 H286" stroke="#8a8a8a" stroke-width="6"/>
+      <circle r="34" fill="url(#chrome)"/>
+    </svg>
+  </div>
+  <!-- S8 two listings on columns to scale (77 vs 171) -->
+  <div id="s8">
+    <div class="lc" id="lc19"><div class="lcard"><span>2019</span><b>77.000 €</b></div><svg width="220" height="240"><rect width="220" height="240" fill="url(#chrome)"/></svg></div>
+    <div class="lc" id="lc26"><div class="lcard hi"><span>2026</span><b>171.000 €</b></div><svg id="col26b" width="220" height="533"><rect width="220" height="533" fill="url(#chrome)"/></svg></div>
+  </div>
+  <!-- S9 crowd + key -->
+  <div id="s9">
+    <div id="glowY"></div>
+    <svg id="keyG" style="position:absolute;left:330px;top:740px;" width="420" height="168" viewBox="0 0 300 120"><use href="#key" fill="url(#chrome)"/></svg>
+    <svg id="keyY" style="position:absolute;left:330px;top:740px;" width="420" height="168" viewBox="0 0 300 120"><use href="#key" fill="url(#keyy)"/></svg>
+    <svg id="crowdsvg" style="position:absolute;left:0;top:1080px;" width="1080" height="840"></svg>
+    <div id="fogB"></div>
+  </div>
+</div>
+
+<!-- ============ HOOK · 3-layer photo dive (references/photo-parallax) ============ -->
+<div class="L clip" id="hook" data-start="0" data-duration="5" data-track-index="7">
+  <div id="hcam">
+    <img id="hFar" class="hl3" src="media/hook-far.jpg"/>
+    <div id="hMid" class="hl3"><img src="media/hook-mid.png"/><div id="banTxt"><span>SA</span><span>VJET?</span></div></div>
+    <img id="hNear" class="hl3" src="media/hook-near.png"/>
+  </div>
+  <div id="hGrain"></div>
+  <div id="hVig"></div>
+  <div class="hcap" id="hcap">Sa vjet i duhen një çifti në Tiranë<br/>për të blerë një apartament?</div>
+  <div class="ilu">ilustrim</div>
+</div>
+<!-- text: caption slot (voice words) + number slot -->
+<div class="L clip" id="txt" data-start="0" data-duration="61" data-track-index="6">
+  <div class="cp" id="cp1">Sa vjet i duhen një çifti në Tiranë<br/>për të blerë një apartament?</div>
+  <div class="cp" id="cp2">Një metër katror në Tiranë sot</div>
+  <div class="cp" id="cp3">Paga mesatare</div>
+  <div class="cp" id="cp3b">Një muaj rrogë blen…</div>
+  <div class="cp" id="cp4">Një vit punë?</div>
+  <div class="cp" id="cp5">Apartament 2+1, 80 metra katrorë</div>
+  <div class="cp" id="cp5b">Edhe sikur të mos shpenzonin asnjë lek</div>
+  <div class="cp" id="cp6">Por jeta kushton.</div>
+  <div class="cp" id="cp6b">Nisin në 25. Çelësin e marrin në…</div>
+  <div class="cp" id="cp7">Dhe kjo me pagë mesatare.</div>
+  <div class="cp" id="cp8">Ndërkohë, çmimet nuk presin.</div>
+  <div class="cp" id="cp9">Një brez i tërë po punon për një çelës.</div>
+
+  <div class="nm" id="n1"><span id="n1v">8</span> vjet</div>
+  <div class="nm" id="n1q">? vjet</div>
+  <div class="nm" id="n2"><span id="n2v">0</span> €</div><div class="lb" id="l2">për m² · Tiranë</div>
+  <div class="nm" id="n3">880 €</div><div class="lb" id="l3">paga neto / muaj</div>
+  <div class="nm" id="n3b">0,41 m²</div><div class="lb" id="l3b">sa një tapet dere</div>
+  <div class="nm" id="n4">4,9 m²</div><div class="lb" id="l4">një banjo</div>
+  <div class="nm" id="n5"><span id="n5v">0</span> €</div><div class="lb" id="l5">2+1 · 80 m²</div>
+  <div class="nm" id="n5b">8 vjet</div><div class="lb" id="l5b">pa shpenzuar asnjë lek</div>
+  <div class="nm" id="n6"><span id="n6v">0</span> vjet</div><div class="lb" id="l6">kursejnë 30% të pagës</div>
+  <div class="nm" id="n6b"><span id="n6bv">25</span></div><div class="lb" id="l6b">vjeç</div>
+  <div class="nm" id="n7">1 në 4</div><div class="lb" id="l7">të punësuar · paga minimale</div>
+  <div class="nm" id="n7b">50+ vjet</div><div class="lb" id="l7b">një jetë të tërë</div>
+  <div class="nm" id="n8">+122%</div><div class="lb" id="l8">më shumë se dyfish</div>
+  <div class="fin" id="fin">Kur do të jetë<br/>e jona?</div>
+  <div class="src" id="srcs">Keydata T1 2026 · INSTAT T2 2026 · pa interes kredie, pa inflacion</div>
+</div>

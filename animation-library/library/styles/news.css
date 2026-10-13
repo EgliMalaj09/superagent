@@ -1,0 +1,7 @@
+/* NEWS / investigative (dark, "style C" — the user's favourite for investigative videos) */
+:root { --bg:#0B0C0E; --ink:#F4F1EA; --mute:rgba(244,241,234,.72); --accent:#E3262F; --hi:#E3262F; --red:#E3262F; --card:#15171B;
+  --head:"Osw", "Arial Narrow", sans-serif; --headw:700; --track:.01em; --body:"HG", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(110% 70% at 50% 35%, #1A1D22 0%, #0B0C0E 70%); --shadow:0 24px 60px rgba(0,0,0,.6); --radius:6px; }
+.h { text-transform:uppercase; }
+.photo { filter:grayscale(.35) contrast(1.08); }
+.scan { position:absolute; inset:0; pointer-events:none; opacity:.08; background:repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 4px); }

@@ -1,0 +1,325 @@
+<!doctype html><html lang="sq"><head><meta charset="utf-8"/><style>
+/* ===== animation-library base: every library font + shared components. Sizes come from --W / --H set by build_page.py ===== */
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-600-normal.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-800-normal.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-600.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-700.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+@font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-600-italic.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-700-italic.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+/* Font families: Arc = Archivo Condensed 600/800, BG = Bricolage 800, DM = DM Sans, HG = Hanken Grotesk 300/500/700,
+   IS = Instrument Serif (+italic), Inter, Osw = Oswald 500/700, Out = Outfit 500-800, Ser = Source Serif 4 italic 600/700,
+   Type = Special Elite (typewriter), Spec = Spectral italic 600/700. All support Albanian ë ç. */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); }
+#stage { position:relative; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--body); }
+.L { position:absolute; left:0; top:0; width:var(--W); height:var(--H); overflow:hidden; pointer-events:none; }
+.bg { background:var(--bgfx, var(--bg)); }
+/* text */
+.h  { font-family:var(--head); font-weight:var(--headw, 800); color:var(--ink); letter-spacing:var(--track, -.02em); line-height:1.02; }
+.kicker { font-family:var(--body); font-weight:700; font-size:30px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.body { font-family:var(--body); font-weight:500; font-size:40px; line-height:1.25; color:var(--ink); }
+.quote { font-family:var(--quote); font-style:italic; font-size:64px; line-height:1.12; color:var(--ink); }
+.num { font-family:var(--head); font-weight:var(--headw, 800); font-size:220px; line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.src { position:absolute; left:70px; bottom:110px; font-family:var(--body); font-weight:500; font-size:22px; letter-spacing:.02em; color:var(--mute); }
+/* highlighter: <span class="hl"><i></i><b>word</b></span>, animate i scaleX 0→1 */
+.hl { position:relative; display:inline-block; padding:0 .12em; }
+.hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+.hl > b { position:relative; z-index:1; font-weight:inherit; }
+/* parts */
+.card { position:absolute; background:var(--card); border-radius:var(--radius, 18px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.18)); padding:36px 40px; }
+.photo { position:absolute; object-fit:cover; border-radius:var(--radius, 12px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.25)); }
+.stamp { position:absolute; font-family:var(--head); font-weight:800; font-size:120px; color:var(--red); border:10px solid var(--red); padding:8px 34px; transform:rotate(-8deg); letter-spacing:.04em; mix-blend-mode:multiply; }
+.bar { position:absolute; bottom:0; width:120px; background:var(--accent); transform-origin:50% 100%; }   /* animate scaleY */
+.rule { position:absolute; height:6px; background:var(--accent); transform-origin:0 50%; }                   /* animate scaleX */
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.vignette { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0,0,0,.35) 100%); }
+/* safe zones (Reels UI): keep text inside top 220px … bottom 380px on 9:16 */
+/* BRAND / product (fill tokens from `npx hyperframes capture <url>` → capture/tokens; defaults = clean modern SaaS) */
+:root { --bg:#0E1116; --ink:#FFFFFF; --mute:rgba(255,255,255,.72); --accent:#5B8CFF; --hi:#5B8CFF; --red:#FF5A5F; --card:#171B22;
+  --head:"Out", Arial, sans-serif; --headw:800; --track:-.03em; --body:"Inter", Arial, sans-serif; --quote:"IS", serif;
+  --bgfx: radial-gradient(80% 50% at 70% 20%, rgba(91,140,255,.25), transparent 70%), #0E1116; --radius:24px; --shadow:0 30px 80px rgba(0,0,0,.45); }
+.glass { position:absolute; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(18px); border-radius:var(--radius); }
+.ui { position:absolute; border-radius:22px; overflow:hidden; box-shadow:var(--shadow); }   /* product screenshots */
+/* epara · any ATM, 0 commission. Brand styleguide: purpleBlue #6A21E7, purplePink #C221DE, cobalt #193E92, duskBlue #3A2783, dark #111524, white #F8F8F8 */
+:root { --pb:#6A21E7; --pp:#C221DE; --co:#193E92; --db:#3A2783; --dk:#111524; --wh:#F8F8F8; --ok:#1FB979; --font:"Plus Jakarta Sans","Out",sans-serif; }
+#bg { background:radial-gradient(90% 60% at 50% 38%, #24194F 0%, #151230 55%, #111524 100%); }
+.orb { position:absolute; border-radius:50%; filter:blur(90px); }
+.o1 { left:-260px; top:120px; width:760px; height:760px; background:var(--pb); opacity:.45; }
+.o2 { right:-300px; top:900px; width:800px; height:800px; background:var(--pp); opacity:.28; }
+.o3 { left:200px; bottom:-300px; width:700px; height:600px; background:var(--co); opacity:.5; }
+.grain { position:absolute; inset:0; opacity:.05; background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+#world > * { position:absolute; }
+#tx > * { position:absolute; opacity:0; }
+.h { left:60px; right:60px; top:230px; text-align:center; font-family:var(--font); font-weight:800; font-size:112px; line-height:1.0; letter-spacing:-.035em; color:var(--wh); }
+#h1 span { display:block; } #h1 span + span { background:linear-gradient(90deg, #E94C45, var(--pp) 45%, var(--pb)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.z { display:inline-block; font-size:1.35em; background:linear-gradient(180deg, #ffffff, #c9b8ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+/* ATMs (local coords; the strip is the camera) */
+#strip { left:0; top:0; width:3080px; height:1000px; transform-origin:0 0; }
+.atm { position:absolute; top:0; width:520px; height:1000px; border-radius:34px; box-shadow:0 50px 90px rgba(0,0,0,.55), inset 0 2px 0 rgba(255,255,255,.12); }
+.atm.a0 { left:0;    background:linear-gradient(180deg,#3A3F4D,#22252F); }
+.atm.a1 { left:640px; background:linear-gradient(180deg,#D9DDE3,#AEB4BD); border-radius:60px 60px 24px 24px; }
+.atm.a2 { left:1280px; background:linear-gradient(180deg,#4A5A78,#2E3A52); border-radius:16px; }
+.atm.a3 { left:1920px; background:linear-gradient(180deg,#F1F2F5,#CDD1D8); }
+.atm.a4 { left:2560px; background:linear-gradient(180deg,#8E8270,#62584A); border-radius:44px 44px 12px 12px; }
+.scr { position:absolute; left:50px; right:50px; top:60px; height:250px; border-radius:18px; background:#0B0E1E; box-shadow:inset 0 0 0 6px rgba(0,0,0,.35); padding:40px 34px; font-family:var(--font); color:#fff; }
+.scr b { display:block; font-weight:600; font-size:34px; opacity:.75; } .scr span { display:block; margin-top:12px; font-weight:800; font-size:52px; letter-spacing:-.02em; }
+.slot { position:absolute; left:140px; right:140px; top:378px; height:20px; border-radius:10px; background:#05060D; box-shadow:inset 0 4px 8px rgba(0,0,0,.7), 0 0 0 6px rgba(0,0,0,.15); }
+.pad { position:absolute; left:150px; top:450px; width:220px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.pad i { display:block; height:48px; border-radius:10px; background:rgba(0,0,0,.28); }
+.a1 .pad i, .a3 .pad i { background:rgba(0,0,0,.16); }
+.rslot { position:absolute; left:85px; right:85px; top:700px; height:14px; border-radius:7px; background:#05060D; }
+.rc { position:absolute; left:95px; right:95px; top:707px; padding:22px 26px; background:#fff; border-radius:0 0 6px 6px; font-family:var(--font); color:var(--dk); box-shadow:0 18px 30px rgba(0,0,0,.35); transform-origin:50% 0; }
+.rc b { display:block; font-size:22px; letter-spacing:.24em; border-bottom:2px dashed #D3D0E4; padding-bottom:12px; }
+.rc span { display:flex; justify-content:space-between; margin-top:12px; font-size:22px; color:#555a70; } .rc em { font-style:normal; font-weight:700; color:var(--dk); }
+.rc .fee { margin-top:14px; font-size:30px; font-weight:800; color:var(--dk); } .rc .fee em { color:var(--ok); font-weight:800; }
+#card { left:465px; top:1500px; width:150px; height:236px; transform-origin:50% 0; filter:drop-shadow(0 20px 30px rgba(0,0,0,.5)); }
+
+/* map */
+#map { left:0; top:0; opacity:0; overflow:visible; }
+.al { fill:url(#alg); stroke:rgba(248,248,248,.65); stroke-width:3; }
+.city text { font-family:var(--font); font-weight:700; font-size:30px; fill:#fff; }
+.city .tag { font-family:var(--font); font-weight:800; font-size:22px; fill:var(--ok); }
+
+/* end card */
+#end { left:0; right:0; top:470px; text-align:center; opacity:0; }
+#tile { width:460px; margin:0 auto; padding:44px 50px; border-radius:56px; background:#F8F8F8; box-shadow:0 30px 70px rgba(106,33,231,.45); }
+#logo { width:360px; height:auto; display:block; margin:0 auto; }
+.e1 { margin-top:56px; font-family:var(--font); font-weight:800; font-size:76px; line-height:1.05; letter-spacing:-.03em; color:var(--wh); }
+.e2 { margin-top:16px; font-family:var(--font); font-weight:800; font-size:96px; letter-spacing:-.03em; color:var(--wh); }
+.e2 span { background:linear-gradient(90deg,#E94C45,var(--pp),var(--pb)); -webkit-background-clip:text; background-clip:text; color:transparent; font-size:1.25em; }
+.e3 { margin-top:18px; font-family:var(--font); font-weight:500; font-size:36px; color:rgba(248,248,248,.75); }
+.stores { margin-top:54px; display:flex; justify-content:center; gap:24px; }
+.st { width:290px; padding:16px 0 20px; border-radius:22px; background:#000; border:2px solid rgba(255,255,255,.35); font-family:var(--font); font-weight:800; font-size:38px; color:#fff; line-height:1.1; }
+.st small { display:block; font-weight:500; font-size:20px; opacity:.8; }
+.bkt { margin-top:34px; font-family:var(--font); font-weight:600; font-size:28px; letter-spacing:.14em; color:rgba(248,248,248,.6); }
+
+:root { --W:1080px; --H:1920px; }
+
+</style></head><body>
+<div id="stage" data-composition-id="epara_atm" data-start="0" data-duration="11.50" data-fps="60" data-width="1080" data-height="1920">
+<div class="L clip" id="bg" data-start="0" data-duration="11.5" data-track-index="1">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grain"></div>
+</div>
+
+<div class="L clip" id="world" data-start="0" data-duration="11.5" data-track-index="2">
+  <!-- five different, unbranded ATMs -->
+  <div id="strip">
+    <div class="atm a0"><div class="scr"><b>Withdraw</b><span>5.000,00 ALL</span></div><div class="slot"></div><div class="pad"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="rslot"></div><div class="rc"><b>RECEIPT</b><span>Withdrawal <em>5.000,00 ALL</em></span><span class="fee">Fee <em>0,00 ALL</em></span></div></div>
+    <div class="atm a1"><div class="scr"><b>Withdraw</b><span>3.000,00 ALL</span></div><div class="slot"></div><div class="pad"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="rslot"></div><div class="rc"><b>RECEIPT</b><span>Withdrawal <em>3.000,00 ALL</em></span><span class="fee">Fee <em>0,00 ALL</em></span></div></div>
+    <div class="atm a2"><div class="scr"><b>Withdraw</b><span>10.000,00 ALL</span></div><div class="slot"></div><div class="pad"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="rslot"></div><div class="rc"><b>RECEIPT</b><span>Withdrawal <em>10.000,00 ALL</em></span><span class="fee">Fee <em>0,00 ALL</em></span></div></div>
+    <div class="atm a3"><div class="scr"><b>Withdraw</b><span>2.000,00 ALL</span></div><div class="slot"></div><div class="pad"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="rslot"></div><div class="rc"><b>RECEIPT</b><span>Withdrawal <em>2.000,00 ALL</em></span><span class="fee">Fee <em>0,00 ALL</em></span></div></div>
+    <div class="atm a4"><div class="scr"><b>Withdraw</b><span>7.000,00 ALL</span></div><div class="slot"></div><div class="pad"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="rslot"></div><div class="rc"><b>RECEIPT</b><span>Withdrawal <em>7.000,00 ALL</em></span><span class="fee">Fee <em>0,00 ALL</em></span></div></div>
+  </div>
+  <img id="card" src="media/card.svg"/>
+  <!-- map of Albania -->
+  <svg id="map" width="1080" height="1920"></svg>
+  <!-- end card -->
+  <div id="end">
+    <div id="tile"><img id="logo" src="media/logo.svg"/></div>
+    <div class="e1">Withdraw at any ATM<br/>in Albania.</div>
+    <div class="e2"><span>0</span> commission.</div>
+    <div class="e3">With your physical epara card</div>
+    <div class="stores"><div class="st"><small>Download on the</small>App Store</div><div class="st"><small>Get it on</small>Google Play</div></div>
+    <div class="bkt">Powered by BKT</div>
+  </div>
+</div>
+
+<div class="L clip" id="tx" data-start="0" data-duration="11.5" data-track-index="3">
+  <div class="h" id="h1"><span>Any ATM</span><span>in Albania.</span></div>
+  <div class="h" id="h2"><span class="z">0</span> commission.</div>
+  <div class="h" id="h3">All over Albania.</div>
+</div>
+
+<audio id="bed" src="sfx/bed.wav" data-start="0" data-duration="11.500" data-track-index="90" data-volume="0.18"></audio>
+<audio id="s0" src="sfx/click.wav" data-start="2.850" data-duration="0.040" data-track-index="100" data-volume="0.05"></audio>
+<audio id="s1" src="sfx/click.wav" data-start="4.350" data-duration="0.040" data-track-index="101" data-volume="0.04"></audio>
+<audio id="s2" src="sfx/ding.wav" data-start="9.400" data-duration="1.200" data-track-index="102" data-volume="0.06"></audio>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/d3.min.js"></script>
+<script src="vendor/topojson.min.js"></script>
+<script src="vendor/world.js"></script>
+<script>
+(function () {
+  const W = 1080, H = 1920, D = 11.50;
+  const tl = window.gsap.timeline({ paused: true });
+// ===== animation-library MOTION KIT — loaded into every page before scene.js. `tl` (paused GSAP timeline), W, H exist already. =====
+// Rules baked in: transforms + opacity only (no top/left/width/height tweens), fromTo with immediateRender:false for later entrances,
+// seeded random only (never Math.random), soft eases (power3.out 0.3–0.45 s), no shakes, no flashes.
+let seed = 5; const rnd = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const E = 'expo.out';
+const $ = function (s) { return typeof s === 'string' ? document.querySelector(s) : s; };
+const div = function (p, css, cls) { const d = document.createElement('div'); d.style.cssText = css || ''; if (cls) d.className = cls; $(p).appendChild(d); return d; };
+const show = function (sel, t) { tl.set(sel, { opacity: 1 }, t); };
+const hide = function (sel, t) { tl.set(sel, { opacity: 0 }, t); };
+// entrances
+const up = function (sel, t, d) { tl.fromTo(sel, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: d || 0.5, ease: E, immediateRender: false }, t); };
+const fadeIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.out', immediateRender: false }, t); };
+const pop = function (sel, t, d) { tl.fromTo(sel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: d || 0.45, ease: 'back.out(1.7)', immediateRender: false }, t); };
+const slideIn = function (sel, t, from, d) { const v = { opacity: 0 }; v[from === 'left' || from === 'right' ? 'x' : 'y'] = (from === 'left' || from === 'top' ? -1 : 1) * 120;
+  tl.fromTo(sel, v, { x: 0, y: 0, opacity: 1, duration: d || 0.45, ease: 'power3.out', immediateRender: false }, t); };
+const blurIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, filter: 'blur(18px)', scale: 1.06 }, { opacity: 1, filter: 'blur(0px)', scale: 1, duration: d || 0.6, ease: 'power3.out', immediateRender: false }, t); };
+const words = function (sel, t, gap) {   // word-by-word reveal: wraps each word of the element in a span
+  const el = $(sel); const w = el.textContent.trim().split(/\s+/); el.innerHTML = w.map(function (x) { return '<span style="display:inline-block;opacity:0">' + x + '</span>'; }).join(' ');
+  el.querySelectorAll('span').forEach(function (s, i) { tl.fromTo(s, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', immediateRender: false }, t + i * (gap || 0.07)); });
+};
+// exits
+const out = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -20, duration: d || 0.35, ease: 'power2.in' }, t); };
+const fadeOut = function (sel, t, d) { tl.to(sel, { opacity: 0, duration: d || 0.35, ease: 'power2.inOut' }, t); };
+// emphasis
+const hl = function (sel, t) { tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out', immediateRender: false }, t); };   // .hl > i, .rule
+const growY = function (sel, t, d, stagger) { tl.fromTo(sel, { scaleY: 0 }, { scaleY: 1, duration: d || 0.7, ease: 'power3.out', stagger: stagger || 0.08, immediateRender: false }, t); };  // .bar
+const stamp = function (sel, t) { tl.fromTo(sel, { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: 'power4.in', immediateRender: false }, t); };
+const count = function (sel, a, b, t, dur, fmt) {   // fmt e.g. function (v) { return v.toFixed(1) + ' m²'; }
+  const el = $(sel); const o = { v: a }; fmt = fmt || function (v) { return Math.round(v).toLocaleString('de-DE'); };
+  tl.fromTo(o, { v: a }, { v: b, duration: dur, ease: 'power2.out', immediateRender: false, onUpdate: function () { el.textContent = fmt(o.v); } }, t);
+  el.textContent = fmt(a);
+};
+const typeIn = function (sel, text, t, dur) {   // typewriter: GSAP cannot tween textContent, so drive a proxy
+  const el = $(sel); const o = { n: 0 };
+  tl.fromTo(o, { n: 0 }, { n: text.length, duration: dur || text.length * 0.04, ease: 'none', immediateRender: false, onUpdate: function () { el.textContent = text.slice(0, Math.round(o.n)); } }, t);
+};
+const draw = function (path, t, dur) {   // SVG line draw
+  const p = $(path); const L = p.getTotalLength(); p.style.strokeDasharray = L;
+  tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur || 1.2, ease: 'power2.inOut', immediateRender: true }, t);
+};
+const kenBurns = function (sel, t, dur, from, to) { tl.fromTo(sel, { scale: from || 1.0 }, { scale: to || 1.12, duration: dur, ease: 'none', immediateRender: true }, t); };
+const drift = function (sel, t, dur, dx, dy) { tl.to(sel, { x: '+=' + (dx || 0), y: '+=' + (dy || -30), duration: dur, ease: 'none' }, t); };
+// scene change inside one page: fade the old layer out while the new one fades in (0.35–0.4 s)
+const xfade = function (a, b, t, d) { tl.to(a, { opacity: 0, duration: d || 0.4, ease: 'power2.inOut' }, t); tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.inOut', immediateRender: false }, t); };
+// After the voice-over arrives: retime the whole timeline. pts = [[oldTime, newTime], ...] ascending, e.g. [[0,0],[3.2,2.9],[8,9.4]]
+const remap = function (pts) {
+  const m = function (s) { for (let i = 1; i < pts.length; i++) if (s <= pts[i][0]) { const a = pts[i - 1], b = pts[i]; return a[1] + (s - a[0]) * (b[1] - a[1]) / (b[0] - a[0]); }
+    const a = pts[pts.length - 2], b = pts[pts.length - 1]; return b[1] + (s - b[0]) * (b[1] - a[1]) / (b[0] - a[0]); };
+  tl.getChildren(false, true, true).forEach(function (c) { const s = c.startTime(), e = s + c.totalDuration(), ns = m(s); c.startTime(ns); if (c.totalDuration() > 0) c.totalDuration(Math.max(0.001, m(e) - ns)); });
+};
+
+// ===== MAP ENGINE (d3 + topojson, offline world map). Needs motion.js. Page needs:
+//   <div class="L" style="overflow:hidden"><div id="mcam" style="position:absolute;left:0;top:0;transform-origin:0 0">
+//     <svg id="map" width="2400" height="2400"></svg><svg id="routes" width="2400" height="2400" style="position:absolute;left:0;top:0"></svg><div id="pins"></div></div></div>
+// usage: const M = makeMap({ center:[20,41], scale:5000, highlight:['008'] });  (ISO numeric ids: 008 Albania, 380 Italy, 300 Greece …)
+//        M.pin('tr', 19.82, 41.33, 'Tiranë'); M.route([19.8,41.3],[12.5,41.9], t, dur); M.camTo([19.8,41.3], 1.8, t, dur)
+const makeMap = function (o) {
+  const world = window.__WORLD__;
+  const proj = d3.geoMercator().center(o.center).scale(o.scale).translate([1200, 1200]);
+  const path = d3.geoPath(proj);
+  const land = topojson.feature(world, world.objects.countries).features;
+  d3.select('#map').selectAll('path').data(land).enter().append('path').attr('d', path)
+    .attr('fill', function (d) { return (o.highlight || []).indexOf(d.id) >= 0 ? 'var(--accent)' : 'var(--land, #1D3352)'; })
+    .attr('stroke', 'var(--border, rgba(255,255,255,.25))').attr('stroke-width', 1.2);
+  const P = function (lon, lat) { return proj([lon, lat]); };
+  const pin = function (id, lon, lat, label, side) {
+    const p = P(lon, lat); const d = div('#pins', 'left:' + (p[0] - 11) + 'px;top:' + (p[1] - 11) + 'px;', 'pin'); d.id = id;
+    if (label) { const s = div(d, 'position:absolute;top:-8px;white-space:nowrap;font:700 30px var(--body);color:var(--ink);' + (side === 'l' ? 'right:34px;' : 'left:34px;')); s.setAttribute('data-layout-allow-overflow', ''); s.textContent = label; }
+    tl.set(d, { scale: 0 }, 0); return { el: d, p: p, show: function (t) { tl.to(d, { scale: 1, duration: 0.35, ease: 'back.out(2)' }, t); } };
+  };
+  const route = function (a, b, t, dur, bend) {
+    const A = P(a[0], a[1]), B = P(b[0], b[1]), mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2 - (bend == null ? 200 : bend);
+    const r = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    r.setAttribute('d', 'M' + A[0] + ' ' + A[1] + ' Q ' + mx + ' ' + my + ' ' + B[0] + ' ' + B[1]); r.setAttribute('class', 'route');
+    document.getElementById('routes').appendChild(r); draw(r, t, dur || 1.4); return r;
+  };
+  const cam = function (pt, s, Y) { return { scale: s, x: W / 2 - s * pt[0], y: (Y || H * 0.43) - s * pt[1] }; };
+  const camTo = function (lonlat, s, t, dur, ease, Y) { const v = cam(P(lonlat[0], lonlat[1]), s, Y);
+    if (!dur) tl.set('#mcam', v, t || 0); else tl.to('#mcam', Object.assign(v, { duration: dur, ease: ease || 'power2.inOut' }), t); };
+  return { P: P, pin: pin, route: route, camTo: camTo, proj: proj };
+};
+
+// ---- scene ----
+// ===== epara · Any ATM in Albania. 0 commission. (11.5 s) =====
+const ins = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, y: 40, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: d || 0.4, ease: 'power3.out', immediateRender: false }, t); };
+const outs = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -30, filter: 'blur(8px)', duration: d || 0.3, ease: 'power2.in' }, t); };
+tl.fromTo('.o1', { x: 0, y: 0 }, { x: 180, y: 260, duration: 11.5, ease: 'sine.inOut', immediateRender: true }, 0);
+tl.fromTo('.o2', { x: 0, y: 0 }, { x: -200, y: -300, duration: 11.5, ease: 'sine.inOut', immediateRender: true }, 0);
+
+// camera on the ATM strip: show ATM i centred at scale s (screen centre y = cy)
+const cam = function (i, s, t, d, ease, cy) {
+  const cx = i === null ? 1540 : i * 640 + 260; const v = { x: 540 - cx * s, y: (cy || 1000) - 500 * s, scale: s };
+  if (!d) tl.set('#strip', v, t); else tl.to('#strip', Object.assign(v, { duration: d, ease: ease || 'power3.inOut' }), t);
+};
+tl.set('.rc', { scaleY: 0, opacity: 0 }, 0);
+tl.set('#card', { opacity: 0 }, 0);
+
+// 1 · Any ATM in Albania (0–2.0): all five different ATMs side by side
+cam(null, 0.34, 0, 0, null, 1150);
+tl.fromTo('.atm', { opacity: 0, y: 160 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.09, ease: 'power3.out', immediateRender: true }, 0.05);
+tl.set('#h1', { opacity: 1 }, 0.1);
+tl.fromTo('#h1 span', { opacity: 0, y: 40, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.4, stagger: 0.22, ease: 'power3.out', immediateRender: true }, 0.1);
+cam(null, 0.36, 0.6, 1.2, 'none', 1150);
+outs('#h1', 1.85);
+
+// 2 · 0 commission: the card goes into one ATM after another, every receipt says 0,00 ALL
+const ATM = [[0, 2.05, 0.5], [1, 3.95, 0.35], [2, 4.65, 0.28], [3, 5.2, 0.25]];   // [atm, start, speed]
+ins('#h2', 2.1);
+ATM.forEach(function (a, k) {
+  const i = a[0], t = a[1], sp = a[2];
+  cam(i, 1, t, k ? sp : 0.55, 'power3.inOut', 1000);
+  const tc = t + (k ? sp : 0.5);
+  tl.fromTo('#card', { opacity: 1, y: 0, scaleY: 1 }, { y: -610, duration: sp * 0.8, ease: 'power3.out', immediateRender: false }, tc);           // rises to the slot (top 890)
+  tl.to('#card', { scaleY: 0.02, duration: sp * 0.5, ease: 'power2.in' }, tc + sp * 0.8);                                                         // slides in
+  tl.set('#card', { opacity: 0 }, tc + sp * 1.3);
+  tl.fromTo('.atm.a' + i + ' .rc', { scaleY: 0, opacity: 1 }, { scaleY: 1, opacity: 1, duration: sp * 0.9, ease: 'power2.out', immediateRender: false }, tc + sp * 1.35);
+});
+tl.set('#card', { y: 0, scaleY: 1 }, 5.95);
+// pull back: all ATMs, all receipts 0,00 ALL
+tl.set('.atm.a4 .rc', { scaleY: 1, opacity: 1 }, 5.95);
+cam(null, 0.34, 5.95, 0.6, 'power3.inOut', 1150);
+outs('#h2', 6.4);
+
+// 3 · All over Albania (6.3–8.6): map, pins light up city by city
+const NS = 'http://www.w3.org/2000/svg';
+const mk = function (p, tag, a) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e; };
+const svg = $('#map');
+const defs = mk(svg, 'defs', {}); const lg = mk(defs, 'linearGradient', { id: 'alg', x1: 0, y1: 0, x2: 1, y2: 1 });
+mk(lg, 'stop', { offset: '0', 'stop-color': '#6A21E7' }); mk(lg, 'stop', { offset: '1', 'stop-color': '#3A2783' });
+const al = topojson.feature(window.__WORLD__, window.__WORLD__.objects.countries).features.find(function (f) { return f.id === '008'; });
+const proj = d3.geoMercator().fitExtent([[230, 560], [850, 1560]], al);
+mk(svg, 'path', { d: d3.geoPath(proj)(al), class: 'al' });
+const CITIES = [['Tiranë', 19.82, 41.33, 1], ['Durrës', 19.45, 41.32, -1], ['Shkodër', 19.51, 42.07, 1], ['Elbasan', 20.08, 41.11, 1], ['Vlorë', 19.49, 40.47, -1],
+  ['Korçë', 20.78, 40.62, 1], ['Fier', 19.56, 40.72, -1], ['Berat', 19.95, 40.70, 1], ['Lezhë', 19.64, 41.78, -1], ['Kukës', 20.42, 42.08, 1], ['Gjirokastër', 20.14, 40.08, 1], ['Sarandë', 20.00, 39.87, -1]];
+const pins = [];
+CITIES.forEach(function (c) {
+  const p = proj([c[1], c[2]]), g = mk(svg, 'g', { class: 'city' });
+  const ring = mk(g, 'circle', { cx: p[0], cy: p[1], r: 16, fill: 'none', stroke: '#1FB979', 'stroke-width': 4 });
+  mk(g, 'circle', { cx: p[0], cy: p[1], r: 11, fill: '#fff' });
+  const tx = mk(g, 'text', { x: p[0] + 24 * c[3], y: p[1] + 10, 'text-anchor': c[3] > 0 ? 'start' : 'end' }); tx.textContent = c[0];
+  pins.push({ g: g, ring: ring });
+});
+tl.to('#strip', { opacity: 0, scale: 0.28, duration: 0.4, ease: 'power2.in' }, 6.6);
+tl.fromTo('#map', { opacity: 0, scale: 1.08, transformOrigin: '540px 1060px' }, { opacity: 1, scale: 1, duration: 0.55, ease: 'power3.out', immediateRender: false }, 6.75);
+ins('#h3', 6.8);
+pins.forEach(function (p, k) {
+  const t = 7.1 + k * 0.1;
+  tl.fromTo(p.g, { opacity: 0, scale: 0.4, transformOrigin: 'center' }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)', immediateRender: true }, t);
+  tl.fromTo(p.ring, { attr: { r: 14 }, opacity: 1 }, { attr: { r: 46 }, opacity: 0, duration: 0.8, ease: 'power2.out', immediateRender: true }, t + 0.05);
+});
+outs('#h3', 8.75); tl.to('#map', { opacity: 0, scale: 0.94, duration: 0.4, ease: 'power2.in' }, 8.75);
+
+// 4 · end card (8.8–11.5)
+tl.set('#end', { opacity: 1 }, 9.05);
+tl.fromTo('#tile', { opacity: 0, scale: 0.7, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: 'back.out(1.5)', immediateRender: true }, 9.05);
+tl.fromTo(['.e1', '.e2', '.e3', '.stores', '.bkt'], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.12, ease: 'power3.out', immediateRender: true }, 9.35);
+
+  tl.to({}, { duration: D }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["epara_atm"] = tl;
+})();
+</script>
+</div></body></html>

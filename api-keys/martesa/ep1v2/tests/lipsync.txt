@@ -1,0 +1,1 @@
+Animate this exact image. The man speaks the provided audio clip, lip-synced exactly to it — use the provided audio as his voice, word for word. Keep his face, clothes, office and lighting identical. Subtle handheld micro-movement. Audio: only his voice from the provided audio, no music, no background sound.

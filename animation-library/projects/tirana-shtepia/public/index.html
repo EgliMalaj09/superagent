@@ -1,0 +1,686 @@
+<!doctype html><html lang="sq"><head><meta charset="utf-8"/><style>
+/* ===== animation-library base: every library font + shared components. Sizes come from --W / --H set by build_page.py ===== */
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-600-normal.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-800-normal.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-600.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-700.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+@font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-600-italic.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-700-italic.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+/* Font families: Arc = Archivo Condensed 600/800, BG = Bricolage 800, DM = DM Sans, HG = Hanken Grotesk 300/500/700,
+   IS = Instrument Serif (+italic), Inter, Osw = Oswald 500/700, Out = Outfit 500-800, Ser = Source Serif 4 italic 600/700,
+   Type = Special Elite (typewriter), Spec = Spectral italic 600/700. All support Albanian ë ç. */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); }
+#stage { position:relative; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--body); }
+.L { position:absolute; left:0; top:0; width:var(--W); height:var(--H); overflow:hidden; pointer-events:none; }
+.bg { background:var(--bgfx, var(--bg)); }
+/* text */
+.h  { font-family:var(--head); font-weight:var(--headw, 800); color:var(--ink); letter-spacing:var(--track, -.02em); line-height:1.02; }
+.kicker { font-family:var(--body); font-weight:700; font-size:30px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.body { font-family:var(--body); font-weight:500; font-size:40px; line-height:1.25; color:var(--ink); }
+.quote { font-family:var(--quote); font-style:italic; font-size:64px; line-height:1.12; color:var(--ink); }
+.num { font-family:var(--head); font-weight:var(--headw, 800); font-size:220px; line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.src { position:absolute; left:70px; bottom:110px; font-family:var(--body); font-weight:500; font-size:22px; letter-spacing:.02em; color:var(--mute); }
+/* highlighter: <span class="hl"><i></i><b>word</b></span>, animate i scaleX 0→1 */
+.hl { position:relative; display:inline-block; padding:0 .12em; }
+.hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+.hl > b { position:relative; z-index:1; font-weight:inherit; }
+/* parts */
+.card { position:absolute; background:var(--card); border-radius:var(--radius, 18px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.18)); padding:36px 40px; }
+.photo { position:absolute; object-fit:cover; border-radius:var(--radius, 12px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.25)); }
+.stamp { position:absolute; font-family:var(--head); font-weight:800; font-size:120px; color:var(--red); border:10px solid var(--red); padding:8px 34px; transform:rotate(-8deg); letter-spacing:.04em; mix-blend-mode:multiply; }
+.bar { position:absolute; bottom:0; width:120px; background:var(--accent); transform-origin:50% 100%; }   /* animate scaleY */
+.rule { position:absolute; height:6px; background:var(--accent); transform-origin:0 50%; }                   /* animate scaleX */
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.vignette { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0,0,0,.35) 100%); }
+/* safe zones (Reels UI): keep text inside top 220px … bottom 380px on 9:16 */
+/* ISOMETRIC 3D city / data (warm paper, CSS 3D boxes: library/engines/isometric.js; example: examples/tirana-one) */
+:root { --bg:#F2EEE6; --ink:#1E1B18; --mute:#57534E; --accent:#3FA66B; --hi:#F6D743; --red:#E0483E; --card:#FFFDF8; --green:#3FA66B; --green2:#7BC67E; --paper:#F2EEE6;
+  --head:"BG", "Arial Black", sans-serif; --headw:800; --track:-.025em; --body:"HG", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.3px) 0 0/4px 4px, #F2EEE6; }
+  .paper { background:
+      radial-gradient(120% 80% at 50% 45%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.3px) 0 0/4px 4px, var(--paper); }
+  .c { position:absolute; left:50%; translate:-50% 0; width:max-content; text-align:center; }
+  .k { font-family:"HG", Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:.22em; color:var(--ink); text-transform:uppercase; }
+  .chip { display:inline-block; font-family:"HG", Arial, sans-serif; font-weight:700; font-size:30px; color:var(--ink); border:3px solid var(--ink);
+    border-radius:999px; padding:10px 24px; background:#fff; opacity:0; }
+  .cam { position:absolute; width:0; height:0; transform-style:preserve-3d; }
+  .tilt, .spin, .bx, .bx > div, .bb { transform-style:preserve-3d; }
+  .tilt { position:absolute; left:0; top:0; width:0; height:0; }
+  .spin { position:absolute; }
+  .bx { position:absolute; }
+  .bx > div { position:absolute; backface-visibility:visible; }
+  .bb { position:absolute; width:0; height:0; }
+  .bbl { position:absolute; translate:-50% -100%; white-space:nowrap; text-align:center; }
+
+/* Sa vjet për një shtëpi — premium pass: isometric night city (story) + frosted-glass number cards + fine charts.
+   Palette: deep night navy, champagne gold, ivory; muted red only for bad news. Type: Oswald (numbers, heads) + Instrument Serif italic (human lines). */
+:root { --navy:#0B1020; --gold:#C9A45C; --gold2:#E8C98A; --red:#D9574B; --off:#F3EDE1; }
+#bg { background:radial-gradient(90% 60% at 50% 35%, #24304F 0%, #121A2E 55%, #0A0F1D 100%); }
+#haze { position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, rgba(70,92,150,.30) 0%, rgba(70,92,150,.12) 30%, rgba(70,92,150,0) 55%); }
+#dof { position:absolute; inset:0; pointer-events:none; backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px);
+  mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,.85) 18%, transparent 40%, transparent 70%, #000 100%);
+  -webkit-mask-image:linear-gradient(180deg, #000 0%, rgba(0,0,0,.85) 18%, transparent 40%, transparent 70%, #000 100%); }
+#glow { position:absolute; left:200px; top:860px; width:680px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(232,190,120,.22), rgba(232,190,120,0) 65%); pointer-events:none; }
+#night { position:absolute; inset:0; background:radial-gradient(70% 50% at 50% 60%, rgba(232,190,120,.12), rgba(8,10,20,0) 60%); opacity:0; pointer-events:none; }
+.topfade { position:absolute; left:0; right:0; top:0; height:700px; background:linear-gradient(180deg, rgba(10,15,29,.95), rgba(10,15,29,0)); pointer-events:none; }
+.ilab { font-family:"Osw",sans-serif; font-weight:600; color:#0B0C0E; background:linear-gradient(180deg, var(--gold2), var(--gold)); padding:4px 18px 6px; letter-spacing:.06em; box-shadow:0 10px 26px rgba(0,0,0,.45); white-space:nowrap; font-variant-numeric:tabular-nums; }
+.ilab.w { background:var(--off); }
+
+/* captions: Oswald heads + Instrument Serif italic for the human line */
+.cap { position:absolute; left:60px; right:60px; top:250px; text-align:center; opacity:0; }
+.tt { font-family:"Osw",sans-serif; font-weight:600; font-size:160px; line-height:1; color:var(--off); letter-spacing:.03em; font-variant-numeric:tabular-nums; }
+.tt.m { font-size:116px; } .tt.red { color:var(--red); }
+.ts { margin-top:18px; font-family:"IS",Georgia,serif; font-style:italic; font-weight:400; font-size:58px; line-height:1.15; color:rgba(243,237,225,.9); }
+.ts.big2 { font-size:72px; color:var(--off); }
+.rule { display:block; width:120px; height:2px; margin:22px auto 0; background:var(--gold); }
+.note { position:absolute; left:90px; right:90px; top:1450px; text-align:center; background:rgba(10,15,29,.7); padding:12px 18px; border-radius:6px; font-family:"Osw",sans-serif; font-weight:400; font-size:23px; letter-spacing:.03em; color:rgba(243,237,225,.6); opacity:0; }
+
+/* frosted-glass cards over the city */
+.card { position:absolute; inset:0; opacity:0; background:linear-gradient(180deg, rgba(12,17,32,.62), rgba(10,14,27,.72)); backdrop-filter:blur(24px) saturate(1.15); -webkit-backdrop-filter:blur(24px) saturate(1.15); }
+.card::before { content:""; position:absolute; left:60px; right:60px; top:200px; bottom:330px; border:1px solid rgba(243,237,225,.14); border-radius:28px; background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,0) 40%); }
+.k { position:absolute; left:0; right:0; top:620px; text-align:center; font-family:"Osw",sans-serif; font-weight:400; font-size:40px; letter-spacing:.32em; color:rgba(243,237,225,.7); }
+.k2 { position:absolute; left:0; right:0; top:1110px; text-align:center; font-family:"IS",Georgia,serif; font-style:italic; font-size:60px; color:rgba(243,237,225,.85); }
+.big { position:absolute; left:0; right:0; top:700px; text-align:center; font-family:"Osw",sans-serif; font-weight:600; font-size:300px; line-height:1; color:var(--off); letter-spacing:.01em; font-variant-numeric:tabular-nums; }
+.big.huge { font-size:500px; top:600px; background:linear-gradient(180deg, var(--gold2), var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.big.mid { font-size:190px; top:1040px; color:var(--red); }
+.ul { position:absolute; left:300px; right:300px; top:1040px; height:3px; background:var(--gold); transform-origin:50% 50%; }
+.tagx { position:absolute; left:50%; translate:-50% 0; top:1100px; font-family:"Osw",sans-serif; font-weight:500; font-size:40px; letter-spacing:.24em; padding:8px 26px 10px; color:var(--red); border:2px solid var(--red); border-radius:999px; white-space:nowrap; }
+.srcx { position:absolute; left:80px; right:80px; top:1500px; text-align:center; font-family:"Osw",sans-serif; font-weight:400; font-size:24px; letter-spacing:.06em; color:rgba(243,237,225,.45); }
+#figs { position:absolute; left:120px; top:560px; overflow:visible; }
+.fg { fill:#4A5578; }
+.bars { position:absolute; left:140px; right:140px; top:500px; height:980px; display:flex; justify-content:space-around; align-items:flex-end; }
+.bc { display:flex; flex-direction:column; align-items:center; width:300px; }
+.col2 { width:200px; border-radius:6px 6px 0 0; }
+.b19 { height:300px; background:linear-gradient(180deg, #7D88AC, #4A5578); }
+.b26 { height:666px; background:linear-gradient(180deg, var(--gold2), var(--gold)); box-shadow:0 0 70px rgba(201,164,92,.25); }
+.val { font-family:"Osw",sans-serif; font-weight:600; font-size:68px; color:var(--off); margin-bottom:18px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.val.y { color:var(--gold2); }
+.yr { font-family:"Osw",sans-serif; font-weight:400; font-size:46px; color:rgba(243,237,225,.7); margin-top:16px; letter-spacing:.2em; }
+
+/* finish */
+#tone { position:absolute; inset:0; mix-blend-mode:soft-light; background:linear-gradient(180deg, rgba(40,90,140,.35), rgba(232,170,90,.18)); }
+#vig { position:absolute; inset:0; background:radial-gradient(85% 65% at 50% 46%, transparent 55%, rgba(0,0,0,.42) 100%); }
+#grain { position:absolute; left:-60px; top:-60px; right:-60px; bottom:-60px; opacity:.08; mix-blend-mode:overlay;
+  background-image:radial-gradient(rgba(255,255,255,.95) .8px, transparent 1.2px), radial-gradient(rgba(0,0,0,.9) .8px, transparent 1.2px);
+  background-size:3px 3px, 4px 4px; background-position:0 0, 1px 2px; }
+
+/* hook: the key in the dark */
+#hk { position:absolute; inset:0; pointer-events:none; }
+#hkBg { position:absolute; inset:0; background:radial-gradient(70% 45% at 50% 52%, #1a2236 0%, #070a14 70%); }
+#hkGlow { position:absolute; left:190px; top:760px; width:700px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(232,190,120,.35), rgba(232,190,120,0) 65%); }
+#hkKey { position:absolute; left:260px; top:900px; width:560px; height:224px; filter:drop-shadow(0 30px 40px rgba(0,0,0,.6)); }
+/* timeline 8 vs 27 years */
+#tlx { position:absolute; left:90px; width:900px; top:1470px; height:6px; opacity:0; }
+.tbase { position:absolute; left:0; right:0; top:0; height:3px; background:rgba(243,237,225,.18); }
+.tfill, .tfill2 { position:absolute; left:0; top:-1px; width:900px; height:5px; transform-origin:0 50%; }
+.tfill { background:linear-gradient(90deg, var(--gold2), var(--gold)); box-shadow:0 0 18px rgba(232,201,138,.45); }
+.tfill2 { background:rgba(243,237,225,.35); }
+#ticks { position:absolute; left:0; top:0; }
+#ticks i { position:absolute; top:-5px; width:2px; height:13px; background:rgba(243,237,225,.35); }
+.tm { position:absolute; left:0; bottom:22px; translate:-50% 0; text-align:center; white-space:nowrap; opacity:0; }
+.tm b { display:block; font-family:"Osw",sans-serif; font-weight:600; font-size:44px; letter-spacing:.06em; color:var(--off); }
+.tm i { display:block; font-family:"IS",Georgia,serif; font-style:italic; font-size:36px; color:rgba(243,237,225,.75); }
+.tm.g b { color:var(--gold2); }
+#tm0 { translate:0 0; text-align:left; }
+
+#tick { position:absolute; left:0; right:0; top:610px; text-align:center; font-family:"Osw",sans-serif; font-weight:600; font-size:112px; letter-spacing:.04em; color:var(--gold2); font-variant-numeric:tabular-nums; opacity:0; text-shadow:0 6px 30px rgba(0,0,0,.6); }
+#tick i { font-style:normal; margin:0 22px; color:rgba(243,237,225,.4); }
+#tick small { font-size:.5em; letter-spacing:.2em; color:rgba(243,237,225,.75); }
+
+/* payslip card */
+.slip { position:absolute; left:170px; right:170px; top:470px; padding:46px 48px 40px; background:linear-gradient(180deg, #F6F1E6, #E9E2D2); border-radius:6px; box-shadow:0 40px 80px rgba(0,0,0,.5); rotate:-2.5deg; color:#1E2235; }
+.slip .sh { display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid #1E2235; padding-bottom:16px; font-family:"Osw",sans-serif; }
+.slip .sh b { font-weight:600; font-size:40px; letter-spacing:.14em; } .slip .sh span { font-size:28px; letter-spacing:.1em; color:#5b6077; }
+.slip .sl { display:flex; justify-content:space-between; margin-top:20px; font-family:"IS",Georgia,serif; font-style:italic; font-size:38px; color:#3a3f55; }
+.slip .sr { margin-top:24px; border-top:2px dashed rgba(30,34,53,.35); }
+.slip .sn { margin-top:22px; font-family:"Osw",sans-serif; font-size:30px; letter-spacing:.28em; color:#5b6077; }
+.slip .sv { font-family:"Osw",sans-serif; font-weight:600; font-size:200px; line-height:1; letter-spacing:.01em; color:#1E2235; font-variant-numeric:tabular-nums; }
+.slip .ul { position:relative; left:0; right:auto; top:auto; width:100%; margin-top:10px; background:var(--gold); }
+.slip .ss { margin-top:18px; font-family:"IS",Georgia,serif; font-style:italic; font-size:36px; color:#5b6077; }
+/* isometric figures */
+#figs .l { fill:#55618A; } #figs .r { fill:#3E486B; } #figs .t { fill:#7480A8; } #figs .h { fill:#E3B48F; }
+#fg4 .l { fill:#C9584C; } #fg4 .r { fill:#9E3F35; } #fg4 .t { fill:#E07468; } #fg4 .t.h { fill:#E3B48F; }
+#fg4 { opacity:1; }
+#figs .h2 { fill:#D9A47E; } #figs .h3 { fill:#C48E69; } #fg4 .h2 { fill:#D9A47E; } #fg4 .h3 { fill:#C48E69; }
+
+:root { --W:1080px; --H:1920px; }
+
+</style></head><body>
+<div id="stage" data-composition-id="tirana_shtepia" data-start="0" data-duration="70.60" data-fps="60" data-width="1080" data-height="1920">
+<!-- WORLD · isometric dusk Tirana with one cut-away 80 m² apartment -->
+<div class="L clip" id="bg" data-start="0" data-duration="70.6" data-track-index="1">
+  <div class="cam" id="cam" style="left:540px;top:960px;transform-origin:0 0;"><div class="tilt" id="tilt"><div class="spin" id="w"></div></div></div>
+  <div id="haze"></div>
+  <div id="dof"></div>
+  <div id="glow"></div>
+  <div id="night"></div>
+  <div class="topfade"></div>
+  <div id="hk"><div id="hkBg"></div><div id="hkGlow"></div><div id="hkKey"><svg width="560" height="224" viewBox="0 0 300 120"><defs><linearGradient id="kg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF1C8"/><stop offset=".5" stop-color="#E8C98A"/><stop offset="1" stop-color="#9C7A3C"/></linearGradient></defs><g fill="url(#kg1)"><path d="M60 14 A46 46 0 1 0 60 106 A46 46 0 1 0 60 14 Z M60 44 A16 16 0 1 1 60 76 A16 16 0 1 1 60 44 Z" fill-rule="evenodd"/><rect x="100" y="51" width="180" height="18" rx="6"/><rect x="236" y="69" width="16" height="30" rx="3"/><rect x="262" y="69" width="16" height="22" rx="3"/></g></svg></div></div>
+</div>
+
+<!-- CARDS · full-screen numbers (flat navy) -->
+<div class="L clip" id="cards" data-start="0" data-duration="70.6" data-track-index="2">
+  <div class="card" id="cA">
+    <div class="k">1 m² NË TIRANË · 2026</div>
+    <div class="big"><span id="cAv">0</span> €</div>
+    <div class="ul" id="cAul"></div>
+    <div class="tagx r" id="cAtag">REKORD</div>
+    <div class="srcx">Keydata, T1 2026 · çmimi mesatar</div>
+  </div>
+  <div class="card" id="cB">
+    <div class="slip" id="slip">
+      <div class="sh"><b>FLETËPAGESË</b><span>TETOR 2026</span></div>
+      <div class="sl"><span>Paga bruto</span><span>92.150 L</span></div>
+      <div class="sl"><span>Sigurime + tatim</span><span>− …</span></div>
+      <div class="sr"></div>
+      <div class="sn"><span>NETO NË DORË</span></div>
+      <div class="sv"><span id="cBv">0</span> €</div>
+      <div class="ul" id="cBul"></div>
+      <div class="ss">paga mesatare · në muaj</div>
+    </div>
+    <div class="srcx">INSTAT, T2 2026 (92.150 lekë bruto)</div>
+  </div>
+  <div class="card" id="cC">
+    <div class="k" style="top:470px;">ÇELËSIN E MARRIN NË</div>
+    <div class="big huge"><span id="cCv">25</span></div>
+    <div class="k2" style="top:1180px;">VJEÇ · PAS 27 VITESH KURSIM</div>
+    <div class="srcx">çift me dy paga mesatare, kursim 30%</div>
+  </div>
+  <div class="card" id="cD">
+    <div class="k" style="top:330px;">1 NË 4 TË PUNËSUAR</div>
+    <div class="k2" style="top:410px;">MERR PAGËN MINIMALE</div>
+    <svg id="figs" width="840" height="420" viewBox="0 0 840 420"><g class="fg" transform="translate(35,0)"><polygon class="l" points="0,175 70,140 70,360 0,395"/><polygon class="r" points="70,140 140,175 140,395 70,360"/><polygon class="t" points="0,175 70,140 140,175 70,210"/><polygon class="l h2" points="28,92 70,113 70,175 28,154"/><polygon class="r h3" points="70,113 112,92 112,154 70,175"/><polygon class="t h" points="28,92 70,71 112,92 70,113"/></g><g class="fg" transform="translate(245,0)"><polygon class="l" points="0,175 70,140 70,360 0,395"/><polygon class="r" points="70,140 140,175 140,395 70,360"/><polygon class="t" points="0,175 70,140 140,175 70,210"/><polygon class="l h2" points="28,92 70,113 70,175 28,154"/><polygon class="r h3" points="70,113 112,92 112,154 70,175"/><polygon class="t h" points="28,92 70,71 112,92 70,113"/></g><g class="fg" transform="translate(455,0)"><polygon class="l" points="0,175 70,140 70,360 0,395"/><polygon class="r" points="70,140 140,175 140,395 70,360"/><polygon class="t" points="0,175 70,140 140,175 70,210"/><polygon class="l h2" points="28,92 70,113 70,175 28,154"/><polygon class="r h3" points="70,113 112,92 112,154 70,175"/><polygon class="t h" points="28,92 70,71 112,92 70,113"/></g><g class="fg" id="fg4" transform="translate(665,0)"><polygon class="l" points="0,175 70,140 70,360 0,395"/><polygon class="r" points="70,140 140,175 140,395 70,360"/><polygon class="t" points="0,175 70,140 140,175 70,210"/><polygon class="l h2" points="28,92 70,113 70,175 28,154"/><polygon class="r h3" points="70,113 112,92 112,154 70,175"/><polygon class="t h" points="28,92 70,71 112,92 70,113"/></g></svg>
+    <div class="big mid" id="cDbig">50+ VJET</div>
+    <div class="k2" id="cDsub" style="top:1300px;">NJË JETË TË TËRË</div>
+    <div class="srcx">paga minimale 50.000 lekë bruto (2026) · INSTAT T2 2026</div>
+  </div>
+  <div class="card" id="cE">
+    <div class="k" style="top:300px;">I NJËJTI APARTAMENT 2+1 · 80 m²</div>
+    <div class="tagx r" id="cEtag" style="top:390px;white-space:nowrap;font-size:48px;">+122% · MË SHUMË SE DYFISH</div>
+    <div class="bars">
+      <div class="bc"><div class="val" id="v19">77.000 €</div><div class="col2 b19" id="b19"></div><div class="yr">2019</div></div>
+      <div class="bc"><div class="val y" id="v26">171.000 €</div><div class="col2 b26" id="b26"></div><div class="yr">2026</div></div>
+    </div>
+    <div class="srcx">Keydata · 964 €/m² (T1 2019) dhe 2.141 €/m² (T1 2026) × 80 m²</div>
+  </div>
+</div>
+
+<!-- CAPTIONS over the isometric world -->
+<div class="L clip" id="tx" data-start="0" data-duration="70.6" data-track-index="3">
+  <div id="tick"><span id="tkY">2026</span><i>·</i><span id="tkA">25</span> <small>VJEÇ</small></div>
+  <div class="cap" id="t1"><div class="tt">SA VJET?</div><div class="ts">i duhen një çifti në Tiranë për të blerë një apartament</div></div>
+  <div class="cap" id="t3"><div class="tt m">1 MUAJ RROGË</div><div class="ts">blen sa një tapet dere · 0,41 m²</div></div>
+  <div class="cap" id="t4"><div class="tt m">1 VIT PUNË</div><div class="ts">= një banjo · 4,9 m²</div></div>
+  <div class="cap" id="t5"><div class="tt m">171.000 €</div><div class="ts">apartament 2+1 · 80 m²</div></div>
+  <div class="cap" id="t5b"><div class="tt m">8 VJET</div><div class="ts">pa shpenzuar asnjë lek</div></div>
+  <div class="cap" id="t6"><div class="tt m red">POR JETA KUSHTON.</div></div>
+  <div class="cap" id="t6b"><div class="tt m"><span id="t6n">0</span> VJET</div><div class="ts">kursejnë 30% të pagës</div></div>
+  <div class="cap" id="t9"><div class="ts big2">Një brez i tërë po punon<br/>për një çelës.</div></div>
+  <div class="cap" id="t9b"><div class="tt" style="font-size:132px;">KUR DO TË JETË<br/>E JONA?</div></div>
+  <div class="cap" id="t6c"><div class="tt m">ÇELËSIN NË 52.</div><div class="ts">pas 27 vitesh kursim</div></div>
+  <div id="tlx"><div class="tbase"></div><div class="tfill2" id="tfill2"></div><div class="tfill" id="tfill"></div><div id="ticks"></div>
+    <div class="tm" id="tm0"><b>2026</b><i>25 vjeç</i></div><div class="tm" id="tm8"><b>2034</b><i>pa shpenzuar</i></div><div class="tm g" id="tm27"><b>2053</b><i>me jetën e vërtetë</i></div></div>
+  <div class="note" id="note">Llogaritje me çmimin mesatar (Keydata T1 2026) dhe pagën mesatare neto (INSTAT T2 2026) · pa interes kredie, pa inflacion</div>
+</div>
+
+<!-- FINISH · colour grade, vignette, moving film grain -->
+<div class="L clip" id="grade" data-start="0" data-duration="70.6" data-track-index="9">
+  <div id="tone"></div>
+  <div id="vig"></div>
+  <div id="grain"></div>
+</div>
+
+<audio id="vo0" src="media/vo.wav" data-start="0.000" data-duration="69.717" data-track-index="80" data-volume="1.00"></audio>
+<audio id="bed" src="sfx/bed.wav" data-start="0" data-duration="70.600" data-track-index="90" data-volume="0.07"></audio>
+<script src="vendor/gsap.min.js"></script>
+<script>
+(function () {
+  const W = 1080, H = 1920, D = 70.60;
+  const tl = window.gsap.timeline({ paused: true });
+// ===== animation-library MOTION KIT — loaded into every page before scene.js. `tl` (paused GSAP timeline), W, H exist already. =====
+// Rules baked in: transforms + opacity only (no top/left/width/height tweens), fromTo with immediateRender:false for later entrances,
+// seeded random only (never Math.random), soft eases (power3.out 0.3–0.45 s), no shakes, no flashes.
+let seed = 5; const rnd = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const E = 'expo.out';
+const $ = function (s) { return typeof s === 'string' ? document.querySelector(s) : s; };
+const div = function (p, css, cls) { const d = document.createElement('div'); d.style.cssText = css || ''; if (cls) d.className = cls; $(p).appendChild(d); return d; };
+const show = function (sel, t) { tl.set(sel, { opacity: 1 }, t); };
+const hide = function (sel, t) { tl.set(sel, { opacity: 0 }, t); };
+// entrances
+const up = function (sel, t, d) { tl.fromTo(sel, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: d || 0.5, ease: E, immediateRender: false }, t); };
+const fadeIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.out', immediateRender: false }, t); };
+const pop = function (sel, t, d) { tl.fromTo(sel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: d || 0.45, ease: 'back.out(1.7)', immediateRender: false }, t); };
+const slideIn = function (sel, t, from, d) { const v = { opacity: 0 }; v[from === 'left' || from === 'right' ? 'x' : 'y'] = (from === 'left' || from === 'top' ? -1 : 1) * 120;
+  tl.fromTo(sel, v, { x: 0, y: 0, opacity: 1, duration: d || 0.45, ease: 'power3.out', immediateRender: false }, t); };
+const blurIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, filter: 'blur(18px)', scale: 1.06 }, { opacity: 1, filter: 'blur(0px)', scale: 1, duration: d || 0.6, ease: 'power3.out', immediateRender: false }, t); };
+const words = function (sel, t, gap) {   // word-by-word reveal: wraps each word of the element in a span
+  const el = $(sel); const w = el.textContent.trim().split(/\s+/); el.innerHTML = w.map(function (x) { return '<span style="display:inline-block;opacity:0">' + x + '</span>'; }).join(' ');
+  el.querySelectorAll('span').forEach(function (s, i) { tl.fromTo(s, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', immediateRender: false }, t + i * (gap || 0.07)); });
+};
+// exits
+const out = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -20, duration: d || 0.35, ease: 'power2.in' }, t); };
+const fadeOut = function (sel, t, d) { tl.to(sel, { opacity: 0, duration: d || 0.35, ease: 'power2.inOut' }, t); };
+// emphasis
+const hl = function (sel, t) { tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out', immediateRender: false }, t); };   // .hl > i, .rule
+const growY = function (sel, t, d, stagger) { tl.fromTo(sel, { scaleY: 0 }, { scaleY: 1, duration: d || 0.7, ease: 'power3.out', stagger: stagger || 0.08, immediateRender: false }, t); };  // .bar
+const stamp = function (sel, t) { tl.fromTo(sel, { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: 'power4.in', immediateRender: false }, t); };
+const count = function (sel, a, b, t, dur, fmt) {   // fmt e.g. function (v) { return v.toFixed(1) + ' m²'; }
+  const el = $(sel); const o = { v: a }; fmt = fmt || function (v) { return Math.round(v).toLocaleString('de-DE'); };
+  tl.fromTo(o, { v: a }, { v: b, duration: dur, ease: 'power2.out', immediateRender: false, onUpdate: function () { el.textContent = fmt(o.v); } }, t);
+  el.textContent = fmt(a);
+};
+const typeIn = function (sel, text, t, dur) {   // typewriter: GSAP cannot tween textContent, so drive a proxy
+  const el = $(sel); const o = { n: 0 };
+  tl.fromTo(o, { n: 0 }, { n: text.length, duration: dur || text.length * 0.04, ease: 'none', immediateRender: false, onUpdate: function () { el.textContent = text.slice(0, Math.round(o.n)); } }, t);
+};
+const draw = function (path, t, dur) {   // SVG line draw
+  const p = $(path); const L = p.getTotalLength(); p.style.strokeDasharray = L;
+  tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur || 1.2, ease: 'power2.inOut', immediateRender: true }, t);
+};
+const kenBurns = function (sel, t, dur, from, to) { tl.fromTo(sel, { scale: from || 1.0 }, { scale: to || 1.12, duration: dur, ease: 'none', immediateRender: true }, t); };
+const drift = function (sel, t, dur, dx, dy) { tl.to(sel, { x: '+=' + (dx || 0), y: '+=' + (dy || -30), duration: dur, ease: 'none' }, t); };
+// scene change inside one page: fade the old layer out while the new one fades in (0.35–0.4 s)
+const xfade = function (a, b, t, d) { tl.to(a, { opacity: 0, duration: d || 0.4, ease: 'power2.inOut' }, t); tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.inOut', immediateRender: false }, t); };
+// After the voice-over arrives: retime the whole timeline. pts = [[oldTime, newTime], ...] ascending, e.g. [[0,0],[3.2,2.9],[8,9.4]]
+const remap = function (pts) {
+  const m = function (s) { for (let i = 1; i < pts.length; i++) if (s <= pts[i][0]) { const a = pts[i - 1], b = pts[i]; return a[1] + (s - a[0]) * (b[1] - a[1]) / (b[0] - a[0]); }
+    const a = pts[pts.length - 2], b = pts[pts.length - 1]; return b[1] + (s - b[0]) * (b[1] - a[1]) / (b[0] - a[0]); };
+  tl.getChildren(false, true, true).forEach(function (c) { const s = c.startTime(), e = s + c.totalDuration(), ns = m(s); c.startTime(ns); if (c.totalDuration() > 0) c.totalDuration(Math.max(0.001, m(e) - ns)); });
+};
+
+// ===== ISOMETRIC ENGINE (needs motion.js first). World = .cam > .tilt(rotationX 60) > .spin(rotation -45), preserve-3d. =====
+// a box with a top and four standing sides; h0 = starting height (grows later with grow())
+const box = function (p, o) {
+  const r = div(p, 'left:' + o.x + 'px;top:' + o.y + 'px;width:' + o.w + 'px;height:' + o.d + 'px;', 'bx');
+  const s1 = o.win ? 'repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 10px, rgba(30,27,24,.16) 10px 13px), ' + o.s1 : o.s1;
+  const s2 = o.win ? 'repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 10px, rgba(30,27,24,.22) 10px 13px), ' + o.s2 : o.s2;
+  const t = div(r, 'left:0;top:0;width:' + o.w + 'px;height:' + o.d + 'px;background:' + o.top + ';' + (o.topCss || ''));
+  const n = div(r, 'left:0;top:0;width:' + o.w + 'px;height:' + o.h + 'px;background:' + s1 + ';');
+  const s = div(r, 'left:0;top:' + o.d + 'px;width:' + o.w + 'px;height:' + o.h + 'px;background:' + s1 + ';');
+  const w = div(r, 'left:0;top:0;width:' + o.h + 'px;height:' + o.d + 'px;background:' + s2 + ';');
+  const e = div(r, 'left:' + o.w + 'px;top:0;width:' + o.h + 'px;height:' + o.d + 'px;background:' + s2 + ';');
+  const k = Math.max(0.004, (o.h0 === undefined ? o.h : o.h0) / o.h);
+  tl.set(t, { z: Math.max(0.6, o.h * k) }, 0);
+  tl.set([n, s], { transformOrigin: '50% 0%', rotationX: 90, scaleY: k }, 0);
+  tl.set([w, e], { transformOrigin: '0% 50%', rotationY: -90, scaleX: k }, 0);
+  return { r: r, t: t, ns: [n, s], we: [w, e], h: o.h, k: k };
+};
+const grow = function (b, t, dur, ease) {
+  tl.fromTo(b.t, { z: Math.max(0.6, b.h * b.k) }, { z: b.h, duration: dur, ease: ease || 'power3.out', immediateRender: false }, t);
+  tl.fromTo(b.ns, { scaleY: b.k }, { scaleY: 1, duration: dur, ease: ease || 'power3.out', immediateRender: false }, t);
+  tl.fromTo(b.we, { scaleX: b.k }, { scaleX: 1, duration: dur, ease: ease || 'power3.out', immediateRender: false }, t);
+};
+const layer = function (p, z) { const l = div(p, 'left:0;top:0;width:0;height:0;', 'bx'); tl.set(l, { z: z }, 0); return l; };
+const tree = function (p, x, y, s) {
+  const r = div(p, 'left:' + x + 'px;top:' + y + 'px;width:0;height:0;', 'bx');
+  box(r, { x: -3 * s, y: -3 * s, w: 6 * s, d: 6 * s, h: 16 * s, top: '#8A6A4A', s1: '#7A5C3E', s2: '#664C33' });
+  const c = layer(r, 14 * s);
+  box(c, { x: -15 * s, y: -15 * s, w: 30 * s, d: 30 * s, h: 26 * s, top: '#6CC27A', s1: '#3FA66B', s2: '#2F8655' });
+  const c2 = layer(r, 40 * s);
+  box(c2, { x: -9 * s, y: -9 * s, w: 18 * s, d: 18 * s, h: 12 * s, top: '#86D08F', s1: '#4DB277', s2: '#3A9562' });
+  return r;
+};
+const person = function (p, x, y, m, col) {          // m = px per metre
+  const r = div(p, 'left:' + x + 'px;top:' + y + 'px;width:0;height:0;', 'bx');
+  box(r, { x: -0.22 * m, y: -0.14 * m, w: 0.45 * m, d: 0.28 * m, h: 1.48 * m, top: col || '#1E1B18', s1: col || '#2C2824', s2: '#141210' });
+  const hd = layer(r, 1.5 * m);
+  box(hd, { x: -0.12 * m, y: -0.12 * m, w: 0.24 * m, d: 0.24 * m, h: 0.25 * m, top: '#E9B994', s1: '#D9A47E', s2: '#C48E69' });
+  return r;
+};
+const label = function (p, x, y, z, html) {           // billboard: always faces the viewer (undoes the world rotation)
+  const b = div(p, 'left:' + x + 'px;top:' + y + 'px;', 'bb');
+  tl.set(b, { z: z, rotation: 45, rotationX: -60 }, 0);
+  const i = div(b, '', 'bbl'); i.innerHTML = html; return b;
+};
+const world = function (id, tiltId, W, D) {
+  const w = document.getElementById(id);
+  w.style.cssText = 'left:' + (-W / 2) + 'px;top:' + (-D / 2) + 'px;width:' + W + 'px;height:' + D + 'px;';
+  tl.set('#' + tiltId, { rotationX: 60 }, 0);
+  tl.set(w, { rotation: -45, transformOrigin: '50% 50%' }, 0);
+  return w;
+};
+const proj = function (x, y, z) {                     // world offset from centre -> screen offset (spin -45, tilt 60)
+  const a = -45 * Math.PI / 180, xr = x * Math.cos(a) - y * Math.sin(a), yr = x * Math.sin(a) + y * Math.cos(a);
+  return [xr, yr * Math.cos(Math.PI / 3) - z * Math.sin(Math.PI / 3)];
+};
+const PAL = [['#FFFDF8', '#EDE6D9', '#D6CDBD'], ['#ECE9E3', '#CFC9BE', '#B3AB9E'], ['#F4D9C8', '#E3AF95', '#C98E73'], ['#E2ECF1', '#BACDD7', '#98AFBC'], ['#F7F1E3', '#E6DAC0', '#CDBE9F']];
+
+// scrW/camTo for one continuous camera over a world of size WT×HT (see examples/tirana-one/scene.js):
+//   const scrW = isoScreen(WT, HT); camTo('#cam', scrW, x, y, z, zoom, screenY, t, dur, ease)
+// cam div needs transformOrigin 0 0 and sits at left:W/2; top:H/2 of the stage.
+const isoScreen = function (WT, HT) { const A = -45 * Math.PI / 180; return function (x, y, z) { const dx = x - WT / 2, dy = y - HT / 2;
+  return [dx * Math.cos(A) - dy * Math.sin(A), (dx * Math.sin(A) + dy * Math.cos(A)) * 0.5 - (z || 0) * 0.866]; }; };
+const camTo = function (cam, scrW, x, y, z, s, Y, t, dur, ease) {
+  const p = scrW(x, y, z); const v = { x: -s * p[0], y: (Y - H / 2) - s * p[1], scale: s, transformOrigin: '0 0' };
+  if (!dur) { tl.set(cam, v, t || 0); } else { v.duration = dur; v.ease = ease || 'power2.inOut'; tl.to(cam, v, t); }
+};
+// ---- scene ----
+// ===== SA VJET PËR NJË SHTËPI · premium pass: isometric night city + frosted-glass cards + fine charts (60 fps) =====
+// Placeholder timing (≈61 s); retime to the voice-over when it arrives.
+const de = function (v) { return Math.round(v).toLocaleString('de-DE'); };
+const fin = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, y: 24, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: d || 0.9, ease: 'power2.out', immediateRender: false }, t); };
+const fout = function (sel, t, d) { tl.to(sel, { opacity: 0, filter: 'blur(10px)', duration: d || 0.6, ease: 'power2.inOut' }, t); };
+const cardIn = function (sel, t) { tl.fromTo(sel, { opacity: 0, scale: 1.06, filter: 'blur(14px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power2.inOut', immediateRender: false }, t); };
+const cardOut = function (sel, t) { tl.to(sel, { opacity: 0, scale: 0.97, filter: 'blur(12px)', duration: 0.8, ease: 'power2.inOut' }, t); };
+const dive = function (t, d) { tl.to('#bg', { filter: 'blur(7px)', duration: (d || 0.8) * 0.6, ease: 'power2.in' }, t); tl.to('#bg', { filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' }, t + (d || 0.8) * 0.6); };   // motion blur on dives
+const show1 = function (b, t) { tl.fromTo(b, { scale: 0.001 }, { scale: 1, duration: 0.7, ease: 'power3.out', immediateRender: false }, t); };           // soft, no overshoot
+const hide1 = function (b, t) { tl.to(b, { scale: 0.001, duration: 0.5, ease: 'power2.in' }, t); };
+const glow2 = function (x, y, r, a) { return 'background:radial-gradient(circle, rgba(232,190,120,' + a + '), rgba(232,190,120,0) 70%);'; };
+
+// ---------- the world ----------
+const WT = 3600, scrW = isoScreen(WT, WT);
+const w = world('w', 'tilt', WT, WT);
+div(w, 'left:-3000px;top:-3000px;width:' + (WT + 6000) + 'px;height:' + (WT + 6000) + 'px;background:#141B2C;', 'bx');
+const G = layer(w, 1);
+const ROADS = [700, 1450, 2250, 3000];
+ROADS.forEach(function (k) {
+  div(G, 'left:-600px;top:' + (k - 70) + 'px;width:' + (WT + 1200) + 'px;height:140px;background:#222B3E;', 'bx');
+  div(G, 'left:' + (k - 70) + 'px;top:-600px;width:140px;height:' + (WT + 1200) + 'px;background:#222B3E;', 'bx');
+  div(G, 'left:-600px;top:' + (k - 2) + 'px;width:' + (WT + 1200) + 'px;height:4px;background:repeating-linear-gradient(90deg,rgba(243,237,225,.25) 0 30px,transparent 30px 70px);', 'bx');
+});
+const AX = 1560, AY = 1560, AW = 400, AD = 320, CX = AX + 200, CY = AY + 160;
+const BP = [['#3e4865', '#2f3852', '#242b40'], ['#475273', '#363f5a', '#2a3147'], ['#4d4763', '#3c3750', '#2e2a3d']];
+const winBoxes = [];
+for (let i = -1; i < 5; i++) for (let j = -1; j < 5; j++) {
+  const x = i * 750 + 70, y = j * 750 + 70;
+  if (Math.abs(x - AX) < 500 && Math.abs(y - AY) < 500) continue;
+  const front = (x + y) > (AX + AY) - 300 && Math.abs(x - AX) < 1300 && Math.abs(y - AY) < 1300;
+  const near = (x + y) > (AX + AY) - 900 && Math.abs(x - AX) < 900 && Math.abs(y - AY) < 900;
+  const h = Math.round(near ? 50 + rnd() * 30 : front ? 120 + rnd() * 120 : 220 + rnd() * 420), p = BP[Math.floor(rnd() * 3)], sz = 420 + rnd() * 80;
+  div(G, 'left:' + (x + 30) + 'px;top:' + (y + 40) + 'px;width:' + sz + 'px;height:' + (sz * 0.8) + 'px;background:rgba(0,0,0,.45);filter:blur(22px);', 'bx');     // contact shadow
+  const b = box(G, { x: x, y: y, w: sz, d: sz * 0.8, h: h, top: p[0], s1: p[1], s2: p[2], win: true });
+  const nW = Math.round(h / 45);
+  for (let k = 0; k < nW; k++) { const lw = layer(b.r, 30 + rnd() * (h - 60));
+    const wb = rnd() < 0.5 ? box(lw, { x: rnd() * (sz - 40), y: sz * 0.8 - 2, w: 24, d: 3, h: 16, top: '#E8C98A', s1: '#E8C98A', s2: '#c9a45c' })
+                         : box(lw, { x: sz - 2, y: rnd() * (sz * 0.8 - 40), w: 3, d: 24, h: 16, top: '#E8C98A', s1: '#c9a45c', s2: '#E8C98A' });
+    winBoxes.push(wb.r); }
+}
+// street life: lamps with a warm pool of light, trees, cars with headlights
+ROADS.forEach(function (k, ri) {
+  for (let s = -300; s < WT + 300; s += 420) {
+    const lx = s + (ri % 2) * 210, ly = k - 86;
+    div(G, 'left:' + (lx - 70) + 'px;top:' + (ly - 50) + 'px;width:140px;height:140px;border-radius:50%;' + glow2(0, 0, 0, .35), 'bx');
+    const pole = div(layer(G, 0), 'left:' + lx + 'px;top:' + ly + 'px;width:0;height:0;', 'bx');
+    box(pole, { x: -2, y: -2, w: 4, d: 4, h: 70, top: '#1c2232', s1: '#2a3246', s2: '#1c2232' });
+    box(layer(pole, 70), { x: -6, y: -6, w: 12, d: 12, h: 6, top: '#F6DFA8', s1: '#E8C98A', s2: '#c9a45c' });
+  }
+});
+const tree2 = function (x, y, s) { const r = div(layer(G, 0), 'left:' + x + 'px;top:' + y + 'px;width:0;height:0;', 'bx');
+  box(r, { x: -3 * s, y: -3 * s, w: 6 * s, d: 6 * s, h: 14 * s, top: '#3a2c22', s1: '#33271e', s2: '#281e17' });
+  box(layer(r, 12 * s), { x: -14 * s, y: -14 * s, w: 28 * s, d: 28 * s, h: 24 * s, top: '#27463c', s1: '#1f3a31', s2: '#182e27' }); };
+for (let k = 0; k < 40; k++) { const k2 = ROADS[k % 4], along = (k * 397) % (WT + 400) - 200; if (Math.abs(along - CX) < 420 && Math.abs(k2 - CY) < 900) continue; tree2(along, k2 + 92 + (k % 3) * 6, 1.1); }
+const cars = [];
+for (let k = 0; k < 16; k++) {
+  const horiz = k % 2 === 0, road = ROADS[(k >> 1) % 4], lane = (k % 4 < 2) ? -32 : 32, dir = lane < 0 ? 1 : -1;
+  const cr = div(layer(G, 0), 'left:0;top:0;width:0;height:0;', 'bx');
+  const col = ['#8C93A8', '#A8423A', '#D8D4CC', '#2E3A5C'][k % 4];
+  if (horiz) { box(cr, { x: -26, y: road + lane - 12, w: 52, d: 24, h: 18, top: col, s1: col, s2: '#1a1f2c' }); box(layer(cr, 6), { x: dir > 0 ? 26 : -30, y: road + lane - 10, w: 4, d: 20, h: 6, top: '#FFF2C8', s1: '#FFF2C8', s2: '#FFF2C8' }); }
+  else { box(cr, { x: road + lane - 12, y: -26, w: 24, d: 52, h: 18, top: col, s1: '#1a1f2c', s2: col }); box(layer(cr, 6), { x: road + lane - 10, y: dir > 0 ? 26 : -30, w: 20, d: 4, h: 6, top: '#FFF2C8', s1: '#FFF2C8', s2: '#FFF2C8' }); }
+  const start = rnd() * WT, dist = 1400 + rnd() * 1200;
+  if (horiz) tl.fromTo(cr, { x: start }, { x: start + dir * dist, duration: 61, ease: 'none', immediateRender: true }, 0);
+  else tl.fromTo(cr, { y: start }, { y: start + dir * dist, duration: 61, ease: 'none', immediateRender: true }, 0);
+  cars.push(cr);
+}
+// windows that switch on and off slowly
+for (let k = 0; k < 24; k++) { const wb = winBoxes[(k * 7) % winBoxes.length], t0 = 2 + rnd() * 50;
+  tl.to(wb, { opacity: 0.12, duration: 1.2, ease: 'power1.inOut' }, t0); tl.to(wb, { opacity: 1, duration: 1.2, ease: 'power1.inOut' }, t0 + 4 + rnd() * 6); }
+
+// ---------- the apartment ----------
+div(G, 'left:' + (AX + 10) + 'px;top:' + (AY + 30) + 'px;width:' + (AW + 40) + 'px;height:' + (AD + 40) + 'px;background:rgba(0,0,0,.5);filter:blur(20px);', 'bx');
+box(G, { x: AX - 20, y: AY - 20, w: AW + 40, d: AD + 40, h: 24, top: '#333C52', s1: '#262e41', s2: '#1d2333' });
+const F = layer(G, 24);
+div(F, 'left:' + AX + 'px;top:' + AY + 'px;width:' + AW + 'px;height:' + AD + 'px;background:#262E42;', 'bx');
+const tiles = [], bathTiles = [];
+for (let ry = 0; ry < 8; ry++) for (let cx = 0; cx < 10; cx++) {
+  if (cx < 3 && ry >= 5) continue;
+  const d = div(F, 'left:' + (AX + cx * 40 + 2) + 'px;top:' + (AY + ry * 40 + 2) + 'px;width:36px;height:36px;background:linear-gradient(135deg,#D3AE7C,#B88E5E);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);', 'bx');
+  tiles.push({ el: d, ord: (7 - ry) * 10 + cx });
+}
+tiles.sort(function (a, b) { return a.ord - b.ord; });
+for (let k = 0; k < 12; k++) { const cx = k % 4, ry = Math.floor(k / 4);
+  bathTiles.push(div(F, 'left:' + (AX + cx * 30 + 1) + 'px;top:' + (AY + 200 + ry * 40 + 1) + 'px;width:28px;height:38px;background:linear-gradient(135deg,#F2F4F6,#D8DEE4);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);', 'bx')); }
+const roomLight = div(F, 'left:' + (AX - 40) + 'px;top:' + (AY - 40) + 'px;width:' + (AW + 80) + 'px;height:' + (AD + 80) + 'px;background:radial-gradient(ellipse at 55% 55%, rgba(255,205,140,.32), rgba(255,205,140,0) 65%);', 'bx');
+const wall = function (x, y, ww, dd) { box(F, { x: x, y: y, w: ww, d: dd, h: 64, top: '#EFE8DA', s1: '#D6CDBB', s2: '#BEB4A1' }); };
+wall(AX, AY, AW, 8); wall(AX, AY, 8, AD); wall(AX + 240, AY, 8, 180); wall(AX + 240, AY + 170, 160, 8); wall(AX, AY + 192, 120, 8); wall(AX + 120, AY + 192, 8, 70);
+const tub = box(F, { x: AX + 12, y: AY + 214, w: 92, d: 40, h: 22, top: '#F7F7F7', s1: '#e2e2e2', s2: '#cdcdcd' });
+const sink = box(F, { x: AX + 18, y: AY + 280, w: 30, d: 24, h: 34, top: '#F7F7F7', s1: '#e2e2e2', s2: '#cdcdcd' });
+const MX = AX + 280, MY = AY + 220;
+const one = div(layer(F, 1), 'left:' + (MX - 20) + 'px;top:' + (MY - 20) + 'px;width:40px;height:40px;border:2px dashed rgba(243,237,225,.8);', 'bx');
+const spot = div(layer(F, 0.5), 'left:' + (MX - 90) + 'px;top:' + (MY - 90) + 'px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(255,214,150,.55), rgba(255,214,150,0) 70%);', 'bx');
+const bathSpot = div(layer(F, 0.5), 'left:' + (AX - 30) + 'px;top:' + (AY + 170) + 'px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle, rgba(255,214,150,.6), rgba(255,214,150,0) 70%);', 'bx');
+const floorEdge = div(layer(F, 0.4), 'left:' + AX + 'px;top:' + AY + 'px;width:' + AW + 'px;height:' + AD + 'px;box-shadow:inset 0 0 0 3px rgba(232,201,138,.55);', 'bx');
+const mat = box(layer(F, 1), { x: MX - 16, y: MY - 10, w: 32, d: 20, h: 3, top: '#6b543a', s1: '#4a3a29', s2: '#3a2d20' });
+// furniture that arrives as they save
+const furn = [];
+const fb = function (o) { const r = div(layer(F, 1), 'left:0;top:0;width:0;height:0;', 'bx'); box(r, o); return r; };
+const sofa = div(layer(F, 1), 'left:0;top:0;width:0;height:0;', 'bx');
+box(sofa, { x: AX + 40, y: AY + 70, w: 130, d: 44, h: 18, top: '#4C5C8A', s1: '#3e4c74', s2: '#33405f' });
+box(sofa, { x: AX + 40, y: AY + 60, w: 130, d: 12, h: 38, top: '#56679A', s1: '#46557f', s2: '#3a4669' });
+const bed = div(layer(F, 1), 'left:0;top:0;width:0;height:0;', 'bx');
+box(bed, { x: AX + 270, y: AY + 30, w: 104, d: 96, h: 16, top: '#F1EBDF', s1: '#d9d1c2', s2: '#c4bcad' });
+box(layer(bed, 16), { x: AX + 278, y: AY + 36, w: 88, d: 18, h: 6, top: '#FFFFFF', s1: '#eee', s2: '#ddd' });
+box(layer(bed, 16), { x: AX + 270, y: AY + 70, w: 104, d: 56, h: 3, top: '#C9A45C', s1: '#b08e4c', s2: '#9a7b40' });
+const table = div(layer(F, 1), 'left:0;top:0;width:0;height:0;', 'bx');
+box(table, { x: AX + 150, y: AY + 236, w: 60, d: 40, h: 26, top: '#9A6F45', s1: '#7d5a38', s2: '#68492d' });
+box(table, { x: AX + 160, y: AY + 280, w: 16, d: 14, h: 18, top: '#7d5a38', s1: '#68492d', s2: '#573c25' });
+box(table, { x: AX + 186, y: AY + 280, w: 16, d: 14, h: 18, top: '#7d5a38', s1: '#68492d', s2: '#573c25' });
+furn.push(sofa, bed, table);
+// the couple (hair turns grey) + their shadow
+const P = layer(F, 2); const hair = [];
+div(F, 'left:' + (AX + 290) + 'px;top:' + (AY + 252) + 'px;width:60px;height:36px;border-radius:50%;background:rgba(0,0,0,.4);filter:blur(6px);', 'bx');
+const human = function (x, y, col) {
+  const r = div(P, 'left:' + x + 'px;top:' + y + 'px;width:0;height:0;', 'bx');
+  box(r, { x: -9, y: -6, w: 18, d: 12, h: 52, top: col, s1: col, s2: '#141210' });
+  box(layer(r, 53), { x: -5, y: -5, w: 10, d: 10, h: 10, top: '#E9B994', s1: '#D9A47E', s2: '#C48E69' });
+  const hb = box(layer(r, 63), { x: -6, y: -6, w: 12, d: 12, h: 4, top: '#2a1f17', s1: '#2a1f17', s2: '#1f1711' });
+  hair.push(hb.t); hb.ns.concat(hb.we).forEach(function (e) { hair.push(e); });
+};
+human(AX + 300, AY + 250, '#4A6A9C'); human(AX + 332, AY + 268, '#B08A5E');
+// billboards
+const calL = label(F, AX + 200, AY + 6, 130, '<div class="ilab" style="font-size:30px;">VITI <span id="calY">2026</span></div>');
+const ageL = label(F, AX + 316, AY + 258, 112, '<div class="ilab w" style="font-size:26px;"><span id="ageN">25</span> VJEÇ</div>');
+const keyL = label(F, AX + 316, AY + 262, 98, '<svg width="120" height="48" viewBox="0 0 300 120"><defs><linearGradient id="kg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF1C8"/><stop offset=".5" stop-color="#E8C98A"/><stop offset="1" stop-color="#9C7A3C"/></linearGradient></defs><g fill="url(#kg2)"><path d="M60 14 A46 46 0 1 0 60 106 A46 46 0 1 0 60 14 Z M60 44 A16 16 0 1 1 60 76 A16 16 0 1 1 60 44 Z" fill-rule="evenodd"/><rect x="100" y="51" width="180" height="18" rx="6"/><rect x="236" y="69" width="16" height="30" rx="3"/><rect x="262" y="69" width="16" height="22" rx="3"/></g></svg>');
+tl.set(keyL, { scale: 0.001 }, 0);
+const priceL = label(F, AX + 200, AY + 160, 190, '<div class="ilab" style="font-size:40px;">171.000 €</div>');
+const m80 = label(F, AX + 60, AY + AD - 20, 30, '<div class="ilab w" style="font-size:24px;">80 m²</div>');
+const m041 = label(F, MX - 10, MY - 30, 90, '<div class="ilab" style="font-size:26px;">0,41 m²</div>');
+const m49 = label(F, AX + 60, AY + 260, 90, '<div class="ilab" style="font-size:26px;">4,9 m²</div>');
+[calL, ageL, priceL, m041, m49].forEach(function (b) { tl.set(b, { scale: 0.001 }, 0); });
+tl.set(tiles.map(function (t) { return t.el; }).concat(bathTiles), { scale: 0, transformOrigin: '50% 50%' }, 0);
+tl.set([tub.r, sink.r].concat(furn), { scale: 0.001, transformOrigin: '50% 50%' }, 0);
+tl.set(mat.r, { z: 300, opacity: 0 }, 0);
+tl.set(roomLight, { opacity: 0.35 }, 0);
+tl.set([one, spot, bathSpot, floorEdge], { opacity: 0 }, 0); tl.set(m80, { scale: 0.001 }, 0);
+
+// ---------- ambience: the camera never stops, grain moves ----------
+const BBS = [calL, ageL, m041, m80, m49, keyL, priceL];
+const view = function (t, spin, tilt, d, ease) { const e = ease || 'power2.inOut';
+  tl.to(w, { rotation: spin, duration: d, ease: e }, t); tl.to('#tilt', { rotationX: tilt, duration: d, ease: e }, t);
+  tl.to(BBS, { rotation: -spin, rotationX: -tilt, duration: d, ease: e }, t); };
+view(0.01, -43, 60, 20.5, 'sine.inOut');
+view(20.8, -58, 56, 1.4);             // the apartment from a new side
+view(25.3, -46, 52, 5.0, 'sine.inOut');   // lower, closer angle while the floor fills
+view(30.3, -34, 58, 1.4);             // "por jeta kushton": swing to the other side
+view(33.2, -44, 54, 5.0, 'sine.inOut');
+view(40.5, -45, 60, 2.0);
+view(42.5, -42, 60, 18, 'sine.inOut');
+tl.fromTo('#grain', { x: 0, y: 0 }, { x: -48, y: -36, duration: 61, ease: 'steps(1830)', immediateRender: true }, 0);
+
+// ================= 1 · hook =================
+tl.set('#hk', { opacity: 0 }, 0);
+camTo('#cam', scrW, AX + 290, AY + 230, 40, 2.9, 1330, 0, 0);
+camTo('#cam', scrW, AX + 290, AY + 230, 40, 3.3, 1330, 0, 3.7, 'power1.inOut');
+tl.set(roomLight, { opacity: 0.5 }, 0);
+fin('#t1 .tt', 0.15, 0.5); fin('#t1 .ts', 0.7, 0.6); tl.set('#t1', { opacity: 1 }, 0.15);
+fin('#tick', 0.4, 0.4);
+const LF = { v: 0 };
+const lifeDraw = function () { const y = Math.round(LF.v); $('#tkY').textContent = 2026 + y; $('#tkA').textContent = 25 + y; };
+tl.fromTo(LF, { v: 0 }, { v: 27, duration: 2.3, ease: 'power2.inOut', immediateRender: true, onUpdate: lifeDraw }, 0.5);   // fast-forward a life
+tl.to(tiles.map(function (t) { return t.el; }), { scale: 1, duration: 0.15, stagger: 1.8 / tiles.length, ease: 'none' }, 0.6);
+tl.to(furn, { scale: 1, duration: 0.4, stagger: 0.35, ease: 'power2.out' }, 1.2);
+tl.to(hair, { backgroundColor: '#d2d2d2', duration: 1.0, ease: 'power1.inOut' }, 1.7);
+tl.to(roomLight, { opacity: 1, duration: 0.6 }, 2.6);
+show1(keyL, 2.7); tl.fromTo(keyL, { z: 180 }, { z: 98, duration: 0.6, ease: 'power2.out', immediateRender: false }, 2.7);
+tl.to('#tick', { scale: 1.12, color: '#FFF1C8', duration: 0.3, ease: 'power2.out', yoyo: true, repeat: 1 }, 2.8);
+// rewind to the start of the story
+tl.to(LF, { v: 0, duration: 0.7, ease: 'power2.in', onUpdate: lifeDraw }, 3.5);
+hide1(keyL, 3.5);
+tl.to(tiles.map(function (t) { return t.el; }), { scale: 0, duration: 0.12, stagger: { each: 0.55 / tiles.length, from: 'end' }, ease: 'none' }, 3.5);
+tl.to(furn, { scale: 0.001, duration: 0.3, ease: 'power2.in' }, 3.5);
+tl.to(hair, { backgroundColor: '#2a1f17', duration: 0.6 }, 3.5);
+tl.to(roomLight, { opacity: 0.35, duration: 0.6 }, 3.5);
+tl.to('#tick', { filter: 'blur(6px)', duration: 0.7, ease: 'power2.in' }, 3.5);
+fout('#tick', 4.1, 0.3); fout('#t1', 3.9);
+
+// ================= 2 · glass card A: 2.141 €/m² =================
+camTo('#cam', scrW, AX + 220, AY + 120, 24, 3.4, 1000, 4.0, 1.0, 'power2.inOut'); dive(4.0, 1.0);
+cardIn('#cA', 4.4);
+count('#cAv', 0, 2141, 4.8, 1.8, de);
+tl.fromTo('#cAul', { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: 'power2.inOut', immediateRender: true }, 5.8);
+tl.fromTo('#cAtag', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', immediateRender: true }, 8.3);
+camTo('#cam', scrW, AX + 220, AY + 120, 24, 3.0, 1000, 5.0, 5.2, 'none');
+cardOut('#cA', 10.0);
+
+// ================= 3 · glass card B: 880 €, then the doormat =================
+cardIn('#cB', 10.4);
+count('#cBv', 0, 880, 10.7, 1.4, de);
+tl.fromTo('#cBul', { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: 'power2.inOut', immediateRender: true }, 11.4);
+tl.fromTo('#slip', { y: 260, rotation: 4 }, { y: 0, rotation: 0, duration: 1.0, ease: 'power3.out', immediateRender: false }, 10.4);
+hide1(calL, 12.4); hide1(ageL, 12.4);
+camTo('#cam', scrW, CX + 20, CY + 20, 10, 1.9, 1180, 12.6, 1.6, 'power2.inOut');
+tl.to(roomLight, { opacity: 0, duration: 1.0 }, 12.8);
+tl.to(floorEdge, { opacity: 1, duration: 1.0 }, 13.6); show1(m80, 13.9);
+tl.to([one, spot], { opacity: 1, duration: 0.8 }, 14.0);
+cardOut('#cB', 13.2);
+fin('#t3', 13.8);
+tl.to(mat.r, { z: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 14.3);
+show1(m041, 15.0);
+fout('#t3', 16.6); hide1(m041, 16.6); tl.to([one, spot], { opacity: 0, duration: 0.6 }, 16.6);
+
+// ================= 4 · one year = a bathroom =================
+camTo('#cam', scrW, CX - 40, CY + 30, 10, 1.7, 1200, 16.7, 1.3, 'power2.inOut');
+tl.to(bathSpot, { opacity: 1, duration: 1.0 }, 17.3);
+fin('#t4', 17.1);
+bathTiles.forEach(function (b, k) { tl.to(b, { scale: 1, duration: 0.35, ease: 'power2.out' }, 17.6 + k * 0.1); });
+tl.to([tub.r, sink.r], { scale: 1, duration: 0.8, ease: 'power3.out' }, 19.0);
+show1(m49, 19.3);
+fout('#t4', 20.7); hide1(m49, 20.7); hide1(m80, 20.7); tl.to([bathSpot, floorEdge], { opacity: 0, duration: 0.8 }, 20.7); tl.to(roomLight, { opacity: 0.35, duration: 1.0 }, 20.8);
+
+// ================= 5 · the apartment: 171.000 €, 8 years without spending =================
+camTo('#cam', scrW, CX, CY, 30, 1.8, 1220, 20.8, 1.4, 'power2.inOut');
+show1(calL, 21.9); show1(ageL, 22.1);
+fin('#t5', 21.2);
+fout('#t5', 24.8);
+fin('#t5b', 25.1);
+const yr = { v: 0 };
+const flip = function (t, from, to, dur) { tl.fromTo(yr, { v: from }, { v: to, duration: dur, ease: 'power2.out', immediateRender: false, onUpdate: function () { $('#calY').textContent = 2026 + Math.round(yr.v); } }, t); };
+flip(25.3, 0, 8, 3.0);
+tiles.forEach(function (t, k) { tl.to(t.el, { scale: 1, duration: 0.3, ease: 'power2.out' }, 25.3 + (k / tiles.length) * 3.0); });
+furn.forEach(function (f, k) { tl.to(f, { scale: 1, duration: 0.8, ease: 'power3.out' }, 26.0 + k * 0.8); });
+tl.to(roomLight, { opacity: 0.7, duration: 2.0 }, 26.0);
+camTo('#cam', scrW, CX, CY, 30, 1.85, 1060, 25.3, 5.0, 'none');
+fout('#t5b', 30.1);
+
+// timeline: years along a gold line; 8 years first, then the scale shrinks so 27 fits and 8 looks small
+const TS = { ppy: 100, prog: 0, ghost: 0 };
+const tk = []; for (let i = 0; i <= 27; i++) { const e = document.createElement('i'); $('#ticks').appendChild(e); tk.push(e); }
+const drawTL = function () {
+  tk.forEach(function (e, i) { e.style.transform = 'translateX(' + (i * TS.ppy) + 'px)'; e.style.opacity = (i * TS.ppy <= 900) ? 1 : 0; });
+  $('#tfill').style.transform = 'scaleX(' + Math.min(1, TS.prog * TS.ppy / 900) + ')';
+  $('#tfill2').style.transform = 'scaleX(' + Math.min(1, TS.ghost * TS.ppy / 900) + ')';
+  $('#tm8').style.transform = 'translateX(' + (8 * TS.ppy) + 'px)'; $('#tm27').style.transform = 'translateX(' + (27 * TS.ppy) + 'px)';
+};
+const tlTo = function (vars, t, d, ease) { tl.to(TS, Object.assign(vars, { duration: d, ease: ease || 'power1.inOut', onUpdate: drawTL }), t); };
+drawTL();
+fin('#tlx', 25.0, 0.7); fin('#tm0', 25.2, 0.7);
+tlTo({ prog: 8 }, 25.3, 3.0, 'power2.out');
+fin('#tm8', 28.0, 0.7);
+
+// ================= 6 · but life costs: 27 years, 25 → 52, then glass card C: 52 =================
+fin('#t6', 30.3);
+tl.to(tiles.map(function (t) { return t.el; }), { scale: 0, duration: 0.6, ease: 'power2.in', stagger: { each: 0.006, from: 'end' } }, 30.8);
+tl.to(furn, { scale: 0.001, duration: 0.6, ease: 'power2.in' }, 30.8);
+tl.to(roomLight, { opacity: 0.25, duration: 1.0 }, 30.8);
+fout('#t6', 32.5);
+fin('#t6b', 32.8);
+tlTo({ ghost: 8 }, 30.8, 0.01, 'none'); tlTo({ prog: 0 }, 30.9, 0.9, 'power2.in');
+tlTo({ ppy: 30 }, 31.6, 1.4, 'power2.inOut');
+tlTo({ prog: 27 }, 33.2, 5.0, 'power2.out');
+fin('#tm27', 37.8, 0.7);
+flip(33.2, 0, 27, 5.0);
+count('#t6n', 0, 27, 33.2, 5.0, function (v) { return Math.round(v); });
+count('#ageN', 25, 52, 33.2, 5.0, function (v) { return Math.round(v); });
+tiles.forEach(function (t, k) { tl.to(t.el, { scale: 1, duration: 0.4, ease: 'power1.out' }, 33.2 + (k / tiles.length) * 4.8); });
+furn.forEach(function (f, k) { tl.to(f, { scale: 1, duration: 0.8, ease: 'power3.out' }, 35.0 + k * 1.1); });
+tl.to(hair, { backgroundColor: '#d2d2d2', duration: 3.0, ease: 'power1.inOut' }, 35.0);
+tl.to(roomLight, { opacity: 1, duration: 1.2 }, 37.6);                    // the key: the lights come on
+camTo('#cam', scrW, AX + 230, AY + 150, 50, 1.95, 1060, 33.2, 4.8, 'power1.inOut');
+fout('#t6b', 38.1);
+fout('#tlx', 38.1); hide1(ageL, 38.1); hide1(calL, 38.1);
+camTo('#cam', scrW, AX + 316, AY + 262, 40, 4.4, 1250, 38.1, 1.5, 'power2.inOut');
+show1(keyL, 38.9); tl.fromTo(keyL, { z: 160 }, { z: 98, duration: 1.0, ease: 'power2.out', immediateRender: false }, 38.9);
+fin('#t6c', 38.6);
+camTo('#cam', scrW, AX + 316, AY + 262, 40, 4.7, 1250, 39.6, 1.3, 'none');
+fout('#t6c', 40.4);
+
+// ================= 7 · glass chart D: 1 in 4 on minimum wage → 50+ years =================
+camTo('#cam', scrW, CX, CY, 30, 1.4, 1200, 40.5, 7.5, 'power1.inOut');
+cardIn('#cD', 40.8);
+tl.fromTo('#figs .fg', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'power2.out', immediateRender: true }, 41.1);
+tl.fromTo('#fg4', { opacity: 0.25 }, { opacity: 1, duration: 0.8, immediateRender: false }, 42.4);
+tl.fromTo('#cDbig', { opacity: 0, filter: 'blur(12px)' }, { opacity: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power2.out', immediateRender: true }, 44.3);
+tl.fromTo('#cDsub', { opacity: 0 }, { opacity: 1, duration: 0.9, immediateRender: true }, 45.3);
+cardOut('#cD', 47.8);
+
+// ================= 8 · glass chart E: 2019 vs 2026, bars to scale =================
+cardIn('#cE', 48.1);
+tl.fromTo('#b19', { scaleY: 0 }, { scaleY: 1, transformOrigin: '50% 100%', duration: 1.1, ease: 'power2.inOut', immediateRender: true }, 48.8);
+tl.fromTo('#v19', { opacity: 0 }, { opacity: 1, duration: 0.6, immediateRender: true }, 49.6);
+tl.fromTo('#b26', { scaleY: 0 }, { scaleY: 1, transformOrigin: '50% 100%', duration: 1.4, ease: 'power2.inOut', immediateRender: true }, 50.1);
+tl.fromTo('#v26', { opacity: 0 }, { opacity: 1, duration: 0.6, immediateRender: true }, 51.2);
+tl.fromTo('#cEtag', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', immediateRender: true }, 52.0);
+cardOut('#cE', 54.5);
+
+const gen = [];
+for (let i = -1; i < 5; i++) for (let j = -1; j < 5; j++) { for (let k = 0; k < 6; k++) {
+  const x = i * 750 + 70 + rnd() * 380, y = j * 750 + 70 + rnd() * 300, d = Math.hypot(x - CX, y - CY);
+  const g = div(layer(G, 260 + rnd() * 300), 'left:' + x + 'px;top:' + y + 'px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle, rgba(255,236,180,1) 0%, rgba(255,210,130,.75) 25%, rgba(255,200,120,0) 70%);', 'bx');
+  gen.push({ g: g, d: d }); } }
+gen.forEach(function (o) { tl.set(o.g, { opacity: 0 }, 0); tl.to(o.g, { opacity: 1, duration: 0.5 }, 55.3 + o.d / 2600 * 2.4); });
+// ================= 9 · close: the whole city at night, a generation, one question =================
+hide1(calL, 54.4); hide1(ageL, 54.4);
+camTo('#cam', scrW, CX, CY, 0, 0.36, 1250, 54.6, 4.2, 'power2.inOut');
+tl.to('#night', { opacity: 1, duration: 3.0 }, 55.0);
+fin('#t9', 55.4); fout('#t9', 57.8);
+fin('#t9b', 58.0);
+fin('#note', 59.0);
+camTo('#cam', scrW, CX, CY, 0, 0.33, 1250, 58.8, 2.2, 'none');
+
+// synced to the voice-over (media/vo.wav, Whisper word times in transcript.json): original time → voice time
+remap([[0, 0], [4.0, 4.0], [8.3, 8.7], [10.4, 11.0], [10.7, 12.6], [13.2, 14.6], [14.3, 16.4], [16.6, 17.6], [17.1, 17.8], [19.0, 19.4], [20.8, 20.0], [21.2, 20.4], [24.8, 26.1], [25.3, 26.6], [28.3, 31.4], [30.1, 31.95], [30.3, 32.0], [32.8, 34.2], [33.2, 34.6], [38.1, 38.0], [38.9, 40.9], [40.5, 42.0], [40.8, 42.2], [42.4, 44.4], [44.3, 49.6], [45.3, 51.3], [47.8, 52.6], [48.1, 52.8], [48.8, 55.6], [49.6, 57.9], [50.1, 60.0], [52.0, 62.3], [54.5, 63.8], [55.4, 64.0], [57.8, 66.4], [58.0, 66.6], [61, 70.6]]);
+
+  tl.to({}, { duration: D }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["tirana_shtepia"] = tl;
+})();
+</script>
+</div></body></html>

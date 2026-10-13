@@ -1,0 +1,53 @@
+/* ===== animation-library base: every library font + shared components. Sizes come from --W / --H set by build_page.py ===== */
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-600-normal.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-800-normal.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-600.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-700.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+@font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-600-italic.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-700-italic.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+/* Font families: Arc = Archivo Condensed 600/800, BG = Bricolage 800, DM = DM Sans, HG = Hanken Grotesk 300/500/700,
+   IS = Instrument Serif (+italic), Inter, Osw = Oswald 500/700, Out = Outfit 500-800, Ser = Source Serif 4 italic 600/700,
+   Type = Special Elite (typewriter), Spec = Spectral italic 600/700. All support Albanian ë ç. */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); }
+#stage { position:relative; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--body); }
+.L { position:absolute; left:0; top:0; width:var(--W); height:var(--H); overflow:hidden; pointer-events:none; }
+.bg { background:var(--bgfx, var(--bg)); }
+/* text */
+.h  { font-family:var(--head); font-weight:var(--headw, 800); color:var(--ink); letter-spacing:var(--track, -.02em); line-height:1.02; }
+.kicker { font-family:var(--body); font-weight:700; font-size:30px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.body { font-family:var(--body); font-weight:500; font-size:40px; line-height:1.25; color:var(--ink); }
+.quote { font-family:var(--quote); font-style:italic; font-size:64px; line-height:1.12; color:var(--ink); }
+.num { font-family:var(--head); font-weight:var(--headw, 800); font-size:220px; line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.src { position:absolute; left:70px; bottom:110px; font-family:var(--body); font-weight:500; font-size:22px; letter-spacing:.02em; color:var(--mute); }
+/* highlighter: <span class="hl"><i></i><b>word</b></span>, animate i scaleX 0→1 */
+.hl { position:relative; display:inline-block; padding:0 .12em; }
+.hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+.hl > b { position:relative; z-index:1; font-weight:inherit; }
+/* parts */
+.card { position:absolute; background:var(--card); border-radius:var(--radius, 18px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.18)); padding:36px 40px; }
+.photo { position:absolute; object-fit:cover; border-radius:var(--radius, 12px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.25)); }
+.stamp { position:absolute; font-family:var(--head); font-weight:800; font-size:120px; color:var(--red); border:10px solid var(--red); padding:8px 34px; transform:rotate(-8deg); letter-spacing:.04em; mix-blend-mode:multiply; }
+.bar { position:absolute; bottom:0; width:120px; background:var(--accent); transform-origin:50% 100%; }   /* animate scaleY */
+.rule { position:absolute; height:6px; background:var(--accent); transform-origin:0 50%; }                   /* animate scaleX */
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.vignette { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0,0,0,.35) 100%); }
+/* safe zones (Reels UI): keep text inside top 220px … bottom 380px on 9:16 */

@@ -1,0 +1,48 @@
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="navyline" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3B55F0" stop-opacity=".5"/><stop offset="1" stop-color="#0B1150"/></linearGradient>
+    <radialGradient id="dot" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#6E86FF"/><stop offset=".5" stop-color="#0B1150"/><stop offset="1" stop-color="#04050F"/></radialGradient>
+    <linearGradient id="drip" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#04050F"/><stop offset=".35" stop-color="#1A2BB0"/><stop offset=".55" stop-color="#3B55F0"/><stop offset=".75" stop-color="#0B1150"/><stop offset="1" stop-color="#04050F"/></linearGradient>
+    <radialGradient id="glassdrop" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#C9D3FF"/><stop offset="1" stop-color="#7385EA"/></radialGradient>
+  </defs>
+</svg>
+
+<!-- ============ FRAME 1 · price chart ============ -->
+<div class="L bg clip" id="f1" data-start="0" data-duration="1" data-track-index="1">
+  <div class="cap">Ndërkohë, çmimet nuk presin.</div>
+  <svg style="position:absolute;left:0;top:0;" width="1080" height="1920">
+    <g stroke="rgba(255,255,255,.28)" stroke-width="2"><path d="M0 760 L1080 700 M0 960 L1080 900 M0 1160 L1080 1100 M0 1360 L1080 1300"/></g>
+    <g class="axl"><text x="60" y="742">2.000</text><text x="60" y="1142">1.000</text></g>
+    <path d="M70 1290 C200 1270 260 1240 330 1200 S440 1130 520 1060 S650 930 720 860 S820 760 860 700" fill="none" stroke="url(#navyline)" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="860" cy="700" r="30" fill="url(#dot)"/>
+    <circle cx="70" cy="1290" r="16" fill="#0B1150" opacity=".55"/>
+    <text x="90" y="1350" class="axs">2019 · 964 €</text>
+  </svg>
+  <div class="lab" style="left:560px;top:580px;">Çmimi €/m²</div>
+  <div class="lab sm" style="left:820px;top:760px;">2026 · 2.141 €</div>
+  <div class="thin hero" style="left:70px;top:1380px;">+122%</div>
+  <div class="thin sub" style="left:84px;top:1560px;">çmimi i shtëpisë nga 2019</div>
+</div>
+
+<!-- ============ FRAME 2 · calendars 2026 → 2053 ============ -->
+<div class="L bg clip" id="f2" data-start="1" data-duration="1" data-track-index="2">
+  <div class="floor"></div>
+  <div class="cap">Nisin në 25. Çelësin e marrin në 52.</div>
+  <div class="calx blur" style="left:-40px;top:780px;rotate:-38deg;scale:.8;"><div class="ctop">Kalendari</div><div class="cyr">2026</div></div>
+  <div class="calx" style="left:150px;top:860px;rotate:-14deg;scale:.9;"><div class="ctop">Kalendari</div><div class="cyr">2040</div></div>
+  <div class="calx front" style="left:410px;top:900px;"><div class="ctop">Kalendari</div><div class="cyr">2053</div></div>
+  <div class="thin hero dark" style="left:0;right:0;text-align:center;top:1300px;">27 vjet</div>
+</div>
+
+<!-- ============ FRAME 3 · drip + dark horizon ============ -->
+<div class="L bg clip" id="f3" data-start="2" data-duration="1" data-track-index="3">
+  <div class="planet"></div>
+  <svg style="position:absolute;left:620px;top:0;" width="300" height="1250" viewBox="0 0 300 1250">
+    <path d="M40 0 L260 0 C250 260 210 380 205 560 C200 760 170 930 150 1040 C130 930 100 760 95 560 C90 380 50 260 40 0 Z" fill="url(#drip)"/>
+    <path d="M128 0 C126 300 140 650 150 1000" stroke="rgba(160,180,255,.55)" stroke-width="6" fill="none"/>
+    <circle cx="150" cy="1170" r="34" fill="url(#glassdrop)"/>
+  </svg>
+  <div class="cap" style="color:#0B1150;top:300px;left:70px;right:auto;width:620px;text-align:left;font-size:48px;line-height:1.25;">Për ta, shtëpia kërkon<br/>mbi 50 vjet punë.</div>
+  <div class="hw thinw">Një jetë</div>
+  <div class="hw bigc">TË TËRË.</div>
+</div>

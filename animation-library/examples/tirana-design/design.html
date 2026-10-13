@@ -1,0 +1,94 @@
+<style>
+  @font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-display:block; }
+  @font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-display:block; }
+  @font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-display:block; }
+  @font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-display:block; }
+  :root { --paper:#F2EEE6; --ink:#1E1B18; --hi:#F6D743; --green:#3FA66B; --green2:#7BC67E; --red:#E0483E; }
+  .L { position:absolute; left:0; top:0; width:1080px; height:1920px; pointer-events:none; overflow:hidden; }
+  .paper { background:
+      radial-gradient(120% 80% at 50% 45%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.3px) 0 0/4px 4px, var(--paper); }
+  .c { position:absolute; left:50%; translate:-50% 0; width:max-content; text-align:center; }
+  .h { font-family:"BG", "Arial Black", sans-serif; font-weight:800; color:var(--ink); letter-spacing:-.025em; line-height:1.02; }
+  .k { font-family:"HG", Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:.22em; color:var(--ink); text-transform:uppercase; }
+  .src { position:absolute; left:70px; top:1395px; font-family:"HG", Arial, sans-serif; font-weight:500; font-size:22px; color:rgba(30,27,24,.55); letter-spacing:.02em; }
+  .hl { position:relative; display:inline-block; padding:0 .12em; }
+  .hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+  .hl > b { position:relative; z-index:1; font-weight:inherit; }
+  .chip { display:inline-block; font-family:"HG", Arial, sans-serif; font-weight:700; font-size:30px; color:var(--ink); border:3px solid var(--ink);
+    border-radius:999px; padding:10px 24px; background:#fff; opacity:0; }
+  .cam { position:absolute; width:0; height:0; transform-style:preserve-3d; }
+  .tilt, .spin, .bx, .bx > div, .bb { transform-style:preserve-3d; }
+  .tilt { position:absolute; left:0; top:0; width:0; height:0; }
+  .spin { position:absolute; }
+  .bx { position:absolute; }
+  .bx > div { position:absolute; backface-visibility:visible; }
+  .bb { position:absolute; width:0; height:0; }
+  .bbl { position:absolute; translate:-50% -100%; white-space:nowrap; text-align:center; }
+</style>
+
+<!-- paper backdrop for the whole film -->
+<div class="L clip paper" id="bgp" data-start="0.00" data-duration="57.00" data-track-index="100" style="z-index:40;"></div>
+
+<!-- ===== S1 + S7: the city (world 1) ===== -->
+<div class="L clip" id="s1" data-start="0.00" data-duration="57.00" data-track-index="101" style="z-index:45;">
+  <div class="cam" id="cam1" style="left:540px;top:1000px;"><div class="tilt" id="tilt1"><div class="spin" id="w1"></div></div></div>
+</div>
+<div class="L clip" id="t1" data-start="0.00" data-duration="5.30" data-track-index="102" style="z-index:60;">
+  <div class="c k" id="t1k" style="top:262px;">Tirana · 2024</div>
+  <div class="c h" id="t1a" style="top:312px;font-size:92px;">Tirana po ndërton…</div>
+  <div class="c h" id="t1b" style="top:420px;font-size:78px;opacity:0;">…dhe hapësirat e gjelbra<br/><span class="hl"><i id="t1hl"></i><b>po zhduken.</b></span></div>
+</div>
+<div class="L clip" id="t7" data-start="49.00" data-duration="8.00" data-track-index="103" style="z-index:60;">
+  <div class="c h" id="t7a" style="top:270px;font-size:78px;opacity:0;">Qyteti po rritet lart.</div>
+  <div class="c h" id="t7b" style="top:370px;font-size:78px;opacity:0;">A do të rritet edhe<br/><span class="hl"><i id="t7hl"></i><b>gjelbërimi?</b></span></div>
+  <div class="c chip" id="t7c" style="top:1290px;">Ndiq për më shumë →</div>
+  <div class="src" id="t7s" style="opacity:0;">Burimet: INSTAT (lejet 2024) · Studim mbi gjelbërimin në Tiranë 2009–2014 · Wolff &amp; Haase 2019 (Urban Atlas)</div>
+</div>
+
+<!-- ===== S2: record permits, football pitches ===== -->
+<div class="L clip paper" id="s2" data-start="5.30" data-duration="11.10" data-track-index="104" style="z-index:50;">
+  <div class="c k" style="top:250px;">Leje ndërtimi në Tiranë · 2024</div>
+  <div class="c h" style="top:300px;font-size:128px;font-variant-numeric:tabular-nums;"><span id="s2n">0</span><span style="font-size:.5em;"> m²</span></div>
+  <div class="c" style="top:450px;display:flex;gap:16px;"><span class="chip" id="s2c1">+36% nga 2023</span><span class="chip" id="s2c2" style="background:var(--hi);">rekord që nga 2005</span></div>
+  <div class="cam" id="cam2" style="left:540px;top:950px;"><div class="tilt" id="tilt2"><div class="spin" id="w2"></div></div></div>
+  <div class="c h" id="s2l" style="top:1270px;font-size:66px;opacity:0;">≈ <span class="hl"><i id="s2hl"></i><b>266 fusha futbolli</b></span></div>
+  <div class="src">Burimi: INSTAT, via Monitor (2025). 1 fushë ≈ 7,140 m².</div>
+</div>
+
+<!-- ===== S3 + S4: 3.44 m² per person ===== -->
+<div class="L clip paper" id="s3" data-start="16.40" data-duration="14.40" data-track-index="105" style="z-index:50;">
+  <div class="c k" id="s3k" style="top:250px;">Gjelbërim publik për banor</div>
+  <div class="c h" style="top:300px;font-size:150px;font-variant-numeric:tabular-nums;"><span class="hl"><i id="s3hl"></i><b><span id="s3n">3.44</span> m²</b></span></div>
+  <div class="c h" id="s3y" style="top:470px;font-size:44px;opacity:0;color:rgba(30,27,24,.6);height:50px;width:120px;"><span id="y09" style="position:absolute;left:0;right:0;">2009</span><span id="y14" style="position:absolute;left:0;right:0;opacity:0;">2014</span></div>
+  <div class="cam" id="cam3" style="left:540px;top:930px;"><div class="tilt" id="tilt3"><div class="spin" id="w3"></div></div></div>
+  <div class="c h" id="s3b" style="top:1250px;font-size:58px;opacity:0;">= sa një <span class="hl"><i id="s3bhl"></i><b>krevat dopio</b></span></div>
+  <div id="bars" style="position:absolute;left:110px;top:1000px;width:860px;opacity:0;">
+    <div class="k" style="font-size:24px;">Gjelbërimi</div>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:10px;"><div id="bg1" style="height:54px;width:140px;background:var(--green);transform-origin:0 50%;transform:scaleX(0);border-radius:6px;"></div><span class="h" id="bv1" style="font-size:48px;">+0%</span></div>
+    <div class="k" style="font-size:24px;margin-top:34px;">Popullsia</div>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:10px;"><div id="bg2" style="height:54px;width:620px;background:var(--ink);transform-origin:0 50%;transform:scaleX(0);border-radius:6px;"></div><span class="h" id="bv2" style="font-size:48px;">+0%</span></div>
+  </div>
+  <div class="src" id="s3s">Burimi: studim mbi gjelbërimin urban në Tiranë (të dhënat 2009–2014, më të fundit të publikuara).</div>
+</div>
+
+<!-- ===== S5: Europe vs Tirana, to scale ===== -->
+<div class="L clip paper" id="s5" data-start="30.80" data-duration="14.50" data-track-index="106" style="z-index:50;">
+  <div class="c k" style="top:250px;">Parqe e kopshte publike · m² për banor</div>
+  <div class="c h" id="s5t" style="top:298px;font-size:96px;opacity:0;">Tirana <span style="color:var(--red);">vs</span> Evropa</div>
+  <div class="cam" id="cam5" style="left:540px;top:930px;"><div class="tilt" id="tilt5"><div class="spin" id="w5"></div></div></div>
+  <div class="src">Burimi: Wolff &amp; Haase 2019, 905 qytete (Urban Atlas 2012) · Tirana: 2014. Në shkallë të saktë.</div>
+</div>
+
+<!-- ===== S6: four times less ===== -->
+<div class="L clip paper" id="s6" data-start="45.30" data-duration="3.70" data-track-index="107" style="z-index:50;">
+  <div style="position:absolute;left:90px;top:620px;width:337px;height:337px;background:var(--green);border-radius:6px;transform-origin:50% 100%;transform:scaleY(0);" id="q1"></div>
+  <div style="position:absolute;left:820px;top:790px;width:167px;height:167px;background:var(--red);border-radius:6px;transform-origin:50% 100%;transform:scaleY(0);" id="q2"></div>
+  <div class="h" id="q1l" style="position:absolute;left:90px;top:980px;font-size:60px;opacity:0;">Evropa<br/><span style="font-size:1.5em;">14 m²</span></div>
+  <div class="h" id="q2l" style="position:absolute;left:760px;top:980px;font-size:60px;text-align:right;width:230px;opacity:0;">Tirana<br/><span style="font-size:1.5em;color:var(--red);">3.4</span></div>
+  <div class="c h" id="x4" style="top:640px;left:620px;font-size:200px;opacity:0;">×4</div>
+  <div class="c h" id="q3" style="top:300px;font-size:84px;opacity:0;"><span class="hl"><i id="q3hl"></i><b>4 herë më pak</b></span></div>
+</div>
+
+<audio id="vo" src="sfx/vo.wav" data-start="0" data-duration="56.9" data-track-index="89" data-volume="1"></audio>
+<audio id="bed" src="sfx/bed.wav" data-start="0" data-duration="57" data-track-index="90" data-volume="0.07"></audio>

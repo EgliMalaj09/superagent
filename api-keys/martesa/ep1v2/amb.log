@@ -1,0 +1,6 @@
+rate limited, retrying in 20s
+rate limited, retrying in 40s
+saved /Users/eglimalaj/Desktop/api-keys/martesa/ep1v2/amb/empty.png
+amb 0 {   "transcript": "",   "language": "",   "all_albanian": false,   "music": false,   "background_noise": "keyboard typing",   "matches_expected": true } 
+amb 1 {"transcript": "", "language": null, "all_albanian": false, "music": false, "background_noise": "Dot-matrix printer", "matches_expected": true} 
+GOOD_TAKES ['/Users/eglimalaj/Desktop/api-keys/martesa/ep1v2/amb/amb0.wav', '/Users/eglimalaj/Desktop/api-keys/martesa/ep1v2/amb/amb1.wav']

@@ -1,0 +1,20 @@
+/* ISOMETRIC 3D city / data (warm paper, CSS 3D boxes: library/engines/isometric.js; example: examples/tirana-one) */
+:root { --bg:#F2EEE6; --ink:#1E1B18; --mute:#57534E; --accent:#3FA66B; --hi:#F6D743; --red:#E0483E; --card:#FFFDF8; --green:#3FA66B; --green2:#7BC67E; --paper:#F2EEE6;
+  --head:"BG", "Arial Black", sans-serif; --headw:800; --track:-.025em; --body:"HG", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.3px) 0 0/4px 4px, #F2EEE6; }
+  .paper { background:
+      radial-gradient(120% 80% at 50% 45%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.3px) 0 0/4px 4px, var(--paper); }
+  .c { position:absolute; left:50%; translate:-50% 0; width:max-content; text-align:center; }
+  .k { font-family:"HG", Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:.22em; color:var(--ink); text-transform:uppercase; }
+  .chip { display:inline-block; font-family:"HG", Arial, sans-serif; font-weight:700; font-size:30px; color:var(--ink); border:3px solid var(--ink);
+    border-radius:999px; padding:10px 24px; background:#fff; opacity:0; }
+  .cam { position:absolute; width:0; height:0; transform-style:preserve-3d; }
+  .tilt, .spin, .bx, .bx > div, .bb { transform-style:preserve-3d; }
+  .tilt { position:absolute; left:0; top:0; width:0; height:0; }
+  .spin { position:absolute; }
+  .bx { position:absolute; }
+  .bx > div { position:absolute; backface-visibility:visible; }
+  .bb { position:absolute; width:0; height:0; }
+  .bbl { position:absolute; translate:-50% -100%; white-space:nowrap; text-align:center; }
+

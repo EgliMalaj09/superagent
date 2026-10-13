@@ -1,0 +1,81 @@
+<div class="L clip" id="stage" data-start="0" data-duration="6" data-track-index="1">
+<svg id="svg" viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotsD" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="2.2" fill="#1D1530" opacity=".55"/></pattern>
+    <pattern id="dotsS" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.2" fill="#1D1530" opacity=".18"/></pattern>
+    <pattern id="dotsL" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="3" fill="#FFFFFF" opacity=".75"/></pattern>
+    <pattern id="tiles" width="90" height="90" patternUnits="userSpaceOnUse"><rect width="90" height="90" fill="#BFE7E4"/><rect width="90" height="90" fill="none" stroke="#7FB9B6" stroke-width="4"/></pattern>
+    <pattern id="floorT" width="120" height="120" patternUnits="userSpaceOnUse"><rect width="60" height="60" fill="#FFFFFF"/><rect x="60" width="60" height="60" fill="#F7B8CE"/><rect y="60" width="60" height="60" fill="#F7B8CE"/><rect x="60" y="60" width="60" height="60" fill="#FFFFFF"/></pattern>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DFF3FB"/><stop offset="1" stop-color="#A9D8EC"/></linearGradient>
+    <radialGradient id="vig" cx="50%" cy="45%" r="72%"><stop offset="62%" stop-color="#1D1530" stop-opacity="0"/><stop offset="100%" stop-color="#1D1530" stop-opacity=".42"/></radialGradient>
+    <clipPath id="mirrorClip"><rect x="262" y="312" width="556" height="576" rx="30"/></clipPath>
+  </defs>
+  <g id="world">
+    <!-- tiled wall + checker floor -->
+    <rect x="0" y="0" width="1080" height="1320" fill="url(#tiles)"/>
+    <rect x="0" y="0" width="1080" height="1320" fill="url(#dotsS)"/>
+    <rect x="0" y="1320" width="1080" height="600" fill="url(#floorT)"/>
+    <rect x="0" y="1320" width="1080" height="600" fill="url(#dotsS)"/>
+    <rect x="0" y="1310" width="1080" height="14" fill="#FFFFFF" stroke="#1D1530" stroke-width="4"/>
+    <!-- towel ring + towel (right) -->
+    <circle cx="960" cy="560" r="34" fill="none" stroke="#1D1530" stroke-width="8"/>
+    <rect class="ink" x="922" y="590" width="80" height="230" rx="10" fill="#FF8FB1"/>
+    <rect x="970" y="590" width="32" height="230" fill="url(#dotsD)" opacity=".35"/>
+    <!-- shelf with cup + toothbrushes (left) -->
+    <rect class="ink" x="60" y="600" width="150" height="18" fill="#FFFFFF"/>
+    <rect class="ink" x="90" y="540" width="44" height="60" rx="6" fill="#7CD3F0"/>
+    <line x1="104" y1="540" x2="96" y2="490" stroke="#1D1530" stroke-width="7"/><line x1="120" y1="540" x2="132" y2="494" stroke="#FF3D7F" stroke-width="7"/>
+    <circle class="ink" cx="172" cy="574" r="24" fill="#B6F09A"/>
+    <!-- mirror -->
+    <rect class="ink" x="250" y="300" width="580" height="600" rx="40" fill="#FFFFFF"/>
+    <rect x="262" y="312" width="556" height="576" rx="30" fill="url(#glass)"/>
+    <g clip-path="url(#mirrorClip)">
+      <!-- reflection: tiles behind + Claude's FRONT -->
+      <rect x="262" y="312" width="556" height="576" fill="url(#tiles)" opacity=".35"/>
+      <g id="refl" opacity="0">
+        <polygon points="430,690 450,670 650,670 630,690" fill="#FFAA6B" stroke="#1D1530" stroke-width="4"/>
+        <rect x="430" y="690" width="200" height="190" fill="#F5873A" stroke="#1D1530" stroke-width="4"/>
+        <rect x="430" y="690" width="200" height="190" fill="url(#dotsS)"/>
+        <g id="reflEyes"><rect x="478" y="730" width="24" height="50" fill="#15131A"/><rect x="558" y="730" width="24" height="50" fill="#15131A"/></g>
+      </g>
+      <!-- glass shine (halftone light) -->
+      <polygon points="300,312 380,312 262,520 262,400" fill="url(#dotsL)"/>
+      <polygon points="420,312 450,312 262,640 262,590" fill="#FFFFFF" opacity=".5"/>
+    </g>
+    <!-- the sticky note (taped on the mirror) -->
+    <g id="note" transform="rotate(4 680 470)">
+      <rect class="ink" x="560" y="350" width="240" height="250" fill="#FFE57A"/>
+      <polygon points="560,600 800,600 800,560" fill="#F2CB4E"/>
+      <rect x="640" y="334" width="80" height="30" fill="#FFFFFF" opacity=".75" stroke="#1D1530" stroke-width="2"/>
+      <text id="l1" x="578" y="400" font-family="Spec, serif" font-style="italic" font-weight="700" font-size="30" fill="#1D1530"></text>
+      <text id="l2" x="578" y="450" font-family="Spec, serif" font-style="italic" font-weight="700" font-size="30" fill="#1D1530"></text>
+      <text id="l3a" x="578" y="498" font-family="Spec, serif" font-style="italic" font-weight="700" font-size="24" fill="#1D1530"></text>
+      <text id="l3b" x="578" y="530" font-family="Spec, serif" font-style="italic" font-weight="700" font-size="24" fill="#1D1530"></text>
+      <text id="l4" x="578" y="576" font-family="Spec, serif" font-style="italic" font-weight="700" font-size="30" fill="#C9325E"></text>
+    </g>
+    <!-- sink counter + basin + faucet + cabinet -->
+    <rect class="ink" x="170" y="960" width="740" height="70" rx="10" fill="#FFFFFF"/>
+    <ellipse cx="540" cy="975" rx="170" ry="22" fill="#D7EEF5" stroke="#1D1530" stroke-width="4"/>
+    <path d="M540 960 L540 912 Q540 896 560 896 L590 896" fill="none" stroke="#1D1530" stroke-width="14" stroke-linecap="round"/>
+    <path d="M540 960 L540 912 Q540 896 560 896 L590 896" fill="none" stroke="#C9D3DC" stroke-width="7" stroke-linecap="round"/>
+    <rect class="ink" x="220" y="1030" width="640" height="280" fill="#8FD8C2"/>
+    <rect x="780" y="1030" width="80" height="280" fill="url(#dotsD)" opacity=".35"/>
+    <line x1="540" y1="1030" x2="540" y2="1310" stroke="#1D1530" stroke-width="5"/>
+    <circle cx="510" cy="1160" r="8" fill="#FFD84F" stroke="#1D1530" stroke-width="3"/><circle cx="570" cy="1160" r="8" fill="#FFD84F" stroke="#1D1530" stroke-width="3"/>
+    <ellipse cx="540" cy="1318" rx="330" ry="16" fill="#1D1530" opacity=".25"/>
+    <!-- Claude, seen from behind (over-the-shoulder, foreground) -->
+    <g id="claudeBack">
+      <ellipse cx="540" cy="1880" rx="260" ry="26" fill="#1D1530" opacity=".3"/>
+      <polygon class="ink" points="320,1360 370,1310 760,1310 710,1360" fill="#FFAA6B"/>
+      <polygon class="ink" points="710,1360 760,1310 760,1820 710,1870" fill="#D9612B"/>
+      <polygon points="710,1360 760,1310 760,1820 710,1870" fill="url(#dotsD)" opacity=".5"/>
+      <rect class="ink" x="320" y="1360" width="390" height="510" fill="#E9782F"/>
+      <rect x="320" y="1360" width="390" height="510" fill="url(#dotsD)" opacity=".25"/>
+      <rect class="ink" x="282" y="1560" width="40" height="80" fill="#E86F33"/><rect class="ink" x="708" y="1560" width="40" height="80" fill="#E86F33"/>
+    </g>
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#dotsS)" opacity=".5"/>
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#vig)"/>
+  </g>
+</svg>
+<div class="L clip" id="hud" data-start="0" data-duration="6" data-track-index="3"></div>
+</div>

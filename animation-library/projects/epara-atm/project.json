@@ -1,0 +1,35 @@
+{
+  "name": "epara-atm",
+  "format": "9x16",
+  "style": "brand",
+  "engines": [
+    "map"
+  ],
+  "lang": "sq",
+  "duration": 11.5,
+  "audio": {
+    "voice": [],
+    "bed": {
+      "src": "bed-tech.wav",
+      "volume": 0.18
+    },
+    "sfx": [
+      [
+        "click",
+        2.85,
+        0.05
+      ],
+      [
+        "click",
+        4.35,
+        0.04
+      ],
+      [
+        "ding",
+        9.4,
+        0.06
+      ]
+    ]
+  },
+  "_notes": "duration null = voice length + 0.8 s. bed volume ~0.07 under a voice (0.15-0.2 without). sfx: [[name, time, volume<=0.1]] only on real hits."
+}

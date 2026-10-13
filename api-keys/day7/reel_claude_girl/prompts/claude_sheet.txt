@@ -1,0 +1,7 @@
+Image 1 is the STYLE and IDENTITY reference: the small orange cube robot on the desk is CLAUDE; keep its exact design and the low-poly render style.
+
+Character expression sheet on a plain flat dark purple studio backdrop, 4 panels in a row, the same robot in each, same scale: panel 1 front view, neutral (two black dot eyes); panel 2 three-quarter view, happy (eyes become upward arcs like ^ ^, small hop with legs off the ground); panel 3 front view, blank flat stare (eyes become short flat horizontal lines); panel 4 back view (plain back face, antenna visible). The antenna spark glows warm orange in every panel.
+
+CLAUDE: small terracotta-orange cube robot (toaster-sized), four short stubby legs, two simple black dot eyes on the front face, no mouth, thin antenna on top ending in a tiny glowing orange starburst spark. Expressions only through eye shapes (dots, happy arcs ^ ^, flat lines) and small body hops/tilts.
+
+Style: stylized LOW-POLY 3D render: faceted flat-shaded geometry with visible polygon facets on faces, hair and clothes, simple blocky shapes, soft ambient occlusion, moody purple-violet palette with warm orange accent light, clean minimalist indie-game look. Match the attached style reference exactly. No text, no logos, no watermark.

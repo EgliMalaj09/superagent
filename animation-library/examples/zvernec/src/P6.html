@@ -1,0 +1,50 @@
+<style>
+  .news { background: radial-gradient(80% 50% at 50% 42%, #2a0608, #0a0202 60%, #000); }
+  .scan { position:absolute; inset:0; background:repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px); pointer-events:none; }
+  .O { font-family:"Osw", sans-serif; font-weight:700; text-transform:uppercase; color:#fff; letter-spacing:-.01em; line-height:.95; }
+  .R { color:#FF2A2A; }
+  .blk { background:#FF2A2A; color:#000; padding:0 .12em; }
+  .wd { position:absolute; left:0; width:1080px; text-align:center; opacity:0; }
+  .gl { position:absolute; left:0; top:0; width:100%; text-align:center; opacity:0; mix-blend-mode:screen; }
+  .bar { position:absolute; left:0; top:1500px; width:1080px; height:84px; background:#FF2A2A; display:flex; align-items:center; gap:20px; padding:0 40px; }
+  .bar b { font-family:"Osw"; font-weight:700; font-size:40px; color:#000; letter-spacing:.04em; }
+  .bar span { font-family:"Osw"; font-weight:500; font-size:34px; color:#000; }
+  .fr { position:absolute; left:60px; top:380px; width:960px; height:540px; overflow:hidden; border:6px solid #FF2A2A; box-shadow:0 0 60px rgba(255,42,42,.35); opacity:0; }
+  .fr img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .tag { position:absolute; font-family:"Osw"; font-weight:700; font-size:32px; color:#000; background:#fff; padding:2px 16px; text-transform:uppercase; z-index:3; opacity:0; }
+  .tag.r { background:#FF2A2A; }
+  .stamp { position:absolute; left:50%; top:520px; translate:-50% 0; font-family:"Osw"; font-weight:700; font-size:128px; color:#FF2A2A; border:14px solid #FF2A2A;
+    padding:0 36px; text-transform:uppercase; background:rgba(0,0,0,.55); white-space:nowrap; opacity:0; z-index:6; }
+  .unit { position:absolute; width:14px; height:14px; background:#fff; border-radius:2px; opacity:0; }
+</style>
+
+<div class="S clip news" id="p6" data-start="0" data-duration="20.0" data-track-index="10">
+  <div class="S" id="cam6">
+    <!-- "Dhe tani… projekti i radhës." -->
+    <div class="wd" id="a0" style="top:620px;"><div class="O" style="font-size:90px;color:#bbb;">Dhe tani…</div></div>
+    <div class="wd" id="a1" style="top:600px;"><div class="O R" style="font-size:56px;letter-spacing:.3em;">Projekti</div>
+      <div class="O" style="font-size:230px;margin-top:20px;position:relative;">i radhës<div class="gl O" id="a1g" style="font-size:230px;color:#2AD4FF;">i radhës</div></div></div>
+    <!-- Kushner -->
+    <div class="fr" id="fk"><img id="fki" src="img/kushner.jpg" alt=""/><div class="tag r" id="tk" style="left:22px;bottom:22px;">Jared Kushner</div></div>
+    <!-- the project render -->
+    <div class="fr" id="fz"><img id="fzi" src="img/zvernec-render.webp" alt=""/><div class="tag" id="tz" style="left:22px;bottom:22px;">Render i projektit · Zvërnec, Vlorë</div></div>
+    <div class="wd" id="b0" style="top:990px;"><div class="O" style="font-size:66px;">synon të zhvillojë</div><div class="O" style="font-size:120px;margin-top:10px;">një qytet</div></div>
+    <div class="wd" id="b1" style="top:990px;"><div class="O" style="font-size:66px;color:#ddd;">përballë Sazanit</div><div class="O" style="font-size:150px;margin-top:40px;"><span class="blk">Zvërnec</span></div></div>
+    <div class="wd" id="c0" style="top:990px;"><div class="O" style="font-size:56px;color:#ddd;">Projekti parashikon</div>
+      <div class="O" style="font-size:170px;margin-top:10px;position:relative;"><span class="R">Mijëra</span><div class="gl O" id="c0g" style="font-size:170px;color:#2AD4FF;">Mijëra</div></div>
+      <div class="O" style="font-size:66px;margin-top:10px;" id="c0s">njësi akomoduese</div></div>
+    <div id="units" style="position:absolute;left:60px;top:380px;width:960px;height:540px;z-index:4;"></div>
+    <!-- Kushner & Netanyahu -->
+    <div class="fr" id="fn"><img id="fni" src="img/kushner-netanyahu.webp" alt=""/>
+      <div class="tag" id="tn0" style="left:22px;bottom:22px;">Jared Kushner</div><div class="tag r" id="tn1" style="right:22px;bottom:22px;">Benjamin Netanyahu</div></div>
+    <div class="wd" id="d0" style="top:990px;"><div class="O" style="font-size:54px;color:#ddd;">mbështetës i kryeministrit izraelit</div><div class="O" style="font-size:150px;margin-top:12px;">Netanyahu</div></div>
+    <div class="wd" id="d1" style="top:990px;"><div class="O R" style="font-size:44px;letter-spacing:.14em;">Gjykata Penale Ndërkombëtare</div><div class="O" style="font-size:150px;margin-top:12px;">ICC</div></div>
+    <div class="stamp" id="stp">Mandat arresti</div>
+    <div class="wd" id="d2" style="top:1280px;"><div class="O" style="font-size:31px;color:#ddd;white-space:nowrap;">ICC · 21 nëntor 2024 · krime lufte dhe krime kundër njerëzimit</div>
+      <div style="font-family:HG;font-weight:500;font-size:24px;color:rgba(255,255,255,.55);margin-top:12px;">Burimi: icc-cpi.int/defendant/netanyahu</div></div>
+  </div>
+  <div class="scan"></div><div class="vig"></div>
+  <div class="O" id="cnr" style="position:absolute;left:60px;top:250px;font-size:34px;color:#FF2A2A;letter-spacing:.14em;opacity:0;">● Zvërnec · Vlorë</div>
+  <div class="bar"><b>PROJEKTI</b><span id="bt" style="position:relative;"><span id="bt1">Zvërnec · Jared Kushner</span><span id="bt2" style="position:absolute;left:0;top:0;white-space:nowrap;opacity:0;">Kushner · Netanyahu · ICC</span></span></div>
+  <div id="cfl" class="S" style="background:#FF2A2A;opacity:0;mix-blend-mode:screen;"></div>
+</div>

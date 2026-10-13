@@ -1,0 +1,53 @@
+# Egli studio repo. Only the five studio folders are tracked; everything else on the Desktop is ignored.
+/*
+!/.gitignore
+!/README.md
+!/claude-agent/
+!/claude-sequences/
+!/claude-editor/
+!/animation-library/
+!/api-keys/
+
+# Reinstallable on any machine
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Media stays on the Mac (videos, audio, images)
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.mkv
+*.avi
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.ogg
+*.flac
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.heic
+*.tif
+*.tiff
+*.psd
+*.bin
+
+# Local and secret files
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.key
+*.pem
+.claude/settings.local.json
+*.f32
+*.f64
+*.raw
+*.pcm

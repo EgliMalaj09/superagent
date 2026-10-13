@@ -1,0 +1,67 @@
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a5a5a"/><stop offset=".28" stop-color="#e9e9e9"/><stop offset=".5" stop-color="#9a9a9a"/><stop offset=".75" stop-color="#d6d6d6"/><stop offset="1" stop-color="#4a4a4a"/></linearGradient>
+    <radialGradient id="ringm" cx=".38" cy=".32" r=".8"><stop offset="0" stop-color="#f2f2f2"/><stop offset=".45" stop-color="#a6a6a6"/><stop offset="1" stop-color="#3f3f3f"/></radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity=".55"/><stop offset=".2" stop-color="#ffffff" stop-opacity=".15"/><stop offset=".8" stop-color="#ffffff" stop-opacity=".1"/><stop offset="1" stop-color="#ffffff" stop-opacity=".5"/></linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f8b84"/><stop offset="1" stop-color="#5e5a54"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b4844"/><stop offset="1" stop-color="#1f1e1c"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+    <symbol id="person" viewBox="0 0 60 160"><circle cx="30" cy="20" r="15" fill="#161616"/><path d="M10 160 L12 70 C12 45 48 45 48 70 L50 160 Z" fill="#161616"/></symbol>
+    <symbol id="pin" viewBox="0 0 46 90"><circle cx="23" cy="20" r="18" fill="#2E64D8"/><circle cx="17" cy="14" r="6" fill="#8fb0f0"/><rect x="15" y="34" width="16" height="12" rx="3" fill="#2453b8"/><path d="M23 46 L23 88" stroke="#7b7b7b" stroke-width="3"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ FRAME 1 · hook ============ -->
+<div class="L bg clip" id="f1" data-start="0" data-duration="1" data-track-index="1">
+  <div class="grid"></div>
+  <div class="tx small" style="top:300px;font-size:52px;">Sa vjet i duhen</div>
+  <div class="tx bigw" style="top:372px;font-size:108px;">një çifti në Tiranë</div>
+  <div class="tx bigw g" style="top:492px;font-size:92px;">për një apartament?</div>
+  <svg style="position:absolute;left:350px;top:640px;" width="380" height="900" viewBox="0 0 300 800">
+    <ellipse cx="150" cy="770" rx="120" ry="18" fill="#000" opacity=".28" filter="url(#soft)"/>
+    <circle cx="150" cy="150" r="105" fill="none" stroke="url(#ringm)" stroke-width="46"/>
+    <circle cx="150" cy="150" r="105" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="4" stroke-dasharray="90 600"/>
+    <rect x="128" y="250" width="44" height="510" rx="8" fill="url(#metal)"/>
+    <rect x="172" y="610" width="64" height="38" rx="5" fill="url(#metal)"/>
+    <rect x="172" y="680" width="46" height="38" rx="5" fill="url(#metal)"/>
+  </svg>
+  <svg style="position:absolute;left:250px;top:1290px;" width="60" height="160"><use href="#person"/></svg>
+  <svg style="position:absolute;left:300px;top:1302px;" width="54" height="148"><use href="#person"/></svg>
+  <div class="shadowp" style="left:235px;top:1430px;"></div>
+  <div class="vig"></div>
+</div>
+
+<!-- ============ FRAME 2 · the doormat ============ -->
+<div class="L bg clip" id="f2" data-start="1" data-duration="1" data-track-index="2">
+  <div class="grid"></div>
+  <div class="tx small" style="top:300px;font-size:52px;">Një muaj rrogë blen</div>
+  <div class="tx bigw" style="top:372px;font-size:112px;">sa një tapet dere</div>
+  <div class="tx" style="top:520px;"><svg width="40" height="78" style="vertical-align:-20px;margin-right:14px;"><use href="#pin"/></svg><span class="bigw g" style="font-size:72px;">0,41 m²</span></div>
+  <div class="floor">
+    <div class="sq"><span>1 m²</span></div>
+    <div class="mat"><b>MIRË SE VINI</b></div>
+  </div>
+  <div class="vig"></div>
+</div>
+
+<!-- ============ FRAME 3 · 25 → 52 ============ -->
+<div class="L bg clip" id="f3" data-start="2" data-duration="1" data-track-index="3">
+  <div class="grid"></div>
+  <div class="tx small" style="top:300px;font-size:52px;">Nisin në 25.</div>
+  <div class="tx bigw" style="top:372px;font-size:108px;">Çelësin e marrin</div>
+  <div class="tx bigw g" style="top:492px;font-size:120px;">në 52.</div>
+  <svg style="position:absolute;left:290px;top:660px;" width="500" height="860" viewBox="0 0 400 700">
+    <ellipse cx="200" cy="690" rx="170" ry="16" fill="#000" opacity=".3" filter="url(#soft)"/>
+    <rect x="40" y="20" width="320" height="34" rx="8" fill="url(#wood)"/>
+    <rect x="40" y="646" width="320" height="34" rx="8" fill="url(#wood)"/>
+    <rect x="58" y="54" width="14" height="592" fill="url(#wood)"/><rect x="328" y="54" width="14" height="592" fill="url(#wood)"/>
+    <path d="M90 54 C90 250 188 300 188 350 C188 400 90 450 90 646 L310 646 C310 450 212 400 212 350 C212 300 310 250 310 54 Z" fill="#d9d8d4" fill-opacity=".35" stroke="#9c9b97" stroke-width="3"/>
+    <path d="M128 200 C150 260 188 300 192 338 L208 338 C212 300 250 260 272 200 Z" fill="url(#sand)"/>
+    <path d="M200 338 L200 560" stroke="#6f6b65" stroke-width="3"/>
+    <path d="M100 646 C130 590 170 560 200 556 C230 560 270 590 300 646 Z" fill="url(#sand)"/>
+    <g transform="translate(176,500)"><path d="M0 26 L24 6 L48 26 L48 56 L0 56 Z" fill="#151515"/><rect x="19" y="38" width="10" height="18" fill="#bdbab4"/></g>
+    <path d="M90 54 C90 250 188 300 188 350 C188 400 90 450 90 646 L310 646 C310 450 212 400 212 350 C212 300 310 250 310 54 Z" fill="url(#glass)"/>
+  </svg>
+  <div class="tx" style="top:1560px;"><svg width="34" height="66" style="vertical-align:-16px;margin-right:12px;"><use href="#pin"/></svg><span class="small" style="font-size:46px;color:#6E6E6E;">27 vjet kursim</span></div>
+  <div class="vig"></div>
+</div>

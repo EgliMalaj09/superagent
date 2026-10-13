@@ -1,0 +1,4 @@
+Vertical 9:16 first-person POV frame from the front seat of a roller coaster car, like a bright modern 3D mobile game render (stylized realism, clean shading, vivid saturated colours, sunny).
+Bottom third of frame: the front of the black coaster car and a thick padded black lap bar, gripped by two stylized cartoon 3D hands from the viewer's point of view, warm peach skin, a yellow-and-black wristband on the left wrist, teal sleeves at the very bottom edge.
+Ahead: a bright red steel coaster track starting from a white-and-red wooden station platform and rising up a steep lift hill toward the sky. Around it: pale limestone cliffs, Mediterranean pines and olive trees, and at the right edge a glimpse of a turquoise sea far below. Big clear blue sky with soft white clouds, strong sunlight.
+Leave the top 25% of the frame mostly sky (space for on-screen prompts). No text, no UI, no logos, no watermark.

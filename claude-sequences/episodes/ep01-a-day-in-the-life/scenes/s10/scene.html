@@ -1,0 +1,47 @@
+<div class="L clip" id="stage" data-start="0" data-duration="12.5" data-track-index="1">
+<svg id="svg" viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotsD" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="2.2" fill="#1D1530" opacity=".55"/></pattern>
+    <pattern id="dotsS" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.2" fill="#1D1530" opacity=".18"/></pattern>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E0B2A"/><stop offset=".7" stop-color="#2A1F5E"/><stop offset="1" stop-color="#5B3A7E"/></linearGradient>
+    <radialGradient id="glowW"><stop offset="0" stop-color="#FFD58A" stop-opacity=".9"/><stop offset="1" stop-color="#FFD58A" stop-opacity="0"/></radialGradient>
+    <radialGradient id="vig" cx="50%" cy="45%" r="72%"><stop offset="60%" stop-color="#0E0B2A" stop-opacity="0"/><stop offset="100%" stop-color="#0E0B2A" stop-opacity=".55"/></radialGradient>
+  </defs>
+  <!-- ===== A · ground level in the crowd ===== -->
+  <g id="ground">
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#night)"/>
+    <g id="gBuild"></g>
+    <rect x="0" y="1380" width="1080" height="540" fill="#3A3360"/><rect x="0" y="1380" width="1080" height="540" fill="url(#dotsS)"/>
+    <g id="gBack"></g>
+    <g id="gChars"></g>
+    <g id="gFront"></g>
+  </g>
+  <!-- ===== B · the HQ doors open: the Claudes march out ===== -->
+  <g id="hq" opacity="0">
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#night)"/>
+    <rect class="ink" x="110" y="160" width="860" height="1400" fill="#4A3F8E"/>
+    <g id="hqWin"></g>
+    <rect class="ink" x="300" y="1060" width="480" height="110" rx="12" fill="#1D1530"/>
+    <text x="540" y="1142" text-anchor="middle" font-family="Out, sans-serif" font-weight="900" font-size="84" letter-spacing="10" fill="#FFE14D">HQ</text>
+    <rect class="ink" x="370" y="1200" width="340" height="360" fill="#FFF1C4"/>
+    <rect id="hDoorL" class="ink" x="374" y="1204" width="166" height="352" fill="#6F8FD6"/>
+    <rect id="hDoorR" class="ink" x="540" y="1204" width="166" height="352" fill="#6F8FD6"/>
+    <rect x="0" y="1560" width="1080" height="360" fill="#3A3360"/><rect x="0" y="1552" width="1080" height="12" fill="#FFFFFF" stroke="#1D1530" stroke-width="4"/>
+    <g id="march"></g>
+  </g>
+  <!-- ===== C · aerial over the boulevard (the photo) ===== -->
+  <g id="aerial" opacity="0"><g id="acam">
+    <rect x="-200" y="-200" width="1480" height="2400" fill="url(#night)"/>
+    <g id="towers"></g>
+    <polygon id="road" points="-300,1920 1380,1920 600,560 480,560" fill="#4A4270"/>
+    <g id="lBuild"></g><g id="rBuild"></g>
+    <g id="lamps"></g>
+    <g id="crowdA"></g>
+    <g id="river"></g>
+    <g id="treesA"></g>
+  </g></g>
+  <rect x="0" y="0" width="1080" height="1920" fill="url(#dotsS)" opacity=".35"/>
+  <rect x="0" y="0" width="1080" height="1920" fill="url(#vig)"/>
+</svg>
+<div class="L clip" id="hud" data-start="0" data-duration="12.5" data-track-index="3"></div>
+</div>

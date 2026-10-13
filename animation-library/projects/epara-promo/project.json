@@ -1,0 +1,33 @@
+{
+  "name": "epara-promo",
+  "format": "9x16",
+  "style": "brand",
+  "engines": [],
+  "lang": "sq",
+  "duration": 10.0,
+  "audio": {
+    "voice": [],
+    "bed": {
+      "src": "bed-tech.wav",
+      "volume": 0.18
+    },
+    "sfx": [
+      [
+        "click",
+        2.45,
+        0.06
+      ],
+      [
+        "pop",
+        2.7,
+        0.07
+      ],
+      [
+        "ding",
+        6.72,
+        0.07
+      ]
+    ]
+  },
+  "_notes": "duration null = voice length + 0.8 s. bed volume ~0.07 under a voice (0.15-0.2 without). sfx: [[name, time, volume<=0.1]] only on real hits."
+}

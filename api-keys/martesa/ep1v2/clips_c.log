@@ -1,0 +1,14 @@
+s04a try0 FAIL {"transcript": "Di që babai yt ka 48 orë.", "language": "Albanian", "all_albanian": true, "music": true, "background_noise": "Tense ambient music", "matches_expected": true}
+s04a try1 PASS {"transcript": "Di që babai yt ka dyzet e tetë orë.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s04b try0 PASS {"transcript": "Për të shlyer borxhin.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s04c try0 PASS {"transcript": "Përndryshe humbisni shtëpinë.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s06a try0 FAIL {"transcript": "Një vit martesë.", "language": "Albanian", "all_albanian": true, "music": true, "background_noise": null, "matches_expected": true}
+s06a try1 PASS {"transcript": "Një vit martesë.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s06b try0 PASS {"transcript": "Një milion euro.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s06c try0 FAIL {"transcript": "Pastaj je e lirë.", "language": "Albanian", "all_albanian": true, "music": true, "background_noise": "faint ambient music", "matches_expected": true}
+s06c try1 PASS {"transcript": "Pastaj je e lirë.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": "background hum", "matches_expected": true}
+s08 try0 FAIL {"transcript": "Të jetosh në shtëpinë time, të sillesh si gruaja ime dhe të mos bësh pyetje.", "language": "Albanian", "all_albanian": true, "music": true, "background_noise": "Subtle, tense background music.", "matches_expected": true}
+s08 try1 PASS {"transcript": "Të jetosh në shtëpinë time. Të sillesh si gruaja ime. Dhe të mos bësh pyetje.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": "faint room tone", "matches_expected": true}
+s11 try0 PASS {"transcript": "Sepse ajo pjesë e shtëpisë nuk të përket ty.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s12 try0 PASS {"transcript": "Çfarë fsheh atje?", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+SUMMARY {'s01': True, 's02': True, 's03': True, 's04': False, 's05': True, 's06': False, 's07': True, 's09': True, 's10': True, 's13': True, 's14': True, 's15': True, 's04a': True, 's04b': True, 's04c': True, 's06a': True, 's06b': True, 's06c': True, 's08': True, 's11': True, 's12': True}

@@ -1,0 +1,53 @@
+/* epara · any ATM, 0 commission. Brand styleguide: purpleBlue #6A21E7, purplePink #C221DE, cobalt #193E92, duskBlue #3A2783, dark #111524, white #F8F8F8 */
+:root { --pb:#6A21E7; --pp:#C221DE; --co:#193E92; --db:#3A2783; --dk:#111524; --wh:#F8F8F8; --ok:#1FB979; --font:"Plus Jakarta Sans","Out",sans-serif; }
+#bg { background:radial-gradient(90% 60% at 50% 38%, #24194F 0%, #151230 55%, #111524 100%); }
+.orb { position:absolute; border-radius:50%; filter:blur(90px); }
+.o1 { left:-260px; top:120px; width:760px; height:760px; background:var(--pb); opacity:.45; }
+.o2 { right:-300px; top:900px; width:800px; height:800px; background:var(--pp); opacity:.28; }
+.o3 { left:200px; bottom:-300px; width:700px; height:600px; background:var(--co); opacity:.5; }
+.grain { position:absolute; inset:0; opacity:.05; background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+#world > * { position:absolute; }
+#tx > * { position:absolute; opacity:0; }
+.h { left:60px; right:60px; top:230px; text-align:center; font-family:var(--font); font-weight:800; font-size:112px; line-height:1.0; letter-spacing:-.035em; color:var(--wh); }
+#h1 span { display:block; } #h1 span + span { background:linear-gradient(90deg, #E94C45, var(--pp) 45%, var(--pb)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.z { display:inline-block; font-size:1.35em; background:linear-gradient(180deg, #ffffff, #c9b8ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+/* ATMs (local coords; the strip is the camera) */
+#strip { left:0; top:0; width:3080px; height:1000px; transform-origin:0 0; }
+.atm { position:absolute; top:0; width:520px; height:1000px; border-radius:34px; box-shadow:0 50px 90px rgba(0,0,0,.55), inset 0 2px 0 rgba(255,255,255,.12); }
+.atm.a0 { left:0;    background:linear-gradient(180deg,#3A3F4D,#22252F); }
+.atm.a1 { left:640px; background:linear-gradient(180deg,#D9DDE3,#AEB4BD); border-radius:60px 60px 24px 24px; }
+.atm.a2 { left:1280px; background:linear-gradient(180deg,#4A5A78,#2E3A52); border-radius:16px; }
+.atm.a3 { left:1920px; background:linear-gradient(180deg,#F1F2F5,#CDD1D8); }
+.atm.a4 { left:2560px; background:linear-gradient(180deg,#8E8270,#62584A); border-radius:44px 44px 12px 12px; }
+.scr { position:absolute; left:50px; right:50px; top:60px; height:250px; border-radius:18px; background:#0B0E1E; box-shadow:inset 0 0 0 6px rgba(0,0,0,.35); padding:40px 34px; font-family:var(--font); color:#fff; }
+.scr b { display:block; font-weight:600; font-size:34px; opacity:.75; } .scr span { display:block; margin-top:12px; font-weight:800; font-size:52px; letter-spacing:-.02em; }
+.slot { position:absolute; left:140px; right:140px; top:378px; height:20px; border-radius:10px; background:#05060D; box-shadow:inset 0 4px 8px rgba(0,0,0,.7), 0 0 0 6px rgba(0,0,0,.15); }
+.pad { position:absolute; left:150px; top:450px; width:220px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.pad i { display:block; height:48px; border-radius:10px; background:rgba(0,0,0,.28); }
+.a1 .pad i, .a3 .pad i { background:rgba(0,0,0,.16); }
+.rslot { position:absolute; left:85px; right:85px; top:700px; height:14px; border-radius:7px; background:#05060D; }
+.rc { position:absolute; left:95px; right:95px; top:707px; padding:22px 26px; background:#fff; border-radius:0 0 6px 6px; font-family:var(--font); color:var(--dk); box-shadow:0 18px 30px rgba(0,0,0,.35); transform-origin:50% 0; }
+.rc b { display:block; font-size:22px; letter-spacing:.24em; border-bottom:2px dashed #D3D0E4; padding-bottom:12px; }
+.rc span { display:flex; justify-content:space-between; margin-top:12px; font-size:22px; color:#555a70; } .rc em { font-style:normal; font-weight:700; color:var(--dk); }
+.rc .fee { margin-top:14px; font-size:30px; font-weight:800; color:var(--dk); } .rc .fee em { color:var(--ok); font-weight:800; }
+#card { left:465px; top:1500px; width:150px; height:236px; transform-origin:50% 0; filter:drop-shadow(0 20px 30px rgba(0,0,0,.5)); }
+
+/* map */
+#map { left:0; top:0; opacity:0; overflow:visible; }
+.al { fill:url(#alg); stroke:rgba(248,248,248,.65); stroke-width:3; }
+.city text { font-family:var(--font); font-weight:700; font-size:30px; fill:#fff; }
+.city .tag { font-family:var(--font); font-weight:800; font-size:22px; fill:var(--ok); }
+
+/* end card */
+#end { left:0; right:0; top:470px; text-align:center; opacity:0; }
+#tile { width:460px; margin:0 auto; padding:44px 50px; border-radius:56px; background:#F8F8F8; box-shadow:0 30px 70px rgba(106,33,231,.45); }
+#logo { width:360px; height:auto; display:block; margin:0 auto; }
+.e1 { margin-top:56px; font-family:var(--font); font-weight:800; font-size:76px; line-height:1.05; letter-spacing:-.03em; color:var(--wh); }
+.e2 { margin-top:16px; font-family:var(--font); font-weight:800; font-size:96px; letter-spacing:-.03em; color:var(--wh); }
+.e2 span { background:linear-gradient(90deg,#E94C45,var(--pp),var(--pb)); -webkit-background-clip:text; background-clip:text; color:transparent; font-size:1.25em; }
+.e3 { margin-top:18px; font-family:var(--font); font-weight:500; font-size:36px; color:rgba(248,248,248,.75); }
+.stores { margin-top:54px; display:flex; justify-content:center; gap:24px; }
+.st { width:290px; padding:16px 0 20px; border-radius:22px; background:#000; border:2px solid rgba(255,255,255,.35); font-family:var(--font); font-weight:800; font-size:38px; color:#fff; line-height:1.1; }
+.st small { display:block; font-weight:500; font-size:20px; opacity:.8; }
+.bkt { margin-top:34px; font-family:var(--font); font-weight:600; font-size:28px; letter-spacing:.14em; color:rgba(248,248,248,.6); }

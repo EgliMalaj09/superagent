@@ -1,0 +1,6 @@
+/* MAP / geography (deep navy, glowing routes, d3 + topojson world map from vendor/countries-50m.json) */
+:root { --bg:#0C1626; --ink:#EAF0F7; --mute:rgba(234,240,247,.72); --accent:#4FD1C5; --hi:#F6C344; --red:#F25C54; --card:#132239;
+  --head:"Out", Arial, sans-serif; --headw:800; --track:-.02em; --body:"Inter", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(100% 70% at 50% 40%, #13243D 0%, #0C1626 75%); --land:#1D3352; --border:rgba(234,240,247,.25); --radius:14px; }
+.route { fill:none; stroke:var(--hi); stroke-width:4; stroke-linecap:round; filter:drop-shadow(0 0 8px var(--hi)); }  /* animate strokeDashoffset */
+.pin { position:absolute; width:22px; height:22px; border-radius:50%; background:var(--red); box-shadow:0 0 0 8px rgba(242,92,84,.25); }

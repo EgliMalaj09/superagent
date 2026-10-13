@@ -1,0 +1,21 @@
+/* style frames in the "car-decor" reference style */
+.bg { background:var(--bgfx); }
+.axl text { font-family:"Poppins",sans-serif; font-weight:300; font-size:30px; fill:rgba(255,255,255,.7); }
+.axs { font-family:"Poppins",sans-serif; font-weight:500; font-size:30px; fill:rgba(11,17,80,.7); }
+.lab { position:absolute; font-family:"Poppins",sans-serif; font-weight:700; font-size:58px; color:#0B1150; white-space:nowrap; }
+.lab.sm { font-weight:500; font-size:32px; color:rgba(11,17,80,.75); }
+.thin.hero { position:absolute; font-size:190px; line-height:1; }
+.thin.sub { position:absolute; font-size:40px; font-weight:300; }
+.thin.dark { color:rgba(11,17,80,.35); filter:blur(1px); }
+.floor { position:absolute; left:0; right:0; top:1120px; bottom:0; background:linear-gradient(180deg, #F2F4FF 0%, #DCE2FB 60%, #C3CDF7 100%); box-shadow:0 -30px 80px rgba(255,255,255,.6); }
+.calx { position:absolute; width:360px; height:280px; clip-path:polygon(9% 0, 91% 0, 100% 100%, 0 100%); background:linear-gradient(135deg, #04050F 0%, #0B1150 55%, #2E46E8 100%); }
+.calx.front { width:420px; height:320px; }
+.calx .ctop { height:64px; background:linear-gradient(90deg, #E9EDFF, #9DAEF5); color:#0B1150; font-family:"Poppins",sans-serif; font-weight:700; font-size:30px; text-align:center; line-height:64px; }
+.calx .cyr { text-align:center; font-family:"Poppins",sans-serif; font-weight:800; font-size:118px; color:#fff; line-height:200px; letter-spacing:-.02em; }
+.calx.front .cyr { font-size:138px; line-height:240px; }
+.calx.blur { filter:blur(5px); opacity:.85; }
+.planet { position:absolute; left:-860px; top:1020px; width:2800px; height:2800px; border-radius:50%;
+  background:radial-gradient(circle at 59% 0%, #3B55F0 0%, #0B1150 6%, #04050F 30%); box-shadow:0 -12px 50px rgba(150,170,255,.7), inset 0 6px 10px rgba(200,210,255,.6); }
+.hw { position:absolute; left:0; right:0; text-align:center; color:#fff; }
+.thinw { top:1168px; font-family:"Poppins",sans-serif; font-weight:300; font-size:70px; z-index:2; }
+.bigc { top:1300px; font-family:"Osw","Anton",sans-serif; font-weight:700; font-size:260px; line-height:1; letter-spacing:-.01em; }

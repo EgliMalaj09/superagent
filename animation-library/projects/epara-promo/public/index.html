@@ -1,0 +1,327 @@
+<!doctype html><html lang="sq"><head><meta charset="utf-8"/><style>
+/* ===== animation-library base: every library font + shared components. Sizes come from --W / --H set by build_page.py ===== */
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-600-normal.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-800-normal.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-600.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-700.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+@font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-600-italic.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-700-italic.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+/* Font families: Arc = Archivo Condensed 600/800, BG = Bricolage 800, DM = DM Sans, HG = Hanken Grotesk 300/500/700,
+   IS = Instrument Serif (+italic), Inter, Osw = Oswald 500/700, Out = Outfit 500-800, Ser = Source Serif 4 italic 600/700,
+   Type = Special Elite (typewriter), Spec = Spectral italic 600/700. All support Albanian ë ç. */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); }
+#stage { position:relative; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--body); }
+.L { position:absolute; left:0; top:0; width:var(--W); height:var(--H); overflow:hidden; pointer-events:none; }
+.bg { background:var(--bgfx, var(--bg)); }
+/* text */
+.h  { font-family:var(--head); font-weight:var(--headw, 800); color:var(--ink); letter-spacing:var(--track, -.02em); line-height:1.02; }
+.kicker { font-family:var(--body); font-weight:700; font-size:30px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.body { font-family:var(--body); font-weight:500; font-size:40px; line-height:1.25; color:var(--ink); }
+.quote { font-family:var(--quote); font-style:italic; font-size:64px; line-height:1.12; color:var(--ink); }
+.num { font-family:var(--head); font-weight:var(--headw, 800); font-size:220px; line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.src { position:absolute; left:70px; bottom:110px; font-family:var(--body); font-weight:500; font-size:22px; letter-spacing:.02em; color:var(--mute); }
+/* highlighter: <span class="hl"><i></i><b>word</b></span>, animate i scaleX 0→1 */
+.hl { position:relative; display:inline-block; padding:0 .12em; }
+.hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+.hl > b { position:relative; z-index:1; font-weight:inherit; }
+/* parts */
+.card { position:absolute; background:var(--card); border-radius:var(--radius, 18px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.18)); padding:36px 40px; }
+.photo { position:absolute; object-fit:cover; border-radius:var(--radius, 12px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.25)); }
+.stamp { position:absolute; font-family:var(--head); font-weight:800; font-size:120px; color:var(--red); border:10px solid var(--red); padding:8px 34px; transform:rotate(-8deg); letter-spacing:.04em; mix-blend-mode:multiply; }
+.bar { position:absolute; bottom:0; width:120px; background:var(--accent); transform-origin:50% 100%; }   /* animate scaleY */
+.rule { position:absolute; height:6px; background:var(--accent); transform-origin:0 50%; }                   /* animate scaleX */
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.vignette { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0,0,0,.35) 100%); }
+/* safe zones (Reels UI): keep text inside top 220px … bottom 380px on 9:16 */
+/* BRAND / product (fill tokens from `npx hyperframes capture <url>` → capture/tokens; defaults = clean modern SaaS) */
+:root { --bg:#0E1116; --ink:#FFFFFF; --mute:rgba(255,255,255,.72); --accent:#5B8CFF; --hi:#5B8CFF; --red:#FF5A5F; --card:#171B22;
+  --head:"Out", Arial, sans-serif; --headw:800; --track:-.03em; --body:"Inter", Arial, sans-serif; --quote:"IS", serif;
+  --bgfx: radial-gradient(80% 50% at 70% 20%, rgba(91,140,255,.25), transparent 70%), #0E1116; --radius:24px; --shadow:0 30px 80px rgba(0,0,0,.45); }
+.glass { position:absolute; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(18px); border-radius:var(--radius); }
+.ui { position:absolute; border-radius:22px; overflow:hidden; box-shadow:var(--shadow); }   /* product screenshots */
+/* epara promo · indigo + red→magenta→violet gradient, Outfit */
+:root { --ind:#1A1060; --ind2:#2A1F7A; --g1:#F0384E; --g2:#B4248F; --g3:#4B3BD6; --wh:#FFFFFF; }
+#bg { background:radial-gradient(90% 60% at 50% 35%, #33287A 0%, #1A1060 60%, #110A45 100%); }
+.orb { position:absolute; border-radius:50%; filter:blur(80px); opacity:.55; }
+.o1 { left:-200px; top:200px; width:700px; height:700px; background:#B4248F; }
+.o2 { right:-260px; bottom:240px; width:760px; height:760px; background:#4B3BD6; }
+.grain { position:absolute; inset:0; opacity:.06; background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+#st > * , #tx > * { position:absolute; opacity:0; }
+.h { left:70px; right:70px; top:250px; text-align:center; font-family:"Out",sans-serif; font-weight:800; font-size:104px; line-height:1.02; letter-spacing:-.03em; color:var(--wh); }
+.s { left:90px; right:90px; top:500px; text-align:center; font-family:"Out",sans-serif; font-weight:500; font-size:40px; color:rgba(255,255,255,.8); }
+
+/* cash note */
+#note { left:240px; top:780px; width:600px; height:300px; border-radius:16px; background:linear-gradient(135deg,#8FA98A,#5E7A5C); box-shadow:0 30px 60px rgba(0,0,0,.4); }
+#note .nv { position:absolute; left:40px; top:30px; font-family:"Out",sans-serif; font-weight:800; font-size:110px; color:rgba(255,255,255,.85); }
+#note .nl { position:absolute; right:40px; bottom:30px; font-family:"Out",sans-serif; font-weight:700; font-size:40px; letter-spacing:.2em; color:rgba(255,255,255,.7); }
+#note .nring { position:absolute; right:70px; top:60px; width:150px; height:150px; border-radius:50%; border:10px solid rgba(255,255,255,.35); }
+
+/* card */
+#card { left:220px; top:760px; width:640px; height:404px; border-radius:36px; background:linear-gradient(130deg, var(--g1) 0%, var(--g2) 48%, var(--g3) 100%); box-shadow:0 40px 80px rgba(10,5,40,.6), inset 0 1px 0 rgba(255,255,255,.35); overflow:hidden; }
+#card::after { content:""; position:absolute; inset:0; background:linear-gradient(115deg, rgba(255,255,255,0) 35%, rgba(255,255,255,.28) 50%, rgba(255,255,255,0) 65%); }
+.cchip { position:absolute; left:50px; top:150px; width:90px; height:66px; border-radius:12px; background:linear-gradient(135deg,#F4D58D,#C9A24E); }
+.clogo { position:absolute; right:46px; top:40px; filter:drop-shadow(0 4px 10px rgba(0,0,0,.25)) brightness(1.6) saturate(0); }
+.cnum { position:absolute; left:50px; bottom:44px; font-family:"Out",sans-serif; font-weight:600; font-size:40px; letter-spacing:.12em; color:#fff; }
+.cmc { position:absolute; right:46px; bottom:40px; width:110px; height:60px; }
+.cmc i { position:absolute; top:0; width:64px; height:64px; border-radius:50%; } .cmc i:first-child { left:0; background:#EB001B; } .cmc i:last-child { right:0; background:#F79E1B; mix-blend-mode:screen; opacity:.95; }
+
+/* phone */
+#phone { left:250px; top:640px; width:580px; height:1140px; border-radius:76px; background:#0C0830; border:12px solid #2C2560; box-shadow:0 60px 120px rgba(5,2,25,.7); overflow:hidden; }
+.notch { position:absolute; left:50%; top:22px; width:150px; height:40px; margin-left:-75px; border-radius:20px; background:#000; z-index:3; }
+.scr { position:absolute; inset:0; padding:100px 42px 40px; background:linear-gradient(180deg,#F6F4FF,#EAE6FF); font-family:"Out",sans-serif; color:#1A1060; }
+#scrB { opacity:0; }
+.hd { display:flex; align-items:center; gap:14px; } .hd b { font-weight:800; font-size:44px; letter-spacing:-.02em; }
+.biz { margin-left:auto; font-size:24px; font-weight:700; color:#fff; background:#1A1060; padding:6px 16px; border-radius:999px; }
+.bal { margin-top:40px; padding:34px 34px; border-radius:30px; background:linear-gradient(130deg,var(--g1),var(--g2) 50%,var(--g3)); color:#fff; }
+.bal span { display:block; font-size:28px; opacity:.85; } .bal b { display:block; font-size:78px; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+.tx { display:flex; align-items:center; gap:20px; margin-top:34px; padding:24px; border-radius:24px; background:#fff; }
+.tx i { font-style:normal; font-size:44px; } .tx b { display:block; font-size:30px; } .tx span { font-size:24px; color:#6B6890; } .tx em { margin-left:auto; font-style:normal; font-weight:700; font-size:30px; }
+.pay { position:absolute; left:42px; right:42px; bottom:70px; height:120px; border-radius:60px; background:#1A1060; color:#fff; font-size:46px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+.qrbox { margin:60px auto 0; width:400px; height:400px; padding:26px; border-radius:30px; background:#fff; box-shadow:0 20px 40px rgba(26,16,96,.15); }
+#qr { width:348px; height:348px; display:grid; grid-template-columns:repeat(29,1fr); }
+#qr i { display:block; }
+.qrl { margin-top:30px; text-align:center; font-size:34px; font-weight:600; }
+.ok { position:absolute; left:42px; right:42px; bottom:70px; height:120px; border-radius:60px; background:#16A36B; color:#fff; font-size:40px; font-weight:800; display:flex; align-items:center; justify-content:center; gap:16px; opacity:0; }
+.ok i { font-style:normal; display:inline-flex; width:56px; height:56px; border-radius:50%; background:#fff; color:#16A36B; align-items:center; justify-content:center; font-size:36px; }
+#coin { left:620px; top:900px; width:120px; height:120px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #FFE59A, #F2B705 60%, #B98500); color:#6b4a00; font-family:"Out",sans-serif; font-weight:800; font-size:80px; line-height:116px; text-align:center; box-shadow:0 10px 30px rgba(242,183,5,.5); }
+#tap { left:490px; top:1580px; width:100px; height:100px; border-radius:50%; border:6px solid rgba(255,255,255,.9); }
+
+/* ATM */
+#atm { left:190px; top:640px; width:700px; height:900px; border-radius:40px; background:linear-gradient(180deg,#3B3290,#241C6A); box-shadow:0 50px 100px rgba(5,2,25,.6); }
+.ascr { position:absolute; left:60px; right:60px; top:60px; height:280px; border-radius:20px; background:#0E0A38; color:#fff; font-family:"Out",sans-serif; padding:40px; }
+.ascr b { display:block; font-size:44px; } .ascr span { display:block; margin-top:14px; font-size:64px; font-weight:800; }
+.aslot { position:absolute; left:150px; right:150px; top:400px; height:22px; border-radius:11px; background:#05031A; box-shadow:inset 0 4px 8px rgba(0,0,0,.6); }
+.apad { position:absolute; left:220px; top:480px; width:260px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.apad i { display:block; height:60px; border-radius:12px; background:#4A41A6; }
+#rcpt { left:330px; top:1330px; width:420px; padding:30px 36px; background:#fff; border-radius:4px; font-family:"Out",sans-serif; color:#1A1060; box-shadow:0 20px 40px rgba(0,0,0,.35); }
+#rcpt b { display:block; font-size:30px; letter-spacing:.2em; border-bottom:2px dashed #C9C5E8; padding-bottom:14px; }
+#rcpt span { display:flex; justify-content:space-between; margin-top:16px; font-size:30px; }
+#rcpt .fee { font-weight:800; font-size:40px; } #rcpt .fee em { font-style:normal; color:#16A36B; }
+
+/* end card */
+#end { left:0; right:0; top:560px; height:900px; text-align:center; }
+#logoMark { display:block; margin:0 auto; filter:drop-shadow(0 20px 40px rgba(180,36,143,.45)); }
+.wm { margin-top:20px; font-family:"Out",sans-serif; font-weight:800; font-size:150px; letter-spacing:-.04em; color:#fff; line-height:1; }
+.tg { margin-top:40px; display:flex; flex-direction:column; gap:8px; font-family:"Out",sans-serif; font-weight:700; font-size:56px; color:#fff; }
+.tg span:nth-child(2) { color:#F7A3C9; } .tg span:nth-child(3) { color:#B9B2FF; }
+.dl { display:inline-block; margin-top:50px; padding:22px 44px; border-radius:999px; background:#fff; color:#1A1060; font-family:"Out",sans-serif; font-weight:800; font-size:38px; }
+.bkt { margin-top:30px; font-family:"Out",sans-serif; font-weight:500; font-size:30px; letter-spacing:.12em; color:rgba(255,255,255,.65); }
+#sweep { left:-600px; top:0; width:400px; height:1920px; background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0)); rotate:12deg; }
+
+.bal b span { display:inline; font-size:inherit; opacity:1; }
+.clogo { filter:brightness(0) invert(1) drop-shadow(0 4px 10px rgba(0,0,0,.25)); }
+#card { z-index:5; }
+#rcpt { z-index:6; }
+
+:root { --W:1080px; --H:1920px; }
+
+</style></head><body>
+<div id="stage" data-composition-id="epara_promo" data-start="0" data-duration="10.00" data-fps="60" data-width="1080" data-height="1920">
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="epg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0384E"/><stop offset=".5" stop-color="#B4248F"/><stop offset="1" stop-color="#4B3BD6"/></linearGradient>
+    <symbol id="pmark" viewBox="0 0 120 150">
+      <path d="M22 20 C22 12 28 8 36 8 L84 8 C100 8 110 20 110 36 L110 52 C110 68 98 78 84 78 L52 78 L52 132 C52 142 44 148 36 146 C28 144 22 138 22 130 Z" fill="url(#epg)"/>
+      <path d="M52 30 L80 30 C86 30 88 34 88 40 L88 48 C88 54 84 56 80 56 L52 56 Z" fill="#1A1060" opacity=".9"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="L clip" id="bg" data-start="0" data-duration="10" data-track-index="1">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="grain"></div>
+</div>
+
+<div class="L clip" id="st" data-start="0" data-duration="10" data-track-index="2">
+  <!-- 1 · cash → card -->
+  <div id="note"><div class="nv">100</div><div class="nl">LEKË</div><div class="nring"></div></div>
+  <div id="card"><div class="cchip"></div><svg class="clogo" width="70" height="88"><use href="#pmark"/></svg><div class="cnum">•••• 4821</div><div class="cmc"><i></i><i></i></div></div>
+
+  <!-- 2 · phone: rewards -->
+  <div id="phone">
+    <div class="notch"></div>
+    <div class="scr" id="scrA">
+      <div class="hd"><svg width="34" height="42"><use href="#pmark"/></svg><b>epara</b></div>
+      <div class="bal"><span>Rewards</span><b><span id="rw">120</span> ALL</b></div>
+      <div class="tx"><i>☕</i><div><b>Coffee · Tirana</b><span>Card payment</span></div><em>−250 ALL</em></div>
+      <div class="pay" id="payBtn">Pay</div>
+    </div>
+    <div class="scr" id="scrB">
+      <div class="hd"><svg width="34" height="42"><use href="#pmark"/></svg><b>epara</b> <span class="biz">Business</span></div>
+      <div class="qrbox"><div id="qr"></div></div>
+      <div class="qrl">Scan to pay · 1,200 ALL</div>
+      <div class="ok" id="okB"><i>✓</i>Payment received</div>
+    </div>
+  </div>
+  <div id="coin">+</div>
+  <div id="tap"></div>
+
+  <!-- 3 · ATM -->
+  <div id="atm"><div class="ascr"><b>Withdraw</b><span>5,000 ALL</span></div><div class="aslot"></div><div class="apad"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div id="rcpt"><b>RECEIPT</b><span>Amount 5,000 ALL</span><span class="fee">Fee <em>0 ALL</em></span></div>
+
+  <!-- 5 · end card -->
+  <div id="end">
+    <svg id="logoMark" width="180" height="225"><use href="#pmark"/></svg>
+    <div class="wm">epara</div>
+    <div class="tg"><span>More rewards.</span><span>More freedom.</span><span>More control.</span></div>
+    <div class="dl">Download free on iPhone</div>
+    <div class="bkt">Powered by BKT</div>
+  </div>
+  <div id="sweep"></div>
+</div>
+
+<div class="L clip" id="tx" data-start="0" data-duration="10" data-track-index="3">
+  <div class="h" id="h1">Better than cash.</div>
+  <div class="h" id="h2">Rewards on<br/>every payment.</div>
+  <div class="h" id="h3">0% ATM fees<br/>in Albania.</div>
+  <div class="h" id="h4">Get paid with<br/>a QR code.</div>
+  <div class="s" id="s4">QR codes &amp; payment links for your business</div>
+</div>
+
+<audio id="bed" src="sfx/bed.wav" data-start="0" data-duration="10.000" data-track-index="90" data-volume="0.18"></audio>
+<audio id="s0" src="sfx/click.wav" data-start="2.450" data-duration="0.040" data-track-index="100" data-volume="0.06"></audio>
+<audio id="s1" src="sfx/pop.wav" data-start="2.700" data-duration="0.120" data-track-index="101" data-volume="0.07"></audio>
+<audio id="s2" src="sfx/ding.wav" data-start="6.720" data-duration="1.200" data-track-index="102" data-volume="0.07"></audio>
+<script src="vendor/gsap.min.js"></script>
+<script>
+(function () {
+  const W = 1080, H = 1920, D = 10.00;
+  const tl = window.gsap.timeline({ paused: true });
+// ===== animation-library MOTION KIT — loaded into every page before scene.js. `tl` (paused GSAP timeline), W, H exist already. =====
+// Rules baked in: transforms + opacity only (no top/left/width/height tweens), fromTo with immediateRender:false for later entrances,
+// seeded random only (never Math.random), soft eases (power3.out 0.3–0.45 s), no shakes, no flashes.
+let seed = 5; const rnd = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const E = 'expo.out';
+const $ = function (s) { return typeof s === 'string' ? document.querySelector(s) : s; };
+const div = function (p, css, cls) { const d = document.createElement('div'); d.style.cssText = css || ''; if (cls) d.className = cls; $(p).appendChild(d); return d; };
+const show = function (sel, t) { tl.set(sel, { opacity: 1 }, t); };
+const hide = function (sel, t) { tl.set(sel, { opacity: 0 }, t); };
+// entrances
+const up = function (sel, t, d) { tl.fromTo(sel, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: d || 0.5, ease: E, immediateRender: false }, t); };
+const fadeIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.out', immediateRender: false }, t); };
+const pop = function (sel, t, d) { tl.fromTo(sel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: d || 0.45, ease: 'back.out(1.7)', immediateRender: false }, t); };
+const slideIn = function (sel, t, from, d) { const v = { opacity: 0 }; v[from === 'left' || from === 'right' ? 'x' : 'y'] = (from === 'left' || from === 'top' ? -1 : 1) * 120;
+  tl.fromTo(sel, v, { x: 0, y: 0, opacity: 1, duration: d || 0.45, ease: 'power3.out', immediateRender: false }, t); };
+const blurIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, filter: 'blur(18px)', scale: 1.06 }, { opacity: 1, filter: 'blur(0px)', scale: 1, duration: d || 0.6, ease: 'power3.out', immediateRender: false }, t); };
+const words = function (sel, t, gap) {   // word-by-word reveal: wraps each word of the element in a span
+  const el = $(sel); const w = el.textContent.trim().split(/\s+/); el.innerHTML = w.map(function (x) { return '<span style="display:inline-block;opacity:0">' + x + '</span>'; }).join(' ');
+  el.querySelectorAll('span').forEach(function (s, i) { tl.fromTo(s, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', immediateRender: false }, t + i * (gap || 0.07)); });
+};
+// exits
+const out = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -20, duration: d || 0.35, ease: 'power2.in' }, t); };
+const fadeOut = function (sel, t, d) { tl.to(sel, { opacity: 0, duration: d || 0.35, ease: 'power2.inOut' }, t); };
+// emphasis
+const hl = function (sel, t) { tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out', immediateRender: false }, t); };   // .hl > i, .rule
+const growY = function (sel, t, d, stagger) { tl.fromTo(sel, { scaleY: 0 }, { scaleY: 1, duration: d || 0.7, ease: 'power3.out', stagger: stagger || 0.08, immediateRender: false }, t); };  // .bar
+const stamp = function (sel, t) { tl.fromTo(sel, { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: 'power4.in', immediateRender: false }, t); };
+const count = function (sel, a, b, t, dur, fmt) {   // fmt e.g. function (v) { return v.toFixed(1) + ' m²'; }
+  const el = $(sel); const o = { v: a }; fmt = fmt || function (v) { return Math.round(v).toLocaleString('de-DE'); };
+  tl.fromTo(o, { v: a }, { v: b, duration: dur, ease: 'power2.out', immediateRender: false, onUpdate: function () { el.textContent = fmt(o.v); } }, t);
+  el.textContent = fmt(a);
+};
+const typeIn = function (sel, text, t, dur) {   // typewriter: GSAP cannot tween textContent, so drive a proxy
+  const el = $(sel); const o = { n: 0 };
+  tl.fromTo(o, { n: 0 }, { n: text.length, duration: dur || text.length * 0.04, ease: 'none', immediateRender: false, onUpdate: function () { el.textContent = text.slice(0, Math.round(o.n)); } }, t);
+};
+const draw = function (path, t, dur) {   // SVG line draw
+  const p = $(path); const L = p.getTotalLength(); p.style.strokeDasharray = L;
+  tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur || 1.2, ease: 'power2.inOut', immediateRender: true }, t);
+};
+const kenBurns = function (sel, t, dur, from, to) { tl.fromTo(sel, { scale: from || 1.0 }, { scale: to || 1.12, duration: dur, ease: 'none', immediateRender: true }, t); };
+const drift = function (sel, t, dur, dx, dy) { tl.to(sel, { x: '+=' + (dx || 0), y: '+=' + (dy || -30), duration: dur, ease: 'none' }, t); };
+// scene change inside one page: fade the old layer out while the new one fades in (0.35–0.4 s)
+const xfade = function (a, b, t, d) { tl.to(a, { opacity: 0, duration: d || 0.4, ease: 'power2.inOut' }, t); tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.inOut', immediateRender: false }, t); };
+// After the voice-over arrives: retime the whole timeline. pts = [[oldTime, newTime], ...] ascending, e.g. [[0,0],[3.2,2.9],[8,9.4]]
+const remap = function (pts) {
+  const m = function (s) { for (let i = 1; i < pts.length; i++) if (s <= pts[i][0]) { const a = pts[i - 1], b = pts[i]; return a[1] + (s - a[0]) * (b[1] - a[1]) / (b[0] - a[0]); }
+    const a = pts[pts.length - 2], b = pts[pts.length - 1]; return b[1] + (s - b[0]) * (b[1] - a[1]) / (b[0] - a[0]); };
+  tl.getChildren(false, true, true).forEach(function (c) { const s = c.startTime(), e = s + c.totalDuration(), ns = m(s); c.startTime(ns); if (c.totalDuration() > 0) c.totalDuration(Math.max(0.001, m(e) - ns)); });
+};
+
+// ---- scene ----
+// ===== epara · 10 s promo: cash → card → rewards → 0% ATM → business QR → end card =====
+const ins = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, y: 40, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: d || 0.45, ease: 'power3.out', immediateRender: false }, t); };
+const outs = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -30, filter: 'blur(8px)', duration: d || 0.3, ease: 'power2.in' }, t); };
+// pseudo QR (seeded) with three finder squares
+const qr = $('#qr');
+for (let r = 0; r < 29; r++) for (let c = 0; c < 29; c++) {
+  const f = function (x, y) { return r >= y && r < y + 7 && c >= x && c < x + 7; };
+  let on = rnd() < 0.48;
+  [[0, 0], [22, 0], [0, 22]].forEach(function (p) { if (f(p[0], p[1])) { const rr = r - p[1], cc = c - p[0]; on = (rr === 0 || rr === 6 || cc === 0 || cc === 6) || (rr >= 2 && rr <= 4 && cc >= 2 && cc <= 4); } });
+  const i = document.createElement('i'); i.style.background = on ? '#1A1060' : 'transparent'; qr.appendChild(i);
+}
+tl.fromTo('.o1', { x: 0, y: 0 }, { x: 160, y: 220, duration: 10, ease: 'sine.inOut', immediateRender: true }, 0);
+tl.fromTo('.o2', { x: 0, y: 0 }, { x: -140, y: -260, duration: 10, ease: 'sine.inOut', immediateRender: true }, 0);
+
+// 1 · better than cash (0–1.6)
+ins('#h1', 0.1);
+tl.fromTo('#note', { opacity: 0, scale: 0.9, rotation: -6 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.4, ease: 'power3.out', immediateRender: false }, 0.1);
+tl.to('#note', { scaleX: 0.15, scaleY: 0.7, rotation: 12, opacity: 0, filter: 'blur(6px)', duration: 0.45, ease: 'power3.in' }, 0.75);
+tl.fromTo('#card', { opacity: 0, rotationY: -90, scale: 0.8 }, { opacity: 1, rotationY: 0, scale: 1, duration: 0.55, ease: 'back.out(1.4)', immediateRender: false }, 1.05);
+outs('#h1', 1.5);
+
+// 2 · rewards on every payment (1.6–3.6)
+ins('#h2', 1.65);
+tl.to('#card', { y: -330, scale: 0.55, rotationX: 18, duration: 0.5, ease: 'power3.inOut' }, 1.6);
+tl.fromTo('#phone', { opacity: 0, y: 700 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', immediateRender: false }, 1.7);
+tl.to('#card', { opacity: 0, duration: 0.25 }, 2.0);
+tl.fromTo('#tap', { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 0.8, duration: 0.25, ease: 'power2.out', immediateRender: false }, 2.4);
+tl.to('#tap', { opacity: 0, scale: 1.3, duration: 0.25 }, 2.65);
+tl.fromTo('#payBtn', { scale: 1 }, { scale: 0.94, duration: 0.1, yoyo: true, repeat: 1, immediateRender: false }, 2.45);
+tl.fromTo('#coin', { opacity: 0, scale: 0.3, x: -120, y: 600 }, { opacity: 1, scale: 1, x: 0, y: 0, duration: 0.45, ease: 'back.out(1.8)', immediateRender: false }, 2.65);
+tl.to('#coin', { opacity: 0, scale: 0.4, x: -140, y: -20, duration: 0.3, ease: 'power2.in' }, 3.1);
+count('#rw', 120, 145, 3.15, 0.35, function (v) { return Math.round(v); });
+outs('#h2', 3.45);
+
+// 3 · 0% ATM fees (3.6–5.6)
+tl.to('#phone', { opacity: 0, x: -700, duration: 0.4, ease: 'power3.in' }, 3.5);
+ins('#h3', 3.7);
+tl.fromTo('#atm', { opacity: 0, x: 700 }, { opacity: 1, x: 0, duration: 0.45, ease: 'power3.out', immediateRender: false }, 3.65);
+tl.set('#card', { y: 0, scale: 0.6, rotationX: 0, x: 0 }, 3.6);
+tl.fromTo('#card', { opacity: 0, x: 0, y: 700, scale: 0.5, rotation: 0 }, { opacity: 1, y: 160, duration: 0.4, ease: 'power2.out', immediateRender: false }, 3.95);
+tl.to('#card', { y: 80, scaleY: 0.04, duration: 0.3, ease: 'power2.in' }, 4.4);
+tl.to('#card', { opacity: 0, duration: 0.1 }, 4.65);
+tl.fromTo('#rcpt', { opacity: 0, y: -260, scaleY: 0.2, transformOrigin: '50% 0%' }, { opacity: 1, y: 0, scaleY: 1, duration: 0.5, ease: 'power2.out', immediateRender: false }, 4.75);
+outs('#h3', 5.45);
+
+// 4 · business QR (5.6–7.6)
+tl.to(['#atm', '#rcpt'], { opacity: 0, x: -700, duration: 0.4, ease: 'power3.in' }, 5.5);
+tl.set('#scrA', { opacity: 0 }, 5.6); tl.set('#scrB', { opacity: 1 }, 5.6);
+tl.fromTo('#phone', { opacity: 0, x: 700 }, { opacity: 1, x: 0, duration: 0.45, ease: 'power3.out', immediateRender: false }, 5.65);
+ins('#h4', 5.75); ins('#s4', 5.95);
+tl.fromTo('.qrbox', { scale: 0.7 }, { scale: 1, duration: 0.45, ease: 'back.out(1.6)', immediateRender: false }, 5.9);
+tl.fromTo('.ok', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: 'back.out(1.8)', immediateRender: false }, 6.7);
+outs(['#h4', '#s4'], 7.4);
+
+// 5 · end card (7.6–10)
+tl.to('#phone', { opacity: 0, scale: 0.85, y: 120, duration: 0.4, ease: 'power3.in' }, 7.45);
+tl.set('#end', { opacity: 1 }, 7.7);
+tl.fromTo('#logoMark', { opacity: 0, scale: 0.4, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.55, ease: 'back.out(1.7)', immediateRender: true }, 7.7);
+tl.fromTo('.wm', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', immediateRender: true }, 7.95);
+tl.fromTo('.tg span', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.18, ease: 'power3.out', immediateRender: true }, 8.25);
+tl.fromTo(['.dl', '.bkt'], { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.12, ease: 'power3.out', immediateRender: true }, 8.85);
+tl.fromTo('#sweep', { opacity: 1, x: 0 }, { x: 2200, duration: 0.9, ease: 'power2.inOut', immediateRender: false }, 9.0);
+
+  tl.to({}, { duration: D }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["epara_promo"] = tl;
+})();
+</script>
+</div></body></html>

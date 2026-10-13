@@ -1,0 +1,6 @@
+Edit this image. Keep everything exactly the same (characters, poses, lighting, ledge, panels, stars, camera) and change ONLY the text:
+1. The upper purple chat bubble on the left panel now reads exactly: a je mirë?
+2. The lower purple chat bubble now reads exactly: jam mirë.
+3. The yellow sticky note now reads exactly: gjumë?
+4. The large teal panel header reads exactly: CLAUDE · ONLINE  and its body line still reads: waiting for task_
+Keep the same fonts and sizes. No other text changes.

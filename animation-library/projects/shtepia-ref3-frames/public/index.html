@@ -1,0 +1,247 @@
+<!doctype html><html lang="sq"><head><meta charset="utf-8"/><style>
+/* ===== animation-library base: every library font + shared components. Sizes come from --W / --H set by build_page.py ===== */
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-600-normal.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-800-normal.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-600.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-700.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+@font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-600-italic.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-700-italic.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+/* Font families: Arc = Archivo Condensed 600/800, BG = Bricolage 800, DM = DM Sans, HG = Hanken Grotesk 300/500/700,
+   IS = Instrument Serif (+italic), Inter, Osw = Oswald 500/700, Out = Outfit 500-800, Ser = Source Serif 4 italic 600/700,
+   Type = Special Elite (typewriter), Spec = Spectral italic 600/700. All support Albanian ë ç. */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); }
+#stage { position:relative; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--body); }
+.L { position:absolute; left:0; top:0; width:var(--W); height:var(--H); overflow:hidden; pointer-events:none; }
+.bg { background:var(--bgfx, var(--bg)); }
+/* text */
+.h  { font-family:var(--head); font-weight:var(--headw, 800); color:var(--ink); letter-spacing:var(--track, -.02em); line-height:1.02; }
+.kicker { font-family:var(--body); font-weight:700; font-size:30px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.body { font-family:var(--body); font-weight:500; font-size:40px; line-height:1.25; color:var(--ink); }
+.quote { font-family:var(--quote); font-style:italic; font-size:64px; line-height:1.12; color:var(--ink); }
+.num { font-family:var(--head); font-weight:var(--headw, 800); font-size:220px; line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.src { position:absolute; left:70px; bottom:110px; font-family:var(--body); font-weight:500; font-size:22px; letter-spacing:.02em; color:var(--mute); }
+/* highlighter: <span class="hl"><i></i><b>word</b></span>, animate i scaleX 0→1 */
+.hl { position:relative; display:inline-block; padding:0 .12em; }
+.hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+.hl > b { position:relative; z-index:1; font-weight:inherit; }
+/* parts */
+.card { position:absolute; background:var(--card); border-radius:var(--radius, 18px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.18)); padding:36px 40px; }
+.photo { position:absolute; object-fit:cover; border-radius:var(--radius, 12px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.25)); }
+.stamp { position:absolute; font-family:var(--head); font-weight:800; font-size:120px; color:var(--red); border:10px solid var(--red); padding:8px 34px; transform:rotate(-8deg); letter-spacing:.04em; mix-blend-mode:multiply; }
+.bar { position:absolute; bottom:0; width:120px; background:var(--accent); transform-origin:50% 100%; }   /* animate scaleY */
+.rule { position:absolute; height:6px; background:var(--accent); transform-origin:0 50%; }                   /* animate scaleX */
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.vignette { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0,0,0,.35) 100%); }
+/* safe zones (Reels UI): keep text inside top 220px … bottom 380px on 9:16 */
+/* VOX explainer (paper, ink, yellow highlighter, print photos, serif quotes) — the user's pick for documentary/political */
+:root { --bg:#EEE8DC; --ink:#1D1C1A; --mute:#57524A; --accent:#C8202F; --hi:#FFD23F; --red:#C8202F; --card:#FBF8F1;
+  --head:"Arc", "Arial Narrow", sans-serif; --headw:800; --track:-.01em; --body:"HG", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(120% 70% at 50% 40%, rgba(255,255,255,.55), rgba(255,255,255,0) 65%), repeating-linear-gradient(0deg, rgba(120,100,70,.035) 0 1px, transparent 1px 3px), #EEE8DC;
+  --shadow:0 10px 28px rgba(40,30,10,.18); --radius:4px; }
+.photo { filter:grayscale(1) contrast(1.15) sepia(.12); border:10px solid #fff; }
+.halftone { position:absolute; inset:0; pointer-events:none; opacity:.12; background-image:radial-gradient(#000 1px, transparent 1.4px); background-size:5px 5px; mix-blend-mode:multiply; }
+/* style frames in the "pinterest-fall" reference style: monochrome chrome & glass, dark → light */
+#f1 { background:radial-gradient(70% 45% at 50% 55%, #2a2a2a 0%, #0b0b0b 60%, #030303 100%); }
+#f2 { background:radial-gradient(70% 50% at 50% 40%, #9a9a9a 0%, #5e5e5e 55%, #2b2b2b 100%); }
+#f3 { background:radial-gradient(80% 50% at 50% 38%, #fbf6df 0%, #f2f2f0 45%, #e2e2e0 100%); }
+.rings { position:absolute; inset:0; background:
+  radial-gradient(circle at 50% 62%, transparent 0 300px, rgba(255,255,255,.07) 302px 306px, transparent 308px 520px, rgba(255,255,255,.05) 522px 528px, transparent 530px 760px, rgba(255,255,255,.04) 762px 770px, transparent 772px),
+  radial-gradient(circle at 50% 62%, rgba(80,80,80,.35) 0 520px, transparent 760px); }
+.rings.grey { background:radial-gradient(circle at 50% 30%, rgba(255,255,255,.18) 0 360px, transparent 362px), radial-gradient(circle at 50% 30%, transparent 0 560px, rgba(255,255,255,.08) 562px 568px, transparent 570px); }
+.bokeh { position:absolute; border-radius:50%; background:radial-gradient(circle, #fff 0%, rgba(255,255,255,.4) 35%, transparent 70%); filter:blur(2px); }
+.num { position:absolute; left:60px; right:60px; text-align:center; font-family:"Poppins",sans-serif; font-weight:700; font-size:150px; line-height:1; letter-spacing:-.02em;
+  background:linear-gradient(180deg, #f2f2f2, #8e8e8e); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.lbl { position:absolute; left:60px; right:60px; text-align:center; font-family:"Poppins",sans-serif; font-weight:500; font-size:46px; color:#d6d6d6; }
+#f2 .lbl { color:#eeeeee; }
+.stack { position:absolute; left:0; right:0; top:560px; height:1000px; perspective:1600px; }
+.glass { position:absolute; left:50%; width:500px; height:900px; margin-left:-250px; border-radius:46px; background:linear-gradient(160deg, rgba(255,255,255,.22), rgba(255,255,255,.06)); border:2px solid rgba(255,255,255,.35); box-shadow:0 40px 80px rgba(0,0,0,.6), inset 0 0 40px rgba(255,255,255,.06); backdrop-filter:blur(6px); }
+.g3 { top:-40px; transform:translate(120px,-60px) rotateY(-22deg) rotateX(8deg) scale(.82); filter:blur(3px); opacity:.6; }
+.g2 { top:-10px; transform:translate(70px,-20px) rotateY(-22deg) rotateX(8deg) scale(.9); filter:blur(1.5px); opacity:.8; }
+.g1 { top:40px; transform:rotateY(-18deg) rotateX(6deg); padding:40px 34px; }
+.g1 .bar { display:flex; gap:10px; justify-content:flex-end; } .g1 .bar span { width:26px; height:12px; border-radius:4px; background:rgba(255,255,255,.6); }
+.g1 .photo { margin-top:40px; height:300px; border-radius:24px; background:linear-gradient(180deg, #8c8c8c, #3c3c3c); position:relative; overflow:hidden; }
+.g1 .bld { position:absolute; left:120px; bottom:0; width:200px; height:230px; background:repeating-linear-gradient(0deg, #2a2a2a 0 22px, #6a6a6a 22px 26px), #2a2a2a; box-shadow:-90px 40px 0 -20px #4a4a4a, 120px 60px 0 -30px #555; }
+.g1 .row { display:flex; justify-content:space-between; margin-top:34px; font-family:"Poppins",sans-serif; color:#e8e8e8; font-size:34px; }
+.g1 .row b { font-weight:600; } .g1 .row i { font-style:normal; color:#aaa; }
+.g1 .price { margin-top:16px; font-family:"Poppins",sans-serif; font-weight:700; font-size:72px; color:#fff; }
+.g1 .lines s { display:block; height:14px; border-radius:7px; background:rgba(255,255,255,.25); margin-top:18px; width:85%; }
+.g1 .heart { margin-top:40px; display:inline-block; padding:14px 26px; border-radius:18px; background:rgba(0,0,0,.45); font-family:"Poppins",sans-serif; font-weight:500; font-size:30px; color:#e6e6e6; }
+.cal { position:absolute; left:300px; top:760px; width:360px; height:300px; background:#f4f4f4; border-radius:10px; box-shadow:0 20px 40px rgba(0,0,0,.4); rotate:-3deg; padding:46px 26px 20px; }
+.cal::before { content:""; position:absolute; left:20px; right:20px; top:-14px; height:28px; background:repeating-linear-gradient(90deg, #888 0 8px, transparent 8px 26px); }
+.ctit { font-family:"Poppins",sans-serif; font-weight:700; font-size:54px; color:#222; text-align:center; line-height:1; }
+.cgrid { display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-top:16px; }
+.cgrid i { display:block; height:22px; border-radius:50%; border:2px solid #aaa; }
+.cgrid i.x { background:#9a9a9a; border-color:#9a9a9a; }
+.fog { position:absolute; inset:0; background:radial-gradient(60% 30% at 50% 40%, rgba(242,196,0,.25), transparent 70%); }
+.glowy { position:absolute; left:290px; top:640px; width:500px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(255,215,40,.55), rgba(255,215,40,0) 65%); filter:blur(10px); }
+.cap3 { position:absolute; left:80px; right:80px; top:300px; text-align:center; font-family:"Poppins",sans-serif; font-weight:600; font-size:58px; line-height:1.2; color:#555; }
+.fogbottom { position:absolute; left:0; right:0; bottom:0; height:520px; background:linear-gradient(180deg, rgba(242,242,240,0), rgba(242,242,240,.85) 60%, #f2f2f0); }
+
+:root { --W:1080px; --H:1920px; }
+
+</style></head><body>
+<div id="stage" data-composition-id="shtepia_ref3_frames" data-start="0" data-duration="3.00" data-fps="30" data-width="1080" data-height="1920">
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a3a3a"/><stop offset=".22" stop-color="#d8d8d8"/><stop offset=".45" stop-color="#7a7a7a"/><stop offset=".7" stop-color="#e6e6e6"/><stop offset="1" stop-color="#2e2e2e"/></linearGradient>
+    <linearGradient id="coinside" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a4a4a"/><stop offset=".3" stop-color="#cfcfcf"/><stop offset=".6" stop-color="#8d8d8d"/><stop offset="1" stop-color="#3a3a3a"/></linearGradient>
+    <radialGradient id="cointop" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#f4f4f4"/><stop offset="1" stop-color="#9a9a9a"/></radialGradient>
+    <linearGradient id="keyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF3A8"/><stop offset=".5" stop-color="#F2C400"/><stop offset="1" stop-color="#9C7A00"/></linearGradient>
+    <linearGradient id="crowd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3c3c3c"/><stop offset=".7" stop-color="#6a6a6a"/><stop offset="1" stop-color="#d8d8d8" stop-opacity="0"/></linearGradient>
+    <symbol id="person" viewBox="0 0 200 520"><circle cx="100" cy="70" r="52"/><path d="M8 520 L14 230 C14 160 50 130 100 130 C150 130 186 160 186 230 L192 520 Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ FRAME 1 · dark: glass listing cards ============ -->
+<div class="L clip" id="f1" data-start="0" data-duration="1" data-track-index="1">
+  <div class="rings"></div>
+  <div class="bokeh" style="left:840px;top:540px;width:60px;height:60px;"></div>
+  <div class="bokeh" style="left:120px;top:1240px;width:36px;height:36px;opacity:.4;"></div>
+  <div class="num" style="top:250px;">171.000 €</div>
+  <div class="lbl" style="top:410px;">Apartament 2+1 · 80 m²</div>
+  <div class="stack">
+    <div class="glass g3"></div>
+    <div class="glass g2"></div>
+    <div class="glass g1">
+      
+      <div class="photo"><div class="bld"></div></div>
+      <div class="row"><b>Tiranë · 2+1</b><i>80 m²</i></div>
+      <div class="price">171.000 €</div>
+      <div class="lines"><s></s><s></s><s style="width:50%"></s></div>
+      <div class="heart">♥ 2.141 €/m²</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FRAME 2 · grey: calendar on a pedestal + coins ============ -->
+<div class="L clip" id="f2" data-start="1" data-duration="1" data-track-index="2">
+  <div class="rings grey"></div>
+  <div class="bokeh" style="left:860px;top:600px;width:80px;height:80px;"></div>
+  <div class="num" style="top:250px;">27 vjet</div>
+  <div class="lbl" style="top:410px;">duke kursyer 30% të pagës</div>
+  <svg id="ped" style="position:absolute;left:250px;top:980px;" width="460" height="700" viewBox="0 0 460 700">
+    <rect x="30" y="60" width="400" height="640" fill="url(#chrome)"/>
+    <ellipse cx="230" cy="60" rx="200" ry="52" fill="#cfcfcf"/><ellipse cx="230" cy="60" rx="200" ry="52" fill="none" stroke="#f2f2f2" stroke-width="3"/>
+  </svg>
+  <div class="cal">
+    <div class="rings2"></div>
+    <div class="ctit">2053</div>
+    <div class="cgrid" id="cgrid"></div>
+  </div>
+  <svg style="position:absolute;left:600px;top:700px;rotate:28deg;" width="30" height="300"><rect x="6" y="0" width="18" height="250" fill="url(#chrome)"/><path d="M6 250 L15 295 L24 250 Z" fill="#555"/></svg>
+  <svg id="coinsR" style="position:absolute;left:740px;top:820px;" width="320" height="900"></svg>
+  <svg id="coinsL" style="position:absolute;left:-30px;top:1260px;" width="320" height="700"></svg>
+</div>
+
+<!-- ============ FRAME 3 · light: a generation and one key ============ -->
+<div class="L clip" id="f3" data-start="2" data-duration="1" data-track-index="3">
+  <div class="fog"></div>
+  <div class="cap3">Një brez i tërë po punon<br/>për një çelës.</div>
+  <div class="glowy"></div>
+  <svg style="position:absolute;left:330px;top:760px;" width="420" height="168" viewBox="0 0 300 120">
+    <g fill="url(#keyg)"><path d="M60 14 A46 46 0 1 0 60 106 A46 46 0 1 0 60 14 Z M60 44 A16 16 0 1 1 60 76 A16 16 0 1 1 60 44 Z" fill-rule="evenodd"/>
+    <rect x="100" y="51" width="180" height="18" rx="6"/><rect x="236" y="69" width="16" height="30" rx="3"/><rect x="262" y="69" width="16" height="22" rx="3"/></g>
+  </svg>
+  <svg id="crowdsvg" style="position:absolute;left:0;top:1050px;" width="1080" height="870"></svg>
+  <div class="fogbottom"></div>
+</div>
+
+
+<script src="vendor/gsap.min.js"></script>
+<script>
+(function () {
+  const W = 1080, H = 1920, D = 3.00;
+  const tl = window.gsap.timeline({ paused: true });
+// ===== animation-library MOTION KIT — loaded into every page before scene.js. `tl` (paused GSAP timeline), W, H exist already. =====
+// Rules baked in: transforms + opacity only (no top/left/width/height tweens), fromTo with immediateRender:false for later entrances,
+// seeded random only (never Math.random), soft eases (power3.out 0.3–0.45 s), no shakes, no flashes.
+let seed = 5; const rnd = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const E = 'expo.out';
+const $ = function (s) { return typeof s === 'string' ? document.querySelector(s) : s; };
+const div = function (p, css, cls) { const d = document.createElement('div'); d.style.cssText = css || ''; if (cls) d.className = cls; $(p).appendChild(d); return d; };
+const show = function (sel, t) { tl.set(sel, { opacity: 1 }, t); };
+const hide = function (sel, t) { tl.set(sel, { opacity: 0 }, t); };
+// entrances
+const up = function (sel, t, d) { tl.fromTo(sel, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: d || 0.5, ease: E, immediateRender: false }, t); };
+const fadeIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.out', immediateRender: false }, t); };
+const pop = function (sel, t, d) { tl.fromTo(sel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: d || 0.45, ease: 'back.out(1.7)', immediateRender: false }, t); };
+const slideIn = function (sel, t, from, d) { const v = { opacity: 0 }; v[from === 'left' || from === 'right' ? 'x' : 'y'] = (from === 'left' || from === 'top' ? -1 : 1) * 120;
+  tl.fromTo(sel, v, { x: 0, y: 0, opacity: 1, duration: d || 0.45, ease: 'power3.out', immediateRender: false }, t); };
+const blurIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, filter: 'blur(18px)', scale: 1.06 }, { opacity: 1, filter: 'blur(0px)', scale: 1, duration: d || 0.6, ease: 'power3.out', immediateRender: false }, t); };
+const words = function (sel, t, gap) {   // word-by-word reveal: wraps each word of the element in a span
+  const el = $(sel); const w = el.textContent.trim().split(/\s+/); el.innerHTML = w.map(function (x) { return '<span style="display:inline-block;opacity:0">' + x + '</span>'; }).join(' ');
+  el.querySelectorAll('span').forEach(function (s, i) { tl.fromTo(s, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', immediateRender: false }, t + i * (gap || 0.07)); });
+};
+// exits
+const out = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -20, duration: d || 0.35, ease: 'power2.in' }, t); };
+const fadeOut = function (sel, t, d) { tl.to(sel, { opacity: 0, duration: d || 0.35, ease: 'power2.inOut' }, t); };
+// emphasis
+const hl = function (sel, t) { tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out', immediateRender: false }, t); };   // .hl > i, .rule
+const growY = function (sel, t, d, stagger) { tl.fromTo(sel, { scaleY: 0 }, { scaleY: 1, duration: d || 0.7, ease: 'power3.out', stagger: stagger || 0.08, immediateRender: false }, t); };  // .bar
+const stamp = function (sel, t) { tl.fromTo(sel, { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: 'power4.in', immediateRender: false }, t); };
+const count = function (sel, a, b, t, dur, fmt) {   // fmt e.g. function (v) { return v.toFixed(1) + ' m²'; }
+  const el = $(sel); const o = { v: a }; fmt = fmt || function (v) { return Math.round(v).toLocaleString('de-DE'); };
+  tl.fromTo(o, { v: a }, { v: b, duration: dur, ease: 'power2.out', immediateRender: false, onUpdate: function () { el.textContent = fmt(o.v); } }, t);
+  el.textContent = fmt(a);
+};
+const typeIn = function (sel, text, t, dur) {   // typewriter: GSAP cannot tween textContent, so drive a proxy
+  const el = $(sel); const o = { n: 0 };
+  tl.fromTo(o, { n: 0 }, { n: text.length, duration: dur || text.length * 0.04, ease: 'none', immediateRender: false, onUpdate: function () { el.textContent = text.slice(0, Math.round(o.n)); } }, t);
+};
+const draw = function (path, t, dur) {   // SVG line draw
+  const p = $(path); const L = p.getTotalLength(); p.style.strokeDasharray = L;
+  tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur || 1.2, ease: 'power2.inOut', immediateRender: true }, t);
+};
+const kenBurns = function (sel, t, dur, from, to) { tl.fromTo(sel, { scale: from || 1.0 }, { scale: to || 1.12, duration: dur, ease: 'none', immediateRender: true }, t); };
+const drift = function (sel, t, dur, dx, dy) { tl.to(sel, { x: '+=' + (dx || 0), y: '+=' + (dy || -30), duration: dur, ease: 'none' }, t); };
+// scene change inside one page: fade the old layer out while the new one fades in (0.35–0.4 s)
+const xfade = function (a, b, t, d) { tl.to(a, { opacity: 0, duration: d || 0.4, ease: 'power2.inOut' }, t); tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.inOut', immediateRender: false }, t); };
+// After the voice-over arrives: retime the whole timeline. pts = [[oldTime, newTime], ...] ascending, e.g. [[0,0],[3.2,2.9],[8,9.4]]
+const remap = function (pts) {
+  const m = function (s) { for (let i = 1; i < pts.length; i++) if (s <= pts[i][0]) { const a = pts[i - 1], b = pts[i]; return a[1] + (s - a[0]) * (b[1] - a[1]) / (b[0] - a[0]); }
+    const a = pts[pts.length - 2], b = pts[pts.length - 1]; return b[1] + (s - b[0]) * (b[1] - a[1]) / (b[0] - a[0]); };
+  tl.getChildren(false, true, true).forEach(function (c) { const s = c.startTime(), e = s + c.totalDuration(), ns = m(s); c.startTime(ns); if (c.totalDuration() > 0) c.totalDuration(Math.max(0.001, m(e) - ns)); });
+};
+
+// ---- scene ----
+// static style frames: build coins, calendar grid and crowd
+const NS = 'http://www.w3.org/2000/svg';
+const mk = function (p, tag, a) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); p.appendChild(e); return e; };
+const coins = function (svg, cx, base, n, rx) {
+  for (let i = 0; i < n; i++) { const y = base - i * 26, dx = (rnd() - .5) * 8;
+    mk(svg, 'rect', { x: cx - rx + dx, y: y - 22, width: rx * 2, height: 22, fill: 'url(#coinside)' });
+    mk(svg, 'ellipse', { cx: cx + dx, cy: y - 22, rx: rx, ry: rx * .32, fill: 'url(#cointop)' }); }
+};
+const R = $('#coinsR'); coins(R, 110, 880, 26, 90); coins(R, 250, 860, 18, 70);
+const Lc = $('#coinsL'); coins(Lc, 150, 690, 16, 110);
+const grid = $('#cgrid'); for (let i = 0; i < 28; i++) { const d = document.createElement('i'); if (i < 19) d.className = 'x'; grid.appendChild(d); }
+const C = $('#crowdsvg');
+const rows = [[0, 300, .75], [80, 250, 1.0], [180, 160, 1.3]];
+rows.forEach(function (r, ri) { const n = ri === 2 ? 4 : 7;
+  for (let i = 0; i < n; i++) { const s = r[2] * (0.85 + rnd() * .3), w = 120 * s, h = 320 * s, x = (i + .5) * (1080 / n) - w / 2 + (rnd() - .5) * 60;
+    const u = mk(C, 'use', { href: '#person', x: x, y: r[1] + (rnd() * 30), width: w, height: h, fill: 'url(#crowd)' }); u.style.opacity = (0.55 + ri * .2); } });
+
+  tl.to({}, { duration: D }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["shtepia_ref3_frames"] = tl;
+})();
+</script>
+</div></body></html>

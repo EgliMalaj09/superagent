@@ -1,0 +1,11 @@
+{
+  "id": "lux-test", "duration": 26.2, "video": "input-video.mp4", "origin": "50% 52%",
+  "accent": "#D9BC84",
+  "beats": [],
+  "camera": [["creep", 0.0, 2.8, 1.07]],
+  "sfx": [["shimmer", 0.86, 0.18], ["shimmer", 2.14, 0.2], ["whoosh", 2.80, 0.22], ["luxhit", 3.18, 0.5],
+          ["shimmer", 5.95, 0.28], ["whoosh", 7.70, 0.16], ["shimmer", 9.55, 0.3],
+          ["whoosh", 12.30, 0.16], ["typing", 12.95, 0.12], ["shimmer", 15.6, 0.22],
+          ["whoosh", 16.90, 0.16], ["click", 19.10, 0.3], ["luxhit", 19.12, 0.45], ["shimmer", 19.15, 0.3],
+          ["whoosh", 21.50, 0.16], ["tick", 22.45, 0.2], ["luxhit", 24.60, 0.4], ["shimmer", 25.1, 0.3]]
+}

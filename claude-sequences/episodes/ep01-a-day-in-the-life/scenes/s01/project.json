@@ -1,0 +1,10 @@
+{
+  "name": "a-day-in-claude",
+  "format": "9x16",
+  "style": "brand",
+  "engines": [],
+  "lang": "en",
+  "duration": 7.0,
+  "audio": { "voice": [], "bed": null, "sfx": [] },
+  "_notes": "Scene 1 rebuilt as a front-view SVG room (reference look). ~7 s: clock close-up, alarm off, Claude walks to the bathroom door."
+}

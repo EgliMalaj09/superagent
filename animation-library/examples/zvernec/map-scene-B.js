@@ -1,0 +1,44 @@
+  // ===== B: dark map (Natural Earth via world-atlas, drawn with d3) =====
+  const world = window.__WORLD__;
+  const proj = d3.geoMercator().center([27.5, 36.5]).scale(5160).translate([1200, 1200]);
+  const path = d3.geoPath(proj);
+  const land = topojson.feature(world, world.objects.countries).features;
+  const svgm = d3.select('#map');
+  svgm.selectAll('path').data(land).enter().append('path').attr('d', path).attr('class', function (d) { return d.id === '008' ? 'land alb' : 'land'; });
+  const P = function (lon, lat) { return proj([lon, lat]); };
+  const pinsBox = document.getElementById('pins');
+  const pin = function (id, lon, lat, label, side) {
+    const p = P(lon, lat); const d = document.createElement('div'); d.className = 'pin'; d.id = id;
+    d.style.cssText = 'left:' + p[0] + 'px;top:' + p[1] + 'px;';
+    d.innerHTML = '<b></b><i></i><span style="' + (side === 'l' ? 'right:22px;' : 'left:22px;') + '">' + label + '</span><em>?</em>';
+    pinsBox.appendChild(d); return { el: d, p: p };
+  };
+  const J = pin('pj', 35.2137, 31.7683, 'Jerusalem', 'r');
+  const sites = [pin('ps0', 20.020, 39.746, 'Butrinti', 'r'), pin('ps1', 19.476, 40.722, 'Apolonia', 'l'), pin('ps2', 19.470, 40.325, 'Orikumi', 'l'),
+                 pin('ps3', 19.738, 40.540, 'Bylisi', 'r'), pin('ps4', 20.161, 40.004, 'Antigonea', 'r')];
+  const V = P(19.6, 40.35);
+  const arc = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const mx = (J.p[0] + V[0]) / 2, my = (J.p[1] + V[1]) / 2 - 260;
+  arc.setAttribute('d', 'M' + J.p[0] + ' ' + J.p[1] + ' Q ' + mx + ' ' + my + ' ' + V[0] + ' ' + V[1]);
+  arc.setAttribute('fill', 'none'); arc.setAttribute('stroke', '#FF3B30'); arc.setAttribute('stroke-width', '5'); arc.setAttribute('stroke-linecap', 'round');
+  document.getElementById('arc').appendChild(arc);
+  const L = arc.getTotalLength(); arc.setAttribute('stroke-dasharray', L); arc.setAttribute('stroke-dashoffset', L);
+  const cam = function (pt, s) { return { scale: s, x: 540 - s * pt[0], y: 820 - s * pt[1] }; };
+  tl.set('#pj', { scale: 0 }, 0); sites.forEach(function (s) { tl.set(s.el, { scale: 0 }, 0); });
+  tl.fromTo('#mcam', cam(J.p, 1.25), Object.assign(cam(J.p, 1.6), { duration: 5.6, ease: 'sine.inOut', immediateRender: true }), 0);
+  tl.fromTo('#b0', { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out', immediateRender: true }, 0);
+  tl.fromTo('#b1', { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'expo.out', immediateRender: true }, 0.45);
+  tl.to('#pj', { scale: 1, duration: 0.4, ease: 'back.out(2)' }, 1.6);
+  tl.fromTo('#pj b', { scale: 0.5, opacity: 1 }, { scale: 2.6, opacity: 0, duration: 1.0, repeat: 3, ease: 'power2.out', immediateRender: false }, 1.7);
+  tl.fromTo('#rc', { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out', immediateRender: false }, 2.55);
+  tl.fromTo('#b2', { color: '#6B655C' }, { color: '#FF6B61', duration: 0.2, immediateRender: false }, 4.5);
+  tl.to(['#rc', '#b0', '#b1'], { opacity: 0, y: -30, duration: 0.35, stagger: 0.05, ease: 'power2.in' }, 5.5);
+  tl.to('#arc path', { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' }, 5.8);
+  tl.to('#mcam', Object.assign(cam([mx, my + 200], 0.75), { duration: 0.8, ease: 'power2.inOut' }), 5.8);
+  tl.to('#mcam', Object.assign(cam(V, 1.9), { duration: 0.9, ease: 'power3.inOut' }), 6.6);
+  [6.85, 7.3, 7.75, 8.15, 8.5].forEach(function (t, i) { tl.to(sites[i].el, { scale: 1, duration: 0.35, ease: 'back.out(2)' }, t); });
+  tl.fromTo('#b3', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out', immediateRender: false }, 6.9);
+  tl.fromTo('#b4', { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'expo.out', immediateRender: false }, 8.75);
+  sites.forEach(function (s, i) { tl.fromTo('#' + s.el.id + ' em', { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)', immediateRender: false }, 9.3 + i * 0.08); });
+  tl.to('#mcam', Object.assign(cam(V, 2.05), { duration: 1.6, ease: 'none' }), 8.7);
+  tl.fromTo('#flash', { opacity: 0 }, { keyframes: [{ opacity: 0.8, duration: 0.06 }, { opacity: 0, duration: 0.25 }], immediateRender: false }, 10.38);

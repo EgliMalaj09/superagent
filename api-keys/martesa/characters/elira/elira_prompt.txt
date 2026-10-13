@@ -1,0 +1,23 @@
+# ELIRA — character sheet prompt (gemini-3-pro-image, 16:9, Vertex via day7/gen.py)
+# PASS 1 refs: refs/layout_ref.webp (layout) + refs/elira_face_anchor.png (face)
+# PASS 2 ref : output of pass 1 (edit pass that crops the head out of the middle panel)
+
+CHARACTER REFERENCE SHEET — photoreal studio photography, three panels side by side on one wide 16:9 canvas, seamless plain light-grey/white studio background, soft even diffused studio lighting, no props, no text, no labels, no logos, no borders between panels other than background.
+
+LAYOUT (follow the attached layout reference image exactly, same three-panel composition):
+- PANEL 1 (left, about one third of the width): FACE CLOSE-UP — head and upper chest, front facing, looking straight into the camera, neutral expression, sharp focus on the eyes.
+- PANEL 2 (middle): FRONT FULL BODY with the HEAD CROPPED OUT — the frame starts just below the chin/at the neck, shows the full outfit from shoulders down to the shoes, standing straight, arms relaxed at the sides, feet slightly apart, facing camera.
+- PANEL 3 (right): BACK VIEW FULL BODY — head to toe, seen from directly behind, standing straight, arms relaxed, showing hair from the back and the back of the outfit and shoes.
+
+All three panels show the SAME person with the SAME outfit, identical proportions, identical colors. Photoreal, real human skin texture with pores and natural asymmetry, real fabric texture and folds, natural film grain. NOT CGI, NOT 3D render, NOT illustration, NOT glossy advertising. Albanian / Mediterranean features.
+
+The identity reference photo(s) attached show the character's face — match this face EXACTLY (same bone structure, eyes, nose, mouth, hairline, age).
+
+CHARACTER: ELIRA — 26-year-old Albanian woman, natural beauty, soft but strong-willed face, fear and defiance at once. Slim graceful build, about 168 cm, tense upright posture. Long dark brown wavy/curly hair falling below the shoulders, expressive brown eyes, thick natural brows, minimal natural makeup, a small beauty mark on her left cheek. Expression: guarded, vulnerable, quietly rebellious.
+OUTFIT (canon, never changes): simple elegant dark bottle-green satin wrap dress with long sleeves and a V-neckline, falling to mid-calf, small thin gold hoop earrings, a thin delicate gold chain necklace, nude/black simple low block-heel pumps, no bag, no other jewelry.
+In the back view her long wavy hair falls down her back over the green dress.
+
+=== PASS 2 (edit, input = pass-1 sheet) ===
+Edit the attached character sheet. Keep EVERYTHING identical (same person, same outfit, same lighting, same background, same left and right panels, same 16:9 three-panel layout).
+Change ONLY the MIDDLE panel: the head must be completely cropped out of frame — the middle panel's top edge must cut at the base of the neck / collar line, so NO chin, NO mouth, NO face, NO hair is visible in the middle panel. Show the body from the collar down to the shoes, full outfit visible, shoes fully visible at the bottom. Move/scale the body so it fills the middle panel from collar to shoes.
+Photoreal, no text, no labels.

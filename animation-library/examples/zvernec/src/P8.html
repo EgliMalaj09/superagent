@@ -1,0 +1,68 @@
+<style>
+  .news { background: radial-gradient(80% 50% at 50% 42%, #2a0608, #0a0202 60%, #000); }
+  .scan { position:absolute; inset:0; background:repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px); pointer-events:none; }
+  .O { font-family:"Osw", sans-serif; font-weight:700; text-transform:uppercase; color:#fff; letter-spacing:-.01em; line-height:.95; }
+  .R { color:#FF2A2A; }
+  .blk { background:#FF2A2A; color:#000; padding:0 .12em; }
+  .wd { position:absolute; left:0; width:1080px; text-align:center; opacity:0; }
+  .gl { position:absolute; left:0; top:0; width:100%; text-align:center; opacity:0; mix-blend-mode:screen; }
+  .bar { position:absolute; left:0; top:1500px; width:1080px; height:84px; background:#FF2A2A; display:flex; align-items:center; gap:20px; padding:0 40px; }
+  .bar b { font-family:"Osw"; font-weight:700; font-size:40px; color:#000; letter-spacing:.04em; }
+  .bar span { font-family:"Osw"; font-weight:500; font-size:34px; color:#000; }
+  .drop { position:absolute; width:26px; height:36px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#6EC6FF; opacity:0; }
+  .ql { display:block; font-family:"Osw"; font-weight:700; font-size:100px; line-height:1.05; color:#fff; text-transform:uppercase; white-space:nowrap; opacity:0; }
+</style>
+
+<div class="S clip news" id="p8" data-start="0" data-duration="18.2" data-track-index="10">
+  <div class="S" id="cam8">
+    <!-- 1 · water -->
+    <div class="wd" id="w0" style="top:300px;"><div class="O" style="font-size:200px;">Tirana</div></div>
+    <div id="tap" style="position:absolute;left:340px;top:560px;width:400px;height:420px;opacity:0;">
+      <svg viewBox="0 0 200 210" width="400" height="420" style="overflow:visible;">
+        <rect x="20" y="20" width="110" height="34" rx="8" fill="#ddd"/><rect x="58" y="4" width="34" height="20" rx="5" fill="#bbb"/>
+        <rect x="110" y="34" width="34" height="60" rx="8" fill="#ddd"/><rect x="104" y="88" width="46" height="14" rx="4" fill="#aaa"/>
+        <g id="tapx" opacity="0"><line x1="60" y1="120" x2="190" y2="200" stroke="#FF2A2A" stroke-width="14" stroke-linecap="round"/><line x1="190" y1="120" x2="60" y2="200" stroke="#FF2A2A" stroke-width="14" stroke-linecap="round"/></g>
+      </svg>
+      <div id="drops"></div>
+    </div>
+    <div class="wd" id="w1" style="top:1060px;"><div class="O" style="font-size:60px;color:#ddd;">pa furnizim normal me</div><div class="O" style="font-size:130px;margin-top:40px;"><span class="blk">ujë të pijshëm</span></div></div>
+    <!-- 2 · railway -->
+    <svg id="rail" viewBox="0 0 1080 700" style="position:absolute;left:0;top:330px;width:1080px;height:700px;opacity:0;overflow:visible;">
+      <g id="sleepers"></g>
+      <path id="rl" d="M380 700 L520 40" stroke="#ccc" stroke-width="10" fill="none" stroke-dasharray="680" stroke-dashoffset="680"/>
+      <path id="rr" d="M700 700 L560 40" stroke="#ccc" stroke-width="10" fill="none" stroke-dasharray="680" stroke-dashoffset="680"/>
+      <g id="railx" opacity="0"><rect x="380" y="300" width="320" height="70" fill="#0a0202"/><line x1="440" y1="270" x2="640" y2="400" stroke="#FF2A2A" stroke-width="16" stroke-linecap="round"/><line x1="640" y1="270" x2="440" y2="400" stroke="#FF2A2A" stroke-width="16" stroke-linecap="round"/></g>
+    </svg>
+    <div class="wd" id="r1" style="top:1060px;"><div class="O" style="font-size:60px;color:#ddd;">pa një sistem modern</div><div class="O" style="font-size:150px;margin-top:40px;"><span class="blk">hekurudhor</span></div></div>
+    <!-- 3 · according to Rama -->
+    <div class="wd" id="e0" style="top:380px;"><div class="O R" style="font-size:52px;letter-spacing:.3em;">Sepse sipas</div>
+      <div style="width:460px;height:460px;margin:30px auto 0;border-radius:50%;overflow:hidden;border:8px solid #FF2A2A;position:relative;">
+        <img src="img/rama.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.3);"/>
+        <div style="position:absolute;inset:0;background:#FF2A2A;mix-blend-mode:multiply;opacity:.55;"></div></div>
+      <div class="O" style="font-size:150px;margin-top:30px;">Edi Ramës</div></div>
+    <!-- the quote -->
+    <div id="qq" style="position:absolute;left:70px;top:430px;width:940px;">
+      <div class="O R" id="qm" style="font-size:240px;line-height:.6;opacity:0;">“</div>
+      <span class="ql" id="q0">Shqipëria</span>
+      <span class="ql" id="q1" style="font-size:80px;"><span class="R">nuk është</span> e shqiptarëve,</span>
+      <span class="ql" id="q2" style="font-size:84px;">por edhe e Zotit</span>
+      <span class="ql" id="q3" style="font-size:84px;">dhe e mikut.”</span>
+      <div class="O" id="qs" style="font-size:44px;color:#FF2A2A;letter-spacing:.16em;margin-top:30px;opacity:0;">— Edi Rama</div>
+    </div>
+    <!-- 4 · the answer -->
+    <div class="wd" id="p0" style="top:560px;"><div class="O" style="font-size:96px;">Por shqiptarët</div><div class="O" style="font-size:96px;margin-top:10px;">kanë një <span class="R">përgjigje:</span></div></div>
+  </div>
+  <!-- final card over the flag -->
+  <div class="S" id="fin" style="opacity:0;">
+    <img id="fflag" src="img/flag-albania.svg" alt="" style="position:absolute;left:-200px;top:0;width:1480px;height:1920px;object-fit:cover;"/>
+    <div class="S" style="background:radial-gradient(70% 50% at 50% 50%, rgba(0,0,0,.15), rgba(0,0,0,.6));"></div>
+    <div class="c" style="top:520px;width:1000px;text-align:center;">
+      <div class="O" id="f0" style="font-size:190px;text-shadow:0 8px 0 #000, 0 0 40px rgba(0,0,0,.6);opacity:0;">Shqipëria</div>
+      <div class="O" id="f1" style="font-size:120px;margin-top:20px;text-shadow:0 6px 0 #000, 0 0 40px rgba(0,0,0,.6);opacity:0;">është e</div>
+      <div class="O" id="f2" style="font-size:150px;margin-top:10px;text-shadow:0 8px 0 #000, 0 0 40px rgba(0,0,0,.6);opacity:0;">shqiptarëve</div>
+    </div>
+  </div>
+  <div class="scan"></div><div class="vig"></div>
+  <div class="bar" id="bar"><b>SHQIPËRIA</b><span>Tirana · ujë · hekurudhë</span></div>
+  <div id="cfl" class="S" style="background:#FF2A2A;opacity:0;mix-blend-mode:screen;"></div>
+</div>

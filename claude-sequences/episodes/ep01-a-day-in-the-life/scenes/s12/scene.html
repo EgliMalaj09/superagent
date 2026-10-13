@@ -1,0 +1,139 @@
+<div class="L clip" id="stage" data-start="0" data-duration="8.4" data-track-index="1">
+<svg id="svg" viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotsD" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="2.2" fill="#1D1530" opacity=".55"/></pattern>
+    <pattern id="dotsS" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.2" fill="#1D1530" opacity=".18"/></pattern>
+    <pattern id="dotsL" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="3.2" fill="#FFE59A"/></pattern>
+    <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="10" height="3" fill="#2A1F6E" opacity=".35"/></pattern>
+    <radialGradient id="lightMaskG"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <mask id="lampMask"><circle cx="880" cy="760" r="260" fill="url(#lightMaskG)"/></mask>
+    <radialGradient id="vig" cx="50%" cy="48%" r="72%"><stop offset="62%" stop-color="#1D1530" stop-opacity="0"/><stop offset="100%" stop-color="#1D1530" stop-opacity=".42"/></radialGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC7E0"/><stop offset="1" stop-color="#F48CBE"/></linearGradient>
+  </defs>
+  <g id="world">
+    <!-- ceiling / outside -->
+    <rect x="0" y="0" width="1080" height="1920" fill="#D7D2F2"/>
+    <!-- back wall -->
+    <rect class="ink" x="160" y="250" width="940" height="840" fill="#DCDDF6"/>
+    <rect x="160" y="250" width="940" height="840" fill="url(#dotsS)"/>
+    <rect class="ink" x="160" y="250" width="940" height="22" fill="#FFFFFF"/>
+    <!-- left wall (blue, in perspective) -->
+    <polygon class="ink" points="0,120 160,250 160,1090 0,1250" fill="#3E3FD8"/>
+    <polygon points="0,120 160,250 160,1090 0,1250" fill="url(#dotsD)" opacity=".35"/>
+    <!-- floor (perspective planks added in JS) -->
+    <polygon id="floor" class="ink" points="0,1250 160,1090 1080,1090 1080,1920 0,1920" fill="#E9A65F"/>
+    <g id="planks"></g>
+    <rect x="160" y="1080" width="920" height="12" fill="#FFFFFF"/>
+    <!-- wall clock on the blue wall -->
+    <ellipse class="ink" cx="88" cy="380" rx="34" ry="44" fill="#FFFFFF"/><ellipse cx="88" cy="380" rx="26" ry="35" fill="#24267A"/>
+    <line x1="88" y1="380" x2="88" y2="356" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/><line x1="88" y1="380" x2="102" y2="388" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <!-- bathroom door on the left wall -->
+    <polygon id="doorway" class="ink" points="30,560 130,640 130,1110 30,1200" fill="#1D1530"/>
+    <polygon id="door" class="ink" points="30,560 130,640 130,1110 30,1200" fill="#8E8FF0"/>
+    <polygon id="doorDots" points="30,560 130,640 130,1110 30,1200" fill="url(#dotsD)" opacity=".3"/>
+    <circle id="knob" cx="112" cy="880" r="7" fill="#FFD84F" stroke="#1D1530" stroke-width="3"/>
+    <!-- string lights -->
+    <path d="M300 300 Q520 380 760 300" fill="none" stroke="#1D1530" stroke-width="3"/>
+    <g id="bulbs"></g>
+    <!-- posters -->
+    <rect class="ink" x="230" y="400" width="110" height="200" fill="#FF3D7F"/>
+    <polygon points="285,500 230,400 262,400" fill="#FFD84F"/><polygon points="285,500 340,400 340,440" fill="#FFD84F"/><polygon points="285,500 230,600 230,560" fill="#FFD84F"/><polygon points="285,500 340,600 310,600" fill="#FFD84F"/>
+    <text x="285" y="510" text-anchor="middle" font-family="Out, sans-serif" font-weight="900" font-size="24" fill="#FFFFFF" stroke="#1D1530" stroke-width="2">THINK!</text>
+    <rect class="ink" x="400" y="340" width="230" height="170" fill="#FBF1DC"/>
+    <text x="515" y="410" text-anchor="middle" font-family="Out, sans-serif" font-weight="800" font-size="36" fill="#C9480F">hello,</text>
+    <text x="515" y="456" text-anchor="middle" font-family="Out, sans-serif" font-weight="800" font-size="36" fill="#1D1530">world</text>
+    <rect class="ink" x="650" y="420" width="88" height="88" fill="#FFD84F"/>
+    <text x="694" y="456" text-anchor="middle" font-family="Out, sans-serif" font-weight="800" font-size="22" fill="#1D1530">be</text>
+    <text x="694" y="484" text-anchor="middle" font-family="Out, sans-serif" font-weight="800" font-size="22" fill="#1D1530">kind</text>
+    <!-- pendant lamp -->
+    <line x1="700" y1="250" x2="700" y2="530" stroke="#1D1530" stroke-width="4"/>
+    <polygon class="ink" points="640,580 760,580 730,530 670,530" fill="#F7A3A3"/>
+    <!-- window with skyline + curtains -->
+    <rect class="ink" x="780" y="330" width="230" height="330" fill="#FFFFFF"/>
+    <rect x="794" y="344" width="202" height="302" fill="url(#sky)"/>
+    <g id="pinkL" opacity="0"><circle cx="830" cy="600" r="10" fill="#FF6FAE"/><circle cx="870" cy="610" r="8" fill="#FF9AC8"/><circle cx="930" cy="604" r="10" fill="#FF6FAE"/><circle cx="960" cy="615" r="7" fill="#FFFFFF"/><circle cx="900" cy="620" r="9" fill="#FF6FAE"/></g>
+    <polygon points="794,646 794,560 830,560 830,520 870,520 870,575 905,575 905,540 950,540 950,590 996,590 996,646" fill="#E46FA9"/>
+    <line x1="895" y1="344" x2="895" y2="646" stroke="#FFFFFF" stroke-width="10"/><line x1="794" y1="495" x2="996" y2="495" stroke="#FFFFFF" stroke-width="10"/>
+    <rect class="ink" x="745" y="300" width="48" height="400" fill="#F4A19C"/><rect x="745" y="300" width="16" height="400" fill="url(#dotsD)" opacity=".4"/>
+    <rect class="ink" x="1000" y="300" width="48" height="400" fill="#F4A19C"/><rect x="1032" y="300" width="16" height="400" fill="url(#dotsD)" opacity=".4"/>
+    <!-- contact shadows: furniture stands ON the floor -->
+    <ellipse cx="571" cy="1116" rx="280" ry="20" fill="#1D1530" opacity=".28"/>
+    <ellipse cx="887" cy="1104" rx="78" ry="13" fill="#1D1530" opacity=".28"/>
+    <ellipse cx="1030" cy="1180" rx="70" ry="12" fill="#1D1530" opacity=".25"/>
+    <g id="furn" transform="translate(0,90)">
+    <!-- bed: cast shadow on wall (hatched), headboard, mattress, frame -->
+    <polygon points="440,620 790,620 790,870 470,870" fill="#9D8FE0" opacity=".55"/>
+    <polygon points="440,620 790,620 790,870 470,870" fill="url(#hatch)"/>
+    <rect class="ink" x="400" y="630" width="360" height="200" rx="14" fill="#F6B183"/>
+    <rect x="400" y="630" width="360" height="200" rx="14" fill="url(#dotsS)"/>
+    <polygon class="ink" points="360,800 790,800 812,862 330,862" fill="#9FD6F5"/>
+    <polygon points="360,800 790,800 812,862 330,862" fill="url(#dotsS)"/>
+    <rect class="ink" x="330" y="860" width="482" height="66" fill="#5FA9E3"/>
+    <rect x="330" y="860" width="482" height="66" fill="url(#dotsD)" opacity=".35"/>
+    <rect x="330" y="860" width="482" height="12" fill="#FFFFFF"/>
+    <rect class="ink" x="318" y="926" width="506" height="58" fill="#E58E4A"/>
+    <rect class="ink" x="336" y="984" width="24" height="40" fill="#B76A33"/><rect class="ink" x="782" y="984" width="24" height="40" fill="#B76A33"/>
+    <rect class="ink" x="470" y="770" width="230" height="40" rx="16" fill="#FFFFFF"/>
+    <!-- nightstand + alarm clock + table lamp -->
+    <rect class="ink" x="822" y="840" width="130" height="170" fill="#F6EEE4"/>
+    <polygon class="ink" points="822,840 952,840 970,820 840,820" fill="#FFFFFF"/>
+    <rect x="922" y="840" width="30" height="170" fill="url(#dotsD)" opacity=".35"/>
+    <rect class="ink" x="840" y="910" width="94" height="40" fill="#EFE3D3"/><circle cx="887" cy="930" r="5" fill="#C4955A"/>
+    <g id="alarm">
+      <g id="bellL"><circle class="ink" cx="852" cy="764" r="15" fill="#F5C242"/></g>
+      <g id="bellR"><circle class="ink" cx="908" cy="764" r="15" fill="#F5C242"/></g>
+      <rect class="ink" x="842" y="770" width="76" height="52" rx="10" fill="#FF7A4D"/>
+      <rect x="852" y="782" width="56" height="30" rx="4" fill="#173826"/>
+      <text id="disp" x="880" y="805" text-anchor="middle" font-family="Osw, sans-serif" font-weight="700" font-size="22" fill="#7CFF9B">7:00</text>
+    </g>
+    <rect class="ink" x="938" y="800" width="10" height="22" fill="#E06F5E"/>
+    <polygon class="ink" points="920,760 966,760 958,724 928,724" fill="#FFF0C4"/>
+    <!-- halftone lamp light (the dots ARE the light) -->
+    <rect id="lampLight" x="560" y="460" width="560" height="620" fill="url(#dotsL)" mask="url(#lampMask)" opacity="0"/>
+    <!-- desk (cropped at the right edge) -->
+    <rect class="ink" x="975" y="880" width="120" height="16" fill="#D9A36B"/>
+    <rect class="ink" x="985" y="896" width="12" height="190" fill="#B77B4A"/>
+    <rect class="ink" x="1000" y="836" width="66" height="44" fill="#C9CED6"/>
+    </g>
+    <!-- plant (front right) -->
+    <rect class="ink" x="960" y="1150" width="100" height="120" fill="#B9AEDD"/><rect x="960" y="1150" width="100" height="120" fill="url(#dotsD)" opacity=".4"/>
+    <circle class="ink" cx="1010" cy="1060" r="92" fill="#3FA66B"/><circle cx="1040" cy="1090" r="60" fill="url(#dotsD)" opacity=".4"/>
+    <circle class="ink" cx="980" cy="1020" r="56" fill="#78C96F"/>
+    <!-- rug -->
+    <ellipse class="ink" cx="560" cy="1360" rx="400" ry="120" fill="#FFFFFF"/>
+    <ellipse cx="560" cy="1360" rx="368" ry="108" fill="#F4A9BE"/>
+    <ellipse cx="560" cy="1360" rx="260" ry="76" fill="#FFFFFF" opacity=".75"/>
+    <ellipse cx="560" cy="1360" rx="160" ry="46" fill="#F4A9BE"/>
+    <!-- Claude: orange block, ink outlines, halftone side, 4 legs, stub arms -->
+    <g id="claudeBase" transform="translate(0,90)">
+    <ellipse id="shadow" cx="575" cy="860" rx="140" ry="16" fill="#1D1530" opacity=".25"/>
+    <g id="claude">
+      <g id="legs" opacity="0">
+        <g id="legA"><rect class="ink" x="494" y="846" width="28" height="50" rx="5" fill="#D9612B"/></g>
+        <g id="legB"><rect class="ink" x="536" y="846" width="28" height="50" rx="5" fill="#D9612B"/></g>
+        <g id="legC"><rect class="ink" x="592" y="846" width="28" height="50" rx="5" fill="#D9612B"/></g>
+        <g id="legD"><rect class="ink" x="634" y="846" width="28" height="50" rx="5" fill="#D9612B"/></g>
+      </g>
+      <g id="body">
+        <rect class="ink" x="452" y="760" width="30" height="44" fill="#E86F33"/>
+        <rect class="ink" x="676" y="760" width="30" height="44" fill="#E86F33"/>
+        <polygon class="ink" points="470,686 500,656 696,656 666,686" fill="#FFAA6B"/>
+        <polygon class="ink" points="666,686 696,656 696,822 666,852" fill="#D9612B"/>
+        <polygon points="666,686 696,656 696,822 666,852" fill="url(#dotsD)" opacity=".5"/>
+        <rect class="ink" x="470" y="686" width="196" height="166" fill="#F5873A"/>
+        <rect x="470" y="686" width="196" height="166" fill="url(#dotsS)"/>
+        <g id="eyes">
+          <rect x="516" y="728" width="24" height="48" fill="#15131A"/>
+          <rect x="596" y="728" width="24" height="48" fill="#15131A"/>
+        </g>
+      </g>
+    </g>
+    </g>
+    <!-- paper screen + vignette -->
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#dotsS)" opacity=".5"/>
+    <rect id="nightT" x="0" y="0" width="1080" height="1920" fill="#1B2466" opacity=".5" style="mix-blend-mode:multiply"/>
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#vig)"/>
+  </g>
+</svg>
+<div class="L clip" id="hud" data-start="0" data-duration="8.4" data-track-index="3"></div>
+</div>

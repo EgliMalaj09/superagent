@@ -1,0 +1,860 @@
+[
+  {
+    "text": "Bi",
+    "start": 0.3,
+    "end": 0.34,
+    "id": "w0"
+  },
+  {
+    "text": "e",
+    "start": 0.34,
+    "end": 0.38,
+    "id": "w1"
+  },
+  {
+    "text": "shi",
+    "start": 0.38,
+    "end": 0.68,
+    "id": "w2"
+  },
+  {
+    "text": "dhe",
+    "start": 0.68,
+    "end": 1,
+    "id": "w3"
+  },
+  {
+    "text": "Tiranandalon.",
+    "start": 1.03,
+    "end": 2.42,
+    "id": "w4"
+  },
+  {
+    "text": "Enjë",
+    "start": 2.42,
+    "end": 2.78,
+    "id": "w5"
+  },
+  {
+    "text": "të",
+    "start": 2.78,
+    "end": 3.14,
+    "id": "w6"
+  },
+  {
+    "text": "skenë",
+    "start": 3.14,
+    "end": 3.53,
+    "id": "w7"
+  },
+  {
+    "text": "gjdo",
+    "start": 3.6,
+    "end": 3.96,
+    "id": "w8"
+  },
+  {
+    "text": "vit.",
+    "start": 3.96,
+    "end": 4.64,
+    "id": "w9"
+  },
+  {
+    "text": "Bi",
+    "start": 4.64,
+    "end": 5.03,
+    "id": "w10"
+  },
+  {
+    "text": "një",
+    "start": 5.03,
+    "end": 5.42,
+    "id": "w11"
+  },
+  {
+    "text": "milion",
+    "start": 5.42,
+    "end": 5.57,
+    "id": "w12"
+  },
+  {
+    "text": "mjetën",
+    "start": 5.57,
+    "end": 6.07,
+    "id": "w13"
+  },
+  {
+    "text": "në",
+    "start": 6.07,
+    "end": 6.23,
+    "id": "w14"
+  },
+  {
+    "text": "Shqipëri,",
+    "start": 6.23,
+    "end": 7.2,
+    "id": "w15"
+  },
+  {
+    "text": "një",
+    "start": 7.2,
+    "end": 7.47,
+    "id": "w16"
+  },
+  {
+    "text": "në",
+    "start": 7.47,
+    "end": 7.65,
+    "id": "w17"
+  },
+  {
+    "text": "treja",
+    "start": 7.65,
+    "end": 7.93,
+    "id": "w18"
+  },
+  {
+    "text": "në",
+    "start": 7.98,
+    "end": 8.28,
+    "id": "w19"
+  },
+  {
+    "text": "Tirana,",
+    "start": 8.52,
+    "end": 8.84,
+    "id": "w20"
+  },
+  {
+    "text": "dhe",
+    "start": 8.84,
+    "end": 9.22,
+    "id": "w21"
+  },
+  {
+    "text": "numri",
+    "start": 9.22,
+    "end": 9.51,
+    "id": "w22"
+  },
+  {
+    "text": "tyre",
+    "start": 9.68,
+    "end": 9.85,
+    "id": "w23"
+  },
+  {
+    "text": "rritet",
+    "start": 9.87,
+    "end": 10.35,
+    "id": "w24"
+  },
+  {
+    "text": "me",
+    "start": 10.35,
+    "end": 10.52,
+    "id": "w25"
+  },
+  {
+    "text": "90%",
+    "start": 10.52,
+    "end": 11.11,
+    "id": "w26"
+  },
+  {
+    "text": "gjdo",
+    "start": 11.11,
+    "end": 11.45,
+    "id": "w27"
+  },
+  {
+    "text": "vit.",
+    "start": 11.45,
+    "end": 11.71,
+    "id": "w28"
+  },
+  {
+    "text": "Si",
+    "start": 11.71,
+    "end": 12.123,
+    "id": "w29"
+  },
+  {
+    "text": "pas",
+    "start": 12.123,
+    "end": 12.537,
+    "id": "w30"
+  },
+  {
+    "text": "një",
+    "start": 12.537,
+    "end": 12.95,
+    "id": "w31"
+  },
+  {
+    "text": "specialisti,",
+    "start": 12.95,
+    "end": 13.74,
+    "id": "w32"
+  },
+  {
+    "text": "një",
+    "start": 13.74,
+    "end": 13.98,
+    "id": "w33"
+  },
+  {
+    "text": "shofer",
+    "start": 13.98,
+    "end": 14.46,
+    "id": "w34"
+  },
+  {
+    "text": "në",
+    "start": 14.46,
+    "end": 14.62,
+    "id": "w35"
+  },
+  {
+    "text": "Tirana",
+    "start": 14.62,
+    "end": 15.14,
+    "id": "w36"
+  },
+  {
+    "text": "kalon",
+    "start": 15.14,
+    "end": 15.56,
+    "id": "w37"
+  },
+  {
+    "text": "185",
+    "start": 15.9,
+    "end": 16.32,
+    "id": "w38"
+  },
+  {
+    "text": "orë",
+    "start": 16.34,
+    "end": 16.59,
+    "id": "w39"
+  },
+  {
+    "text": "në",
+    "start": 16.59,
+    "end": 16.75,
+    "id": "w40"
+  },
+  {
+    "text": "vit",
+    "start": 16.75,
+    "end": 16.96,
+    "id": "w41"
+  },
+  {
+    "text": "në",
+    "start": 17.03,
+    "end": 17.16,
+    "id": "w42"
+  },
+  {
+    "text": "trafik,",
+    "start": 17.18,
+    "end": 17.94,
+    "id": "w43"
+  },
+  {
+    "text": "thuaj",
+    "start": 17.94,
+    "end": 18.24,
+    "id": "w44"
+  },
+  {
+    "text": "se",
+    "start": 18.24,
+    "end": 18.54,
+    "id": "w45"
+  },
+  {
+    "text": "8",
+    "start": 18.54,
+    "end": 18.6,
+    "id": "w46"
+  },
+  {
+    "text": "dit",
+    "start": 18.6,
+    "end": 18.8,
+    "id": "w47"
+  },
+  {
+    "text": "dhe",
+    "start": 18.8,
+    "end": 18.99,
+    "id": "w48"
+  },
+  {
+    "text": "10",
+    "start": 19.05,
+    "end": 19.39,
+    "id": "w49"
+  },
+  {
+    "text": "200",
+    "start": 19.39,
+    "end": 19.99,
+    "id": "w50"
+  },
+  {
+    "text": "litra",
+    "start": 19.99,
+    "end": 20.32,
+    "id": "w51"
+  },
+  {
+    "text": "karburant",
+    "start": 20.32,
+    "end": 20.92,
+    "id": "w52"
+  },
+  {
+    "text": "duke",
+    "start": 20.92,
+    "end": 21.17,
+    "id": "w53"
+  },
+  {
+    "text": "shëndruar.",
+    "start": 21.17,
+    "end": 22.02,
+    "id": "w54"
+  },
+  {
+    "text": "Imagino",
+    "start": 22.02,
+    "end": 22.48,
+    "id": "w55"
+  },
+  {
+    "text": "që",
+    "start": 22.48,
+    "end": 22.94,
+    "id": "w56"
+  },
+  {
+    "text": "autobuzit",
+    "start": 22.94,
+    "end": 23.53,
+    "id": "w57"
+  },
+  {
+    "text": "të",
+    "start": 23.59,
+    "end": 23.69,
+    "id": "w58"
+  },
+  {
+    "text": "qonde",
+    "start": 23.69,
+    "end": 24.1,
+    "id": "w59"
+  },
+  {
+    "text": "në",
+    "start": 24.1,
+    "end": 24.24,
+    "id": "w60"
+  },
+  {
+    "text": "qender",
+    "start": 24.34,
+    "end": 24.76,
+    "id": "w61"
+  },
+  {
+    "text": "më",
+    "start": 24.76,
+    "end": 24.92,
+    "id": "w62"
+  },
+  {
+    "text": "shpejt",
+    "start": 24.92,
+    "end": 25.36,
+    "id": "w63"
+  },
+  {
+    "text": "se",
+    "start": 25.36,
+    "end": 25.43,
+    "id": "w64"
+  },
+  {
+    "text": "makina,",
+    "start": 25.43,
+    "end": 26.22,
+    "id": "w65"
+  },
+  {
+    "text": "që",
+    "start": 26.28,
+    "end": 26.36,
+    "id": "w66"
+  },
+  {
+    "text": "të",
+    "start": 26.36,
+    "end": 26.5,
+    "id": "w67"
+  },
+  {
+    "text": "mos",
+    "start": 26.55,
+    "end": 26.65,
+    "id": "w68"
+  },
+  {
+    "text": "kërkoj",
+    "start": 26.76,
+    "end": 27.16,
+    "id": "w69"
+  },
+  {
+    "text": "e",
+    "start": 27.16,
+    "end": 27.22,
+    "id": "w70"
+  },
+  {
+    "text": "vend",
+    "start": 27.22,
+    "end": 27.54,
+    "id": "w71"
+  },
+  {
+    "text": "parkimi",
+    "start": 27.54,
+    "end": 28.08,
+    "id": "w72"
+  },
+  {
+    "text": "për",
+    "start": 28.08,
+    "end": 28.29,
+    "id": "w73"
+  },
+  {
+    "text": "20",
+    "start": 28.29,
+    "end": 28.67,
+    "id": "w74"
+  },
+  {
+    "text": "minuta,",
+    "start": 28.98,
+    "end": 29.32,
+    "id": "w75"
+  },
+  {
+    "text": "që",
+    "start": 29.83,
+    "end": 29.88,
+    "id": "w76"
+  },
+  {
+    "text": "të",
+    "start": 29.88,
+    "end": 29.98,
+    "id": "w77"
+  },
+  {
+    "text": "këthej",
+    "start": 29.98,
+    "end": 30.3,
+    "id": "w78"
+  },
+  {
+    "text": "është",
+    "start": 30.32,
+    "end": 30.61,
+    "id": "w79"
+  },
+  {
+    "text": "në",
+    "start": 30.61,
+    "end": 30.71,
+    "id": "w80"
+  },
+  {
+    "text": "shtëpin",
+    "start": 30.71,
+    "end": 31.09,
+    "id": "w81"
+  },
+  {
+    "text": "20",
+    "start": 31.09,
+    "end": 31.44,
+    "id": "w82"
+  },
+  {
+    "text": "minuta",
+    "start": 31.44,
+    "end": 31.78,
+    "id": "w83"
+  },
+  {
+    "text": "jo",
+    "start": 31.78,
+    "end": 31.89,
+    "id": "w84"
+  },
+  {
+    "text": "në",
+    "start": 31.89,
+    "end": 31.95,
+    "id": "w85"
+  },
+  {
+    "text": "një",
+    "start": 31.99,
+    "end": 32.14,
+    "id": "w86"
+  },
+  {
+    "text": "ore",
+    "start": 32.14,
+    "end": 32.26,
+    "id": "w87"
+  },
+  {
+    "text": "gjysëm,",
+    "start": 32.42,
+    "end": 32.9,
+    "id": "w88"
+  },
+  {
+    "text": "dhe",
+    "start": 32.9,
+    "end": 33.36,
+    "id": "w89"
+  },
+  {
+    "text": "darkën",
+    "start": 33.36,
+    "end": 33.48,
+    "id": "w90"
+  },
+  {
+    "text": "të",
+    "start": 33.48,
+    "end": 33.6,
+    "id": "w91"
+  },
+  {
+    "text": "hashtë",
+    "start": 33.62,
+    "end": 33.98,
+    "id": "w92"
+  },
+  {
+    "text": "në",
+    "start": 34.03,
+    "end": 34.11,
+    "id": "w93"
+  },
+  {
+    "text": "shtëpim",
+    "start": 34.11,
+    "end": 34.55,
+    "id": "w94"
+  },
+  {
+    "text": "e",
+    "start": 34.55,
+    "end": 34.61,
+    "id": "w95"
+  },
+  {
+    "text": "fëminjët",
+    "start": 34.61,
+    "end": 35.11,
+    "id": "w96"
+  },
+  {
+    "text": "jo",
+    "start": 35.11,
+    "end": 35.24,
+    "id": "w97"
+  },
+  {
+    "text": "nëse",
+    "start": 35.24,
+    "end": 35.47,
+    "id": "w98"
+  },
+  {
+    "text": "ma",
+    "start": 35.51,
+    "end": 35.61,
+    "id": "w99"
+  },
+  {
+    "text": "farë.",
+    "start": 35.61,
+    "end": 36.34,
+    "id": "w100"
+  },
+  {
+    "text": "Kjo",
+    "start": 36.34,
+    "end": 36.64,
+    "id": "w101"
+  },
+  {
+    "text": "nuk",
+    "start": 36.64,
+    "end": 36.94,
+    "id": "w102"
+  },
+  {
+    "text": "është",
+    "start": 36.94,
+    "end": 37.3,
+    "id": "w103"
+  },
+  {
+    "text": "mrekuvi,",
+    "start": 37.3,
+    "end": 38.02,
+    "id": "w104"
+  },
+  {
+    "text": "është",
+    "start": 38.02,
+    "end": 38.5,
+    "id": "w105"
+  },
+  {
+    "text": "planifikim.",
+    "start": 38.5,
+    "end": 39.44,
+    "id": "w106"
+  },
+  {
+    "text": "Trambaju",
+    "start": 40.18,
+    "end": 40.24,
+    "id": "w107"
+  },
+  {
+    "text": "premtua",
+    "start": 40.28,
+    "end": 40.78,
+    "id": "w108"
+  },
+  {
+    "text": "dhe",
+    "start": 40.78,
+    "end": 41.01,
+    "id": "w109"
+  },
+  {
+    "text": "nukndërtu",
+    "start": 41.01,
+    "end": 41.68,
+    "id": "w110"
+  },
+  {
+    "text": "akur.",
+    "start": 41.68,
+    "end": 42.34,
+    "id": "w111"
+  },
+  {
+    "text": "Trenit",
+    "start": 42.8,
+    "end": 42.91,
+    "id": "w112"
+  },
+  {
+    "text": "i",
+    "start": 42.91,
+    "end": 43,
+    "id": "w113"
+  },
+  {
+    "text": "randurës,",
+    "start": 43,
+    "end": 44,
+    "id": "w114"
+  },
+  {
+    "text": "bi",
+    "start": 44,
+    "end": 44.13,
+    "id": "w115"
+  },
+  {
+    "text": "100",
+    "start": 44.13,
+    "end": 44.75,
+    "id": "w116"
+  },
+  {
+    "text": "milion",
+    "start": 44.75,
+    "end": 45.14,
+    "id": "w117"
+  },
+  {
+    "text": "euro,",
+    "start": 45.14,
+    "end": 45.6,
+    "id": "w118"
+  },
+  {
+    "text": "në",
+    "start": 45.6,
+    "end": 46.06,
+    "id": "w119"
+  },
+  {
+    "text": "fushatën",
+    "start": 46.06,
+    "end": 46.3,
+    "id": "w120"
+  },
+  {
+    "text": "e",
+    "start": 46.3,
+    "end": 46.37,
+    "id": "w121"
+  },
+  {
+    "text": "2023",
+    "start": 46.65,
+    "end": 47.23,
+    "id": "w122"
+  },
+  {
+    "text": "që",
+    "start": 47.23,
+    "end": 47.37,
+    "id": "w123"
+  },
+  {
+    "text": "të",
+    "start": 47.37,
+    "end": 47.44,
+    "id": "w124"
+  },
+  {
+    "text": "premtoj",
+    "start": 47.54,
+    "end": 48,
+    "id": "w125"
+  },
+  {
+    "text": "për",
+    "start": 48,
+    "end": 48.21,
+    "id": "w126"
+  },
+  {
+    "text": "marsin",
+    "start": 48.21,
+    "end": 48.56,
+    "id": "w127"
+  },
+  {
+    "text": "e",
+    "start": 48.62,
+    "end": 48.63,
+    "id": "w128"
+  },
+  {
+    "text": "2024,",
+    "start": 49.16,
+    "end": 49.63,
+    "id": "w129"
+  },
+  {
+    "text": "pas",
+    "start": 49.63,
+    "end": 50.385,
+    "id": "w130"
+  },
+  {
+    "text": "taj",
+    "start": 50.385,
+    "end": 51.14,
+    "id": "w131"
+  },
+  {
+    "text": "2025,",
+    "start": 51.14,
+    "end": 51.88,
+    "id": "w132"
+  },
+  {
+    "text": "tani",
+    "start": 51.88,
+    "end": 52.21,
+    "id": "w133"
+  },
+  {
+    "text": "flitet",
+    "start": 52.21,
+    "end": 52.7,
+    "id": "w134"
+  },
+  {
+    "text": "për",
+    "start": 52.7,
+    "end": 52.94,
+    "id": "w135"
+  },
+  {
+    "text": "2027.",
+    "start": 52.94,
+    "end": 54.17,
+    "id": "w136"
+  },
+  {
+    "text": "Zgjivjet",
+    "start": 54.76,
+    "end": 54.98,
+    "id": "w137"
+  },
+  {
+    "text": "në",
+    "start": 54.98,
+    "end": 55.16,
+    "id": "w138"
+  },
+  {
+    "text": "idim,",
+    "start": 55.3,
+    "end": 55.71,
+    "id": "w139"
+  },
+  {
+    "text": "mungon",
+    "start": 55.75,
+    "end": 56.29,
+    "id": "w140"
+  },
+  {
+    "text": "vetëm",
+    "start": 56.29,
+    "end": 56.75,
+    "id": "w141"
+  },
+  {
+    "text": "vendime.",
+    "start": 56.75,
+    "end": 57.8,
+    "id": "w142"
+  }
+]

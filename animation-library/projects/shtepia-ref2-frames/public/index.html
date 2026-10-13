@@ -1,0 +1,209 @@
+<!doctype html><html lang="sq"><head><meta charset="utf-8"/><style>
+/* ===== animation-library base: every library font + shared components. Sizes come from --W / --H set by build_page.py ===== */
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-600-normal.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-800-normal.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-600.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-700.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+@font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-600-italic.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-700-italic.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+/* Font families: Arc = Archivo Condensed 600/800, BG = Bricolage 800, DM = DM Sans, HG = Hanken Grotesk 300/500/700,
+   IS = Instrument Serif (+italic), Inter, Osw = Oswald 500/700, Out = Outfit 500-800, Ser = Source Serif 4 italic 600/700,
+   Type = Special Elite (typewriter), Spec = Spectral italic 600/700. All support Albanian ë ç. */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); }
+#stage { position:relative; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--body); }
+.L { position:absolute; left:0; top:0; width:var(--W); height:var(--H); overflow:hidden; pointer-events:none; }
+.bg { background:var(--bgfx, var(--bg)); }
+/* text */
+.h  { font-family:var(--head); font-weight:var(--headw, 800); color:var(--ink); letter-spacing:var(--track, -.02em); line-height:1.02; }
+.kicker { font-family:var(--body); font-weight:700; font-size:30px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.body { font-family:var(--body); font-weight:500; font-size:40px; line-height:1.25; color:var(--ink); }
+.quote { font-family:var(--quote); font-style:italic; font-size:64px; line-height:1.12; color:var(--ink); }
+.num { font-family:var(--head); font-weight:var(--headw, 800); font-size:220px; line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.src { position:absolute; left:70px; bottom:110px; font-family:var(--body); font-weight:500; font-size:22px; letter-spacing:.02em; color:var(--mute); }
+/* highlighter: <span class="hl"><i></i><b>word</b></span>, animate i scaleX 0→1 */
+.hl { position:relative; display:inline-block; padding:0 .12em; }
+.hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+.hl > b { position:relative; z-index:1; font-weight:inherit; }
+/* parts */
+.card { position:absolute; background:var(--card); border-radius:var(--radius, 18px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.18)); padding:36px 40px; }
+.photo { position:absolute; object-fit:cover; border-radius:var(--radius, 12px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.25)); }
+.stamp { position:absolute; font-family:var(--head); font-weight:800; font-size:120px; color:var(--red); border:10px solid var(--red); padding:8px 34px; transform:rotate(-8deg); letter-spacing:.04em; mix-blend-mode:multiply; }
+.bar { position:absolute; bottom:0; width:120px; background:var(--accent); transform-origin:50% 100%; }   /* animate scaleY */
+.rule { position:absolute; height:6px; background:var(--accent); transform-origin:0 50%; }                   /* animate scaleX */
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.vignette { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0,0,0,.35) 100%); }
+/* safe zones (Reels UI): keep text inside top 220px … bottom 380px on 9:16 */
+/* VOX explainer (paper, ink, yellow highlighter, print photos, serif quotes) — the user's pick for documentary/political */
+:root { --bg:#EEE8DC; --ink:#1D1C1A; --mute:#57524A; --accent:#C8202F; --hi:#FFD23F; --red:#C8202F; --card:#FBF8F1;
+  --head:"Arc", "Arial Narrow", sans-serif; --headw:800; --track:-.01em; --body:"HG", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(120% 70% at 50% 40%, rgba(255,255,255,.55), rgba(255,255,255,0) 65%), repeating-linear-gradient(0deg, rgba(120,100,70,.035) 0 1px, transparent 1px 3px), #EEE8DC;
+  --shadow:0 10px 28px rgba(40,30,10,.18); --radius:4px; }
+.photo { filter:grayscale(1) contrast(1.15) sepia(.12); border:10px solid #fff; }
+.halftone { position:absolute; inset:0; pointer-events:none; opacity:.12; background-image:radial-gradient(#000 1px, transparent 1.4px); background-size:5px 5px; mix-blend-mode:multiply; }
+/* car-decor reference: blue gradient 3D, glossy navy objects, Poppins + tall condensed hero word */
+:root { --bg:#AFBDF5; --ink:#0B1150; --mute:rgba(11,17,80,.6); --accent:#2E46E8; --hi:#2E46E8; --red:#E8453C; --card:#0B1150;
+  --head:"Poppins", "Out", Arial, sans-serif; --headw:700; --track:-.01em; --body:"Poppins", "Out", Arial, sans-serif; --quote:"Poppins", sans-serif;
+  --bgfx: radial-gradient(70% 45% at 20% 8%, #FFFFFF 0%, rgba(255,255,255,0) 70%), radial-gradient(60% 50% at 100% 85%, #3B55F0 0%, rgba(59,85,240,0) 70%), linear-gradient(180deg, #E9EDFF 0%, #AFBDF5 40%, #7385EA 100%);
+  --shadow:0 30px 60px rgba(11,17,80,.35); --radius:26px; }
+.cap { position:absolute; left:60px; right:60px; top:300px; text-align:center; font-family:"Poppins","Out",sans-serif; font-weight:500; font-size:44px; color:#0B1150; }
+.glossy { background:linear-gradient(135deg, #04050F 0%, #0B1150 45%, #2E46E8 100%); border-radius:26px; box-shadow:0 30px 60px rgba(11,17,80,.4), inset 0 2px 0 rgba(255,255,255,.18); color:#fff; font-family:"Poppins",sans-serif; font-weight:700; }
+.thin { font-family:"Poppins","Out",sans-serif; font-weight:200; color:rgba(255,255,255,.75); letter-spacing:-.02em; }
+/* style frames in the "car-decor" reference style */
+.bg { background:var(--bgfx); }
+.axl text { font-family:"Poppins",sans-serif; font-weight:300; font-size:30px; fill:rgba(255,255,255,.7); }
+.axs { font-family:"Poppins",sans-serif; font-weight:500; font-size:30px; fill:rgba(11,17,80,.7); }
+.lab { position:absolute; font-family:"Poppins",sans-serif; font-weight:700; font-size:58px; color:#0B1150; white-space:nowrap; }
+.lab.sm { font-weight:500; font-size:32px; color:rgba(11,17,80,.75); }
+.thin.hero { position:absolute; font-size:190px; line-height:1; }
+.thin.sub { position:absolute; font-size:40px; font-weight:300; }
+.thin.dark { color:rgba(11,17,80,.35); filter:blur(1px); }
+.floor { position:absolute; left:0; right:0; top:1120px; bottom:0; background:linear-gradient(180deg, #F2F4FF 0%, #DCE2FB 60%, #C3CDF7 100%); box-shadow:0 -30px 80px rgba(255,255,255,.6); }
+.calx { position:absolute; width:360px; height:280px; clip-path:polygon(9% 0, 91% 0, 100% 100%, 0 100%); background:linear-gradient(135deg, #04050F 0%, #0B1150 55%, #2E46E8 100%); }
+.calx.front { width:420px; height:320px; }
+.calx .ctop { height:64px; background:linear-gradient(90deg, #E9EDFF, #9DAEF5); color:#0B1150; font-family:"Poppins",sans-serif; font-weight:700; font-size:30px; text-align:center; line-height:64px; }
+.calx .cyr { text-align:center; font-family:"Poppins",sans-serif; font-weight:800; font-size:118px; color:#fff; line-height:200px; letter-spacing:-.02em; }
+.calx.front .cyr { font-size:138px; line-height:240px; }
+.calx.blur { filter:blur(5px); opacity:.85; }
+.planet { position:absolute; left:-860px; top:1020px; width:2800px; height:2800px; border-radius:50%;
+  background:radial-gradient(circle at 59% 0%, #3B55F0 0%, #0B1150 6%, #04050F 30%); box-shadow:0 -12px 50px rgba(150,170,255,.7), inset 0 6px 10px rgba(200,210,255,.6); }
+.hw { position:absolute; left:0; right:0; text-align:center; color:#fff; }
+.thinw { top:1168px; font-family:"Poppins",sans-serif; font-weight:300; font-size:70px; z-index:2; }
+.bigc { top:1300px; font-family:"Osw","Anton",sans-serif; font-weight:700; font-size:260px; line-height:1; letter-spacing:-.01em; }
+
+:root { --W:1080px; --H:1920px; }
+
+</style></head><body>
+<div id="stage" data-composition-id="shtepia_ref2_frames" data-start="0" data-duration="3.00" data-fps="30" data-width="1080" data-height="1920">
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="navyline" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3B55F0" stop-opacity=".5"/><stop offset="1" stop-color="#0B1150"/></linearGradient>
+    <radialGradient id="dot" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#6E86FF"/><stop offset=".5" stop-color="#0B1150"/><stop offset="1" stop-color="#04050F"/></radialGradient>
+    <linearGradient id="drip" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#04050F"/><stop offset=".35" stop-color="#1A2BB0"/><stop offset=".55" stop-color="#3B55F0"/><stop offset=".75" stop-color="#0B1150"/><stop offset="1" stop-color="#04050F"/></linearGradient>
+    <radialGradient id="glassdrop" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#C9D3FF"/><stop offset="1" stop-color="#7385EA"/></radialGradient>
+  </defs>
+</svg>
+
+<!-- ============ FRAME 1 · price chart ============ -->
+<div class="L bg clip" id="f1" data-start="0" data-duration="1" data-track-index="1">
+  <div class="cap">Ndërkohë, çmimet nuk presin.</div>
+  <svg style="position:absolute;left:0;top:0;" width="1080" height="1920">
+    <g stroke="rgba(255,255,255,.28)" stroke-width="2"><path d="M0 760 L1080 700 M0 960 L1080 900 M0 1160 L1080 1100 M0 1360 L1080 1300"/></g>
+    <g class="axl"><text x="60" y="742">2.000</text><text x="60" y="1142">1.000</text></g>
+    <path d="M70 1290 C200 1270 260 1240 330 1200 S440 1130 520 1060 S650 930 720 860 S820 760 860 700" fill="none" stroke="url(#navyline)" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="860" cy="700" r="30" fill="url(#dot)"/>
+    <circle cx="70" cy="1290" r="16" fill="#0B1150" opacity=".55"/>
+    <text x="90" y="1350" class="axs">2019 · 964 €</text>
+  </svg>
+  <div class="lab" style="left:560px;top:580px;">Çmimi €/m²</div>
+  <div class="lab sm" style="left:820px;top:760px;">2026 · 2.141 €</div>
+  <div class="thin hero" style="left:70px;top:1380px;">+122%</div>
+  <div class="thin sub" style="left:84px;top:1560px;">çmimi i shtëpisë nga 2019</div>
+</div>
+
+<!-- ============ FRAME 2 · calendars 2026 → 2053 ============ -->
+<div class="L bg clip" id="f2" data-start="1" data-duration="1" data-track-index="2">
+  <div class="floor"></div>
+  <div class="cap">Nisin në 25. Çelësin e marrin në 52.</div>
+  <div class="calx blur" style="left:-40px;top:780px;rotate:-38deg;scale:.8;"><div class="ctop">Kalendari</div><div class="cyr">2026</div></div>
+  <div class="calx" style="left:150px;top:860px;rotate:-14deg;scale:.9;"><div class="ctop">Kalendari</div><div class="cyr">2040</div></div>
+  <div class="calx front" style="left:410px;top:900px;"><div class="ctop">Kalendari</div><div class="cyr">2053</div></div>
+  <div class="thin hero dark" style="left:0;right:0;text-align:center;top:1300px;">27 vjet</div>
+</div>
+
+<!-- ============ FRAME 3 · drip + dark horizon ============ -->
+<div class="L bg clip" id="f3" data-start="2" data-duration="1" data-track-index="3">
+  <div class="planet"></div>
+  <svg style="position:absolute;left:620px;top:0;" width="300" height="1250" viewBox="0 0 300 1250">
+    <path d="M40 0 L260 0 C250 260 210 380 205 560 C200 760 170 930 150 1040 C130 930 100 760 95 560 C90 380 50 260 40 0 Z" fill="url(#drip)"/>
+    <path d="M128 0 C126 300 140 650 150 1000" stroke="rgba(160,180,255,.55)" stroke-width="6" fill="none"/>
+    <circle cx="150" cy="1170" r="34" fill="url(#glassdrop)"/>
+  </svg>
+  <div class="cap" style="color:#0B1150;top:300px;left:70px;right:auto;width:620px;text-align:left;font-size:48px;line-height:1.25;">Për ta, shtëpia kërkon<br/>mbi 50 vjet punë.</div>
+  <div class="hw thinw">Një jetë</div>
+  <div class="hw bigc">TË TËRË.</div>
+</div>
+
+
+<script src="vendor/gsap.min.js"></script>
+<script>
+(function () {
+  const W = 1080, H = 1920, D = 3.00;
+  const tl = window.gsap.timeline({ paused: true });
+// ===== animation-library MOTION KIT — loaded into every page before scene.js. `tl` (paused GSAP timeline), W, H exist already. =====
+// Rules baked in: transforms + opacity only (no top/left/width/height tweens), fromTo with immediateRender:false for later entrances,
+// seeded random only (never Math.random), soft eases (power3.out 0.3–0.45 s), no shakes, no flashes.
+let seed = 5; const rnd = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const E = 'expo.out';
+const $ = function (s) { return typeof s === 'string' ? document.querySelector(s) : s; };
+const div = function (p, css, cls) { const d = document.createElement('div'); d.style.cssText = css || ''; if (cls) d.className = cls; $(p).appendChild(d); return d; };
+const show = function (sel, t) { tl.set(sel, { opacity: 1 }, t); };
+const hide = function (sel, t) { tl.set(sel, { opacity: 0 }, t); };
+// entrances
+const up = function (sel, t, d) { tl.fromTo(sel, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: d || 0.5, ease: E, immediateRender: false }, t); };
+const fadeIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.out', immediateRender: false }, t); };
+const pop = function (sel, t, d) { tl.fromTo(sel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: d || 0.45, ease: 'back.out(1.7)', immediateRender: false }, t); };
+const slideIn = function (sel, t, from, d) { const v = { opacity: 0 }; v[from === 'left' || from === 'right' ? 'x' : 'y'] = (from === 'left' || from === 'top' ? -1 : 1) * 120;
+  tl.fromTo(sel, v, { x: 0, y: 0, opacity: 1, duration: d || 0.45, ease: 'power3.out', immediateRender: false }, t); };
+const blurIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, filter: 'blur(18px)', scale: 1.06 }, { opacity: 1, filter: 'blur(0px)', scale: 1, duration: d || 0.6, ease: 'power3.out', immediateRender: false }, t); };
+const words = function (sel, t, gap) {   // word-by-word reveal: wraps each word of the element in a span
+  const el = $(sel); const w = el.textContent.trim().split(/\s+/); el.innerHTML = w.map(function (x) { return '<span style="display:inline-block;opacity:0">' + x + '</span>'; }).join(' ');
+  el.querySelectorAll('span').forEach(function (s, i) { tl.fromTo(s, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', immediateRender: false }, t + i * (gap || 0.07)); });
+};
+// exits
+const out = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -20, duration: d || 0.35, ease: 'power2.in' }, t); };
+const fadeOut = function (sel, t, d) { tl.to(sel, { opacity: 0, duration: d || 0.35, ease: 'power2.inOut' }, t); };
+// emphasis
+const hl = function (sel, t) { tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out', immediateRender: false }, t); };   // .hl > i, .rule
+const growY = function (sel, t, d, stagger) { tl.fromTo(sel, { scaleY: 0 }, { scaleY: 1, duration: d || 0.7, ease: 'power3.out', stagger: stagger || 0.08, immediateRender: false }, t); };  // .bar
+const stamp = function (sel, t) { tl.fromTo(sel, { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: 'power4.in', immediateRender: false }, t); };
+const count = function (sel, a, b, t, dur, fmt) {   // fmt e.g. function (v) { return v.toFixed(1) + ' m²'; }
+  const el = $(sel); const o = { v: a }; fmt = fmt || function (v) { return Math.round(v).toLocaleString('de-DE'); };
+  tl.fromTo(o, { v: a }, { v: b, duration: dur, ease: 'power2.out', immediateRender: false, onUpdate: function () { el.textContent = fmt(o.v); } }, t);
+  el.textContent = fmt(a);
+};
+const typeIn = function (sel, text, t, dur) {   // typewriter: GSAP cannot tween textContent, so drive a proxy
+  const el = $(sel); const o = { n: 0 };
+  tl.fromTo(o, { n: 0 }, { n: text.length, duration: dur || text.length * 0.04, ease: 'none', immediateRender: false, onUpdate: function () { el.textContent = text.slice(0, Math.round(o.n)); } }, t);
+};
+const draw = function (path, t, dur) {   // SVG line draw
+  const p = $(path); const L = p.getTotalLength(); p.style.strokeDasharray = L;
+  tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur || 1.2, ease: 'power2.inOut', immediateRender: true }, t);
+};
+const kenBurns = function (sel, t, dur, from, to) { tl.fromTo(sel, { scale: from || 1.0 }, { scale: to || 1.12, duration: dur, ease: 'none', immediateRender: true }, t); };
+const drift = function (sel, t, dur, dx, dy) { tl.to(sel, { x: '+=' + (dx || 0), y: '+=' + (dy || -30), duration: dur, ease: 'none' }, t); };
+// scene change inside one page: fade the old layer out while the new one fades in (0.35–0.4 s)
+const xfade = function (a, b, t, d) { tl.to(a, { opacity: 0, duration: d || 0.4, ease: 'power2.inOut' }, t); tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.inOut', immediateRender: false }, t); };
+// After the voice-over arrives: retime the whole timeline. pts = [[oldTime, newTime], ...] ascending, e.g. [[0,0],[3.2,2.9],[8,9.4]]
+const remap = function (pts) {
+  const m = function (s) { for (let i = 1; i < pts.length; i++) if (s <= pts[i][0]) { const a = pts[i - 1], b = pts[i]; return a[1] + (s - a[0]) * (b[1] - a[1]) / (b[0] - a[0]); }
+    const a = pts[pts.length - 2], b = pts[pts.length - 1]; return b[1] + (s - b[0]) * (b[1] - a[1]) / (b[0] - a[0]); };
+  tl.getChildren(false, true, true).forEach(function (c) { const s = c.startTime(), e = s + c.totalDuration(), ns = m(s); c.startTime(ns); if (c.totalDuration() > 0) c.totalDuration(Math.max(0.001, m(e) - ns)); });
+};
+
+// ---- scene ----
+// static style frames
+
+  tl.to({}, { duration: D }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["shtepia_ref2_frames"] = tl;
+})();
+</script>
+</div></body></html>

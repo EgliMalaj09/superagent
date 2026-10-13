@@ -1,0 +1,43 @@
+{
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "durationInFrames": 1098,
+  "videoSrc": "source.mp4",
+  "zoom": [],
+  "captions": [],
+  "styles": {
+    "kenBurnsIntensity": 1.0,
+    "zoomEaseFrames": 8
+  },
+  "broll": [
+    {
+      "kind": "word_pop",
+      "start_sec": 1.9,
+      "end_sec": 6.55,
+      "reason": "Hook: the 2-6.5s abstract blur has no text; pose the curiosity question before step 1 lands.",
+      "vertical": 0.4,
+      "items": [
+        {
+          "text": "Si ta bësh\nkëtë {efekt}?",
+          "appear_sec": 1.9
+        }
+      ],
+      "size": 0.14
+    },
+    {
+      "kind": "word_pop",
+      "start_sec": 35.05,
+      "end_sec": 36.6,
+      "reason": "Closer over the loop montage: save prompt, complements the 'Komento Epike' card just before.",
+      "vertical": 0.7,
+      "size": 0.1,
+      "items": [
+        {
+          "text": "Ruaje për\n{më vonë}",
+          "appear_sec": 35.05
+        }
+      ]
+    }
+  ]
+}

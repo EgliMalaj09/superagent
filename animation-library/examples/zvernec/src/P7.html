@@ -1,0 +1,61 @@
+<style>
+  .news { background: radial-gradient(80% 50% at 50% 42%, #2a0608, #0a0202 60%, #000); }
+  .scan { position:absolute; inset:0; background:repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px); pointer-events:none; }
+  .O { font-family:"Osw", sans-serif; font-weight:700; text-transform:uppercase; color:#fff; letter-spacing:-.01em; line-height:.95; }
+  .R { color:#FF2A2A; }
+  .blk { background:#FF2A2A; color:#000; padding:0 .12em; }
+  .wd { position:absolute; left:0; width:1080px; text-align:center; opacity:0; }
+  .gl { position:absolute; left:0; top:0; width:100%; text-align:center; opacity:0; mix-blend-mode:screen; }
+  .bar { position:absolute; left:0; top:1500px; width:1080px; height:84px; background:#FF2A2A; display:flex; align-items:center; gap:20px; padding:0 40px; }
+  .bar b { font-family:"Osw"; font-weight:700; font-size:40px; color:#000; letter-spacing:.04em; }
+  .bar span { font-family:"Osw"; font-weight:500; font-size:34px; color:#000; }
+  .fr { position:absolute; left:60px; top:380px; width:960px; height:560px; overflow:hidden; border:6px solid #FF2A2A; box-shadow:0 0 60px rgba(255,42,42,.35); opacity:0; }
+  .fr img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .tag { position:absolute; font-family:"Osw"; font-weight:700; font-size:32px; color:#000; background:#fff; padding:2px 16px; text-transform:uppercase; z-index:3; opacity:0; }
+  .tag.r { background:#FF2A2A; }
+  .src { font-family:"HG"; font-weight:500; font-size:24px; color:rgba(255,255,255,.55); }
+  .tl { position:absolute; left:120px; top:1230px; width:840px; opacity:0; }
+  .tl i { position:absolute; top:10px; left:20px; right:20px; height:6px; background:#FF2A2A; transform-origin:0 50%; transform:scaleX(0); }
+  .tl b { position:absolute; top:0; width:26px; height:26px; border-radius:50%; background:#FF2A2A; }
+  .tl span { position:absolute; top:44px; font-family:"Osw"; font-weight:700; font-size:32px; color:#fff; text-transform:uppercase; white-space:nowrap; }
+  .pp { position:absolute; width:56px; height:120px; opacity:0; }
+  .pp::before { content:""; position:absolute; left:14px; top:0; width:28px; height:28px; border-radius:50%; background:#fff; }
+  .pp::after { content:""; position:absolute; left:6px; top:34px; width:44px; height:84px; border-radius:20px 20px 6px 6px; background:#fff; }
+</style>
+
+<div class="S clip news" id="p7" data-start="0" data-duration="25.2" data-track-index="10">
+  <div class="S" id="cam7">
+    <!-- A · Rama met Netanyahu after the warrant -->
+    <div class="fr" id="fa"><img id="fai" src="img/rama-netanyahu.jpg" alt=""/>
+      <div class="tag r" id="ta0" style="left:22px;bottom:22px;">Edi Rama</div><div class="tag" id="ta1" style="right:22px;bottom:22px;">Benjamin Netanyahu</div></div>
+    <div class="wd" id="a0" style="top:990px;"><div class="O" style="font-size:72px;">E ka takuar Netanyahun</div>
+      <div class="O" style="font-size:100px;margin-top:34px;"><span class="blk" id="a0b">edhe pas mandatit</span></div></div>
+    <div class="tl" id="tl"><i id="tli"></i><b style="left:0;"></b><b style="right:0;"></b>
+      <span style="left:-10px;">21 nën 2024 · Mandati ICC</span><span style="right:-10px;" class="R">26 jan 2026 · Takimi</span></div>
+    <div class="wd" id="a1" style="top:1380px;"><div class="src">Burimi: gov.il / Ambasada e Izraelit · 26.01.2026, Jerusalem</div></div>
+    <!-- B · emigration -->
+    <div class="wd" id="b0" style="top:640px;"><div class="O" style="font-size:150px;color:#bbb;">Ndërkohë…</div></div>
+    <div class="fr" id="fb"><img id="fbi" src="img/emigration-photo.png" alt=""/>
+      <div class="tag" id="tb" style="left:22px;bottom:22px;">Emigrantë shqiptarë · 2015</div></div>
+    <div class="wd" id="b1" style="top:1010px;"><div class="O" style="font-size:72px;">shqiptarët po shpopullohen</div>
+      <div class="O" style="font-size:170px;margin-top:14px;position:relative;"><span class="R">masivisht</span><div class="gl O" id="b1g" style="font-size:170px;color:#2AD4FF;">masivisht</div></div></div>
+    <!-- C · 5 every hour -->
+    <div class="wd" id="c0" style="top:380px;"><div class="O" style="font-size:64px;color:#ddd;">Vetëm në vitin</div><div class="O" style="font-size:250px;margin-top:6px;">2022</div></div>
+    <div class="wd" id="c1" style="top:780px;"><div class="O R" style="font-size:52px;letter-spacing:.2em;">Sipas INSTAT</div></div>
+    <div id="ppl" style="position:absolute;left:0;top:880px;width:1080px;height:140px;"></div>
+    <div class="wd" id="c2" style="top:1060px;"><div class="O" style="font-size:230px;line-height:.9;"><span class="R" id="c2n">5</span></div>
+      <div class="O" style="font-size:64px;margin-top:10px;">shqiptarë largohen <span class="blk">çdo orë</span></div></div>
+    <div class="wd" id="c3" style="top:1400px;"><div class="src">INSTAT: 46,460 emigrantë në vitin 2022 ≈ 5.3 në orë</div></div>
+    <!-- D · KLSH -->
+    <div class="wd" id="d0" style="top:420px;"><div class="O" style="font-size:150px;color:#bbb;">Ndërkohë…</div></div>
+    <div class="wd" id="d1" style="top:390px;"><div class="O R" style="font-size:44px;letter-spacing:.16em;">Sipas raporteve të</div><div class="O" style="font-size:190px;margin-top:10px;">KLSH</div><div class="O" style="font-size:40px;margin-top:12px;color:#bbb;">Kontrolli i Lartë i Shtetit</div></div>
+    <div class="wd" id="d2" style="top:720px;"><div class="O" style="font-size:64px;color:#ddd;">që prej vitit <span class="R">2013</span></div></div>
+    <div class="wd" id="d3" style="top:830px;"><div class="O" style="font-size:190px;line-height:.9;position:relative;"><span class="R">Miliarda €</span><div class="gl O" id="d3g" style="font-size:190px;color:#2AD4FF;">Miliarda €</div></div></div>
+    <div class="wd" id="d4" style="top:1060px;"><div class="O" style="font-size:80px;">dëme ekonomike</div></div>
+    <div class="wd" id="d5" style="top:1160px;"><div class="O" style="font-size:52px;color:#ddd;">nga <span class="blk">korrupsioni</span> dhe <span class="blk">keqmenaxhimi</span></div></div>
+  </div>
+  <div class="scan"></div><div class="vig"></div>
+  <div class="O" id="cnr" style="position:absolute;left:60px;top:250px;font-size:34px;color:#FF2A2A;letter-spacing:.14em;">● Faktet</div>
+  <div class="bar"><b>FAKTET</b><span>Takimi · Emigrimi · KLSH</span></div>
+  <div id="cfl" class="S" style="background:#FF2A2A;opacity:0;mix-blend-mode:screen;"></div>
+</div>

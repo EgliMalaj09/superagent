@@ -1,0 +1,24 @@
+GOOGLE OMNI PROMPT
+
+[SPEAKER & SETTING]
+Animated low-poly 3D short film, continuing exactly from the given first frame: same characters, same floating ledge in starry space with purple neon edge and holographic panels, same chunky low-poly render style and purple lighting; no style change, no new characters, no cuts. Voices: ANA (young Albanian woman, ~24, soft tired voice with a Tirana accent, growing frustration, natural and funny, not theatrical) / CLAUDE (gentle, warm, slightly synthetic and overly polite gender-neutral AI voice). CLAUDE HAS NO MOUTH: his voice plays while his tiny antenna spark pulses brighter on each syllable; he never opens a mouth. Framing: Close-up of Ana sitting on the ledge, three-quarter view, chin resting on her hand, purple rim light on her face, Claude fully inside the frame on the right, smaller and softly out of focus, his whole cube visible, turned toward Ana so his ONE front face with two dot eyes faces her (plain blank sides, no eyes on the side). Total duration: 4 seconds.
+
+[PERFORMANCE — language: Albanian]
+
+Line 1 — ANA: "A më do?"
+Delivery: Small, hesitant, sad, quiet rising question; emphasis on "do". Pronounced clearly as three words.
+Face: Sad puppy eyes on Claude, small pout, brows lifted in the middle.
+Gesture: Chin stays on her hand; tiny head tilt on "do".
+
+Line 2 — CLAUDE: "Sigurisht."
+Delivery: Instantly after her, bright and cheerful, falling intonation; emphasis on "Sig-".
+Face: Claude's dot eyes turn into happy upward arcs ^ ^ (Claude has no mouth; antenna spark pulses as he speaks).
+Gesture: Claude does one small happy hop on the spot.
+
+[RULES]
+The scene contains ONLY Ana and the small orange robot Claude. NO other people, no faces, no figures, no reflections of people anywhere in the frame or background, ever.
+CLAUDE DESIGN LOCK: Claude is a rigid terracotta cube that NEVER morphs. He has exactly ONE face (the front side) with exactly two plain black dot eyes, and nothing else: NO eyebrows, NO nose, NO mouth, NO cheeks, no human facial features, ever. His other sides are plain and blank (no eyes on the sides). His eyes may only change between dots, happy upward arcs and flat lines. He moves only by small hops, tilts and turning his whole body. Even while Claude is speaking, his face shows ONLY the two eyes: no mouth ever appears, not even a small line or smile; his voice comes from the robot like a speaker. His antenna ALWAYS ends in the same glowing orange starburst spark, never a plain ball or knob.
+Spoken dialogue, in this exact order and nothing else: ANA says "A më do?" then CLAUDE says "Sigurisht.". Standard Albanian (Tirana accent), exactly as written, every word clearly articulated and complete, not mumbled or cut off. No extra words, no whispers, no other speech. Whoever is not speaking stays silent and reacts subtly. Quiet spacey ambience and faint electronic hum only; no music, no subtitles, no on-screen text.
+
+[TIMING]
+Total target: 4s. Start the first line after ~0.3s, leave a short natural beat between lines; let the last expression hold to the end of the shot.

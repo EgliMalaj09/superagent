@@ -1,0 +1,17 @@
+GOOGLE OMNI PROMPT
+
+[SPEAKER & SETTING]
+Animated low-poly 3D short film, continuing exactly from the given first frame: same characters, same room, same faceted low-poly render style and purple night lighting; no style change, no new characters, no cuts. Speaker: ANA (young Albanian woman, ~24, soft tired voice with a Tirana accent, growing frustration, natural and funny, not theatrical). Framing: Medium shot of Ana facing Claude, the laptop between them in the lower frame. Total duration: 4 seconds.
+
+[PERFORMANCE — language: Albanian]
+
+Line — "Hapësirë kam plot. (beat) Dy terabajt."
+Delivery: Deadpan, flat, dry; short pause, then "Dy terabajt" said even flatter. Emphasis on "plot" and "terabajt".
+Face: Half-lidded unimpressed eyes, straight mouth.
+Gesture: On "Dy terabajt" she points one finger down at the laptop without looking at it.
+
+[RULES]
+Only this one line is spoken, in Albanian, exactly as written. The other character stays silent and reacts subtly. Quiet room tone and faint keyboard hum only; no music, no subtitles, no on-screen text.
+
+[TIMING]
+Total target: 4s. Start the line after ~0.3s; let the last expression hold to the end of the shot.

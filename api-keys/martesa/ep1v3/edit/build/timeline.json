@@ -1,0 +1,249 @@
+{
+ "cut": [
+  [
+   "scene01/clips/s01",
+   0.0,
+   4.85,
+   "Një milion euro. Vetëm që të bëhesh gruaja ime.",
+   "office"
+  ],
+  [
+   "scene01/clips/s02",
+   1.2,
+   3.0,
+   "Më fal?!",
+   "office"
+  ],
+  [
+   "scene02/clips/2A",
+   0.6,
+   3.75,
+   "Ti as nuk më njeh!",
+   "office"
+  ],
+  [
+   "scene02/clips/2B",
+   0.5,
+   3.0,
+   null,
+   "office"
+  ],
+  [
+   "scene02/clips/2C",
+   1.2,
+   4.03,
+   "Di që babai yt ka dyzet e tetë orë.",
+   "office"
+  ],
+  [
+   "scene03/clips/3A",
+   0.9,
+   2.9,
+   null,
+   "memory"
+  ],
+  [
+   "scene03/clips/3B1",
+   0.75,
+   2.5,
+   "Për të shlyer borxhin.",
+   "office"
+  ],
+  [
+   "scene03/clips/3B2",
+   0.4,
+   2.85,
+   "Përndryshe humbisni shtëpinë.",
+   "office"
+  ],
+  [
+   "scene04/clips/4A",
+   1.1,
+   3.6,
+   "Nga i di ti këto?",
+   "office"
+  ],
+  [
+   "scene04/clips/4B",
+   0.6,
+   3.0,
+   null,
+   "office"
+  ],
+  [
+   "scene05/clips/5A",
+   0.3,
+   3.6,
+   null,
+   "office"
+  ],
+  [
+   "scene05/clips/5B1",
+   0.6,
+   4.03,
+   "Një vit martesë. Një milion euro.",
+   "office"
+  ],
+  [
+   "scene05/clips/5B2",
+   0.25,
+   2.2,
+   "Pastaj je e lirë.",
+   "office"
+  ],
+  [
+   "scene05/clips/5C",
+   0.9,
+   2.9,
+   "Dhe çfarë kërkon nga unë?",
+   "office"
+  ],
+  [
+   "scene05/clips/5D",
+   0.8,
+   6.0,
+   "Të jetosh në shtëpinë time. Të sillesh si gruaja ime. Dhe të mos bësh pyetje.",
+   "office"
+  ],
+  [
+   "scene06/clips/6A",
+   0.5,
+   2.6,
+   null,
+   "office"
+  ],
+  [
+   "scene06/clips/6B",
+   1.5,
+   4.85,
+   "Pse është shkruar që nuk mund të hyj në katin e tretë?",
+   "office"
+  ],
+  [
+   "scene06/clips/6C",
+   0.6,
+   4.03,
+   "Sepse ajo pjesë e shtëpisë nuk të përket ty.",
+   "office"
+  ],
+  [
+   "scene06/clips/6D",
+   0.3,
+   2.8,
+   null,
+   "villa"
+  ],
+  [
+   "scene06/clips/6E",
+   0.9,
+   3.0,
+   "Çfarë fsheh atje?",
+   "office"
+  ],
+  [
+   "scene06/clips/6F",
+   0.4,
+   2.95,
+   "Firmos ose largohu.",
+   "office"
+  ]
+ ],
+ "captions": [
+  [
+   "Një milion euro.",
+   0.5,
+   1.99
+  ],
+  [
+   "Vetëm që të bëhesh gruaja ime.",
+   1.99,
+   4.78
+  ],
+  [
+   "Më fal?!",
+   5.55,
+   6.43
+  ],
+  [
+   "Ti as nuk më njeh!",
+   8.34,
+   9.66
+  ],
+  [
+   "Di që babai yt ka dyzet e tetë orë.",
+   12.67,
+   14.95
+  ],
+  [
+   "Për të shlyer borxhin.",
+   17.34,
+   18.77
+  ],
+  [
+   "Përndryshe humbisni shtëpinë.",
+   19.14,
+   21.21
+  ],
+  [
+   "Nga i di ti këto?",
+   21.73,
+   23.77
+  ],
+  [
+   "Një vit martesë.",
+   30.26,
+   31.61
+  ],
+  [
+   "Një milion euro.",
+   31.61,
+   32.96
+  ],
+  [
+   "Pastaj je e lirë.",
+   33.25,
+   34.79
+  ],
+  [
+   "Dhe çfarë kërkon nga unë?",
+   35.28,
+   36.8
+  ],
+  [
+   "Të jetosh në shtëpinë time.",
+   37.26,
+   38.97
+  ],
+  [
+   "Të sillesh si gruaja ime.",
+   38.97,
+   40.56
+  ],
+  [
+   "Dhe të mos bësh pyetje.",
+   40.56,
+   42.02
+  ],
+  [
+   "Pse është shkruar që nuk mund të hyj në katin e tretë?",
+   44.55,
+   47.43
+  ],
+  [
+   "Sepse ajo pjesë e shtëpisë nuk të përket ty.",
+   47.98,
+   50.96
+  ],
+  [
+   "Çfarë fsheh atje?",
+   53.86,
+   55.46
+  ],
+  [
+   "Firmos ose largohu.",
+   55.86,
+   57.9
+  ]
+ ],
+ "duration": 58.08333333333334
+}

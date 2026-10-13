@@ -1,0 +1,8 @@
+/* A Day in the Life of Claude · Spider-Verse comic look (see research/spiderverse-style.md) */
+#svg .ink { stroke:#1D1530; stroke-width:5; stroke-linejoin:round; }
+/* print misregistration: magenta/cyan ghost offsets on the whole picture */
+#svg { filter: drop-shadow(3px 0 0 rgba(255,40,140,.32)) drop-shadow(-3px 0 0 rgba(30,200,255,.32)); }
+.boom { position:absolute; left:0; right:0; text-align:center; font:900 150px/1 "Out", sans-serif; color:#FFE14D;
+  -webkit-text-stroke:7px #1D1530; paint-order:stroke fill; text-shadow:8px 8px 0 #FF3D7F; letter-spacing:-.02em; }
+.capbox { position:absolute; left:60px; top:1500px; background:#FFE14D; border:5px solid #1D1530; box-shadow:7px 7px 0 #1D1530;
+  padding:12px 22px; font:700 40px/1 "Osw", sans-serif; letter-spacing:.06em; color:#1D1530; text-transform:uppercase; }

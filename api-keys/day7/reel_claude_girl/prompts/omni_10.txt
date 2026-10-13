@@ -1,0 +1,17 @@
+GOOGLE OMNI PROMPT
+
+[SPEAKER & SETTING]
+Animated low-poly 3D short film, continuing exactly from the given first frame: same characters, same room, same faceted low-poly render style and purple night lighting; no style change, no new characters, no cuts. Speaker: ANA (young Albanian woman, ~24, soft tired voice with a Tirana accent, growing frustration, natural and funny, not theatrical). Framing: Wide two-shot of the desk: Ana in her chair right, Claude on the desk left; the camera slowly pushes in toward Claude during the shot. Total duration: 7 seconds.
+
+[PERFORMANCE — language: Albanian]
+
+Line — "Mirë. (beat) Radha jote. Fillo ti një bisedë. (beat) Më pyet diçka. Çfarëdo."
+Delivery: "Mirë" short and clipped. Then a challenge, measured and pointed; emphasis on "jote" and "ti". Last two softer and hopeful, "Çfarëdo" almost pleading.
+Face: Arms crossed, chin up, then softening eyes, hopeful.
+Gesture: She crosses her arms and leans back in the chair on "Mirë"; on "Çfarëdo" she uncrosses and opens one hand toward Claude.
+
+[RULES]
+Only this one line is spoken, in Albanian, exactly as written. The other character stays silent and reacts subtly. Quiet room tone and faint keyboard hum only; no music, no subtitles, no on-screen text.
+
+[TIMING]
+Total target: 7s. Start the line after ~0.3s; let the last expression hold to the end of the shot.

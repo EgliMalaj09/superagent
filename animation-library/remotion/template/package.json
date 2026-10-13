@@ -1,0 +1,32 @@
+{
+  "name": "albanian-doc-reel",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render Main out/video.mp4",
+    "build:small": "remotion render Main out/video-small.mp4 --crf=23",
+    "audio": "node scripts/generate-audio.mjs",
+    "pauses": "node scripts/detect-pauses.mjs public/audio/voiceover.mp3",
+    "stills": "node scripts/render-stills.mjs out/stills"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.532",
+    "@remotion/cli": "4.0.532",
+    "@remotion/google-fonts": "4.0.532",
+    "@remotion/media-utils": "4.0.532",
+    "@remotion/noise": "4.0.532",
+    "@remotion/renderer": "4.0.532",
+    "@remotion/transitions": "4.0.532",
+    "@remotion/zod-types": "4.0.532",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.532",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.0",
+    "@types/react": "19.0.0",
+    "typescript": "5.4.5"
+  }
+}

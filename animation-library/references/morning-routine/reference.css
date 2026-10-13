@@ -1,0 +1,11 @@
+/* morning-routine reference: B&W surreal collage on soft grey paper, Montserrat, blue pushpin accent */
+:root { --bg:#E6E5E1; --ink:#151515; --mute:#6E6E6E; --accent:#2E64D8; --hi:#2E64D8; --red:#B3261E; --card:#F4F3F0;
+  --head:"Montserrat", "Out", Arial, sans-serif; --headw:800; --track:-.02em; --body:"Montserrat", "Out", Arial, sans-serif; --quote:"Montserrat", "Out", sans-serif;
+  --bgfx: radial-gradient(90% 60% at 50% 42%, #F1F0ED 0%, #E2E1DD 60%, #BDBBB6 100%);
+  --shadow:0 30px 40px rgba(0,0,0,.18); --radius:0px; }
+.grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px); background-size:90px 90px; background-position:45px 20px; mask-image:radial-gradient(70% 55% at 50% 45%, #000 40%, transparent 90%); }
+.vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(80% 60% at 50% 45%, transparent 55%, rgba(60,58,54,.35) 100%); }
+.small { font-family:var(--body); font-weight:500; color:var(--ink); letter-spacing:-.01em; }
+.bigw { font-family:var(--head); font-weight:800; color:var(--ink); letter-spacing:-.025em; line-height:1; }
+.bigw.g { color:var(--mute); }
+.pin { position:absolute; width:46px; height:90px; }

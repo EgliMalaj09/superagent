@@ -1,0 +1,17 @@
+GOOGLE OMNI PROMPT
+
+[SPEAKER & SETTING]
+Animated low-poly 3D short film, continuing exactly from the given first frame: same characters, same room, same faceted low-poly render style and purple night lighting; no style change, no new characters, no cuts. Speaker: ANA (young Albanian woman, ~24, soft tired voice with a Tirana accent, growing frustration, natural and funny, not theatrical). Framing: Medium close-up of Ana, hand raised in front of her chest, Claude out of focus at the left edge. Total duration: 6 seconds.
+
+[PERFORMANCE — language: Albanian]
+
+Line — "Të them "të lutem". Të them "faleminderit". Të pyes si je."
+Delivery: A list that builds in hurt: each phrase a bit higher and more wounded; emphasis on "të lutem", "faleminderit", "si je". Slight crack in the voice on the last one.
+Face: Brows knit more with every item, lips pressed, eyes getting glossy.
+Gesture: Counts on her fingers: one, two, three fingers, one per phrase.
+
+[RULES]
+Only this one line is spoken, in Albanian, exactly as written. The other character stays silent and reacts subtly. Quiet room tone and faint keyboard hum only; no music, no subtitles, no on-screen text.
+
+[TIMING]
+Total target: 6s. Start the line after ~0.3s; let the last expression hold to the end of the shot.

@@ -1,0 +1,2 @@
+4B try0 FAIL {"transcript": "Listen carefully to this clip.", "language": "English", "all_albanian": false, "music": false, "background_noise": "Keyboard typing", "matches_expected": true}
+4B try1 PASS {"transcript": "", "language": null, "all_albanian": false, "music": false, "background_noise": "Typewriter", "matches_expected": true}

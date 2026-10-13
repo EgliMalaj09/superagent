@@ -1,0 +1,300 @@
+<title>Egli Studio Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a production call sheet. One column, a big org chart up top, then the run order, routing table and folder plan. */
+:root{
+  --bg:#f2f4f8; --surface:#ffffff; --ink:#18202e; --muted:#5a6476; --line:#cfd5e1;
+  --accent:#2445c9; --accent-soft:#e3e8fb; --stop:#b86e00; --stop-soft:#fbefd9; --later:#8a93a5;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10141c; --surface:#181e2a; --ink:#e7ebf3; --muted:#9aa4b8; --line:#2c3445;
+  --accent:#7d95ff; --accent-soft:#1f2a4d; --stop:#f0a83c; --stop-soft:#3a2a10; --later:#6d778b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141c; --surface:#181e2a; --ink:#e7ebf3; --muted:#9aa4b8; --line:#2c3445;
+  --accent:#7d95ff; --accent-soft:#1f2a4d; --stop:#f0a83c; --stop-soft:#3a2a10; --later:#6d778b; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:20px;padding-block:40px 64px;display:grid;gap:56px}
+header{display:grid;gap:10px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(44px,8vw,76px);line-height:.95;margin:0;letter-spacing:.01em;text-wrap:balance}
+h2{font-family:var(--f-display);font-weight:700;font-size:32px;line-height:1;margin:0;letter-spacing:.02em;text-wrap:balance}
+.lead{max-width:62ch;color:var(--muted);margin:0;font-size:17px}
+section{display:grid;gap:18px;min-width:0}
+section>p{margin:0;max-width:65ch}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+figure{margin:0;display:grid;gap:10px}
+figcaption{color:var(--muted);font-size:14px;max-width:70ch}
+svg{display:block;width:100%;height:auto;color:var(--ink);font-family:var(--f-body)}
+.chart{min-width:780px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px}
+.flow{min-width:820px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px}
+/* run order */
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;counter-reset:s}
+ol.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:4px;align-content:start;min-width:0}
+ol.steps li::before{content:counter(s);font-family:var(--f-display);font-weight:800;font-size:28px;line-height:1;color:var(--accent)}
+ol.steps li.stop{background:var(--stop-soft);border-color:transparent}
+ol.steps li.stop::before{color:var(--stop)}
+ol.steps b{font-weight:700}
+ol.steps span{color:var(--muted);font-size:14px}
+/* table */
+table{border-collapse:collapse;width:100%;min-width:680px;background:var(--surface);font-size:15px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:12px;padding:2px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.tag.me{background:var(--stop-soft);color:var(--stop)}
+.tablebox{border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+/* folder tree */
+.tree{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-family:var(--f-mono);font-size:13.5px;line-height:1.75;overflow-x:auto;white-space:pre;margin:0}
+.tree .d{color:var(--accent);font-weight:500}
+.tree .c{color:var(--muted)}
+.tree .h{color:var(--stop);font-weight:500}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:8px;min-width:0}
+.note h3{margin:0;font-size:16px}
+.note ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.note.later{border-style:dashed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">claude-agent · as of 13 Oct 2026</div>
+  <h1>Egli Studio Map</h1>
+  <p class="lead">One master agent takes every goal, plans the route, and hands each piece to the studio that knows how to do it. You talk to one place; the work lands in the right folder.</p>
+</header>
+
+<section>
+  <h2>Who answers to whom</h2>
+  <figure>
+    <div class="scroll"><div class="chart">
+    <svg viewBox="0 0 1000 500" role="img" aria-label="You give goals to the master agent in claude-agent. It reads your profile and knowledge base, does planning and Instagram writing itself, and sends briefs to five specialists, each working in its own Desktop folder. Specialists report back with needs-approval, done or failed. Outputs are shared as files.">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+        <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+      </defs>
+
+      <!-- You -->
+      <rect x="430" y="14" width="140" height="44" rx="22" fill="var(--ink)"/>
+      <text x="500" y="42" text-anchor="middle" font-size="16" font-weight="700" fill="var(--bg)">You</text>
+      <line x1="484" y1="58" x2="484" y2="106" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+      <line x1="516" y1="106" x2="516" y2="62" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="474" y="88" text-anchor="end" font-size="12" fill="var(--muted)">goal · your approvals</text>
+      <text x="526" y="88" font-size="12" fill="var(--muted)">route · questions · finished files</text>
+
+      <!-- Master -->
+      <rect x="300" y="110" width="400" height="90" rx="10" fill="var(--accent)"/>
+      <text x="500" y="140" text-anchor="middle" font-size="19" font-weight="700" fill="var(--surface)">Master agent</text>
+      <text x="500" y="161" text-anchor="middle" font-size="12.5" font-family="var(--f-mono)" fill="var(--surface)">~/Desktop/claude-agent</text>
+      <text x="500" y="183" text-anchor="middle" font-size="12.5" fill="var(--surface)">plans the route · splits the work · relays approvals</text>
+
+      <!-- Knowledge -->
+      <rect x="24" y="110" width="226" height="90" rx="10" fill="var(--surface)" stroke="var(--line)"/>
+      <text x="40" y="134" font-size="11" letter-spacing="1.2" fill="var(--muted)" font-family="var(--f-mono)">READS FIRST</text>
+      <text x="40" y="156" font-size="13" font-family="var(--f-mono)" fill="currentColor">ABOUT-ME.md</text>
+      <text x="40" y="176" font-size="13" font-family="var(--f-mono)" fill="currentColor">knowledge/</text>
+      <text x="40" y="192" font-size="11.5" fill="var(--muted)">map of styles · taste · lessons</text>
+      <line x1="250" y1="145" x2="296" y2="145" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="273" y="138" text-anchor="middle" font-size="11" fill="var(--muted)">reads</text>
+      <line x1="298" y1="170" x2="254" y2="170" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+      <text x="273" y="186" text-anchor="middle" font-size="11" fill="var(--muted)">saves taste</text>
+
+      <!-- Skills -->
+      <rect x="750" y="110" width="226" height="90" rx="10" fill="var(--surface)" stroke="var(--line)"/>
+      <text x="766" y="134" font-size="11" letter-spacing="1.2" fill="var(--muted)" font-family="var(--f-mono)">DOES ITSELF</text>
+      <text x="766" y="156" font-size="13" fill="currentColor">Instagram skills: plan, hook,</text>
+      <text x="766" y="174" font-size="13" fill="currentColor">script, caption, DMs, audit</text>
+      <text x="766" y="192" font-size="11.5" fill="var(--muted)">+ Seedance prompts (Higgsfield)</text>
+      <line x1="700" y1="155" x2="746" y2="155" stroke="currentColor" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="723" y="148" text-anchor="middle" font-size="11" fill="var(--muted)">uses</text>
+
+      <!-- Bus -->
+      <line x1="500" y1="200" x2="500" y2="252" stroke="var(--accent)" stroke-width="2"/>
+      <line x1="110" y1="252" x2="890" y2="252" stroke="var(--accent)" stroke-width="2"/>
+      <rect x="318" y="219" width="364" height="22" rx="4" fill="var(--surface)"/>
+      <text x="500" y="234" text-anchor="middle" font-size="12" fill="var(--accent)" font-weight="600">brief ↓    NEEDS_APPROVAL · DONE · FAILED ↑</text>
+      <g stroke="var(--accent)" stroke-width="2">
+        <line x1="110" y1="252" x2="110" y2="286" marker-end="url(#arA)"/>
+        <line x1="305" y1="252" x2="305" y2="286" marker-end="url(#arA)"/>
+        <line x1="500" y1="252" x2="500" y2="286" marker-end="url(#arA)"/>
+        <line x1="695" y1="252" x2="695" y2="286" marker-end="url(#arA)"/>
+        <line x1="890" y1="252" x2="890" y2="286" marker-end="url(#arA)"/>
+      </g>
+
+      <!-- Specialists -->
+      <g font-size="12.5">
+        <rect x="25" y="290" width="170" height="116" rx="10" fill="var(--surface)" stroke="currentColor"/>
+        <text x="110" y="316" text-anchor="middle" font-weight="700" font-size="14.5" fill="currentColor">sequences-agent</text>
+        <text x="110" y="336" text-anchor="middle" font-family="var(--f-mono)" font-size="11.5" fill="var(--accent)">claude-sequences/</text>
+        <text x="110" y="364" text-anchor="middle" fill="var(--muted)">Claude-in-Tirana</text>
+        <text x="110" y="382" text-anchor="middle" fill="var(--muted)">comic episodes</text>
+
+        <rect x="220" y="290" width="170" height="116" rx="10" fill="var(--surface)" stroke="currentColor"/>
+        <text x="305" y="316" text-anchor="middle" font-weight="700" font-size="14.5" fill="currentColor">editor-agent</text>
+        <text x="305" y="336" text-anchor="middle" font-family="var(--f-mono)" font-size="11.5" fill="var(--accent)">claude-editor/</text>
+        <text x="305" y="364" text-anchor="middle" fill="var(--muted)">your raw footage → cut,</text>
+        <text x="305" y="382" text-anchor="middle" fill="var(--muted)">audio, SRT → CapCut</text>
+
+        <rect x="415" y="290" width="170" height="116" rx="10" fill="var(--surface)" stroke="currentColor"/>
+        <text x="500" y="316" text-anchor="middle" font-weight="700" font-size="14.5" fill="currentColor">animation-agent</text>
+        <text x="500" y="336" text-anchor="middle" font-family="var(--f-mono)" font-size="11.5" fill="var(--accent)">animation-library/</text>
+        <text x="500" y="364" text-anchor="middle" fill="var(--muted)">pattern.io, explainers,</text>
+        <text x="500" y="382" text-anchor="middle" fill="var(--muted)">client explainers</text>
+
+        <rect x="610" y="290" width="170" height="116" rx="10" fill="var(--surface)" stroke="currentColor"/>
+        <text x="695" y="316" text-anchor="middle" font-weight="700" font-size="14.5" fill="currentColor">media-gen-agent</text>
+        <text x="695" y="336" text-anchor="middle" font-family="var(--f-mono)" font-size="11.5" fill="var(--accent)">api-keys/</text>
+        <text x="695" y="364" text-anchor="middle" fill="var(--muted)">Google images, Omni</text>
+        <text x="695" y="382" text-anchor="middle" fill="var(--muted)">video, Lyria music · paid</text>
+
+        <rect x="805" y="290" width="170" height="116" rx="10" fill="var(--surface)" stroke="currentColor"/>
+        <text x="890" y="316" text-anchor="middle" font-weight="700" font-size="14.5" fill="currentColor">joke-teller</text>
+        <text x="890" y="336" text-anchor="middle" font-family="var(--f-mono)" font-size="11.5" fill="var(--muted)">no folder</text>
+        <text x="890" y="364" text-anchor="middle" fill="var(--muted)">3 jokes on</text>
+        <text x="890" y="382" text-anchor="middle" fill="var(--muted)">any topic</text>
+      </g>
+
+      <!-- Shared files -->
+      <g stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 3">
+        <line x1="110" y1="406" x2="110" y2="440" marker-end="url(#ar)"/>
+        <line x1="305" y1="406" x2="305" y2="440" marker-end="url(#ar)"/>
+        <line x1="500" y1="406" x2="500" y2="440" marker-end="url(#ar)"/>
+        <line x1="695" y1="406" x2="695" y2="440" marker-end="url(#ar)"/>
+      </g>
+      <rect x="25" y="444" width="755" height="42" rx="8" fill="var(--accent-soft)"/>
+      <text x="402" y="470" text-anchor="middle" font-size="13" fill="currentColor">Files on your Mac: one specialist's output (MP4, keyframe, SRT) is the next one's input, passed on by the master</text>
+    </svg>
+    </div></div>
+    <figcaption>Specialists never talk to each other or to you directly. Everything goes up to the master, and the master passes results along. They can't start helpers of their own, so the master is the only one who splits work.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>How every job runs</h2>
+  <p>This is the default order for anything bigger than a single step. The amber steps are where it stops and waits for you.</p>
+  <ol class="steps">
+    <li><b>You give a goal</b><span>Always in a session opened in <code>claude-agent</code>.</span></li>
+    <li class="stop"><b>Master proposes the route</b><span>Goal, steps, who does each, what runs in parallel, cost and time. You say go or change it.</span></li>
+    <li><b>Briefs go out</b><span>Each specialist gets your words, file paths, format, and the right knowledge files. Independent pieces run at once.</span></li>
+    <li class="stop"><b>Approval stops come back to you</b><span>Script, cut list, prompts and their cost, scene renders. The master shows them; you answer; the same specialist continues.</span></li>
+    <li><b>Outputs pass along</b><span>Finished files from one specialist are handed to the next one that needs them.</span></li>
+    <li><b>You get the result</b><span>The finished files and a short summary.</span></li>
+    <li><b>Taste is saved</b><span>What you liked or rejected is written down the same turn, so the next job starts smarter.</span></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Example: one video, split across agents</h2>
+  <p>Sunday's AI SHQIP Ep. 4 from your egli_ai plan needs your face video and a Claude-animated toolkit map. The cut and the animation don't depend on each other, so they run at the same time.</p>
+  <figure>
+    <div class="scroll"><div class="flow">
+    <svg viewBox="0 0 1000 230" role="img" aria-label="Example flow: the master writes the script, you approve it, then the editor cuts your face footage while the animation agent builds the toolkit map in parallel; the animation agent combines both with captions, the master writes the caption, and you post.">
+      <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+      <g font-size="12.5">
+        <rect x="10" y="88" width="132" height="58" rx="8" fill="var(--accent)"/>
+        <text x="76" y="113" text-anchor="middle" font-weight="700" fill="var(--surface)">Script + hook</text>
+        <text x="76" y="132" text-anchor="middle" fill="var(--surface)" font-size="11.5">master · ig-reel</text>
+
+        <rect x="172" y="88" width="104" height="58" rx="8" fill="var(--stop-soft)" stroke="var(--stop)"/>
+        <text x="224" y="113" text-anchor="middle" font-weight="700" fill="currentColor">You approve</text>
+        <text x="224" y="132" text-anchor="middle" fill="var(--muted)" font-size="11.5">+ film face video</text>
+
+        <rect x="330" y="22" width="200" height="58" rx="8" fill="var(--surface)" stroke="currentColor"/>
+        <text x="430" y="47" text-anchor="middle" font-weight="700" fill="currentColor">Cut the face video</text>
+        <text x="430" y="66" text-anchor="middle" fill="var(--muted)" font-size="11.5">editor-agent · cut list to you</text>
+
+        <rect x="330" y="154" width="200" height="58" rx="8" fill="var(--surface)" stroke="currentColor"/>
+        <text x="430" y="179" text-anchor="middle" font-weight="700" fill="currentColor">Build the toolkit map</text>
+        <text x="430" y="198" text-anchor="middle" fill="var(--muted)" font-size="11.5">animation-agent · stills to you</text>
+
+        <rect x="584" y="88" width="190" height="58" rx="8" fill="var(--surface)" stroke="currentColor"/>
+        <text x="679" y="113" text-anchor="middle" font-weight="700" fill="currentColor">Combine + captions</text>
+        <text x="679" y="132" text-anchor="middle" fill="var(--muted)" font-size="11.5">animation-agent · reel-edit</text>
+
+        <rect x="804" y="88" width="104" height="58" rx="8" fill="var(--accent)"/>
+        <text x="856" y="113" text-anchor="middle" font-weight="700" fill="var(--surface)">Caption</text>
+        <text x="856" y="132" text-anchor="middle" fill="var(--surface)" font-size="11.5">master · ig-caption</text>
+
+        <rect x="932" y="96" width="60" height="42" rx="21" fill="var(--ink)"/>
+        <text x="962" y="122" text-anchor="middle" font-weight="700" fill="var(--bg)">Post</text>
+      </g>
+      <g stroke="currentColor" stroke-width="1.5" fill="none">
+        <line x1="142" y1="117" x2="168" y2="117" marker-end="url(#ar2)"/>
+        <path d="M276,117 H300 V51 H326" marker-end="url(#ar2)"/>
+        <path d="M276,117 H300 V183 H326" marker-end="url(#ar2)"/>
+        <path d="M530,51 H556 V108 H580" marker-end="url(#ar2)"/>
+        <path d="M530,183 H556 V126 H580" marker-end="url(#ar2)"/>
+        <line x1="774" y1="117" x2="800" y2="117" marker-end="url(#ar2)"/>
+        <line x1="908" y1="117" x2="928" y2="117" marker-end="url(#ar2)"/>
+      </g>
+      <text x="300" y="112" text-anchor="middle" font-size="11" fill="var(--accent)" font-weight="600">parallel</text>
+    </svg>
+    </div></div>
+    <figcaption>The master runs both middle steps at once and only moves on when both are done. You still see the cut list and the animation stills before anything final is built.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Where each kind of work goes</h2>
+  <div class="tablebox">
+  <table>
+    <thead><tr><th>You say</th><th>Handled by</th><th>Lands in</th></tr></thead>
+    <tbody>
+      <tr><td>"Plan next week", "give me a hook", "write the caption"</td><td><span class="tag me">master</span></td><td>Chat, or a doc like your 7-day plan</td></tr>
+      <tr><td>"Write the Seedance prompts for Monday"</td><td><span class="tag me">master</span></td><td>Prompts in chat; you generate on Higgsfield</td></tr>
+      <tr><td>"Edit this clip" (plain cut for CapCut)</td><td><span class="tag">editor-agent</span></td><td><code>claude-editor/jobs/&lt;name&gt;/out/</code>, final export to Downloads</td></tr>
+      <tr><td>"Make an animation / explainer / data video"</td><td><span class="tag">animation-agent</span></td><td><code>animation-library/results/</code></td></tr>
+      <tr><td>"Arzi needs a new ad"</td><td><span class="tag">editor-agent</span> <span class="tag">media-gen-agent</span></td><td><code>claude-editor/jobs/</code>, in the <code>arzi-dental-promo</code> editing style</td></tr>
+      <tr><td>"Generate keyframes / an Omni clip / music"</td><td><span class="tag">media-gen-agent</span></td><td><code>api-keys/&lt;project&gt;/</code>, after you approve the cost</td></tr>
+      <tr><td>"New Claude episode"</td><td><span class="tag">sequences-agent</span></td><td><code>claude-sequences/episodes/&lt;ep&gt;/final/</code></td></tr>
+      <tr><td>"Tell me a joke about…"</td><td><span class="tag">joke-teller</span></td><td>Chat</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Folder plan on your Desktop</h2>
+  <p>The studios stay where they are. The master folder only points at them, so each studio still works on its own when you open it directly for a long job.</p>
+<pre class="tree"><span class="d">claude-agent/</span>                    <span class="h">← open every session here</span>
+├── CLAUDE.md                    <span class="c">the master's rules: route first, then pass work down</span>
+├── ABOUT-ME.md                  <span class="c">you, egli_ai, pattern.io, clients, goals</span>
+├── <span class="d">knowledge/</span>
+│   └── README.md                <span class="c">what's saved where, and how it grows</span>
+└── <span class="d">.claude/</span>
+    ├── settings.json            <span class="c">gives the master access to the 4 studios</span>
+    └── <span class="d">agents/</span>                  <span class="c">sequences · editor · animation · media-gen · joke-teller</span>
+
+<span class="d">claude-sequences/</span>                <span class="c">Claude-in-Tirana episodes (STORY.md, STYLE.md)</span>
+<span class="d">claude-editor/</span>                   <span class="c">editing real footage: CapCut route (jobs/) + editing styles (styles/arzi-dental-promo)</span>
+<span class="d">animation-library/</span>               <span class="c">fully animated (pattern.io): CREATOR-PROFILE.md, TASTE.md, references/ = style library</span>
+<span class="d">api-keys/</span>                        <span class="c">Google generation: day7 tools, House of Albania, martesa, outfits, vivamus</span></pre>
+</section>
+
+<section>
+  <h2>Rules that keep it tidy</h2>
+  <div class="two">
+    <div class="note">
+      <h3>Always</h3>
+      <ul>
+        <li>Start in <code>claude-agent</code>, even for a quick question.</li>
+        <li>Nothing that costs money runs without your yes. Google calls show the prompt and the number of calls first.</li>
+        <li>Every new look gets a style card: animation styles in <code>animation-library/references/</code>, editing styles in <code>claude-editor/styles/</code>.</li>
+        <li>When two rules disagree, the newest one wins and the old line is edited.</li>
+      </ul>
+    </div>
+    <div class="note later">
+      <h3>Coming later</h3>
+      <ul>
+        <li><b>Director</b>: story, shot list, blocking and a shared look bible. Works step by step with your approval.</li>
+        <li><b>Prompt director</b>: turns one shot into a ready prompt. Many copies run at once, one per shot, at most 3–4 video jobs at a time.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>

@@ -1,0 +1,6 @@
+/* DOSSIER / archive (manila paper, typewriter, red stamps, paper clips, redaction bars) */
+:root { --bg:#D9CBAA; --ink:#231F1A; --mute:#4A4032; --accent:#9E1B1B; --hi:#231F1A; --red:#A31D1D; --card:#EFE4C8;
+  --head:"Type", "Courier New", monospace; --headw:400; --track:0; --body:"Type", "Courier New", monospace; --quote:"Spec", Georgia, serif;
+  --bgfx: radial-gradient(100% 70% at 40% 30%, #E6D9B9 0%, #CDBD98 80%); --shadow:0 8px 20px rgba(60,40,10,.3); --radius:2px; }
+.redact { display:inline-block; background:#111; color:transparent; transform-origin:0 50%; }   /* animate scaleX */
+.photo { filter:sepia(.5) contrast(1.1); border:14px solid #F5EFDF; }

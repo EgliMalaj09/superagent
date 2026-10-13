@@ -1,0 +1,217 @@
+{
+ "s01": {
+  "ok": true,
+  "report": {
+   "transcript": "Një milion euro. Vetëm që të bëhesh gruaja ime.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s02": {
+  "ok": true,
+  "report": {
+   "transcript": "Më fal?",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s03": {
+  "ok": true,
+  "report": {
+   "transcript": "Ti as nuk më njeh.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s04": {
+  "ok": false
+ },
+ "s05": {
+  "ok": true,
+  "report": {
+   "transcript": "Nga i di ti këto?",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s06": {
+  "ok": false
+ },
+ "s07": {
+  "ok": true,
+  "report": {
+   "transcript": "Dhe çfarë kërkon nga unë?",
+   "language": "albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s09": {
+  "ok": true,
+  "report": {
+   "transcript": "",
+   "language": "",
+   "all_albanian": false,
+   "music": false,
+   "background_noise": "A low-frequency, continuous hum or drone is present throughout the clip.",
+   "matches_expected": true
+  }
+ },
+ "s10": {
+  "ok": true,
+  "report": {
+   "transcript": "Pse është shkruar që nuk mund të hyj në katin e tretë?",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s13": {
+  "ok": true,
+  "report": {
+   "transcript": "Firmos ose largohu.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s14": {
+  "ok": true,
+  "report": {
+   "transcript": "Në rregull. Pranoj.",
+   "language": "albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": "pencil writing",
+   "matches_expected": true
+  }
+ },
+ "s15": {
+  "ok": true,
+  "report": {
+   "transcript": "",
+   "language": null,
+   "all_albanian": false,
+   "music": false,
+   "background_noise": "Phone vibration",
+   "matches_expected": true
+  }
+ },
+ "s04a": {
+  "ok": true,
+  "report": {
+   "transcript": "Di që babai yt ka dyzet e tetë orë.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s04b": {
+  "ok": true,
+  "report": {
+   "transcript": "Për të shlyer borxhin.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s04c": {
+  "ok": true,
+  "report": {
+   "transcript": "Përndryshe humbisni shtëpinë.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s06a": {
+  "ok": true,
+  "report": {
+   "transcript": "Një vit martesë.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s06b": {
+  "ok": true,
+  "report": {
+   "transcript": "Një milion euro.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s06c": {
+  "ok": true,
+  "report": {
+   "transcript": "Pastaj je e lirë.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": "background hum",
+   "matches_expected": true
+  }
+ },
+ "s08": {
+  "ok": true,
+  "report": {
+   "transcript": "Të jetosh në shtëpinë time. Të sillesh si gruaja ime. Dhe të mos bësh pyetje.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": "faint room tone",
+   "matches_expected": true
+  }
+ },
+ "s11": {
+  "ok": true,
+  "report": {
+   "transcript": "Sepse ajo pjesë e shtëpisë nuk të përket ty.",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ },
+ "s12": {
+  "ok": true,
+  "report": {
+   "transcript": "Çfarë fsheh atje?",
+   "language": "Albanian",
+   "all_albanian": true,
+   "music": false,
+   "background_noise": null,
+   "matches_expected": true
+  }
+ }
+}

@@ -1,0 +1,43 @@
+<style>
+  .news { background: radial-gradient(80% 50% at 50% 42%, #2a0608, #0a0202 60%, #000); }
+  .scan { position:absolute; inset:0; background:repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px); pointer-events:none; }
+  .O { font-family:"Osw", sans-serif; font-weight:700; text-transform:uppercase; color:#fff; letter-spacing:-.01em; line-height:.95; }
+  .R { color:#FF2A2A; }
+  .blk { background:#FF2A2A; color:#000; padding:0 .12em; }
+  .wd { position:absolute; left:0; width:1080px; text-align:center; opacity:0; }
+  .gl { position:absolute; left:0; top:0; width:100%; text-align:center; opacity:0; mix-blend-mode:screen; }
+  .bar { position:absolute; left:0; top:1500px; width:1080px; height:84px; background:#FF2A2A; display:flex; align-items:center; gap:20px; padding:0 40px; }
+  .bar b { font-family:"Osw"; font-weight:700; font-size:40px; color:#000; letter-spacing:.04em; }
+  .bar span { font-family:"Osw"; font-weight:500; font-size:34px; color:#000; }
+  .mu { position:absolute; left:60px; top:400px; width:960px; height:640px; overflow:hidden; border:6px solid #FF2A2A; box-shadow:0 0 60px rgba(255,42,42,.35); opacity:0; transform-origin:50% 0; }
+  .mu img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mtag { position:absolute; left:20px; bottom:20px; font-family:"Osw"; font-weight:700; font-size:34px; color:#000; background:#fff; padding:2px 16px; text-transform:uppercase; z-index:3; }
+</style>
+
+<div class="S clip news" id="p5" data-start="0" data-duration="9.9" data-track-index="10">
+  <div class="S" id="cam5">
+    <!-- Vlora, the flag -->
+    <div class="wd" id="f0" style="top:330px;">
+      <div style="position:relative;width:520px;height:560px;margin:0 auto;">
+        <div style="position:absolute;left:60px;top:0;width:12px;height:560px;background:linear-gradient(90deg,#999,#eee,#999);"></div>
+        <div id="flag" style="position:absolute;left:72px;top:420px;width:400px;height:286px;transform-origin:0 50%;box-shadow:0 10px 30px rgba(0,0,0,.5);overflow:hidden;">
+          <img src="img/flag-albania.svg" alt="" style="position:absolute;inset:0;width:100%;height:100%;"/>
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 70px, rgba(0,0,0,.14) 70px 140px);mix-blend-mode:multiply;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="wd" id="f1" style="top:960px;"><div class="O" style="font-size:200px;">Vlora</div></div>
+    <div class="wd" id="f2" style="top:1180px;"><div class="O R" style="font-size:52px;letter-spacing:.12em;">Qyteti i Flamurit · 28 Nëntor 1912</div></div>
+    <!-- the museum render -->
+    <div class="mu" id="mu"><img id="mui" src="img/museum.jpg" alt=""/><div class="mtag">Projekti · Muzeu Hebraik · Vlorë</div></div>
+    <div class="wd" id="k0" style="top:1090px;"><div class="O" style="font-size:66px;">Kush do ta shkruajë</div><div class="O" style="font-size:96px;margin-top:10px;"><span class="R">historinë</span> e saj?</div></div>
+    <!-- the choice -->
+    <div class="wd" id="c0" style="top:1090px;"><div class="O" style="font-size:120px;">Vlonjatët</div></div>
+    <div class="wd" id="c1" style="top:1222px;"><div class="O" style="font-size:52px;color:#bbb;">apo</div></div>
+    <div class="wd" id="c2" style="top:1316px;"><div class="O" style="font-size:96px;position:relative;"><span class="blk">zyrat e Ramës?</span><div class="gl O" id="c2g" style="font-size:96px;color:#2AD4FF;">zyrat e Ramës?</div></div></div>
+  </div>
+  <div class="scan"></div><div class="vig"></div>
+  <div class="O" style="position:absolute;left:60px;top:250px;font-size:34px;color:#FF2A2A;letter-spacing:.14em;">● Vlorë</div>
+  <div class="bar"><b>MUZEU</b><span>Kush e shkruan historinë e Vlorës?</span></div>
+  <div id="cfl" class="S" style="background:#FF2A2A;opacity:0;mix-blend-mode:screen;"></div>
+</div>

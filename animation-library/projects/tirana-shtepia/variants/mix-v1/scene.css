@@ -1,0 +1,39 @@
+/* Sa vjet për një shtëpi — mixed system: isometric dusk world (story) + flat number cards + simple charts. One palette, one font. */
+:root { --navy:#141B2E; --yel:#F5B82E; --red:#E8453C; --off:#F4F1EA; }
+#bg { background:radial-gradient(90% 60% at 50% 35%, #2B3554 0%, #161D30 60%, #0E1220 100%); }
+#glow { position:absolute; left:200px; top:880px; width:680px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(245,184,46,.2), rgba(245,184,46,0) 65%); pointer-events:none; }
+#night { position:absolute; inset:0; background:radial-gradient(70% 50% at 50% 60%, rgba(245,184,46,.12), rgba(8,10,20,0) 60%); opacity:0; pointer-events:none; }
+.topfade { position:absolute; left:0; right:0; top:0; height:660px; background:linear-gradient(180deg, rgba(14,18,32,.94), rgba(14,18,32,0)); pointer-events:none; }
+.ilab { font-family:"Osw",sans-serif; font-weight:700; color:#0B0C0E; background:var(--yel); padding:4px 16px 6px; letter-spacing:.03em; box-shadow:0 8px 20px rgba(0,0,0,.4); white-space:nowrap; }
+.ilab.w { background:var(--off); }
+
+/* captions */
+.cap { position:absolute; left:60px; right:60px; top:250px; text-align:center; opacity:0; }
+.tt { font-family:"Osw",sans-serif; font-weight:700; font-size:170px; line-height:1; color:var(--off); letter-spacing:.01em; }
+.tt.m { font-size:120px; } .tt.red { color:var(--red); }
+.ts { margin-top:16px; font-family:"Osw",sans-serif; font-weight:500; font-size:46px; color:rgba(244,241,234,.82); letter-spacing:.02em; text-transform:uppercase; }
+.ts.big2 { font-size:58px; line-height:1.2; color:var(--off); }
+.note { position:absolute; left:90px; right:90px; top:1450px; text-align:center; background:rgba(14,18,32,.82); padding:12px 18px; border-radius:6px; font-family:"Osw",sans-serif; font-weight:500; font-size:24px; color:rgba(244,241,234,.55); opacity:0; }
+
+/* number cards */
+.card { position:absolute; inset:0; opacity:0; background:radial-gradient(90% 60% at 50% 40%, #222B47 0%, #151B2D 65%, #0E1220 100%); }
+.card::after { content:""; position:absolute; inset:0; opacity:.07; background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.k { position:absolute; left:0; right:0; top:620px; text-align:center; font-family:"Osw",sans-serif; font-weight:500; font-size:50px; letter-spacing:.08em; color:rgba(244,241,234,.75); }
+.k2 { position:absolute; left:0; right:0; top:1110px; text-align:center; font-family:"Osw",sans-serif; font-weight:500; font-size:46px; letter-spacing:.08em; color:rgba(244,241,234,.75); }
+.big { position:absolute; left:0; right:0; top:700px; text-align:center; font-family:"Osw",sans-serif; font-weight:700; font-size:330px; line-height:1; color:var(--off); letter-spacing:-.01em; font-variant-numeric:tabular-nums; }
+.big.huge { font-size:520px; top:600px; color:var(--yel); }
+.big.mid { font-size:200px; top:1040px; color:var(--red); }
+.ul { position:absolute; left:200px; right:200px; top:1050px; height:14px; background:var(--yel); transform-origin:0 50%; }
+.tagx { position:absolute; left:50%; translate:-50% 0; top:1110px; font-family:"Osw",sans-serif; font-weight:700; font-size:56px; padding:6px 28px 10px; color:var(--off); }
+.tagx.r { background:var(--red); }
+.srcx { position:absolute; left:60px; right:60px; top:1500px; text-align:center; font-family:"Osw",sans-serif; font-weight:500; font-size:26px; letter-spacing:.03em; color:rgba(244,241,234,.45); }
+#figs { position:absolute; left:120px; top:560px; overflow:visible; }
+.fg { fill:#5B6688; }
+.bars { position:absolute; left:140px; right:140px; top:480px; height:1000px; display:flex; justify-content:space-around; align-items:flex-end; }
+.bc { display:flex; flex-direction:column; align-items:center; width:300px; }
+.col2 { width:240px; }
+.b19 { height:300px; background:linear-gradient(180deg, #8B96B8, #5B6688); }
+.b26 { height:666px; background:linear-gradient(180deg, #FFD465, var(--yel)); box-shadow:0 0 60px rgba(245,184,46,.25); }
+.val { font-family:"Osw",sans-serif; font-weight:700; font-size:72px; color:var(--off); margin-bottom:18px; white-space:nowrap; }
+.val.y { color:var(--yel); }
+.yr { font-family:"Osw",sans-serif; font-weight:500; font-size:52px; color:rgba(244,241,234,.75); margin-top:16px; letter-spacing:.06em; }

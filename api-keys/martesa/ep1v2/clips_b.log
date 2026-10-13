@@ -1,0 +1,18 @@
+s04 try0 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s04 try1 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s04 try2 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s04 try3 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s05 try0 PASS {"transcript": "Nga i di ti këto?", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s06 try0 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s06 try1 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s06 try2 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s06 try3 FAILED: HTTP 400: {"error":{"message":"Request blocked for an unspecified policy reason. Please modify your input and retry.","code":"content_blocked"}}
+s07 try0 PASS {"transcript": "Dhe çfarë kërkon nga unë?", "language": "albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s09 try0 PASS {"transcript": "", "language": "", "all_albanian": false, "music": false, "background_noise": "A low-frequency, continuous hum or drone is present throughout the clip.", "matches_expected": true}
+s10 try0 FAIL {"transcript": "Pse është shkruar që nuk mund të hyjnë të hyjnë në katin e tretë?", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": false}
+s10 try1 FAIL {"transcript": "Pse është shkruar që nuk mund të hyj në katin e tretë?", "language": "albanian", "all_albanian": true, "music": true, "background_noise": "music", "matches_expected": true}
+s10 try2 PASS {"transcript": "Pse është shkruar që nuk mund të hyj në katin e tretë?", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s13 try0 PASS {"transcript": "Firmos ose largohu.", "language": "Albanian", "all_albanian": true, "music": false, "background_noise": null, "matches_expected": true}
+s14 try0 PASS {"transcript": "Në rregull. Pranoj.", "language": "albanian", "all_albanian": true, "music": false, "background_noise": "pencil writing", "matches_expected": true}
+s15 try0 PASS {"transcript": "", "language": null, "all_albanian": false, "music": false, "background_noise": "Phone vibration", "matches_expected": true}
+SUMMARY {'s01': True, 's02': True, 's03': True, 's04': False, 's05': True, 's06': False, 's07': True, 's09': True, 's10': True, 's13': True, 's14': True, 's15': True}

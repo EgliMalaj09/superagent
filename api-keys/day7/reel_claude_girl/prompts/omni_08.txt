@@ -1,0 +1,17 @@
+GOOGLE OMNI PROMPT
+
+[SPEAKER & SETTING]
+Animated low-poly 3D short film, continuing exactly from the given first frame: same characters, same room, same faceted low-poly render style and purple night lighting; no style change, no new characters, no cuts. Speaker: ANA (young Albanian woman, ~24, soft tired voice with a Tirana accent, growing frustration, natural and funny, not theatrical). Framing: Medium shot of Ana from a slightly low angle, monitors and window behind her. Total duration: 4 seconds.
+
+[PERFORMANCE — language: Albanian]
+
+Line — ""Jam mirë" do të thotë që NUK jam mirë!"
+Delivery: Exasperated, louder, fast; big stress on "NUK", pitch jumps up on it, then lands hard on the final "mirë".
+Face: Eyes wide, eyebrows high, mouth open in outrage.
+Gesture: Both hands fly up beside her head, palms open, on "NUK".
+
+[RULES]
+Only this one line is spoken, in Albanian, exactly as written. The other character stays silent and reacts subtly. Quiet room tone and faint keyboard hum only; no music, no subtitles, no on-screen text.
+
+[TIMING]
+Total target: 4s. Start the line after ~0.3s; let the last expression hold to the end of the shot.

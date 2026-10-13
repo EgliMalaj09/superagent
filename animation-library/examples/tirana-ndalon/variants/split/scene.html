@@ -1,0 +1,73 @@
+<div class="L bg clip" id="bg" data-start="0" data-duration="50" data-track-index="1">
+  <div id="cam" class="camx">
+    <svg id="world" class="wsvg" width="1284" height="970"></svg>
+    <img id="shot" src="media/start-map.png" width="1284" height="970"/>
+    <div id="pins"></div>
+  </div>
+  <!-- right half: the same city, the way it could be -->
+  <div id="right">
+    <div id="camR" class="camx"><svg id="worldR" class="wsvg" width="1284" height="970"></svg></div>
+  </div>
+  <div id="divider"></div>
+</div>
+<div class="L clip" id="rain" data-start="0" data-duration="50" data-track-index="2"></div>
+<div class="L clip veil" id="veil" data-start="0" data-duration="50" data-track-index="3"></div>
+<div class="L clip" id="wid" data-start="0" data-duration="50" data-track-index="4">
+  <!-- scene 3: ring over the city -->
+  <svg id="ring" width="1080" height="1920"><circle cx="540" cy="1190" r="300" class="rbg"/><circle id="rarc" cx="540" cy="1190" r="300" class="rfg"/></svg>
+  <div id="ringtx" class="ctr" style="top:1100px;"><div class="big">35%</div><div class="sm">NË TIRANË</div></div>
+  <!-- scene 4: clock + fuel -->
+  <div id="clock" class="panel" style="top:1080px;">
+    <svg width="220" height="220"><circle cx="110" cy="110" r="96" class="cface"/><line id="hand" x1="110" y1="110" x2="110" y2="34" class="chand"/><circle cx="110" cy="110" r="9" fill="#F4F1EA"/></svg>
+    <div><div class="big"><span id="hrs">0</span> <small>ORË</small></div><div class="sm">NË VIT, NË TRAFIK</div></div>
+  </div>
+  <div id="days" class="chip y ctrchip" style="top:1340px;">≈ 8 DITË</div>
+  <div id="fuel" class="panel" style="top:1480px;">
+    <div class="tank"><b id="fbar"></b></div>
+    <div><div class="big"><span id="lit">0</span> <small>LITRA</small></div><div class="sm">KARBURANT, PA LËVIZUR</div></div>
+  </div>
+  <!-- split: half titles + race chips (left = today, right = could be) -->
+  <div id="hL" class="half hl1" style="left:0;"><span class="tag md r">SOT</span></div>
+  <div id="hR" class="half" style="left:540px;"><span class="tag md g">MUND TË JETË</span></div>
+  <div id="carL" class="rchip" style="left:0;"><span class="rt">MAKINA</span><span class="big2">ENDE NË RRUGË</span></div>
+  <div id="busR" class="rchip" style="left:540px;"><span class="rt">AUTOBUSI</span><span class="big2 g">NË QENDËR</span></div>
+  <div id="pkL" class="rchip" style="left:0;"><span class="P r">P</span><span class="big2"><span id="pkn">0</span> MIN</span></div>
+  <div id="pkR" class="rchip" style="left:540px;"><span class="P">P</span><span class="big2 g">0 MIN</span></div>
+  <div id="hmL" class="rchip" style="left:0;"><span class="big2" id="hmn">0:00</span><span class="rt">DERI NË SHTËPI</span></div>
+  <div id="hmR" class="rchip" style="left:540px;"><span class="big2 g" id="hmr">0:00</span><span class="rt">DERI NË SHTËPI</span></div>
+  <svg id="light" width="200" height="440" viewBox="0 0 200 440">
+    <rect x="30" y="10" width="140" height="380" rx="30" fill="#14161b" stroke="#F4F1EA" stroke-width="6"/>
+    <circle id="lr" cx="100" cy="80" r="46" fill="#E8453C"/><circle cx="100" cy="200" r="46" fill="#3a2f12"/><circle cx="100" cy="320" r="46" fill="#123a24"/>
+    <rect x="92" y="390" width="16" height="50" fill="#F4F1EA"/>
+  </svg>
+  <div id="lglow"></div>
+  <svg id="house" width="420" height="380" viewBox="0 0 420 380">
+    <polygon points="30,170 210,30 390,170" fill="#20242c" stroke="#F4F1EA" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="70" y="165" width="280" height="190" fill="#20242c" stroke="#F4F1EA" stroke-width="8"/>
+    <rect id="win" x="120" y="205" width="100" height="90" fill="#F5B82E"/>
+    <rect x="120" y="205" width="100" height="90" fill="none" stroke="#F4F1EA" stroke-width="6"/>
+    <line x1="170" y1="205" x2="170" y2="295" stroke="#F4F1EA" stroke-width="5"/>
+    <rect x="255" y="245" width="60" height="110" fill="none" stroke="#F4F1EA" stroke-width="6"/>
+  </svg>
+  <div id="glow"></div>
+  <!-- scene 8: train timeline -->
+  <div id="tline" class="ctr" style="top:1420px;">
+    <div class="chip" id="t1"><s id="t1s"></s>MARS 2024</div>
+    <div class="chip" id="t2"><s id="t2s"></s>2025</div>
+    <div class="chip y" id="t3">2027?</div>
+  </div>
+</div>
+<div class="L clip" id="txt" data-start="0" data-duration="50" data-track-index="5">
+  <div class="blk" id="b1"><div class="tag xl" id="b1a">BIE SHI.</div><div class="tag xl r" id="b1b">TIRANA NDALON.</div><div class="tag md" id="b1c">SI ÇDO VIT.</div></div>
+  <div class="blk" id="b2"><div class="tag xl" id="b2a"><span id="cnt">0</span>+</div><div class="tag md" id="b2b">MJETE NË SHQIPËRI</div><div class="tag md r" id="b2c">1 NË 3 NË TIRANË</div><div class="tag md y" id="b2d">+9% ÇDO VIT ↑</div></div>
+  <div class="blk" id="b3"><div class="tag lg">NJË SHOFER NË TIRANË</div></div>
+  <div class="blk" id="b4"><div class="tag xl g" id="b4a">IMAGJINO.</div></div>
+  <div class="blk" id="b5"><div class="tag md">AUTOBUSI, MË I SHPEJTË SE MAKINA</div></div>
+  <div class="blk" id="b6"><div class="tag md">PA KËRKUAR PARKING</div></div>
+  <div class="blk" id="b7"><div class="tag md">20 MINUTA, JO NJË ORË E GJYSMË</div></div>
+  <div class="blk" id="b7b"><div class="tag lg">DARKA ME FËMIJËT.</div><div class="tag md r">JO NË SEMAFOR.</div></div>
+  <div class="blk" id="b8"><div class="tag lg" id="b8a">NUK ËSHTË MREKULLI.</div><div class="tag xl g" id="b8b">ËSHTË PLANIFIKIM.</div></div>
+  <div class="blk" id="b9"><div class="tag lg" id="b9a">TRAMVAJI U PREMTUA.</div><div class="tag lg r" id="b9b">NUK U NDËRTUA KURRË.</div></div>
+  <div class="blk" id="b10"><div class="tag lg" id="b10a">TRENI TIRANË–DURRËS</div><div class="tag xl y" id="b10b">€100 MILIONË+</div></div>
+  <div class="blk" id="b11"><div class="tag lg" id="b11a">ZGJIDHJET I DIMË.</div><div class="tag xl r" id="b11b">MUNGON VETËM VENDIMI.</div></div>
+</div>

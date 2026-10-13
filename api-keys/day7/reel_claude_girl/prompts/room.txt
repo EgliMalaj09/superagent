@@ -1,0 +1,5 @@
+Image 1 is the STYLE and SET reference: recreate this same room and render style, but EMPTY: no girl, no robot, no people.
+
+Vertical 9:16 wide establishing shot of a small dark bedroom-office at 2 a.m.: a wooden desk with an open laptop, two monitors glowing with code and a chat window, a mug of tea, a few yellow and pink sticky notes, an empty dark office chair pulled up to the desk; behind, a large window showing the night skyline of Tirana with blocky lit towers and the slim tall round TID tower silhouette, under a purple-violet night sky with a few stars; a round wall clock showing 2:00. Cool purple screen glow, a small warm desk lamp. Bottom 20% of the frame calm and dark (space for subtitles).
+
+Style: stylized LOW-POLY 3D render: faceted flat-shaded geometry with visible polygon facets on faces, hair and clothes, simple blocky shapes, soft ambient occlusion, moody purple-violet palette with warm orange accent light, clean minimalist indie-game look. Match the attached style reference exactly. No text, no logos, no watermark.

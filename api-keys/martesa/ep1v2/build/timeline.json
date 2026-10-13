@@ -1,0 +1,116 @@
+[
+ [
+  "s01",
+  "Një milion euro. Vetëm që të bëhesh gruaja ime.",
+  0.25,
+  3.97
+ ],
+ [
+  "s02",
+  "Më fal?!",
+  4.17,
+  6.19
+ ],
+ [
+  "s03",
+  "Ti as nuk më njeh!",
+  6.62,
+  8.06
+ ],
+ [
+  "s04a",
+  "Di që babai yt ka dyzet e tetë orë.",
+  8.5,
+  11.17
+ ],
+ [
+  "s04b",
+  "Për të shlyer borxhin.",
+  11.42,
+  13.06
+ ],
+ [
+  "s04c",
+  "Përndryshe humbisni shtëpinë.",
+  13.63,
+  15.42
+ ],
+ [
+  "s05",
+  "Nga i di ti këto?",
+  15.88,
+  17.22
+ ],
+ [
+  "s06a",
+  "Një vit martesë.",
+  17.67,
+  19.0
+ ],
+ [
+  "s06b",
+  "Një milion euro.",
+  19.46,
+  20.67
+ ],
+ [
+  "s06c",
+  "Pastaj je e lirë.",
+  20.92,
+  22.29
+ ],
+ [
+  "s07",
+  "Dhe çfarë kërkon nga unë?",
+  22.75,
+  24.49
+ ],
+ [
+  "s08",
+  "Të jetosh në shtëpinë time. Të sillesh si gruaja ime. Dhe të mos bësh pyetje.",
+  24.92,
+  30.58
+ ],
+ [
+  "s10",
+  "Pse është shkruar që nuk mund të hyj në katin e tretë?",
+  34.08,
+  37.46
+ ],
+ [
+  "s11",
+  "Sepse ajo pjesë e shtëpisë nuk të përket ty.",
+  37.92,
+  40.86
+ ],
+ [
+  "s12",
+  "Çfarë fsheh atje?",
+  41.65,
+  43.07
+ ],
+ [
+  "s13",
+  "Firmos ose largohu.",
+  43.5,
+  45.5
+ ],
+ [
+  "s14",
+  "Në rregull. Pranoj.",
+  45.96,
+  48.96
+ ],
+ [
+  "msg",
+  null,
+  51.9,
+  56.54
+ ],
+ [
+  "end",
+  null,
+  56.54,
+  59.04
+ ]
+]

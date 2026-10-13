@@ -1,0 +1,8 @@
+saved /Users/eglimalaj/Desktop/api-keys/martesa/ep1v2/amb/rain_window.png
+rain 0 {"transcript": "", "language": null, "all_albanian": false, "music": false, "background_noise": "The sound of a typewriter clacking.", "matches_expected": true} 
+rain 1 {"transcript": "", "language": null, "all_albanian": false, "music": false, "background_noise": "Typing, Keyboard", "matches_expected": true} 
+rain 2 {   "transcript": "",   "language": null,   "all_albanian": false,   "music": false,   "background_noise": "Mechanical clicking, typewriter",   "matches_expected": true } 
+rain 3 {   "transcript": null,   "language": null,   "all_albanian": false,   "music": false,   "background_noise": "keyboard typing",   "matches_expected": true } 
+rain 4 {"transcript": "", "language": null, "all_albanian": false, "music": true, "background_noise": "Piano music", "matches_expected": true} 
+rain 5 {   "transcript": "",   "language": null,   "all_albanian": false,   "music": false,   "background_noise": "The sound of a mechanical keyboard being typed on.",   "matches_expected": true } 
+GOOD_TAKES []

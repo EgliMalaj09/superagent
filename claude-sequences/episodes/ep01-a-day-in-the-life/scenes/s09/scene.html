@@ -1,0 +1,54 @@
+<div class="L clip" id="stage" data-start="0" data-duration="7.5" data-track-index="1">
+<svg id="svg" viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotsD" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="2.2" fill="#1D1530" opacity=".55"/></pattern>
+    <pattern id="dotsS" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.2" fill="#1D1530" opacity=".18"/></pattern>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E3FB8"/><stop offset=".5" stop-color="#FF6F7E"/><stop offset="1" stop-color="#FFC15A"/></linearGradient>
+    <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2A8E"/><stop offset=".55" stop-color="#C9508E"/><stop offset="1" stop-color="#FF9A5C"/></linearGradient>
+    <radialGradient id="vig" cx="50%" cy="45%" r="72%"><stop offset="62%" stop-color="#1D1530" stop-opacity="0"/><stop offset="100%" stop-color="#1D1530" stop-opacity=".45"/></radialGradient>
+  </defs>
+  <!-- ===== the climb ===== -->
+  <g id="climb">
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#sunset)"/>
+    <circle cx="820" cy="1180" r="150" fill="#FFE07A" stroke="#1D1530" stroke-width="6"/>
+    <g id="skyline"></g>
+    <!-- the Pyramid: concrete slopes, central staircase, colourful boxes -->
+    <polygon class="ink" points="40,1560 540,640 1040,1560" fill="#E9E4EE"/>
+    <polygon points="540,640 1040,1560 540,1560" fill="url(#dotsD)" opacity=".25"/>
+    <g id="steps"></g>
+    <g id="boxes"></g>
+    <rect x="0" y="1560" width="1080" height="360" fill="#C9B8A6"/><rect x="0" y="1560" width="1080" height="360" fill="url(#dotsS)"/>
+    <rect x="0" y="1552" width="1080" height="12" fill="#FFFFFF" stroke="#1D1530" stroke-width="4"/>
+    <g id="climber"></g>
+  </g>
+  <!-- ===== the reveal: the boulevard from the top ===== -->
+  <g id="view" opacity="0">
+    <g id="vcam">
+      <rect x="-200" y="-200" width="1480" height="1400" fill="url(#dusk)"/>
+      <circle cx="160" cy="980" r="120" fill="#FFC15A" stroke="#1D1530" stroke-width="6"/>
+      <g id="city"></g>
+      <rect x="-200" y="985" width="1480" height="1000" fill="#4E3F7A"/><rect x="-200" y="985" width="1480" height="1000" fill="url(#dotsS)"/>
+      <polygon points="-200,1920 1280,1920 610,980 470,980" fill="#5B5F6E"/><polygon points="-200,1920 1280,1920 610,980 470,980" fill="url(#dotsS)"/>
+      <g id="trees"></g>
+      <!-- the Kryeministria: ochre facade, columns, portico -->
+      <rect class="ink" x="250" y="770" width="580" height="220" fill="#E8B865"/>
+      <rect x="250" y="770" width="580" height="220" fill="url(#dotsS)"/>
+      <polygon class="ink" points="430,770 540,710 650,770" fill="#F2CC85"/>
+      <rect class="ink" x="250" y="760" width="580" height="18" fill="#C9933F"/>
+      <g id="cols"></g>
+      <g id="crowd"></g>
+    </g>
+    <!-- Claude on the top edge (back view), foreground -->
+    <rect class="ink" x="-20" y="1700" width="1120" height="260" fill="#E9E4EE"/><rect x="-20" y="1700" width="1120" height="260" fill="url(#dotsD)" opacity=".2"/>
+    <g id="cBack">
+      <polygon class="ink" points="150,1500 180,1472 400,1472 370,1500" fill="#FFAA6B"/>
+      <polygon class="ink" points="370,1500 400,1472 400,1680 370,1708" fill="#D9612B"/>
+      <rect class="ink" x="150" y="1500" width="220" height="208" fill="#E9782F"/>
+      <rect x="150" y="1500" width="220" height="208" fill="url(#dotsD)" opacity=".25"/>
+    </g>
+  </g>
+  <rect x="0" y="0" width="1080" height="1920" fill="url(#dotsS)" opacity=".4"/>
+  <rect x="0" y="0" width="1080" height="1920" fill="url(#vig)"/>
+</svg>
+<div class="L clip" id="hud" data-start="0" data-duration="7.5" data-track-index="3"></div>
+</div>

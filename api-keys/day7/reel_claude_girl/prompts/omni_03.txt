@@ -1,0 +1,17 @@
+GOOGLE OMNI PROMPT
+
+[SPEAKER & SETTING]
+Animated low-poly 3D short film, continuing exactly from the given first frame: same characters, same room, same faceted low-poly render style and purple night lighting; no style change, no new characters, no cuts. Speaker: ANA (young Albanian woman, ~24, soft tired voice with a Tirana accent, growing frustration, natural and funny, not theatrical). Framing: Medium shot of Ana in the desk chair, turned toward Claude who is at the left edge of frame on the desk; window with Tirana lights behind her. Total duration: 8 seconds.
+
+[PERFORMANCE — language: Albanian]
+
+Line — "Atëherë pse të shkruaj gjithmonë unë e para? (beat) Po s'të shkruajta unë, ti s'më flet fare."
+Delivery: First sentence accusing but hurt, rising on "gjithmonë", pitch peaks on "unë e para". (beat) Second sentence lower, slower, deflated, falling to a near-whisper on "fare".
+Face: First: wide eyes, eyebrows up, mouth slightly open in disbelief. Second: eyes drop to the desk, small frown.
+Gesture: On the first line she turns her chair to him and opens both palms toward Claude. On the second her shoulders and hands drop into her lap.
+
+[RULES]
+Only this one line is spoken, in Albanian, exactly as written. The other character stays silent and reacts subtly. Quiet room tone and faint keyboard hum only; no music, no subtitles, no on-screen text.
+
+[TIMING]
+Total target: 8s. Start the line after ~0.3s; let the last expression hold to the end of the shot.

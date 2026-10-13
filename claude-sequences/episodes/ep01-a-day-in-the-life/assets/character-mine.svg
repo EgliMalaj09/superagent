@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#F4EFE6"/>
+  <!-- ground shadow -->
+  <ellipse cx="300" cy="520" rx="150" ry="22" fill="#000" opacity="0.15"/>
+  <!-- tiny legs -->
+  <rect x="222" y="440" width="48" height="60" rx="8" fill="#B5472F"/>
+  <rect x="330" y="440" width="48" height="60" rx="8" fill="#B5472F"/>
+  <!-- backpack (context) on the back-right -->
+  <rect x="380" y="290" width="110" height="150" rx="16" fill="#2B2F3A"/>
+  <rect x="396" y="310" width="78" height="40" rx="8" fill="#3E4558"/>
+  <!-- body: coral voxel cube with bevel -->
+  <rect x="180" y="250" width="240" height="210" rx="22" fill="#F2785A"/>
+  <rect x="180" y="250" width="240" height="30" rx="14" fill="#FF9A7E"/>
+  <rect x="180" y="430" width="240" height="30" rx="10" fill="#C9553A"/>
+  <!-- square eyes -->
+  <rect x="236" y="310" width="30" height="46" rx="4" fill="#15131A"/>
+  <rect x="334" y="310" width="30" height="46" rx="4" fill="#15131A"/>
+  <!-- glowing spark on top -->
+  <path d="M300 118 L312 150 L345 162 L312 174 L300 206 L288 174 L255 162 L288 150 Z" fill="#FFD23F"/>
+  <circle cx="300" cy="162" r="58" fill="#FFD23F" opacity="0.18"/>
+  <text x="300" y="560" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#333">Claude · voxel character (mine)</text>
+</svg>

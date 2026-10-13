@@ -1,0 +1,155 @@
+<!doctype html><html lang="sq"><head><meta charset="utf-8"/><style>  @font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-display:block; }
+  @font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-display:block; }
+  @font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-display:block; }
+  @font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-display:block; }
+  @font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-display:block; }
+  @font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-display:block; }
+  @font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-display:block; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; padding:0; width:1080px; height:1920px; overflow:hidden; background:#000; }
+  #stage { position:relative; width:1080px; height:1920px; overflow:hidden; background:#000; }
+  .S { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden; }
+  .c { position:absolute; left:50%; translate:-50% 0; width:max-content; text-align:center; }
+  .w { display:inline-block; }
+  .grain { position:absolute; inset:0; pointer-events:none; background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1.2px), radial-gradient(rgba(0,0,0,.3) 1px, transparent 1.2px);
+    background-size:3px 3px, 5px 5px; opacity:.6; }
+  .vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,.7) 100%); }
+  /* evidence section (shared DOM; each style themes it) */
+  .player { position:absolute; left:60px; top:470px; width:960px; height:447px; overflow:hidden; opacity:0; }
+  .player video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .sub { position:absolute; left:60px; top:950px; width:960px; height:110px; }
+  .sub > div { position:absolute; left:0; right:0; top:0; text-align:center; opacity:0; }
+  .kp { position:absolute; left:60px; top:1090px; width:960px; }
+  .kp > * { opacity:0; }
+  .kp > .chips { opacity:1; }
+  .chips { display:flex; justify-content:center; gap:22px; margin-top:26px; }
+  .chips > span { opacity:0; }
+  #pv2 { display:none; }
+
+  .news { background: radial-gradient(80% 50% at 50% 42%, #2a0608, #0a0202 60%, #000); }
+  .scan { position:absolute; inset:0; background:repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px); pointer-events:none; }
+  .O { font-family:"Osw", sans-serif; font-weight:700; text-transform:uppercase; color:#fff; letter-spacing:-.01em; line-height:.95; }
+  .R { color:#FF2A2A; }
+  .blk { background:#FF2A2A; color:#000; padding:0 .12em; }
+  .wd { position:absolute; left:0; width:1080px; text-align:center; opacity:0; }
+  .gl { position:absolute; left:0; top:0; width:100%; text-align:center; opacity:0; mix-blend-mode:screen; }
+  .bar { position:absolute; left:0; top:1500px; width:1080px; height:84px; background:#FF2A2A; display:flex; align-items:center; gap:20px; padding:0 40px; }
+  .bar b { font-family:"Osw"; font-weight:700; font-size:40px; color:#000; letter-spacing:.04em; }
+  .bar span { font-family:"Osw"; font-weight:500; font-size:34px; color:#000; }
+  .fr { position:absolute; left:60px; top:380px; width:960px; height:560px; overflow:hidden; border:6px solid #FF2A2A; box-shadow:0 0 60px rgba(255,42,42,.35); opacity:0; }
+  .fr img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .tag { position:absolute; font-family:"Osw"; font-weight:700; font-size:32px; color:#000; background:#fff; padding:2px 16px; text-transform:uppercase; z-index:3; opacity:0; }
+  .tag.r { background:#FF2A2A; }
+  .src { font-family:"HG"; font-weight:500; font-size:24px; color:rgba(255,255,255,.55); }
+  .tl { position:absolute; left:120px; top:1230px; width:840px; opacity:0; }
+  .tl i { position:absolute; top:10px; left:20px; right:20px; height:6px; background:#FF2A2A; transform-origin:0 50%; transform:scaleX(0); }
+  .tl b { position:absolute; top:0; width:26px; height:26px; border-radius:50%; background:#FF2A2A; }
+  .tl span { position:absolute; top:44px; font-family:"Osw"; font-weight:700; font-size:32px; color:#fff; text-transform:uppercase; white-space:nowrap; }
+  .pp { position:absolute; width:56px; height:120px; opacity:0; }
+  .pp::before { content:""; position:absolute; left:14px; top:0; width:28px; height:28px; border-radius:50%; background:#fff; }
+  .pp::after { content:""; position:absolute; left:6px; top:34px; width:44px; height:84px; border-radius:20px 20px 6px 6px; background:#fff; }
+</style></head><body>
+<div id="stage" data-composition-id="zvp7" data-start="0" data-duration="26.50" data-fps="30" data-width="1080" data-height="1920">
+
+
+<div class="S clip news" id="p7" data-start="0" data-duration="26.5" data-track-index="10">
+  <div class="S" id="cam7">
+    <!-- A · Rama met Netanyahu after the warrant -->
+    <div class="fr" id="fa"><img id="fai" src="img/rama-netanyahu.jpg" alt=""/>
+      <div class="tag r" id="ta0" style="left:22px;bottom:22px;">Edi Rama</div><div class="tag" id="ta1" style="right:22px;bottom:22px;">Benjamin Netanyahu</div></div>
+    <div class="wd" id="a0" style="top:990px;"><div class="O" style="font-size:72px;">E ka takuar Netanyahun</div>
+      <div class="O" style="font-size:100px;margin-top:34px;"><span class="blk" id="a0b">edhe pas mandatit</span></div></div>
+    <div class="tl" id="tl"><i id="tli"></i><b style="left:0;"></b><b style="right:0;"></b>
+      <span style="left:-10px;">21 nën 2024 · Mandati ICC</span><span style="right:-10px;" class="R">26 jan 2026 · Takimi</span></div>
+    <div class="wd" id="a1" style="top:1380px;"><div class="src">Burimi: gov.il / Ambasada e Izraelit · 26.01.2026, Jerusalem</div></div>
+    <!-- B · emigration -->
+    <div class="wd" id="b0" style="top:640px;"><div class="O" style="font-size:150px;color:#bbb;">Ndërkohë…</div></div>
+    <div class="fr" id="fb"><img id="fbi" src="img/emigration-photo.png" alt=""/>
+      <div class="tag" id="tb" style="left:22px;bottom:22px;">Emigrantë shqiptarë · 2015</div></div>
+    <div class="wd" id="b1" style="top:1010px;"><div class="O" style="font-size:72px;">shqiptarët po shpopullohen</div>
+      <div class="O" style="font-size:170px;margin-top:14px;position:relative;"><span class="R">masivisht</span><div class="gl O" id="b1g" style="font-size:170px;color:#2AD4FF;">masivisht</div></div></div>
+    <!-- C · 5 every hour -->
+    <div class="wd" id="c0" style="top:380px;"><div class="O" style="font-size:64px;color:#ddd;">Vetëm në vitin</div><div class="O" style="font-size:250px;margin-top:6px;">2022</div></div>
+    <div class="wd" id="c1" style="top:780px;"><div class="O R" style="font-size:52px;letter-spacing:.2em;">Sipas INSTAT</div></div>
+    <div id="ppl" style="position:absolute;left:0;top:880px;width:1080px;height:140px;"></div>
+    <div class="wd" id="c2" style="top:1060px;"><div class="O" style="font-size:230px;line-height:.9;"><span class="R" id="c2n">5</span></div>
+      <div class="O" style="font-size:64px;margin-top:10px;">shqiptarë largohen <span class="blk">çdo orë</span></div></div>
+    <div class="wd" id="c3" style="top:1400px;"><div class="src">INSTAT: 46,460 emigrantë në vitin 2022 ≈ 5.3 në orë</div></div>
+    <!-- D · KLSH -->
+    <div class="wd" id="d0" style="top:420px;"><div class="O" style="font-size:150px;color:#bbb;">Ndërkohë…</div></div>
+    <div class="wd" id="d1" style="top:390px;"><div class="O R" style="font-size:44px;letter-spacing:.16em;">Sipas raporteve të</div><div class="O" style="font-size:190px;margin-top:10px;">KLSH</div><div class="O" style="font-size:40px;margin-top:12px;color:#bbb;">Kontrolli i Lartë i Shtetit</div></div>
+    <div class="wd" id="d2" style="top:720px;"><div class="O" style="font-size:64px;color:#ddd;">që prej vitit <span class="R">2013</span></div></div>
+    <div class="wd" id="d3" style="top:830px;"><div class="O" style="font-size:160px;line-height:.9;position:relative;margin-top:14px;"><span class="R">9 miliardë €</span><div class="gl O" id="d3g" style="font-size:160px;color:#2AD4FF;">9 miliardë €</div></div></div>
+    <div class="wd" id="d4" style="top:1060px;"><div class="O" style="font-size:80px;">dëme ekonomike</div></div>
+    <div class="wd" id="d5" style="top:1160px;"><div class="O" style="font-size:52px;color:#ddd;">nga <span class="blk">korrupsioni</span> dhe <span class="blk">keqmenaxhimi</span></div></div>
+  </div>
+  <div class="scan"></div><div class="vig"></div>
+  <div class="O" id="cnr" style="position:absolute;left:60px;top:250px;font-size:34px;color:#FF2A2A;letter-spacing:.14em;">● Faktet</div>
+  <div class="bar"><b>FAKTET</b><span>Takimi · Emigrimi · KLSH</span></div>
+  <div id="cfl" class="S" style="background:#FF2A2A;opacity:0;mix-blend-mode:screen;"></div>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script>
+(function () {
+  const tl = window.gsap.timeline({ paused: true });
+  // ===== part 7: Rama met Netanyahu after the warrant · emigration · KLSH =====
+  const T = { a: 0.1, pas: 2.05, b: 4.05, shp: 4.92, mas: 6.1, c: 7.35, instat: 9.2, pese: 10.76, cdo: 12.8,
+              d: 13.6, klsh: 14.8, y2013: 17.6, mld: 20.35, dem: 21.66, korr: 23.18, end: 25.2 };
+  const slam = function (sel, a, b, ir) {
+    tl.fromTo(sel, { opacity: 0, scale: 1.05, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: 'power3.out', immediateRender: !!ir }, a);
+    if (b) tl.to(sel, { opacity: 0, duration: 0.3, ease: 'power1.inOut' }, b - 0.3);
+  };
+  const glitch = function (s, t) { tl.fromTo(s, { x: 0, opacity: 0.35 }, { x: 9, opacity: 0, duration: 0.5, ease: 'power2.out', immediateRender: false }, t); };
+  const flash = function (t) {};
+  const shake = function (t) {};
+  const up = function (sel, t) { tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: 'expo.out', immediateRender: false }, t); };
+  const off = function (sels, t) { tl.to(sels, { opacity: 0, duration: 0.28 }, t); };
+  tl.fromTo('#cam7', { scale: 1 }, { scale: 1.04, duration: T.end, ease: 'none', immediateRender: true }, 0);
+  // A · the meeting
+  tl.fromTo('#fa', { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'power3.out', immediateRender: true }, T.a); flash(T.a);
+  tl.fromTo('#fai', { scale: 1 }, { scale: 1.1, duration: 4, ease: 'none', immediateRender: true }, T.a);
+  tl.fromTo('#ta0', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.3, ease: 'expo.out', immediateRender: false }, 0.4);
+  tl.fromTo('#ta1', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.3, ease: 'expo.out', immediateRender: false }, 1.1);
+  up('#a0', 0.5);
+  tl.fromTo('#a0b', { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: 'power4.out', immediateRender: false }, T.pas); flash(T.pas); shake(T.pas);
+  tl.fromTo('#tl', { opacity: 0 }, { opacity: 1, duration: 0.2, immediateRender: false }, 1.4);
+  tl.fromTo('#tli', { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: 'power2.inOut', immediateRender: false }, 1.5);
+  up('#a1', 2.6);
+  off(['#fa', '#a0', '#tl', '#a1'], T.b - 0.1);
+  // B · emigration
+  slam('#b0', T.b, T.shp);
+  tl.fromTo('#fb', { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'power3.out', immediateRender: false }, T.shp); flash(T.shp);
+  tl.fromTo('#fbi', { scale: 1.05, y: 0 }, { scale: 1.2, y: -20, duration: 2.6, ease: 'none', immediateRender: false }, T.shp);
+  tl.fromTo('#tb', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.3, ease: 'expo.out', immediateRender: false }, T.shp + 0.3);
+  up('#b1', T.shp + 0.1);
+  tl.fromTo('#b1 .R', { scale: 1.5 }, { scale: 1, duration: 0.2, ease: 'power4.out', immediateRender: false }, T.mas); glitch('#b1g', T.mas); flash(T.mas);
+  off(['#fb', '#b1'], T.c - 0.1);
+  // C · 5 Albanians leave every hour
+  slam('#c0', T.c); flash(T.c);
+  up('#c1', T.instat);
+  (function () {                                        // 5 figures walk out of frame, one by one
+    const box = document.getElementById('ppl');
+    for (let i = 0; i < 5; i++) {
+      const p = document.createElement('i'); p.className = 'pp'; p.style.left = (300 + i * 100) + 'px'; p.style.top = '10px'; box.appendChild(p);
+      tl.fromTo(p, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.2, ease: 'back.out(2)', immediateRender: false }, T.pese + i * 0.12);
+      tl.to(p, { x: 900 - i * 60, opacity: 0, duration: 1.1, ease: 'power2.in' }, T.cdo - 0.2 + i * 0.08);
+    }
+  })();
+  slam('#c2', T.pese); flash(T.pese);
+  tl.fromTo('#c2 .blk', { scaleX: 0.2 }, { scaleX: 1, duration: 0.25, ease: 'power4.out', immediateRender: false }, T.cdo);
+  up('#c3', T.cdo + 0.2);
+  off(['#c0', '#c1', '#c2', '#c3'], T.d - 0.1);
+  // D · KLSH
+  slam('#d0', T.d, T.klsh);
+  slam('#d1', T.klsh); flash(T.klsh);
+  up('#d2', T.y2013);
+  slam('#d3', T.mld); glitch('#d3g', T.mld); flash(T.mld); shake(T.mld + 0.05);
+  up('#d4', T.dem);
+  up('#d5', T.korr);
+
+  tl.to({}, { duration: 26.50 }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["zvp7"] = tl;
+})();
+</script>
+</div></body></html>

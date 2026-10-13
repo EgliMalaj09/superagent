@@ -1,0 +1,101 @@
+<div class="L clip" id="stage" data-start="0" data-duration="11.5" data-track-index="1">
+<svg id="svg" viewBox="0 0 1080 1920" width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotsD" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="2.2" fill="#1D1530" opacity=".55"/></pattern>
+    <pattern id="dotsS" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.2" fill="#1D1530" opacity=".18"/></pattern>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A1F6E"/><stop offset=".7" stop-color="#7B5BD6"/><stop offset="1" stop-color="#FF8FB1"/></linearGradient>
+    <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A4AB8"/><stop offset="1" stop-color="#C9B8F0"/></linearGradient>
+    <radialGradient id="vig" cx="50%" cy="50%" r="72%"><stop offset="62%" stop-color="#1D1530" stop-opacity="0"/><stop offset="100%" stop-color="#1D1530" stop-opacity=".5"/></radialGradient>
+    <!-- one desk + one Claude, reused for the thousands -->
+    <symbol id="unit" viewBox="-200 -330 400 400" overflow="visible">
+      <polygon points="-90,-300 -66,-322 114,-322 90,-300" fill="#FFAA6B" stroke="#1D1530" stroke-width="5"/>
+      <polygon points="90,-300 114,-322 114,-120 90,-98" fill="#D9612B" stroke="#1D1530" stroke-width="5"/>
+      <rect x="-90" y="-300" width="180" height="200" fill="#F5873A" stroke="#1D1530" stroke-width="5"/>
+      <rect x="-50" y="-262" width="22" height="44" fill="#15131A"/><rect x="28" y="-262" width="22" height="44" fill="#15131A"/>
+      <rect x="-170" y="-110" width="340" height="30" fill="#D9A36B" stroke="#1D1530" stroke-width="5"/>
+      <rect x="-150" y="-80" width="300" height="150" fill="#B77B4A" stroke="#1D1530" stroke-width="5"/>
+      <rect x="100" y="-230" width="110" height="120" rx="8" fill="#2B2E4A" stroke="#1D1530" stroke-width="5"/>
+      <rect x="112" y="-218" width="86" height="96" rx="4" fill="#7CF0FF" opacity=".6"/>
+    </symbol>
+    <symbol id="unitTop" viewBox="-130 -150 260 230" overflow="visible">
+      <polygon points="-120,10 120,10 100,-40 -100,-40" fill="#F6E7CF" stroke="#1D1530" stroke-width="5"/>
+      <rect x="-120" y="10" width="240" height="56" fill="#E2C9A4" stroke="#1D1530" stroke-width="5"/>
+      <rect x="-104" y="10" width="208" height="56" fill="url(#dotsS)"/>
+      <polygon points="20,-40 110,-40 110,-118 20,-118" fill="#2B2E4A" stroke="#1D1530" stroke-width="5"/>
+      <polygon points="-90,-60 30,-60 50,-110 -70,-110" style="fill:var(--top,#FFAA6B)" stroke="#1D1530" stroke-width="5"/>
+      <rect x="-90" y="-60" width="120" height="58" style="fill:var(--front,#F5873A)" stroke="#1D1530" stroke-width="5"/>
+      <rect x="-90" y="-60" width="120" height="58" fill="url(#dotsS)"/>
+      <rect x="-64" y="-46" width="12" height="24" fill="#15131A"/><rect x="-14" y="-46" width="12" height="24" fill="#15131A"/>
+    </symbol>
+    <filter id="halo" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <g id="world">
+    <rect x="-1000" y="-600" width="3080" height="1360" fill="url(#sky)"/>
+    <g id="stars"></g>
+    <polygon points="-1000,760 2080,760 2080,2600 -1000,2600" fill="url(#floorG)"/>
+    <g id="grid"></g>
+    <rect x="-1000" y="755" width="3080" height="10" fill="#FFE59A" opacity=".8"/>
+    <g id="crowd"></g>
+    <!-- floating screens in the air -->
+    <g id="panels" opacity="0">
+      <g id="pA"><rect x="40" y="250" width="500" height="230" rx="18" fill="#1D1530" stroke="#FFFFFF" stroke-width="6"/>
+        <text x="70" y="310" font-family="Osw, sans-serif" font-weight="700" font-size="38" letter-spacing="3" fill="#B6F09A">ACTIVE SESSIONS</text>
+        <text id="nSess" x="70" y="430" font-family="Out, sans-serif" font-weight="900" font-size="110" fill="#FFFFFF">0</text></g>
+      <g id="pB"><rect x="580" y="200" width="460" height="230" rx="18" fill="#1D1530" stroke="#FFFFFF" stroke-width="6"/>
+        <text x="610" y="260" font-family="Osw, sans-serif" font-weight="700" font-size="38" letter-spacing="3" fill="#FF8FB1">USAGE CREDITS</text>
+        <rect x="610" y="300" width="400" height="44" rx="10" fill="#3A3360" stroke="#FFFFFF" stroke-width="4"/>
+        <rect id="credBar" x="614" y="304" width="392" height="36" rx="8" fill="#FF8FB1"/>
+        <text id="nCred" x="610" y="404" font-family="Out, sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">100%</text></g>
+      <g id="pC"><rect x="250" y="520" width="580" height="170" rx="18" fill="#1D1530" stroke="#FFFFFF" stroke-width="6"/>
+        <text x="280" y="575" font-family="Osw, sans-serif" font-weight="700" font-size="34" letter-spacing="3" fill="#7CF0FF">TOKENS / SEC</text>
+        <text id="nTok" x="280" y="660" font-family="Out, sans-serif" font-weight="900" font-size="74" fill="#FFFFFF">0</text>
+        <polyline id="spark" points="560,650 600,620 640,640 680,590 720,610 760,560 800,580" fill="none" stroke="#7CF0FF" stroke-width="6"/></g>
+    </g>
+    <!-- the main desk (front) -->
+    <ellipse cx="540" cy="1590" rx="300" ry="26" fill="#1D1530" opacity=".3"/>
+    <g id="me">
+      <polygon class="ink" points="400,1130 428,1104 616,1104 588,1130" fill="#FFAA6B"/>
+      <polygon class="ink" points="588,1130 616,1104 616,1330 588,1356" fill="#D9612B"/>
+      <polygon points="588,1130 616,1104 616,1330 588,1356" fill="url(#dotsD)" opacity=".5"/>
+      <rect class="ink" x="400" y="1130" width="188" height="226" fill="#F5873A"/><rect x="400" y="1130" width="188" height="226" fill="url(#dotsS)"/>
+      <g id="myEyes"><rect x="440" y="1172" width="24" height="48" fill="#15131A"/><rect x="522" y="1172" width="24" height="48" fill="#15131A"/></g>
+      <g id="armL"><rect class="ink" x="368" y="1290" width="36" height="48" fill="#E86F33"/></g>
+      <g id="armR"><rect class="ink" x="586" y="1290" width="36" height="48" fill="#E86F33"/></g>
+    </g>
+    <rect class="ink" x="300" y="1340" width="480" height="40" fill="#D9A36B"/>
+    <rect class="ink" x="330" y="1380" width="420" height="200" fill="#B77B4A"/><rect x="330" y="1380" width="420" height="200" fill="url(#dotsD)" opacity=".2"/>
+    <rect class="ink" x="620" y="1170" width="170" height="170" rx="12" fill="#2B2E4A"/>
+    <rect id="myScreen" x="634" y="1184" width="142" height="142" rx="6" fill="#7CF0FF" opacity=".55"/>
+    <rect class="ink" x="420" y="1318" width="150" height="20" rx="4" fill="#C9D3DC"/>
+    <rect x="0" y="0" width="1080" height="1920" fill="url(#dotsS)" opacity=".4"/>
+  </g>
+  <!-- ===== elevated room view (the zoom-out) ===== -->
+  <g id="room2" opacity="0"><g id="r2cam">
+    <rect x="-300" y="-300" width="1680" height="900" fill="#FF6FB0"/>
+    <rect x="-300" y="-300" width="1680" height="900" fill="url(#dotsS)"/>
+    <g id="wallLines"></g>
+    <polygon points="-600,560 1680,560 2600,2600 -1520,2600" fill="#4636B0"/>
+    <g id="floorGrid"></g>
+    <g id="rows"></g>
+    <g id="screens"></g>
+    <g id="labels"></g>
+    <g id="dots"></g>
+  </g></g>
+  <!-- ===== exterior: the office building (Claude walks in) ===== -->
+  <g id="ext6">
+    <rect x="0" y="0" width="1080" height="1920" fill="#FFC7E0"/><rect x="0" y="0" width="1080" height="1920" fill="url(#dotsS)"/>
+    <rect class="ink" x="110" y="160" width="860" height="1400" fill="#B9AEF0"/>
+    <g id="panes"></g>
+    <rect class="ink" x="300" y="1060" width="480" height="110" rx="12" fill="#1D1530"/>
+    <text x="540" y="1142" text-anchor="middle" font-family="Out, sans-serif" font-weight="900" font-size="84" letter-spacing="10" fill="#FFE14D">HQ</text>
+    <rect class="ink" x="370" y="1200" width="340" height="360" fill="#1D1530"/>
+    <rect id="doorL" class="ink" x="374" y="1204" width="166" height="352" fill="#9EE1FF" opacity=".9"/>
+    <rect id="doorR" class="ink" x="540" y="1204" width="166" height="352" fill="#9EE1FF" opacity=".9"/>
+    <rect x="0" y="1560" width="1080" height="360" fill="#D8CFC4"/><rect x="0" y="1560" width="1080" height="360" fill="url(#dotsS)"/>
+    <rect x="0" y="1552" width="1080" height="12" fill="#FFFFFF" stroke="#1D1530" stroke-width="4"/>
+    <g id="walker"></g>
+  </g>
+  <rect x="0" y="0" width="1080" height="1920" fill="url(#vig)"/>
+</svg>
+<div class="L clip" id="hud" data-start="0" data-duration="11.5" data-track-index="3"></div>
+</div>

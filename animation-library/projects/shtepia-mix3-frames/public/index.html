@@ -1,0 +1,295 @@
+<!doctype html><html lang="sq"><head><meta charset="utf-8"/><style>
+/* ===== animation-library base: every library font + shared components. Sizes come from --W / --H set by build_page.py ===== */
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Arc"; src:url("fonts/ArchivoC-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"BG"; src:url("fonts/Bricolage-800.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"DM"; src:url("fonts/DMSans-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-300-normal.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"HG"; src:url("fonts/HankenGrotesk-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-italic.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:block; }
+@font-face { font-family:"IS"; src:url("fonts/InstrumentSerif-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-400-normal.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Inter"; src:url("fonts/Inter-600-normal.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Osw"; src:url("fonts/Oswald-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-500-normal.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-700-normal.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:block; }
+@font-face { font-family:"Out"; src:url("fonts/Outfit-800-normal.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-600.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Ser"; src:url("fonts/SourceSerif4-700.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+@font-face { font-family:"Type"; src:url("fonts/SpecialElite-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-600-italic.woff2") format("woff2"); font-weight:600; font-style:italic; font-display:block; }
+@font-face { font-family:"Spec"; src:url("fonts/Spectral-700-italic.woff2") format("woff2"); font-weight:700; font-style:italic; font-display:block; }
+/* Font families: Arc = Archivo Condensed 600/800, BG = Bricolage 800, DM = DM Sans, HG = Hanken Grotesk 300/500/700,
+   IS = Instrument Serif (+italic), Inter, Osw = Oswald 500/700, Out = Outfit 500-800, Ser = Source Serif 4 italic 600/700,
+   Type = Special Elite (typewriter), Spec = Spectral italic 600/700. All support Albanian ë ç. */
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); }
+#stage { position:relative; width:var(--W); height:var(--H); overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--body); }
+.L { position:absolute; left:0; top:0; width:var(--W); height:var(--H); overflow:hidden; pointer-events:none; }
+.bg { background:var(--bgfx, var(--bg)); }
+/* text */
+.h  { font-family:var(--head); font-weight:var(--headw, 800); color:var(--ink); letter-spacing:var(--track, -.02em); line-height:1.02; }
+.kicker { font-family:var(--body); font-weight:700; font-size:30px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); }
+.body { font-family:var(--body); font-weight:500; font-size:40px; line-height:1.25; color:var(--ink); }
+.quote { font-family:var(--quote); font-style:italic; font-size:64px; line-height:1.12; color:var(--ink); }
+.num { font-family:var(--head); font-weight:var(--headw, 800); font-size:220px; line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.src { position:absolute; left:70px; bottom:110px; font-family:var(--body); font-weight:500; font-size:22px; letter-spacing:.02em; color:var(--mute); }
+/* highlighter: <span class="hl"><i></i><b>word</b></span>, animate i scaleX 0→1 */
+.hl { position:relative; display:inline-block; padding:0 .12em; }
+.hl > i { position:absolute; left:0; right:0; top:.18em; bottom:.06em; background:var(--hi); transform-origin:0 50%; transform:scaleX(0); z-index:0; }
+.hl > b { position:relative; z-index:1; font-weight:inherit; }
+/* parts */
+.card { position:absolute; background:var(--card); border-radius:var(--radius, 18px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.18)); padding:36px 40px; }
+.photo { position:absolute; object-fit:cover; border-radius:var(--radius, 12px); box-shadow:var(--shadow, 0 20px 50px rgba(0,0,0,.25)); }
+.stamp { position:absolute; font-family:var(--head); font-weight:800; font-size:120px; color:var(--red); border:10px solid var(--red); padding:8px 34px; transform:rotate(-8deg); letter-spacing:.04em; mix-blend-mode:multiply; }
+.bar { position:absolute; bottom:0; width:120px; background:var(--accent); transform-origin:50% 100%; }   /* animate scaleY */
+.rule { position:absolute; height:6px; background:var(--accent); transform-origin:0 50%; }                   /* animate scaleX */
+.grain { position:absolute; inset:0; pointer-events:none; opacity:.06; background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.vignette { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 80% at 50% 45%, transparent 55%, rgba(0,0,0,.35) 100%); }
+/* safe zones (Reels UI): keep text inside top 220px … bottom 380px on 9:16 */
+/* ISOMETRIC 3D city / data (warm paper, CSS 3D boxes: library/engines/isometric.js; example: examples/tirana-one) */
+:root { --bg:#F2EEE6; --ink:#1E1B18; --mute:#57534E; --accent:#3FA66B; --hi:#F6D743; --red:#E0483E; --card:#FFFDF8; --green:#3FA66B; --green2:#7BC67E; --paper:#F2EEE6;
+  --head:"BG", "Arial Black", sans-serif; --headw:800; --track:-.025em; --body:"HG", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.3px) 0 0/4px 4px, #F2EEE6; }
+  .paper { background:
+      radial-gradient(120% 80% at 50% 45%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%),
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.3px) 0 0/4px 4px, var(--paper); }
+  .c { position:absolute; left:50%; translate:-50% 0; width:max-content; text-align:center; }
+  .k { font-family:"HG", Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:.22em; color:var(--ink); text-transform:uppercase; }
+  .chip { display:inline-block; font-family:"HG", Arial, sans-serif; font-weight:700; font-size:30px; color:var(--ink); border:3px solid var(--ink);
+    border-radius:999px; padding:10px 24px; background:#fff; opacity:0; }
+  .cam { position:absolute; width:0; height:0; transform-style:preserve-3d; }
+  .tilt, .spin, .bx, .bx > div, .bb { transform-style:preserve-3d; }
+  .tilt { position:absolute; left:0; top:0; width:0; height:0; }
+  .spin { position:absolute; }
+  .bx { position:absolute; }
+  .bx > div { position:absolute; backface-visibility:visible; }
+  .bb { position:absolute; width:0; height:0; }
+  .bbl { position:absolute; translate:-50% -100%; white-space:nowrap; text-align:center; }
+
+/* mixed system: isometric dusk world + flat kinetic number cards + simple charts. Palette: navy, warm window yellow, red for bad news */
+:root { --navy:#141B2E; --navy2:#1E2740; --yel:#F5B82E; --red:#E8453C; --off:#F4F1EA; }
+#f1 { background:radial-gradient(90% 60% at 50% 35%, #2B3554 0%, #161D30 60%, #0E1220 100%); }
+.glow { position:absolute; left:240px; top:930px; width:600px; height:420px; border-radius:50%; background:radial-gradient(circle, rgba(245,184,46,.22), rgba(245,184,46,0) 65%); pointer-events:none; }
+.topfade { position:absolute; left:0; right:0; top:0; height:640px; background:linear-gradient(180deg, rgba(14,18,32,.92), rgba(14,18,32,0)); }
+.t1 { position:absolute; left:0; right:0; top:260px; text-align:center; font-family:"Osw",sans-serif; font-weight:700; font-size:170px; line-height:1; color:var(--off); letter-spacing:.01em; }
+.t1s { position:absolute; left:80px; right:80px; top:450px; text-align:center; font-family:"Osw",sans-serif; font-weight:500; font-size:46px; color:rgba(244,241,234,.8); letter-spacing:.02em; text-transform:uppercase; }
+.ilab { font-family:"Osw",sans-serif; font-weight:700; color:#0B0C0E; background:var(--yel); padding:4px 16px 6px; letter-spacing:.03em; box-shadow:0 8px 20px rgba(0,0,0,.4); }
+.card { background:radial-gradient(90% 60% at 50% 40%, #222B47 0%, #151B2D 65%, #0E1220 100%); }
+.grain { position:absolute; inset:0; opacity:.07; background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.3px); background-size:4px 4px; }
+.k { position:absolute; left:0; right:0; top:620px; text-align:center; font-family:"Osw",sans-serif; font-weight:500; font-size:50px; letter-spacing:.08em; color:rgba(244,241,234,.75); }
+.big { position:absolute; left:0; right:0; top:700px; text-align:center; font-family:"Osw",sans-serif; font-weight:700; font-size:330px; line-height:1; color:var(--off); letter-spacing:-.01em; }
+.ul { position:absolute; left:200px; right:200px; top:1050px; height:14px; background:var(--yel); }
+.tagx { position:absolute; left:50%; translate:-50% 0; top:1110px; font-family:"Osw",sans-serif; font-weight:700; font-size:56px; padding:6px 28px 10px; color:var(--off); }
+.tagx.r { background:var(--red); }
+.srcx { position:absolute; left:60px; right:60px; top:1500px; text-align:center; font-family:"Osw",sans-serif; font-weight:500; font-size:26px; letter-spacing:.03em; color:rgba(244,241,234,.45); }
+.bars { position:absolute; left:140px; right:140px; top:480px; height:1000px; display:flex; justify-content:space-around; align-items:flex-end; }
+.bc { display:flex; flex-direction:column; align-items:center; width:300px; }
+.col2 { width:240px; }
+.b19 { height:300px; background:linear-gradient(180deg, #8B96B8, #5B6688); }
+.b26 { height:666px; background:linear-gradient(180deg, #FFD465, var(--yel)); box-shadow:0 0 60px rgba(245,184,46,.25); }
+.val { font-family:"Osw",sans-serif; font-weight:700; font-size:72px; color:var(--off); margin-bottom:18px; white-space:nowrap; }
+.val.y { color:var(--yel); }
+.yr { font-family:"Osw",sans-serif; font-weight:500; font-size:52px; color:rgba(244,241,234,.75); margin-top:16px; letter-spacing:.06em; }
+
+:root { --W:1080px; --H:1920px; }
+
+</style></head><body>
+<div id="stage" data-composition-id="shtepia_mix3_frames" data-start="0" data-duration="3.00" data-fps="30" data-width="1080" data-height="1920">
+<!-- FRAME 1 · isometric story scene -->
+<div class="L clip" id="f1" data-start="0" data-duration="1" data-track-index="1">
+  <div class="cam" id="cam" style="left:540px;top:960px;transform-origin:0 0;"><div class="tilt" id="tilt"><div class="spin" id="w"></div></div></div>
+  <div class="glow"></div>
+  <div class="topfade"></div>
+  <div class="t1">SA VJET?</div>
+  <div class="t1s">i duhen një çifti në Tiranë për një apartament</div>
+</div>
+
+<!-- FRAME 2 · full-screen number card -->
+<div class="L clip card" id="f2" data-start="1" data-duration="1" data-track-index="2">
+  <div class="grain"></div>
+  <div class="k">1 m² NË TIRANË · 2026</div>
+  <div class="big">2.141 €</div>
+  <div class="ul"></div>
+  <div class="tagx r">REKORD</div>
+  <div class="srcx">Keydata, T1 2026 · çmimi mesatar</div>
+</div>
+
+<!-- FRAME 3 · simple chart -->
+<div class="L clip card" id="f3" data-start="2" data-duration="1" data-track-index="3">
+  <div class="grain"></div>
+  <div class="k" style="top:300px;">I NJËJTI APARTAMENT 2+1 · 80 m²</div>
+  <div class="bars">
+    <div class="bc"><div class="val">77.000 €</div><div class="col2 b19"></div><div class="yr">2019</div></div>
+    <div class="bc"><div class="val y">171.000 €</div><div class="col2 b26"></div><div class="yr">2026</div></div>
+  </div>
+  <div class="tagx r" style="top:390px;white-space:nowrap;font-size:48px;">+122% · MË SHUMË SE DYFISH</div>
+  <div class="srcx">Keydata · 964 €/m² (T1 2019) dhe 2.141 €/m² (T1 2026) × 80 m²</div>
+</div>
+
+
+<script src="vendor/gsap.min.js"></script>
+<script>
+(function () {
+  const W = 1080, H = 1920, D = 3.00;
+  const tl = window.gsap.timeline({ paused: true });
+// ===== animation-library MOTION KIT — loaded into every page before scene.js. `tl` (paused GSAP timeline), W, H exist already. =====
+// Rules baked in: transforms + opacity only (no top/left/width/height tweens), fromTo with immediateRender:false for later entrances,
+// seeded random only (never Math.random), soft eases (power3.out 0.3–0.45 s), no shakes, no flashes.
+let seed = 5; const rnd = function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const E = 'expo.out';
+const $ = function (s) { return typeof s === 'string' ? document.querySelector(s) : s; };
+const div = function (p, css, cls) { const d = document.createElement('div'); d.style.cssText = css || ''; if (cls) d.className = cls; $(p).appendChild(d); return d; };
+const show = function (sel, t) { tl.set(sel, { opacity: 1 }, t); };
+const hide = function (sel, t) { tl.set(sel, { opacity: 0 }, t); };
+// entrances
+const up = function (sel, t, d) { tl.fromTo(sel, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: d || 0.5, ease: E, immediateRender: false }, t); };
+const fadeIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.out', immediateRender: false }, t); };
+const pop = function (sel, t, d) { tl.fromTo(sel, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: d || 0.45, ease: 'back.out(1.7)', immediateRender: false }, t); };
+const slideIn = function (sel, t, from, d) { const v = { opacity: 0 }; v[from === 'left' || from === 'right' ? 'x' : 'y'] = (from === 'left' || from === 'top' ? -1 : 1) * 120;
+  tl.fromTo(sel, v, { x: 0, y: 0, opacity: 1, duration: d || 0.45, ease: 'power3.out', immediateRender: false }, t); };
+const blurIn = function (sel, t, d) { tl.fromTo(sel, { opacity: 0, filter: 'blur(18px)', scale: 1.06 }, { opacity: 1, filter: 'blur(0px)', scale: 1, duration: d || 0.6, ease: 'power3.out', immediateRender: false }, t); };
+const words = function (sel, t, gap) {   // word-by-word reveal: wraps each word of the element in a span
+  const el = $(sel); const w = el.textContent.trim().split(/\s+/); el.innerHTML = w.map(function (x) { return '<span style="display:inline-block;opacity:0">' + x + '</span>'; }).join(' ');
+  el.querySelectorAll('span').forEach(function (s, i) { tl.fromTo(s, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out', immediateRender: false }, t + i * (gap || 0.07)); });
+};
+// exits
+const out = function (sel, t, d) { tl.to(sel, { opacity: 0, y: -20, duration: d || 0.35, ease: 'power2.in' }, t); };
+const fadeOut = function (sel, t, d) { tl.to(sel, { opacity: 0, duration: d || 0.35, ease: 'power2.inOut' }, t); };
+// emphasis
+const hl = function (sel, t) { tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: 'power2.out', immediateRender: false }, t); };   // .hl > i, .rule
+const growY = function (sel, t, d, stagger) { tl.fromTo(sel, { scaleY: 0 }, { scaleY: 1, duration: d || 0.7, ease: 'power3.out', stagger: stagger || 0.08, immediateRender: false }, t); };  // .bar
+const stamp = function (sel, t) { tl.fromTo(sel, { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: 'power4.in', immediateRender: false }, t); };
+const count = function (sel, a, b, t, dur, fmt) {   // fmt e.g. function (v) { return v.toFixed(1) + ' m²'; }
+  const el = $(sel); const o = { v: a }; fmt = fmt || function (v) { return Math.round(v).toLocaleString('de-DE'); };
+  tl.fromTo(o, { v: a }, { v: b, duration: dur, ease: 'power2.out', immediateRender: false, onUpdate: function () { el.textContent = fmt(o.v); } }, t);
+  el.textContent = fmt(a);
+};
+const typeIn = function (sel, text, t, dur) {   // typewriter: GSAP cannot tween textContent, so drive a proxy
+  const el = $(sel); const o = { n: 0 };
+  tl.fromTo(o, { n: 0 }, { n: text.length, duration: dur || text.length * 0.04, ease: 'none', immediateRender: false, onUpdate: function () { el.textContent = text.slice(0, Math.round(o.n)); } }, t);
+};
+const draw = function (path, t, dur) {   // SVG line draw
+  const p = $(path); const L = p.getTotalLength(); p.style.strokeDasharray = L;
+  tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur || 1.2, ease: 'power2.inOut', immediateRender: true }, t);
+};
+const kenBurns = function (sel, t, dur, from, to) { tl.fromTo(sel, { scale: from || 1.0 }, { scale: to || 1.12, duration: dur, ease: 'none', immediateRender: true }, t); };
+const drift = function (sel, t, dur, dx, dy) { tl.to(sel, { x: '+=' + (dx || 0), y: '+=' + (dy || -30), duration: dur, ease: 'none' }, t); };
+// scene change inside one page: fade the old layer out while the new one fades in (0.35–0.4 s)
+const xfade = function (a, b, t, d) { tl.to(a, { opacity: 0, duration: d || 0.4, ease: 'power2.inOut' }, t); tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: d || 0.4, ease: 'power2.inOut', immediateRender: false }, t); };
+// After the voice-over arrives: retime the whole timeline. pts = [[oldTime, newTime], ...] ascending, e.g. [[0,0],[3.2,2.9],[8,9.4]]
+const remap = function (pts) {
+  const m = function (s) { for (let i = 1; i < pts.length; i++) if (s <= pts[i][0]) { const a = pts[i - 1], b = pts[i]; return a[1] + (s - a[0]) * (b[1] - a[1]) / (b[0] - a[0]); }
+    const a = pts[pts.length - 2], b = pts[pts.length - 1]; return b[1] + (s - b[0]) * (b[1] - a[1]) / (b[0] - a[0]); };
+  tl.getChildren(false, true, true).forEach(function (c) { const s = c.startTime(), e = s + c.totalDuration(), ns = m(s); c.startTime(ns); if (c.totalDuration() > 0) c.totalDuration(Math.max(0.001, m(e) - ns)); });
+};
+
+// ===== ISOMETRIC ENGINE (needs motion.js first). World = .cam > .tilt(rotationX 60) > .spin(rotation -45), preserve-3d. =====
+// a box with a top and four standing sides; h0 = starting height (grows later with grow())
+const box = function (p, o) {
+  const r = div(p, 'left:' + o.x + 'px;top:' + o.y + 'px;width:' + o.w + 'px;height:' + o.d + 'px;', 'bx');
+  const s1 = o.win ? 'repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 10px, rgba(30,27,24,.16) 10px 13px), ' + o.s1 : o.s1;
+  const s2 = o.win ? 'repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 10px, rgba(30,27,24,.22) 10px 13px), ' + o.s2 : o.s2;
+  const t = div(r, 'left:0;top:0;width:' + o.w + 'px;height:' + o.d + 'px;background:' + o.top + ';' + (o.topCss || ''));
+  const n = div(r, 'left:0;top:0;width:' + o.w + 'px;height:' + o.h + 'px;background:' + s1 + ';');
+  const s = div(r, 'left:0;top:' + o.d + 'px;width:' + o.w + 'px;height:' + o.h + 'px;background:' + s1 + ';');
+  const w = div(r, 'left:0;top:0;width:' + o.h + 'px;height:' + o.d + 'px;background:' + s2 + ';');
+  const e = div(r, 'left:' + o.w + 'px;top:0;width:' + o.h + 'px;height:' + o.d + 'px;background:' + s2 + ';');
+  const k = Math.max(0.004, (o.h0 === undefined ? o.h : o.h0) / o.h);
+  tl.set(t, { z: Math.max(0.6, o.h * k) }, 0);
+  tl.set([n, s], { transformOrigin: '50% 0%', rotationX: 90, scaleY: k }, 0);
+  tl.set([w, e], { transformOrigin: '0% 50%', rotationY: -90, scaleX: k }, 0);
+  return { r: r, t: t, ns: [n, s], we: [w, e], h: o.h, k: k };
+};
+const grow = function (b, t, dur, ease) {
+  tl.fromTo(b.t, { z: Math.max(0.6, b.h * b.k) }, { z: b.h, duration: dur, ease: ease || 'power3.out', immediateRender: false }, t);
+  tl.fromTo(b.ns, { scaleY: b.k }, { scaleY: 1, duration: dur, ease: ease || 'power3.out', immediateRender: false }, t);
+  tl.fromTo(b.we, { scaleX: b.k }, { scaleX: 1, duration: dur, ease: ease || 'power3.out', immediateRender: false }, t);
+};
+const layer = function (p, z) { const l = div(p, 'left:0;top:0;width:0;height:0;', 'bx'); tl.set(l, { z: z }, 0); return l; };
+const tree = function (p, x, y, s) {
+  const r = div(p, 'left:' + x + 'px;top:' + y + 'px;width:0;height:0;', 'bx');
+  box(r, { x: -3 * s, y: -3 * s, w: 6 * s, d: 6 * s, h: 16 * s, top: '#8A6A4A', s1: '#7A5C3E', s2: '#664C33' });
+  const c = layer(r, 14 * s);
+  box(c, { x: -15 * s, y: -15 * s, w: 30 * s, d: 30 * s, h: 26 * s, top: '#6CC27A', s1: '#3FA66B', s2: '#2F8655' });
+  const c2 = layer(r, 40 * s);
+  box(c2, { x: -9 * s, y: -9 * s, w: 18 * s, d: 18 * s, h: 12 * s, top: '#86D08F', s1: '#4DB277', s2: '#3A9562' });
+  return r;
+};
+const person = function (p, x, y, m, col) {          // m = px per metre
+  const r = div(p, 'left:' + x + 'px;top:' + y + 'px;width:0;height:0;', 'bx');
+  box(r, { x: -0.22 * m, y: -0.14 * m, w: 0.45 * m, d: 0.28 * m, h: 1.48 * m, top: col || '#1E1B18', s1: col || '#2C2824', s2: '#141210' });
+  const hd = layer(r, 1.5 * m);
+  box(hd, { x: -0.12 * m, y: -0.12 * m, w: 0.24 * m, d: 0.24 * m, h: 0.25 * m, top: '#E9B994', s1: '#D9A47E', s2: '#C48E69' });
+  return r;
+};
+const label = function (p, x, y, z, html) {           // billboard: always faces the viewer (undoes the world rotation)
+  const b = div(p, 'left:' + x + 'px;top:' + y + 'px;', 'bb');
+  tl.set(b, { z: z, rotation: 45, rotationX: -60 }, 0);
+  const i = div(b, '', 'bbl'); i.innerHTML = html; return b;
+};
+const world = function (id, tiltId, W, D) {
+  const w = document.getElementById(id);
+  w.style.cssText = 'left:' + (-W / 2) + 'px;top:' + (-D / 2) + 'px;width:' + W + 'px;height:' + D + 'px;';
+  tl.set('#' + tiltId, { rotationX: 60 }, 0);
+  tl.set(w, { rotation: -45, transformOrigin: '50% 50%' }, 0);
+  return w;
+};
+const proj = function (x, y, z) {                     // world offset from centre -> screen offset (spin -45, tilt 60)
+  const a = -45 * Math.PI / 180, xr = x * Math.cos(a) - y * Math.sin(a), yr = x * Math.sin(a) + y * Math.cos(a);
+  return [xr, yr * Math.cos(Math.PI / 3) - z * Math.sin(Math.PI / 3)];
+};
+const PAL = [['#FFFDF8', '#EDE6D9', '#D6CDBD'], ['#ECE9E3', '#CFC9BE', '#B3AB9E'], ['#F4D9C8', '#E3AF95', '#C98E73'], ['#E2ECF1', '#BACDD7', '#98AFBC'], ['#F7F1E3', '#E6DAC0', '#CDBE9F']];
+
+// scrW/camTo for one continuous camera over a world of size WT×HT (see examples/tirana-one/scene.js):
+//   const scrW = isoScreen(WT, HT); camTo('#cam', scrW, x, y, z, zoom, screenY, t, dur, ease)
+// cam div needs transformOrigin 0 0 and sits at left:W/2; top:H/2 of the stage.
+const isoScreen = function (WT, HT) { const A = -45 * Math.PI / 180; return function (x, y, z) { const dx = x - WT / 2, dy = y - HT / 2;
+  return [dx * Math.cos(A) - dy * Math.sin(A), (dx * Math.sin(A) + dy * Math.cos(A)) * 0.5 - (z || 0) * 0.866]; }; };
+const camTo = function (cam, scrW, x, y, z, s, Y, t, dur, ease) {
+  const p = scrW(x, y, z); const v = { x: -s * p[0], y: (Y - H / 2) - s * p[1], scale: s, transformOrigin: '0 0' };
+  if (!dur) { tl.set(cam, v, t || 0); } else { v.duration = dur; v.ease = ease || 'power2.inOut'; tl.to(cam, v, t); }
+};
+// ---- scene ----
+// frame 1: isometric dusk block with a cut-away 80 m² apartment, the couple, tiles filling, a doormat, a calendar
+const WT = 2400, scrW = isoScreen(WT, WT);
+const w = world('w', 'tilt', WT, WT);
+div(w, 'left:-2000px;top:-2000px;width:' + (WT + 4000) + 'px;height:' + (WT + 4000) + 'px;background:#1A2134;', 'bx');
+const G = layer(w, 1);
+div(G, 'left:0;top:1150px;width:' + WT + 'px;height:180px;background:#2A3346;', 'bx');                    // roads
+div(G, 'left:880px;top:0;width:150px;height:' + WT + 'px;background:#2A3346;', 'bx');
+// neighbours: dusk blocks with lit windows
+const BP = [['#4b5570', '#3a435c', '#2c3348'], ['#55607c', '#434c66', '#333a51'], ['#5d5670', '#4a4459', '#383447']];
+const lots = [[300, 300, 420], [380, 1400, 300], [1150, 300, 520], [1600, 320, 380], [1900, 900, 300], [1750, 1500, 200], [300, 1900, 160], [1950, 1950, 140]];
+lots.forEach(function (l, k) { const p = BP[k % 3], sz = 360;
+  const b = box(G, { x: l[0], y: l[1], w: sz, d: sz * 0.8, h: l[2], top: p[0], s1: p[1], s2: p[2], win: true });
+  for (let i = 0; i < 5; i++) { const lw = layer(b.r, 40 + rnd() * (l[2] - 80)); box(lw, { x: rnd() * (sz - 40), y: sz * 0.8 - 2, w: 26, d: 3, h: 18, top: '#F5B82E', s1: '#F5B82E', s2: '#d99a1a' }); }
+});
+// the apartment: slab, low walls (roof cut away), floor tiles, bathroom, doormat, couple, calendar
+const AX = 1080, AY = 1380, AW = 400, AD = 320;
+box(G, { x: AX - 20, y: AY - 20, w: AW + 40, d: AD + 40, h: 24, top: '#3a4359', s1: '#2c3447', s2: '#232a3a' });
+const F = layer(G, 24);
+div(F, 'left:' + AX + 'px;top:' + AY + 'px;width:' + AW + 'px;height:' + AD + 'px;background:#2E364A;', 'bx');
+for (let i = 0; i < 80; i++) { const cx = i % 10, cy = Math.floor(i / 10); if (cy * 10 + cx > 46) continue;
+  div(F, 'left:' + (AX + cx * 40 + 2) + 'px;top:' + (AY + (7 - cy) * 40 + 2) + 'px;width:36px;height:36px;background:#C9A06B;box-shadow:inset 0 0 0 2px rgba(0,0,0,.12);', 'bx'); }
+const wall = function (x, y, ww, dd) { box(F, { x: x, y: y, w: ww, d: dd, h: 64, top: '#E9E3D6', s1: '#CFC7B6', s2: '#B8AF9D' }); };
+wall(AX, AY, AW, 8); wall(AX, AY, 8, AD); wall(AX + 240, AY, 8, 180); wall(AX + 240, AY + 170, 160, 8); wall(AX, AY + 200, 120, 8);
+box(F, { x: AX + 14, y: AY + 220, w: 90, d: 40, h: 22, top: '#F4F4F4', s1: '#dcdcdc', s2: '#c8c8c8' });            // tub
+box(F, { x: AX + 20, y: AY + 280, w: 30, d: 24, h: 34, top: '#F4F4F4', s1: '#dcdcdc', s2: '#c8c8c8' });            // sink
+box(F, { x: AX + 180, y: AY + AD - 6, w: 46, d: 26, h: 2, top: '#5a4632', s1: '#4a3a29', s2: '#3a2d20' });        // doormat at the door
+const P = layer(F, 2);
+person(P, AX + 300, AY + 250, 40, '#2F6FE0'); person(P, AX + 330, AY + 270, 40, '#E8453C');
+const cal = label(F, AX + 120, AY + 6, 120, '<div class="ilab" style="font-size:30px;">2034</div>');
+const ape = label(F, AX + 300, AY + 250, 120, '<div class="ilab" style="font-size:24px;background:#F4F1EA;">25 VJEÇ</div>');
+camTo('#cam', scrW, AX + 230, AY + 150, 30, 1.85, 1180, 0, 0);
+
+  tl.to({}, { duration: D }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["shtepia_mix3_frames"] = tl;
+})();
+</script>
+</div></body></html>

@@ -1,0 +1,17 @@
+GOOGLE OMNI PROMPT
+
+[SPEAKER & SETTING]
+Animated low-poly 3D short film, continuing exactly from the given first frame: same characters, same room, same faceted low-poly render style and purple night lighting; no style change, no new characters, no cuts. Speaker: CLAUDE (gentle, warm, slightly synthetic and overly polite gender-neutral AI voice). CLAUDE HAS NO MOUTH: his voice plays while his tiny antenna spark pulses brighter on each syllable; he never opens a mouth. Framing: Over Ana's shoulder (her bun and hoodie soft in the foreground right), Claude standing on the desk facing her, monitors behind. Total duration: 3 seconds.
+
+[PERFORMANCE — language: Albanian]
+
+Line — "Sigurisht."
+Delivery: Bright, instant, cheerful, falling intonation; emphasis on "Sig-".
+Face: Claude's dot eyes turn into happy upward arcs ^ ^.
+Gesture: Claude does one small hop on the spot, legs leaving the desk.
+
+[RULES]
+Only this one line is spoken, in Albanian, exactly as written. The other character stays silent and reacts subtly. Quiet room tone and faint keyboard hum only; no music, no subtitles, no on-screen text.
+
+[TIMING]
+Total target: 3s. Start the line after ~0.3s; let the last expression hold to the end of the shot.

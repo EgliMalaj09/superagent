@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "/Users/eglimalaj/Desktop/claude-sequences",
+      "/Users/eglimalaj/Desktop/claude-editor",
+      "/Users/eglimalaj/Desktop/animation-library",
+      "/Users/eglimalaj/Desktop/api-keys"
+    ]
+  }
+}

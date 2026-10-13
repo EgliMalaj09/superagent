@@ -1,0 +1,8 @@
+/* car-decor reference: blue gradient 3D, glossy navy objects, Poppins + tall condensed hero word */
+:root { --bg:#AFBDF5; --ink:#0B1150; --mute:rgba(11,17,80,.6); --accent:#2E46E8; --hi:#2E46E8; --red:#E8453C; --card:#0B1150;
+  --head:"Poppins", "Out", Arial, sans-serif; --headw:700; --track:-.01em; --body:"Poppins", "Out", Arial, sans-serif; --quote:"Poppins", sans-serif;
+  --bgfx: radial-gradient(70% 45% at 20% 8%, #FFFFFF 0%, rgba(255,255,255,0) 70%), radial-gradient(60% 50% at 100% 85%, #3B55F0 0%, rgba(59,85,240,0) 70%), linear-gradient(180deg, #E9EDFF 0%, #AFBDF5 40%, #7385EA 100%);
+  --shadow:0 30px 60px rgba(11,17,80,.35); --radius:26px; }
+.cap { position:absolute; left:60px; right:60px; top:300px; text-align:center; font-family:"Poppins","Out",sans-serif; font-weight:500; font-size:44px; color:#0B1150; }
+.glossy { background:linear-gradient(135deg, #04050F 0%, #0B1150 45%, #2E46E8 100%); border-radius:26px; box-shadow:0 30px 60px rgba(11,17,80,.4), inset 0 2px 0 rgba(255,255,255,.18); color:#fff; font-family:"Poppins",sans-serif; font-weight:700; }
+.thin { font-family:"Poppins","Out",sans-serif; font-weight:200; color:rgba(255,255,255,.75); letter-spacing:-.02em; }

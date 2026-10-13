@@ -1,0 +1,7 @@
+/* VOX explainer (paper, ink, yellow highlighter, print photos, serif quotes) — the user's pick for documentary/political */
+:root { --bg:#EEE8DC; --ink:#1D1C1A; --mute:#57524A; --accent:#C8202F; --hi:#FFD23F; --red:#C8202F; --card:#FBF8F1;
+  --head:"Arc", "Arial Narrow", sans-serif; --headw:800; --track:-.01em; --body:"HG", Arial, sans-serif; --quote:"Ser", Georgia, serif;
+  --bgfx: radial-gradient(120% 70% at 50% 40%, rgba(255,255,255,.55), rgba(255,255,255,0) 65%), repeating-linear-gradient(0deg, rgba(120,100,70,.035) 0 1px, transparent 1px 3px), #EEE8DC;
+  --shadow:0 10px 28px rgba(40,30,10,.18); --radius:4px; }
+.photo { filter:grayscale(1) contrast(1.15) sepia(.12); border:10px solid #fff; }
+.halftone { position:absolute; inset:0; pointer-events:none; opacity:.12; background-image:radial-gradient(#000 1px, transparent 1.4px); background-size:5px 5px; mix-blend-mode:multiply; }

@@ -1,0 +1,4 @@
+Edit this image. Keep everything exactly the same (composition, hands, wristband, car, track, cliffs, sea, sky, lighting) except:
+1. Remove the two white dashed circles drawn around the hands completely; the hands, lap bar and car underneath stay clean.
+2. Remove the Ferris wheel and the distant amusement park rides; replace them with more limestone hillside, pines and a small white stone village on the far hill.
+No text, no UI.

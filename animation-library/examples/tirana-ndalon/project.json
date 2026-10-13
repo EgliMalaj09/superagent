@@ -1,0 +1,24 @@
+{
+  "name": "tirana-iso3d-b",
+  "format": "9x16",
+  "style": "isometric",
+  "engines": [
+    "isometric"
+  ],
+  "lang": "sq",
+  "duration": null,
+  "audio": {
+    "voice": [
+      {
+        "src": "media/vo.wav",
+        "start": 0
+      }
+    ],
+    "bed": {
+      "src": "bed-news-tension.wav",
+      "volume": 0.07
+    },
+    "sfx": []
+  },
+  "_notes": "duration null = voice length + 0.8 s. bed volume ~0.07 under a voice (0.15-0.2 without). sfx: [[name, time, volume<=0.1]] only on real hits."
+}

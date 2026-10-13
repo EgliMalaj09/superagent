@@ -1,0 +1,51 @@
+<style>
+  .news { background: radial-gradient(80% 50% at 50% 42%, #2a0608, #0a0202 60%, #000); }
+  .scan { position:absolute; inset:0; background:repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px); pointer-events:none; }
+  .O { font-family:"Osw", sans-serif; font-weight:700; text-transform:uppercase; color:#fff; letter-spacing:-.01em; line-height:.95; }
+  .R { color:#FF2A2A; }
+  .blk { background:#FF2A2A; color:#000; padding:0 .12em; }
+  .wd { position:absolute; left:0; width:1080px; text-align:center; opacity:0; }
+  .gl { position:absolute; left:0; top:0; width:100%; text-align:center; opacity:0; mix-blend-mode:screen; }
+  .bar { position:absolute; left:0; top:1500px; width:1080px; height:84px; background:#FF2A2A; display:flex; align-items:center; gap:20px; padding:0 40px; }
+  .bar b { font-family:"Osw"; font-weight:700; font-size:40px; color:#000; letter-spacing:.04em; }
+  .bar span { font-family:"Osw"; font-weight:500; font-size:34px; color:#000; }
+  .tk { position:absolute; top:-14px; width:3px; height:30px; background:rgba(255,255,255,.5); }
+</style>
+
+<div class="S clip news" id="p2" data-start="0" data-duration="8.3" data-track-index="10">
+  <div class="S" id="cam2">
+    <!-- 1: the claim, struck through -->
+    <div class="wd" id="q" style="top:330px;">
+      <div class="O R" style="font-size:36px;letter-spacing:.24em;">Pretendimi</div>
+      <div class="O" style="font-size:78px;margin-top:18px;position:relative;display:inline-block;">„ndërtuar nga hebrenjtë”
+        <i id="qs" style="position:absolute;left:-12px;right:-12px;top:46%;height:12px;background:#FF2A2A;transform-origin:0 50%;transform:scaleX(0);"></i></div>
+    </div>
+    <div class="wd" id="n1" style="top:600px;"><div class="O" style="font-size:190px;">Nuk është</div></div>
+    <div class="wd" id="n2" style="top:860px;"><div class="O" style="font-size:190px;position:relative;"><span class="blk">e vërtetë</span>
+      <div class="gl O" id="n2g" style="font-size:190px;color:#2AD4FF;">e vërtetë</div></div></div>
+    <!-- 2: Orikumi documented -->
+    <div class="wd" id="o1" style="top:330px;"><div class="O R" style="font-size:36px;letter-spacing:.24em;">● Vlorë, Shqipëri</div>
+      <div class="O" style="font-size:250px;margin-top:10px;position:relative;">Orikumi<div class="gl O" id="o1g" style="font-size:250px;color:#FF2A2A;">Orikumi</div></div></div>
+    <div class="wd" id="o2" style="top:640px;"><div class="O" style="font-size:96px;">dokumentohet</div></div>
+    <!-- 3: timeline -->
+    <div id="tln" style="position:absolute;left:90px;top:1040px;width:900px;height:4px;opacity:0;">
+      <b id="tlb" style="position:absolute;inset:0;background:#fff;transform-origin:100% 50%;transform:scaleX(0);"></b>
+      <div class="tk" style="left:0;"></div><div class="tk" style="left:300px;"></div><div class="tk" style="left:600px;"></div><div class="tk" style="right:0;"></div>
+      <div class="O" id="tsot" style="position:absolute;right:-10px;top:30px;font-size:40px;">Sot</div>
+      <div id="tdot" style="position:absolute;left:-16px;top:-16px;width:36px;height:36px;border-radius:50%;background:#FF2A2A;box-shadow:0 0 0 10px rgba(255,42,42,.25);opacity:0;"></div>
+    </div>
+    <div class="wd" id="t1" style="top:800px;"><div class="O" style="font-size:150px;"><span class="blk">Shek. VI p.e.s.</span></div></div>
+    <div class="wd" id="t2" style="top:1110px;"><div class="O" style="font-size:66px;"><span id="ty">0</span> vjet më parë</div></div>
+    <!-- 4: Hecataeus + source -->
+    <div class="wd" id="h1" style="top:470px;"><div class="O R" style="font-size:36px;letter-spacing:.24em;">Nga</div>
+      <div class="O" style="font-size:150px;margin-top:14px;">Hekateu</div><div class="O" style="font-size:150px;">i Miletit</div></div>
+    <div id="src" style="position:absolute;left:90px;top:1000px;width:900px;padding:30px 36px;border:4px solid #FF2A2A;background:rgba(0,0,0,.6);opacity:0;">
+      <div class="O R" style="font-size:30px;letter-spacing:.2em;">Burimi</div>
+      <div style="font-family:Osw;font-weight:500;font-size:46px;color:#fff;margin-top:10px;line-height:1.15;">Hekateu i Miletit · <i style="font-family:Osw;">Periodos Gēs</i><br/>Libri I: Europa</div>
+    </div>
+  </div>
+  <div class="scan"></div><div class="vig"></div>
+  <div class="O" style="position:absolute;left:60px;top:250px;font-size:34px;color:#FF2A2A;letter-spacing:.14em;">● Fakti</div>
+  <div class="bar"><b>FAKTI</b><span>Orikumi · dokumentuar në shek. VI p.e.s.</span></div>
+  <div id="cfl" class="S" style="background:#FF2A2A;opacity:0;mix-blend-mode:screen;"></div>
+</div>

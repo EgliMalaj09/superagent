@@ -1,0 +1,59 @@
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="epg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0384E"/><stop offset=".5" stop-color="#B4248F"/><stop offset="1" stop-color="#4B3BD6"/></linearGradient>
+    <symbol id="pmark" viewBox="0 0 120 150">
+      <path d="M22 20 C22 12 28 8 36 8 L84 8 C100 8 110 20 110 36 L110 52 C110 68 98 78 84 78 L52 78 L52 132 C52 142 44 148 36 146 C28 144 22 138 22 130 Z" fill="url(#epg)"/>
+      <path d="M52 30 L80 30 C86 30 88 34 88 40 L88 48 C88 54 84 56 80 56 L52 56 Z" fill="#1A1060" opacity=".9"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="L clip" id="bg" data-start="0" data-duration="10" data-track-index="1">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="grain"></div>
+</div>
+
+<div class="L clip" id="st" data-start="0" data-duration="10" data-track-index="2">
+  <!-- 1 · cash → card -->
+  <div id="note"><div class="nv">100</div><div class="nl">LEKË</div><div class="nring"></div></div>
+  <div id="card"><div class="cchip"></div><svg class="clogo" width="70" height="88"><use href="#pmark"/></svg><div class="cnum">•••• 4821</div><div class="cmc"><i></i><i></i></div></div>
+
+  <!-- 2 · phone: rewards -->
+  <div id="phone">
+    <div class="notch"></div>
+    <div class="scr" id="scrA">
+      <div class="hd"><svg width="34" height="42"><use href="#pmark"/></svg><b>epara</b></div>
+      <div class="bal"><span>Rewards</span><b><span id="rw">120</span> ALL</b></div>
+      <div class="tx"><i>☕</i><div><b>Coffee · Tirana</b><span>Card payment</span></div><em>−250 ALL</em></div>
+      <div class="pay" id="payBtn">Pay</div>
+    </div>
+    <div class="scr" id="scrB">
+      <div class="hd"><svg width="34" height="42"><use href="#pmark"/></svg><b>epara</b> <span class="biz">Business</span></div>
+      <div class="qrbox"><div id="qr"></div></div>
+      <div class="qrl">Scan to pay · 1,200 ALL</div>
+      <div class="ok" id="okB"><i>✓</i>Payment received</div>
+    </div>
+  </div>
+  <div id="coin">+</div>
+  <div id="tap"></div>
+
+  <!-- 3 · ATM -->
+  <div id="atm"><div class="ascr"><b>Withdraw</b><span>5,000 ALL</span></div><div class="aslot"></div><div class="apad"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div id="rcpt"><b>RECEIPT</b><span>Amount 5,000 ALL</span><span class="fee">Fee <em>0 ALL</em></span></div>
+
+  <!-- 5 · end card -->
+  <div id="end">
+    <svg id="logoMark" width="180" height="225"><use href="#pmark"/></svg>
+    <div class="wm">epara</div>
+    <div class="tg"><span>More rewards.</span><span>More freedom.</span><span>More control.</span></div>
+    <div class="dl">Download free on iPhone</div>
+    <div class="bkt">Powered by BKT</div>
+  </div>
+  <div id="sweep"></div>
+</div>
+
+<div class="L clip" id="tx" data-start="0" data-duration="10" data-track-index="3">
+  <div class="h" id="h1">Better than cash.</div>
+  <div class="h" id="h2">Rewards on<br/>every payment.</div>
+  <div class="h" id="h3">0% ATM fees<br/>in Albania.</div>
+  <div class="h" id="h4">Get paid with<br/>a QR code.</div>
+  <div class="s" id="s4">QR codes &amp; payment links for your business</div>
+</div>

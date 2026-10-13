@@ -1,0 +1,7 @@
+/* LUXURY (black, warm gold, big serif, slow eases expo/power4, shimmer + pad sound) */
+:root { --bg:#0A0907; --ink:#F3EBDD; --mute:rgba(243,235,221,.7); --accent:#C9A45C; --hi:#C9A45C; --red:#B33A2E; --card:#14120F;
+  --head:"IS", "Times New Roman", serif; --headw:400; --track:-.01em; --body:"Out", Arial, sans-serif; --quote:"IS", serif;
+  --bgfx: radial-gradient(90% 60% at 50% 40%, #1C1813 0%, #0A0907 75%); --shadow:0 30px 80px rgba(0,0,0,.7); --radius:2px; }
+.kicker { letter-spacing:.42em; font-weight:500; font-size:24px; }
+.gold { background:linear-gradient(100deg, #8C6A2E 0%, #E9CF8E 45%, #FFF2C8 50%, #E9CF8E 55%, #8C6A2E 100%); background-size:250% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; }  /* animate backgroundPosition */
+.hairline { position:absolute; height:1px; background:linear-gradient(90deg, transparent, var(--accent), transparent); transform-origin:50% 50%; }

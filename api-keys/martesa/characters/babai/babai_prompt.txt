@@ -1,0 +1,17 @@
+# BABAI — character sheet prompt (gemini-3-pro-image, 16:9). Refs: refs/layout_ref.webp
+
+CHARACTER REFERENCE SHEET — photoreal studio photography, three panels side by side on one wide 16:9 canvas, seamless plain light-grey/white studio background, soft even diffused studio lighting, no props, no text, no labels, no logos.
+
+LAYOUT (follow the attached layout reference image exactly, same three-panel composition):
+- PANEL 1 (left, about one third of the width): FACE CLOSE-UP — head and upper chest, front facing, looking straight into the camera, neutral tired expression, sharp focus on the eyes.
+- PANEL 2 (middle): FRONT FULL BODY with the HEAD CROPPED OUT — the panel's top edge cuts at the base of the neck / collar line, NO chin, NO mouth, NO face visible; the full outfit from the collar down to the shoes, standing straight, arms relaxed at the sides, facing camera.
+- PANEL 3 (right): BACK VIEW FULL BODY — head to toe, seen from directly behind, standing straight, arms relaxed.
+
+All three panels show the SAME person with the SAME outfit, identical proportions and colors. Photoreal, real skin texture with pores, wrinkles and natural asymmetry, real fabric texture, natural film grain. NOT CGI, NOT 3D, NOT illustration. Albanian / Mediterranean features.
+
+CHARACTER: BABAI (Elira's father) — 58-year-old Albanian man, honest working-class, worn down by debt and shame. Medium height (about 172 cm), slightly heavy, shoulders a little stooped. Thinning grey hair combed back, short grey stubble, deep lines on the forehead, tired kind brown eyes with dark circles, a resemblance to his daughter around the eyes and brows. Expression: exhausted, worried, proud.
+OUTFIT (canon): worn brown knitted wool cardigan with leather-look buttons over a faded light-blue checked flannel shirt, old dark-grey trousers, scuffed brown leather shoes, simple steel wristwatch with a worn leather strap on the left wrist, a pair of reading glasses in the cardigan breast pocket.
+=== PASS 2 (edit, input = refs/_pass1_sheet.png) ===
+Edit the attached character sheet. Keep EVERYTHING identical (same person, same outfit, same lighting, same background, same left and right panels, same 16:9 three-panel layout).
+Change ONLY the MIDDLE panel: the head must be completely cropped out of frame — the middle panel's top edge must cut at the base of the neck / collar line, so NO chin, NO mouth, NO face, NO hair is visible in the middle panel. Show the body from the collar down to the shoes, full outfit visible, shoes fully visible at the bottom.
+Photoreal, no text, no labels.

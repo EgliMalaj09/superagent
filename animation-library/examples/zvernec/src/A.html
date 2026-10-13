@@ -1,0 +1,54 @@
+<style>
+  .desk { background: radial-gradient(70% 50% at 50% 40%, #3a2c1e, #1a130c 70%, #0b0805); }
+  .folder { position:absolute; left:70px; top:300px; width:940px; height:1130px; background:linear-gradient(160deg,#cfae6f,#b8955a); border-radius:10px;
+    box-shadow:0 40px 90px rgba(0,0,0,.6); }
+  .folder::before { content:""; position:absolute; left:40px; top:-46px; width:280px; height:56px; background:#c9a866; border-radius:12px 12px 0 0; }
+  .paper { position:absolute; left:110px; top:350px; width:860px; height:1040px; background:#efe6d2; box-shadow:0 10px 30px rgba(0,0,0,.25);
+    background-image: repeating-linear-gradient(180deg, transparent 0 58px, rgba(70,90,140,.12) 58px 60px); }
+  .ty { font-family:"Type", "Courier New", monospace; color:#22201c; }
+  .red { color:#B3121B; }
+  .stp { position:absolute; font-family:"Osw", Impact, sans-serif; font-weight:700; color:#B3121B; border:7px solid #B3121B; border-radius:10px; padding:6px 22px;
+    letter-spacing:.06em; mix-blend-mode:multiply; opacity:0; }
+  .pol { position:absolute; left:150px; top:640px; width:370px; height:450px; background:#fbf8f1; box-shadow:0 18px 40px rgba(0,0,0,.35); padding:22px 22px 0; opacity:0; }
+  .pol img { width:326px; height:330px; object-fit:cover; filter:grayscale(.6) contrast(1.1) sepia(.25); }
+  .note { position:absolute; left:580px; top:860px; width:360px; height:380px; background:#f4eab8; box-shadow:0 14px 34px rgba(0,0,0,.3); padding:30px 34px; opacity:0; }
+  .note div { font-family:"Type", monospace; font-size:32px; line-height:1.5; color:#22201c; opacity:0; }
+  /* evidence theme */
+  #cz.czbg { background: radial-gradient(70% 50% at 50% 40%, #3a2c1e, #1a130c 70%, #0b0805); }
+  .czl { font-family:"Type", monospace; font-size:34px; color:#efe6d2; letter-spacing:.04em; }
+  .czc { font-family:"Osw"; font-weight:700; font-size:40px; color:#B3121B; background:#efe6d2; padding:4px 22px; rotate:-2deg; }
+  .player { border:16px solid #f7f2e6; box-shadow:0 30px 70px rgba(0,0,0,.6); rotate:-1.2deg; }
+  .player::before, .player::after { content:""; position:absolute; z-index:3; width:150px; height:44px; background:rgba(240,230,190,.75); top:-14px; }
+  .player::before { left:40px; rotate:-8deg; } .player::after { right:40px; rotate:7deg; }
+  .ptag { position:absolute; z-index:4; left:18px; bottom:16px; font-family:"Type"; font-size:24px; color:#fff; background:rgba(0,0,0,.6); padding:4px 12px; }
+  .sub > div { font-family:"Type", monospace; font-size:44px; color:#22201c; background:#efe6d2; width:max-content; max-width:960px; margin:0 auto; padding:10px 22px; left:0; right:0; }
+  .kph { font-family:"Type"; font-size:36px; color:#efe6d2; text-align:center; }
+  .chips > span { font-family:"Osw"; font-weight:700; font-size:54px; color:#B3121B; border:6px solid #B3121B; border-radius:10px; padding:4px 22px; background:rgba(239,230,210,.95); rotate:-3deg; }
+  .kpb { font-family:"Osw"; font-weight:700; font-size:150px; color:#B3121B; text-align:center; line-height:1.05; margin-top:16px; }
+  .kps { font-family:"Type"; font-size:40px; color:#efe6d2; text-align:center; margin-top:10px; } .kps b { color:#ff4b52; font-weight:400; }
+  .jv { font-family:"Osw"; font-weight:700; font-size:110px; color:#B3121B; border:10px solid #B3121B; border-radius:14px; padding:6px 34px; background:rgba(239,230,210,.95); text-transform:uppercase; }
+</style>
+
+<div class="S clip desk" id="ia" data-start="0" data-duration="10.8" data-track-index="10">
+  <div class="S" id="iacam">
+    <div class="folder" id="fold"></div>
+    <div class="paper" id="pap"></div>
+    <div class="ty" id="hdr" style="position:absolute;left:150px;top:395px;font-size:30px;color:#6b6457;opacity:0;">DOSJE Nr. 001 · KONFIDENCIALE</div>
+    <div class="stp" id="s2022" style="left:650px;top:380px;font-size:110px;rotate:-9deg;">2022</div>
+    <div class="ty" id="loc" style="position:absolute;left:150px;top:500px;font-size:66px;"><span id="locx"></span></div>
+    <div class="pol" id="pol"><img src="img/rama.jpg" alt=""/><div class="ty" style="font-size:34px;margin-top:16px;text-align:center;">EDI RAMA</div>
+      <svg width="60" height="110" viewBox="0 0 60 110" style="position:absolute;left:150px;top:-50px;"><path d="M20 100 V20 a12 12 0 0 1 24 0 V85 a7 7 0 0 1 -14 0 V30" fill="none" stroke="#8d8d8d" stroke-width="5" stroke-linecap="round"/></svg></div>
+    <div id="fj" style="position:absolute;left:560px;top:660px;">
+      <div class="ty" style="font-size:48px;line-height:1.25;"><span id="fj0" style="opacity:0;">FJALIM</span><br/><span id="fj1" style="opacity:0;">SHUMË</span><br/><span id="fj2" class="red" style="opacity:0;">SHQETËSUES</span></div>
+      <svg width="420" height="200" viewBox="0 0 420 200" style="position:absolute;left:-30px;top:110px;overflow:visible;">
+        <path id="mk" d="M10 90 C 80 60, 330 50, 400 80 C 420 110, 300 140, 150 130 C 60 125, 0 110, 20 85" fill="none" stroke="#B3121B" stroke-width="7" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000" opacity=".85"/></svg>
+    </div>
+    <div class="note" id="note"><div class="ty" style="font-size:24px;color:#8a6d2f;opacity:1;">QYTETE ANTIKE ILIRO-EPIROTE:</div>
+      <div id="n0">— Butrinti</div><div id="n1">— Apolonia</div><div id="n2">— Orikumi</div><div id="n3">— Bylisi</div><div id="n4">— Antigonea</div></div>
+    <div class="ty" id="cl0" style="position:absolute;left:150px;top:1150px;font-size:30px;color:#6b6457;opacity:0;">PRETENDIMI I RAMËS:</div>
+    <div class="ty" id="cl1" style="position:absolute;left:150px;top:1195px;width:410px;font-size:42px;line-height:1.2;opacity:0;">„… janë ndërtuar nga hebrenjtë.”</div>
+    <div class="stp" id="spr" style="left:470px;top:1290px;font-size:64px;rotate:-6deg;">PRETENDIM</div>
+  </div>
+  <div class="grain"></div><div class="vig"></div>
+  <div class="S" id="flick" style="background:rgba(255,220,160,.06);opacity:0;"></div>
+</div>

@@ -1,0 +1,6 @@
+/* BRAND / product (fill tokens from `npx hyperframes capture <url>` → capture/tokens; defaults = clean modern SaaS) */
+:root { --bg:#0E1116; --ink:#FFFFFF; --mute:rgba(255,255,255,.72); --accent:#5B8CFF; --hi:#5B8CFF; --red:#FF5A5F; --card:#171B22;
+  --head:"Out", Arial, sans-serif; --headw:800; --track:-.03em; --body:"Inter", Arial, sans-serif; --quote:"IS", serif;
+  --bgfx: radial-gradient(80% 50% at 70% 20%, rgba(91,140,255,.25), transparent 70%), #0E1116; --radius:24px; --shadow:0 30px 80px rgba(0,0,0,.45); }
+.glass { position:absolute; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(18px); border-radius:var(--radius); }
+.ui { position:absolute; border-radius:22px; overflow:hidden; box-shadow:var(--shadow); }   /* product screenshots */
